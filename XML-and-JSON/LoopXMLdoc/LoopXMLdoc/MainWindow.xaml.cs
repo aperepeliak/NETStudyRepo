@@ -29,6 +29,7 @@ namespace LoopXMLdoc
 
         private void buttonLoop_Click(object sender, RoutedEventArgs e)
         {
+            XmlDocument document = new XmlDocument();
 
         }
     }
