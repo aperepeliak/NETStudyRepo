@@ -28,4 +28,13 @@
     <rating>a bit dull</rating>
   </story>
 
+  <story>
+    <title>Number 13</title>
+    <author>
+      <name>M.R. James</name>
+      <nationality>English</nationality>
+    </author>
+    <rating>mysterious</rating>
+  </story>
+
 </stories>
