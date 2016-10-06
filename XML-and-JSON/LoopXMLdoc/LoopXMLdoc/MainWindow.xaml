@@ -13,6 +13,7 @@
             <TextBlock x:Name="textBlockResults" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </ScrollViewer>
         <Button x:Name="buttonDeleteNode" Content="Delete" HorizontalAlignment="Left" Margin="392,74,0,0" VerticalAlignment="Top" Width="75" Click="buttonDeleteNode_Click"/>
+        <Button x:Name="buttonXMLtoJSON" Content="XML > JSON" HorizontalAlignment="Left" Margin="392,99,0,0" VerticalAlignment="Top" Width="75" Click="buttonXMLtoJSON_Click"/>
 
     </Grid>
 </Window>

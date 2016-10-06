@@ -146,5 +146,15 @@ namespace LoopXMLdoc
                 document.Save(booksFile);
             }
         }
+
+        private void buttonXMLtoJSON_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load(booksFile);
+
+            string toJSON = Newtonsoft.Json.JsonConvert.SerializeXmlNode(document);
+
+            textBlockResults.Text = toJSON;
+        }
     }
 }

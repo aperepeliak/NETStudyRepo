@@ -14,4 +14,10 @@
     <Author>John Peterson</Author>
     <code>1123234</code>
   </book>
+  <book>
+    <!--New book-->
+    <title>Learning Angular</title>
+    <Author>John Peterson</Author>
+    <code>1123234</code>
+  </book>
 </books>
