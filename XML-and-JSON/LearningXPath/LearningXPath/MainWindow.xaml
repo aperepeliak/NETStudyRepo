@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:LearningXPath"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid Margin="0,10,0,1">
+        <TextBlock x:Name="Query" HorizontalAlignment="Left" Height="57" Margin="10,10,0,0" TextWrapping="Wrap" Text="Query :" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="textBoxQuery" HorizontalAlignment="Left" Height="57" Margin="75,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Button x:Name="buttonExecute" Content="Execute" HorizontalAlignment="Left" Margin="404,10,0,0" VerticalAlignment="Top" Width="76" Click="buttonExecute_Click"/>
+        <ScrollViewer HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="325" Height="200" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="textBlockResult" TextWrapping="Wrap"/>
+        </ScrollViewer>
+        <Label x:Name="labelResult" Content="Result :" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="90"/>
+
     </Grid>
 </Window>
