@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBlock x:Name="textBlockResults" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="299" Width="311" HorizontalAlignment="Left"/>
         <Button x:Name="buttonLoop" Content="Loop" HorizontalAlignment="Left" Margin="392,24,0,0" VerticalAlignment="Top" Width="75" Click="buttonLoop_Click"/>
+        <Button x:Name="buttonCreateNode" Content="Create" HorizontalAlignment="Left" Margin="392,49,0,0" VerticalAlignment="Top" Width="75" Click="buttonCreateNode_Click"/>
+        <ScrollViewer Margin="0,0,163,0" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="textBlockResults" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </ScrollViewer>
 
     </Grid>
 </Window>

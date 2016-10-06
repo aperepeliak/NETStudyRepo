@@ -95,5 +95,40 @@ namespace LoopXMLdoc
                 text += " " + atr.Name + "='" + atr.Value + "'";
             }
         }
+
+        private void buttonCreateNode_Click(object sender, RoutedEventArgs e)
+        {
+            // Load the xml document
+            XmlDocument document = new XmlDocument();
+            document.Load(booksFile);
+
+            // Get the root element
+            XmlElement root = document.DocumentElement;
+
+            // Create new nodes
+            XmlElement newBook = document.CreateElement("book");
+            XmlElement newTitle = document.CreateElement("title");
+            XmlElement newAuthor = document.CreateElement("Author");
+            XmlElement newCode = document.CreateElement("code");
+
+            XmlText title = document.CreateTextNode("Learning Angular");
+            XmlText author = document.CreateTextNode("John Peterson");
+            XmlText code = document.CreateTextNode("1123234");
+            XmlComment comment = document.CreateComment("New book");
+
+            //Insert elements
+            newBook.AppendChild(comment);
+            newBook.AppendChild(newTitle);
+            newBook.AppendChild(newAuthor);
+            newBook.AppendChild(newCode);
+
+            newTitle.AppendChild(title);
+            newAuthor.AppendChild(author);
+            newCode.AppendChild(code);
+
+            root.InsertAfter(newBook, root.LastChild);
+
+            document.Save(booksFile);
+        }
     }
 }
