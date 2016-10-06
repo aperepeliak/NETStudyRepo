@@ -130,5 +130,21 @@ namespace LoopXMLdoc
 
             document.Save(booksFile);
         }
+
+        private void buttonDeleteNode_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load(booksFile);
+
+            XmlElement root = document.DocumentElement;
+
+            if (root.HasChildNodes)
+            {
+                XmlNode book = root.LastChild;
+                root.RemoveChild(book);
+
+                document.Save(booksFile);
+            }
+        }
     }
 }
