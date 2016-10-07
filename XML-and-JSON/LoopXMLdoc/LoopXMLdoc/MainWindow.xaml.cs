@@ -122,6 +122,8 @@ namespace LoopXMLdoc
             newBook.AppendChild(newAuthor);
             newBook.AppendChild(newCode);
 
+            newBook.SetAttribute("Pages", "1000+");
+
             newTitle.AppendChild(title);
             newAuthor.AppendChild(author);
             newCode.AppendChild(code);

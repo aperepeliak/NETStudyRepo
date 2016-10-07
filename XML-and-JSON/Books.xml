@@ -8,10 +8,4 @@
     <title>Beginning XML</title>
     <author>Joe Fawcett et al</author>
   </book>
-  <book>
-    <!--New book-->
-    <title>Learning Angular</title>
-    <Author>John Peterson</Author>
-    <code>1123234</code>
-  </book>
 </books>
