@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderQueryResults", "OrderQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeNumberQuery", "LargeNumberQuery\LargeNumberQuery.csproj", "{3F84981E-3554-457D-AE0F-AF280E9CA576}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aggregateOperators", "aggregateOperators\aggregateOperators.csproj", "{356EC778-7874-4FE6-9A96-38BC6D0DDA9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356EC778-7874-4FE6-9A96-38BC6D0DDA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356EC778-7874-4FE6-9A96-38BC6D0DDA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356EC778-7874-4FE6-9A96-38BC6D0DDA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356EC778-7874-4FE6-9A96-38BC6D0DDA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
