@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqMethodSyntax", "LinqMet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderQueryResults", "OrderQueryResults\OrderQueryResults.csproj", "{E81CB7D0-5800-4699-91CE-92240EEA603E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeNumberQuery", "LargeNumberQuery\LargeNumberQuery.csproj", "{3F84981E-3554-457D-AE0F-AF280E9CA576}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{E81CB7D0-5800-4699-91CE-92240EEA603E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E81CB7D0-5800-4699-91CE-92240EEA603E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E81CB7D0-5800-4699-91CE-92240EEA603E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F84981E-3554-457D-AE0F-AF280E9CA576}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
