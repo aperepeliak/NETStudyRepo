@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningLINQ", "LearningLIN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLmanip", "XMLmanip\XMLmanip.csproj", "{EB515E33-F38C-4E82-9B1E-EBAC2E0302F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqQuerySyntax", "LinqQuerySyntax\LinqQuerySyntax.csproj", "{1D221B26-DD8B-4D99-A2E6-A001AE816D5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EB515E33-F38C-4E82-9B1E-EBAC2E0302F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB515E33-F38C-4E82-9B1E-EBAC2E0302F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB515E33-F38C-4E82-9B1E-EBAC2E0302F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D221B26-DD8B-4D99-A2E6-A001AE816D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D221B26-DD8B-4D99-A2E6-A001AE816D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D221B26-DD8B-4D99-A2E6-A001AE816D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D221B26-DD8B-4D99-A2E6-A001AE816D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
