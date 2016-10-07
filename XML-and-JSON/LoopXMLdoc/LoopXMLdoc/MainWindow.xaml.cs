@@ -157,6 +157,28 @@ namespace LoopXMLdoc
             string toJSON = Newtonsoft.Json.JsonConvert.SerializeXmlNode(document);
 
             textBlockResults.Text = toJSON;
+
+
+            System.IO.File.Delete(@"D:\Study\NETStudyRepo\XML-and-JSON\LoopXMLdoc\Books.json");
+            System.IO.File.AppendAllText
+                (@"D:\Study\NETStudyRepo\XML-and-JSON\LoopXMLdoc\Books.json", toJSON);
+        }
+
+        private void buttonJSONtoXML_Click(object sender, RoutedEventArgs e)
+        {
+            // Load the JSON document
+
+            try
+            {
+                string json = System.IO.File.ReadAllText
+                (@"D:\Study\NETStudyRepo\XML-and-JSON\LoopXMLdoc\Books.json");
+                XmlDocument document = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(json);
+                textBlockResults.Text = FormatText(document.DocumentElement as XmlNode, "", "");
+            }
+            catch (Exception err)
+            {
+                textBlockResults.Text = err.Message;
+            }
         }
     }
 }

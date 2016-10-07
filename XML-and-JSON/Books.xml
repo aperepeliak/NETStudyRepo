@@ -4,8 +4,16 @@
     <author>Benamin Perkins et al</author>
     <code>096689</code>
   </book>
-  <book code="162132">
-    <title>Beginning XML</title>
-    <author>Joe Fawcett et al</author>
+  <book Pages="1000+">
+    <!--New book-->
+    <title>Learning Angular</title>
+    <Author>John Peterson</Author>
+    <code>1123234</code>
+  </book>
+  <book Pages="1000+">
+    <!--New book-->
+    <title>Learning Angular</title>
+    <Author>John Peterson</Author>
+    <code>1123234</code>
   </book>
 </books>

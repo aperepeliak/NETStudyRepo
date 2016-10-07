@@ -14,6 +14,7 @@
         </ScrollViewer>
         <Button x:Name="buttonDeleteNode" Content="Delete" HorizontalAlignment="Left" Margin="392,74,0,0" VerticalAlignment="Top" Width="75" Click="buttonDeleteNode_Click"/>
         <Button x:Name="buttonXMLtoJSON" Content="XML > JSON" HorizontalAlignment="Left" Margin="392,99,0,0" VerticalAlignment="Top" Width="75" Click="buttonXMLtoJSON_Click"/>
+        <Button x:Name="buttonJSONtoXML" Content="JSON &gt; XML" HorizontalAlignment="Left" Margin="392,124,0,0" VerticalAlignment="Top" Width="75" Click="buttonJSONtoXML_Click"/>
 
     </Grid>
 </Window>
