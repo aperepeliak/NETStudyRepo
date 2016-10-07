@@ -10,6 +10,18 @@ namespace LinqMethodSyntax
     {
         static void Main(string[] args)
         {
+            string[] names = {"Pavel", "Pyotr", "Nazar", "Andrii", "Dimitrii", "Akis", "Rustam", "John",
+            "Akhmat", "Volodya", "Artem", "Vasilii"};
+
+            var queryResults = names.Where(n => n.StartsWith("A"));
+
+            Console.WriteLine("Names beginning with A : ");
+            foreach (var item in queryResults)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.ReadKey();
         }
     }
 }
