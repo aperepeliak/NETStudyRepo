@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Shop.WinForm
 {
-    public partial class Form1 : Form
+    public partial class FormManipData : Form
     {
-        public Form1()
+        public FormManipData()
         {
             InitializeComponent();
         }
