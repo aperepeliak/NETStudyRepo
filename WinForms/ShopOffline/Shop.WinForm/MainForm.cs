@@ -37,5 +37,15 @@ namespace Shop.WinForm
             bsGoods.DataSource = data;
             dgvGoods.DataSource = bsGoods;
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
