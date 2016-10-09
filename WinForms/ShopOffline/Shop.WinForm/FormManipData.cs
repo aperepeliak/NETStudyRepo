@@ -36,6 +36,21 @@ namespace Shop.WinForm
             cmbManuf.ValueMember = "ManufacturerId";
             cmbManuf.DataSource = context.Manufacturers.Local;
             cmbManuf.SelectedValue = good.ManufacturerId;
+
+            cmbCat.DisplayMember = "CategoryName";
+            cmbCat.ValueMember = "CategoryId";
+            cmbCat.DataSource = context.Categories.Local;
+            cmbCat.SelectedValue = good.CategoryId;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
