@@ -40,7 +40,11 @@ namespace Shop.WinForm
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            GoodForDisplay item = bsGoods.Current as GoodForDisplay;
 
+            FormManipData editGood = new FormManipData(context, item.GoodId);
+
+            editGood.ShowDialog();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

@@ -159,8 +159,12 @@
             this.Controls.Add(this.lblManuf);
             this.Controls.Add(this.txtGoodName);
             this.Controls.Add(this.lblGoodName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormManipData";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Data Manipulation";
+            this.Load += new System.EventHandler(this.FormManipData_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
