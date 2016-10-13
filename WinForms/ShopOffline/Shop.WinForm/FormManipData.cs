@@ -17,7 +17,7 @@ namespace Shop.WinForm
         ShopContext context;
         public int GoodId { get; set; }
 
-        public FormManipData(ShopContext context, int goodId)
+        public FormManipData(ShopContext context, int goodId = 0)
         {
             InitializeComponent();
             this.context = context;
@@ -26,24 +26,38 @@ namespace Shop.WinForm
 
         private void FormManipData_Load(object sender, EventArgs e)
         {
-            Good good = context.Goods.Local
+            if (GoodId != 0)
+            {
+                Good good = context.Goods.Local
                 .Where(g => g.GoodId == GoodId)
                 .FirstOrDefault();
 
-            txtGoodName.Text = good.GoodName;
-            txtPrice.Text = good.Price.ToString();
-            txtCount.Text = good.GoodCount.ToString();
+                txtGoodName.Text = good.GoodName;
+                txtPrice.Text = good.Price.ToString();
+                txtCount.Text = good.GoodCount.ToString();
 
 
-            cmbManuf.DisplayMember = "ManufacturerName";
-            cmbManuf.ValueMember = "ManufacturerId";
-            cmbManuf.DataSource = context.Manufacturers.Local;
-            cmbManuf.SelectedValue = good.ManufacturerId;
+                cmbManuf.DisplayMember = "ManufacturerName";
+                cmbManuf.ValueMember = "ManufacturerId";
+                cmbManuf.DataSource = context.Manufacturers.Local;
+                cmbManuf.SelectedValue = good.ManufacturerId;
 
-            cmbCat.DisplayMember = "CategoryName";
-            cmbCat.ValueMember = "CategoryId";
-            cmbCat.DataSource = context.Categories.Local;
-            cmbCat.SelectedValue = good.CategoryId;
+                cmbCat.DisplayMember = "CategoryName";
+                cmbCat.ValueMember = "CategoryId";
+                cmbCat.DataSource = context.Categories.Local;
+                cmbCat.SelectedValue = good.CategoryId;
+            }
+            else
+            {
+                cmbManuf.DisplayMember = "ManufacturerName";
+                cmbManuf.ValueMember = "ManufacturerId";
+                cmbManuf.DataSource = context.Manufacturers.Local;
+
+                cmbCat.DisplayMember = "CategoryName";
+                cmbCat.ValueMember = "CategoryId";
+                cmbCat.DataSource = context.Categories.Local;
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -53,9 +67,18 @@ namespace Shop.WinForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Good good = context.Goods.Local
+            Good good;
+
+            if (GoodId != 0)
+            {
+                good = context.Goods.Local
                 .Where(g => g.GoodId == GoodId)
                 .FirstOrDefault();
+            } else
+            {
+                good = new Good();
+            }
+
 
             good.GoodName = txtGoodName.Text;
             good.ManufacturerId = (int)cmbManuf.SelectedValue;
@@ -63,7 +86,8 @@ namespace Shop.WinForm
             good.Price = Convert.ToDecimal(txtPrice.Text);
             good.GoodCount = Convert.ToDecimal(txtCount.Text);
 
-            //context.Goods.Add(good);
+            if (GoodId == 0)
+                context.Goods.Add(good);
 
             context.SaveChanges();
 

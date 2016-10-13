@@ -45,19 +45,23 @@ namespace Shop.WinForm
             FormManipData editGood = new FormManipData(context, item.GoodId);
 
             editGood.ShowDialog();
-
-            dgvGoods.DataSource = null;
-            List<GoodForDisplay> data = GoodsRepresentation.GetGoodForDisplay(context);
-            bsGoods.DataSource = data;
-            dgvGoods.DataSource = bsGoods;
-
-            //dgvGoods.Update();
-            //dgvGoods.Refresh();
+            RefreshDgv();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormManipData editGood = new FormManipData(context);
 
+            editGood.ShowDialog();
+            RefreshDgv();
+        }
+
+        private void RefreshDgv()
+        {
+            dgvGoods.DataSource = null;
+            List<GoodForDisplay> data = GoodsRepresentation.GetGoodForDisplay(context);
+            bsGoods.DataSource = data;
+            dgvGoods.DataSource = bsGoods;
         }
     }
 }
