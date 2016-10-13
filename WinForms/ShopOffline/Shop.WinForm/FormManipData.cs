@@ -31,6 +31,9 @@ namespace Shop.WinForm
                 .FirstOrDefault();
 
             txtGoodName.Text = good.GoodName;
+            txtPrice.Text = good.Price.ToString();
+            txtCount.Text = good.GoodCount.ToString();
+
 
             cmbManuf.DisplayMember = "ManufacturerName";
             cmbManuf.ValueMember = "ManufacturerId";
@@ -50,7 +53,21 @@ namespace Shop.WinForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Good good = context.Goods.Local
+                .Where(g => g.GoodId == GoodId)
+                .FirstOrDefault();
 
+            good.GoodName = txtGoodName.Text;
+            good.ManufacturerId = (int)cmbManuf.SelectedValue;
+            good.CategoryId = (int)cmbCat.SelectedValue;
+            good.Price = Convert.ToDecimal(txtPrice.Text);
+            good.GoodCount = Convert.ToDecimal(txtCount.Text);
+
+            //context.Goods.Add(good);
+
+            context.SaveChanges();
+
+            Close();
         }
     }
 }
