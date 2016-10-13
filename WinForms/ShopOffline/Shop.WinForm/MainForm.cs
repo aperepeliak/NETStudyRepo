@@ -63,5 +63,22 @@ namespace Shop.WinForm
             bsGoods.DataSource = data;
             dgvGoods.DataSource = bsGoods;
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GoodForDisplay item = bsGoods.Current as GoodForDisplay;
+            DialogResult confirmDeletion = MessageBox.Show($"Are you sure you would like to delete {item.GoodName}?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (confirmDeletion == DialogResult.Yes)
+            {
+                Good good = context.Goods.Local
+                .Where(g => g.GoodId == item.GoodId)
+                .FirstOrDefault();
+
+                context.Goods.Remove(good);
+                context.SaveChanges();
+                RefreshDgv();
+            }
+        }
     }
 }
