@@ -15,7 +15,12 @@ namespace StoreManagement.DataLayer.DbLayer
             Role admin = new Role { RoleName = "admin" };
             Role cashier = new Role { RoleName = "cashier" };
 
-            User sa = new User {  }
+            User sa = new User {    FirstName = "Super", LastName = "Admin",
+                                    Login = "sa", Password = "super", Role = superAdmin };
+
+
+            context.Roles.AddRange(new Role[] { superAdmin, admin, cashier });
+            context.Users.Add(sa);
 
             base.Seed(context);
         }
