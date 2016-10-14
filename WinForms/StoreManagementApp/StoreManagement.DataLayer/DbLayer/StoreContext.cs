@@ -13,7 +13,7 @@ namespace StoreManagement.DataLayer.DbLayer
         {
             if (!Database.Exists())
             {
-                Database.SetInitializer<StoreContext>(new DbInitialize());
+                Database.SetInitializer(new DbInitialize());
             }
         }
 
