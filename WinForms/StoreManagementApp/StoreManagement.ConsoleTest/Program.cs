@@ -29,7 +29,7 @@ namespace StoreManagement.ConsoleTest
             }
 
             Console.WriteLine("End of test...");
-
+            Console.ReadKey();
         }
     }
 }

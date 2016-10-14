@@ -23,8 +23,8 @@ namespace StoreManagement.DataLayer.DbLayer
 
         public decimal Price { get; set; }
 
-        public virtual Manufacturer Manufacturers { get; set; }
-        public virtual Category Categories { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
+        public virtual Category Category { get; set; }
 
         public virtual ICollection<SalePos> SalePos { get; set; }
 
