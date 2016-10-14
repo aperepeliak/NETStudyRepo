@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    class DbInitialize: DropCreateDatabaseAlways<StoreContext>
+    public class DbInitialize: DropCreateDatabaseAlways<StoreContext>
     {
         protected override void Seed(StoreContext context)
         {

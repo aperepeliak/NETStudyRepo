@@ -12,17 +12,16 @@ namespace StoreManagement.DataLayer.DbLayer
     public class Sale
     {
         [Key]
-        public int SalesId { get; set; }
+        public int SaleId { get; set; }
 
-        [ForeignKey("SalesPos")]
-        public int SalesPosId { get; set; }
+        public int SalePosId { get; set; }
 
-        [ForeignKey("User")]
+        //[ForeignKey("User")]
         public int UserId { get; set; }
 
-        public DateTime? SaleDate { get; set; }
+        public DateTime SaleDate { get; set; }
 
-        public virtual SalesPos SalesPos { get; set; }
+        public  SalePos SalePos { get; set; }
         public virtual User User { get; set; }
     }
 }

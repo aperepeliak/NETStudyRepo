@@ -13,7 +13,6 @@ namespace StoreManagement.DataLayer.DbLayer
         [Key]
         public int ManufacturerId { get; set; }
 
-        [Required]
         public string ManufacturerName { get; set; }
 
         public virtual ICollection<Good> Goods { get; set; }

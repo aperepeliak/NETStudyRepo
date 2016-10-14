@@ -15,10 +15,10 @@ namespace StoreManagement.DataLayer.DbLayer
         public int GoodId { get; set; }
         public string GoodName { get; set; }
 
-        [ForeignKey("Manufacturer")]
+        //[ForeignKey("ManufacturerId")]
         public int ManufacturerId { get; set; }
 
-        [ForeignKey("Category")]
+        //[ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
 
         public decimal Price { get; set; }
@@ -26,11 +26,11 @@ namespace StoreManagement.DataLayer.DbLayer
         public virtual Manufacturer Manufacturers { get; set; }
         public virtual Category Categories { get; set; }
 
-        public virtual ICollection<SalesPos> SalesPos { get; set; }
+        public virtual ICollection<SalePos> SalePos { get; set; }
 
         public Good()
         {
-            SalesPos = new List<SalesPos>();
+            SalePos = new List<SalePos>();
         }
     }
 }

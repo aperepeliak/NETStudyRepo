@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManagement.DataLayer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManagement.WinForms", "StoreManagement.WinForms\StoreManagement.WinForms.csproj", "{2ED4E622-EA83-4565-951B-7AC2D58A474E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManagement.ConsoleTest", "StoreManagement.ConsoleTest\StoreManagement.ConsoleTest.csproj", "{C09F579D-17B0-4622-BD4F-2B8873323794}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2ED4E622-EA83-4565-951B-7AC2D58A474E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED4E622-EA83-4565-951B-7AC2D58A474E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED4E622-EA83-4565-951B-7AC2D58A474E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C09F579D-17B0-4622-BD4F-2B8873323794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C09F579D-17B0-4622-BD4F-2B8873323794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C09F579D-17B0-4622-BD4F-2B8873323794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C09F579D-17B0-4622-BD4F-2B8873323794}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

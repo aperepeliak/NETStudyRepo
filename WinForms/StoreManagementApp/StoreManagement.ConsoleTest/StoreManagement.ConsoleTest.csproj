@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC801F82-BE88-4D6C-A0F3-DB6F3E178D28}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{C09F579D-17B0-4622-BD4F-2B8873323794}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StoreManagement.DataLayer</RootNamespace>
-    <AssemblyName>StoreManagement.DataLayer</AssemblyName>
+    <RootNamespace>StoreManagement.ConsoleTest</RootNamespace>
+    <AssemblyName>StoreManagement.ConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,22 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbLayer\Category.cs" />
-    <Compile Include="DbLayer\DbInitialize.cs" />
-    <Compile Include="DbLayer\Good.cs" />
-    <Compile Include="DbLayer\Manufacturer.cs" />
-    <Compile Include="DbLayer\Role.cs" />
-    <Compile Include="DbLayer\Sale.cs" />
-    <Compile Include="DbLayer\SalePos.cs" />
-    <Compile Include="DbLayer\StoreContext.cs" />
-    <Compile Include="DbLayer\User.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\StoreManagement.DataLayer\StoreManagement.DataLayer.csproj">
+      <Project>{cc801f82-be88-4d6c-a0f3-db6f3e178d28}</Project>
+      <Name>StoreManagement.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,15 +9,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    public class SalesPos
+    public class SalePos
     {
-        [Key]
-        public int SalesPosId { get; set; }
+        [ForeignKey("Sale")]
+        public int SalePosId { get; set; }
+
         public virtual ICollection<Good> Goods { get; set; }
+        public Sale Sale { get; set; }
 
-        public virtual Sale Sales { get; set; }
-
-        public SalesPos()
+        public SalePos()
         {
             Goods = new List<Good>();
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    class StoreContext : DbContext
+    public class StoreContext : DbContext
     {
         public StoreContext() : base("name=StoreManagement")
         {
@@ -22,7 +22,7 @@ namespace StoreManagement.DataLayer.DbLayer
         public DbSet<Good> Goods { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
-        public DbSet<SalesPos> SalesPos { get; set; }
+        public DbSet<SalePos> SalesPos { get; set; }
         public DbSet<Sale> Sales { get; set; }
 
     }

@@ -22,7 +22,7 @@ namespace StoreManagement.DataLayer.DbLayer
         public string Login { get; set; }
         public string Password { get; set; }
 
-        [ForeignKey("Roles")]
+        //[ForeignKey("RoleId")]
         public int RoleId { get; set; }
 
         public virtual Role Role { get; set; }
