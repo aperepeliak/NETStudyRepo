@@ -49,13 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbLayer\Categories.cs" />
-    <Compile Include="DbLayer\Goods.cs" />
-    <Compile Include="DbLayer\Manufacturers.cs" />
-    <Compile Include="DbLayer\Roles.cs" />
-    <Compile Include="DbLayer\Sales.cs" />
+    <Compile Include="DbLayer\Category.cs" />
+    <Compile Include="DbLayer\DbInitialize.cs" />
+    <Compile Include="DbLayer\Good.cs" />
+    <Compile Include="DbLayer\Manufacturer.cs" />
+    <Compile Include="DbLayer\Role.cs" />
+    <Compile Include="DbLayer\Sale.cs" />
     <Compile Include="DbLayer\SalesPos.cs" />
-    <Compile Include="DbLayer\Users.cs" />
+    <Compile Include="DbLayer\StoreContext.cs" />
+    <Compile Include="DbLayer\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

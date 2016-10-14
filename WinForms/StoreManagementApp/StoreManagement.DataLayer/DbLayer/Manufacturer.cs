@@ -8,12 +8,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    public class Manufacturers
+    public class Manufacturer
     {
         [Key]
         public int ManufacturerId { get; set; }
+
+        [Required]
         public string ManufacturerName { get; set; }
 
-        public virtual Goods Goods { get; set; }
+        public virtual ICollection<Good> Goods { get; set; }
+
+        public Manufacturer()
+        {
+            Goods = new List<Good>();
+        }
     }
 }

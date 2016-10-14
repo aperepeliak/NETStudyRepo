@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    public class Goods
+    public class Good
     {
         [Key]
         public int GoodId { get; set; }
@@ -23,12 +23,12 @@ namespace StoreManagement.DataLayer.DbLayer
 
         public decimal Price { get; set; }
 
-        public virtual Manufacturers Manufacturers { get; set; }
-        public virtual Categories Categories { get; set; }
+        public virtual Manufacturer Manufacturers { get; set; }
+        public virtual Category Categories { get; set; }
 
         public virtual ICollection<SalesPos> SalesPos { get; set; }
 
-        public Goods()
+        public Good()
         {
             SalesPos = new List<SalesPos>();
         }

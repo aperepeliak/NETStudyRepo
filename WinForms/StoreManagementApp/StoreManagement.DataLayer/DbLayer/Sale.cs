@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    public class Sales
+    public class Sale
     {
         [Key]
         public int SalesId { get; set; }
@@ -20,9 +20,9 @@ namespace StoreManagement.DataLayer.DbLayer
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        public DateTime SaleDate { get; set; }
+        public DateTime? SaleDate { get; set; }
 
         public virtual SalesPos SalesPos { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

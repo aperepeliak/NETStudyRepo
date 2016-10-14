@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace StoreManagement.DataLayer.DbLayer
 {
-    public class Roles
+    public class Role
     {
         [Key]
         public int RoleId { get; set; }
+
+        [Required]
         public string RoleName { get; set; }
 
-        public virtual Users Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+
+        public Role()
+        {
+            Users = new List<User>();
+        }
     }
 }

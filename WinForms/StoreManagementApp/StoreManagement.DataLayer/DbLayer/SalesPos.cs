@@ -13,13 +13,13 @@ namespace StoreManagement.DataLayer.DbLayer
     {
         [Key]
         public int SalesPosId { get; set; }
-        public virtual ICollection<Goods> Goods { get; set; }
+        public virtual ICollection<Good> Goods { get; set; }
 
-        public virtual Sales Sales { get; set; }
+        public virtual Sale Sales { get; set; }
 
         public SalesPos()
         {
-            Goods = new List<Goods>();
+            Goods = new List<Good>();
         }
     }
 }
