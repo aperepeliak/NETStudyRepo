@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWinForms", "StoreWinForms\StoreWinForms.csproj", "{28998341-4AE2-4679-BBFA-201A6032056C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreDataLayer", "StoreDataLayer\StoreDataLayer.csproj", "{D858E544-F70E-486B-84A7-7B4350E48123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreConsoleTest", "StoreConsoleTest\StoreConsoleTest.csproj", "{1D1603EC-5B25-4625-99D1-A615CB439353}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28998341-4AE2-4679-BBFA-201A6032056C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28998341-4AE2-4679-BBFA-201A6032056C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28998341-4AE2-4679-BBFA-201A6032056C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28998341-4AE2-4679-BBFA-201A6032056C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D858E544-F70E-486B-84A7-7B4350E48123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D858E544-F70E-486B-84A7-7B4350E48123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D858E544-F70E-486B-84A7-7B4350E48123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D858E544-F70E-486B-84A7-7B4350E48123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D1603EC-5B25-4625-99D1-A615CB439353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D1603EC-5B25-4625-99D1-A615CB439353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D1603EC-5B25-4625-99D1-A615CB439353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D1603EC-5B25-4625-99D1-A615CB439353}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
