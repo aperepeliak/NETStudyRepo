@@ -15,16 +15,24 @@ namespace StoreConsoleTest
         {
             StoreContext context = new StoreContext();
 
-            context.Goods.Load();
+            //context.Goods.Load();
+            //List<Good> test = new List<Good>();
+            //test = context.Goods.Local.ToList();
+            //foreach (var g in test)
+            //{
+            //    Console.WriteLine($"{g.GoodName}, {g.Stock}");
+            //}
 
-            List<Good> test = new List<Good>();
+            context.UserProfiles.Load();
 
-            test = context.Goods.Local.ToList();
+            var query = from u in context.UserProfiles.Local
+                        select u.UserLogin;
 
-            foreach (var g in test)
+            foreach (var item in query)
             {
-                Console.WriteLine($"{g.GoodName}, {g.Stock}");
+                Console.WriteLine(item);
             }
+
 
             Console.WriteLine("\n\nPress any key...");
             Console.ReadKey();

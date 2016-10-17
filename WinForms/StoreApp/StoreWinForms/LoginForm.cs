@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using StoreDataLayer.DbLayer;
+using System.Data.Entity;
+
 namespace StoreWinForms
 {
     public partial class LoginForm : Form
     {
+        StoreContext context;
+
         public LoginForm()
         {
             InitializeComponent();
+            context = new StoreContext();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -24,6 +30,8 @@ namespace StoreWinForms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            context.UserProfiles.Load();
+
 
         }
 
