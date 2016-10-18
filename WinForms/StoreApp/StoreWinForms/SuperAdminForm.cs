@@ -93,7 +93,5 @@ namespace StoreWinForms
             bSource.DataSource = data;
             dgvSuper.DataSource = bSource;
         }
-
-
     }
 }

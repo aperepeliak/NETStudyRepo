@@ -50,7 +50,7 @@ namespace StoreWinForms
 
                     case 2:
                         // admin
-
+                        AdminForm 
                         break;
 
                     case 3:
