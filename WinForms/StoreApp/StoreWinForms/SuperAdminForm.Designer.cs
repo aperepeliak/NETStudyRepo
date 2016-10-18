@@ -46,7 +46,7 @@
             this.deleteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(628, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(754, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,12 +77,12 @@
             this.dgvSuper.Location = new System.Drawing.Point(12, 27);
             this.dgvSuper.Name = "dgvSuper";
             this.dgvSuper.ReadOnly = true;
-            this.dgvSuper.Size = new System.Drawing.Size(616, 167);
+            this.dgvSuper.Size = new System.Drawing.Size(730, 167);
             this.dgvSuper.TabIndex = 1;
             // 
             // btnSAExit
             // 
-            this.btnSAExit.Location = new System.Drawing.Point(541, 226);
+            this.btnSAExit.Location = new System.Drawing.Point(667, 226);
             this.btnSAExit.Name = "btnSAExit";
             this.btnSAExit.Size = new System.Drawing.Size(75, 23);
             this.btnSAExit.TabIndex = 3;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 261);
+            this.ClientSize = new System.Drawing.Size(754, 261);
             this.Controls.Add(this.btnSAExit);
             this.Controls.Add(this.dgvSuper);
             this.Controls.Add(this.menuStrip1);

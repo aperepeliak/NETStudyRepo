@@ -17,6 +17,7 @@ namespace StoreWinForms
     {
         StoreContext context;
         BindingSource bSource;
+        List<User> data;
 
         public SuperAdminForm(StoreContext context)
         {
@@ -29,7 +30,7 @@ namespace StoreWinForms
         {
             context.Roles.Load();
 
-            List<User> data = DisplayUsers.GetUsers(context);
+            data = DisplayUsers.GetUsers(context);
 
             bSource.DataSource = data;
             dgvSuper.DataSource = bSource;
@@ -37,7 +38,21 @@ namespace StoreWinForms
 
         private void editUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            User current = bSource.Current as User;
 
+            UsersCRUD editUserProfile = new UsersCRUD(context, current.UserId);
+            DialogResult res = editUserProfile.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                foreach (var item in data)
+                {
+                    if (item.UserId == current.UserId)
+                    {
+                        item.UserFirstName = 
+                    }
+                }
+            }
         }
 
         private void btnSAExit_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace StoreDataLayer.BusinessLayer
     {
         public static List<User> GetUsers(StoreContext context)
         {
-            string queryString = @"SELECT   UserProfile.UserFirstName, UserProfile.UserLastName, UserProfile.UserLogin, UserProfile.UserPassword, Role.RoleName 
+            string queryString = @"SELECT   UserProfile.UserId, UserProfile.UserFirstName, UserProfile.UserLastName, UserProfile.UserLogin, UserProfile.UserPassword, Role.RoleName 
                                    FROM     UserProfile LEFT JOIN Role ON (UserProfile.RoleId = Role.RoleId)";
 
             var query = context

@@ -69,6 +69,12 @@
     <Compile Include="SuperAdminForm.Designer.cs">
       <DependentUpon>SuperAdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersCRUD.Designer.cs">
+      <DependentUpon>UsersCRUD.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +89,9 @@
     </Compile>
     <EmbeddedResource Include="SuperAdminForm.resx">
       <DependentUpon>SuperAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersCRUD.resx">
+      <DependentUpon>UsersCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -59,7 +59,7 @@ namespace StoreWinForms
                         break;
                 }
 
-
+                Close();
 
             }
             else
