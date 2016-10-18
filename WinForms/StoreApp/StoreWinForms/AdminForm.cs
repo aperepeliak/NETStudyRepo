@@ -16,13 +16,13 @@ namespace StoreWinForms
     public partial class AdminForm : Form
     {
         StoreContext context;
-        BindingSource bsGoods;
+        BindingSource bSource;
 
         public AdminForm()
         {
             InitializeComponent();
             context = new StoreContext();
-            bsGoods = new BindingSource();
+            bSource = new BindingSource();
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -33,8 +33,8 @@ namespace StoreWinForms
 
             List<BusinessGood> data = DisplayGoods.GetGoods(context);
 
-            bsGoods.DataSource = data;
-            dgvGoods.DataSource = bsGoods;
+            bSource.DataSource = data;
+            dgvGoods.DataSource = bSource;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -44,30 +44,44 @@ namespace StoreWinForms
 
         private void manufacturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var data = (from m in context.Manufacturers.Local
-                        select new { m.ManufacturerId, m.ManufacturerName }).ToList();
+            List<BusinessManufacturer> data = DisplayManufacturers.GetManufacturers(context);
 
-            bsGoods.DataSource = null;
-            bsGoods.DataSource = data;
-            dgvGoods.DataSource = bsGoods;
+            bSource.DataSource = null;
+            bSource.DataSource = data;
+            dgvGoods.DataSource = bSource;
         }
 
         private void categoriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var data = (from c in context.Categories.Local
-                        select new { c.CategoryId, c.CategoryName }).ToList();
+            List<BusinessCategory> data = DisplayCategory.GetCategories(context);
 
-            bsGoods.DataSource = null;
-            bsGoods.DataSource = data;
-            dgvGoods.DataSource = bsGoods;
+            bSource.DataSource = null;
+            bSource.DataSource = data;
+            dgvGoods.DataSource = bSource;
         }
 
         private void goodsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<BusinessGood> data = DisplayGoods.GetGoods(context);
-            bsGoods.DataSource = null;
-            bsGoods.DataSource = data;
-            dgvGoods.DataSource = bsGoods;
+            bSource.DataSource = null;
+            bSource.DataSource = data;
+            dgvGoods.DataSource = bSource;
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bSource.Current is BusinessGood)
+            {
+                var item = bSource.Current as BusinessGood;
+            }
+            else if (bSource.Current is BusinessManufacturer)
+            {
+                MessageBox.Show("Manuf");
+            }
+            else
+            {
+                MessageBox.Show("Cat");
+            }
         }
     }
 }
