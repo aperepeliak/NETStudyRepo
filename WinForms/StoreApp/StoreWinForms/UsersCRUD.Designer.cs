@@ -120,7 +120,7 @@
             this.cmbRole.FormattingEnabled = true;
             this.cmbRole.Location = new System.Drawing.Point(16, 142);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(121, 21);
+            this.cmbRole.Size = new System.Drawing.Size(177, 21);
             this.cmbRole.TabIndex = 10;
             // 
             // btnCancel
@@ -142,6 +142,7 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UsersCRUD
             // 
@@ -172,15 +173,15 @@
 
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.TextBox tbxFirstName;
-        private System.Windows.Forms.TextBox tbxLastName;
-        private System.Windows.Forms.TextBox tbxLogin;
         private System.Windows.Forms.Label lblLogin;
-        private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblRole;
-        private System.Windows.Forms.ComboBox cmbRole;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.TextBox tbxFirstName;
+        public System.Windows.Forms.TextBox tbxLastName;
+        public System.Windows.Forms.TextBox tbxLogin;
+        public System.Windows.Forms.TextBox tbxPassword;
+        public System.Windows.Forms.ComboBox cmbRole;
     }
 }
