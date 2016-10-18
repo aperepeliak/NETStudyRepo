@@ -30,14 +30,39 @@ namespace StoreWinForms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            context.UserProfiles.Load();
-
-            if (context.UserProfiles.Local.Any(u => (u.UserLogin == tbxLogin.Text) && (u.UserPassword == tbxPassword.Text)))
+            // (SA, student) - for super admin
+            if (context.UserProfiles.Local.Any(u => (u.UserLogin == tbxLogin.Text) &&
+                                                    (u.UserPassword == tbxPassword.Text)))
             {
-                // (SA, student)
+                UserProfile activeUser = context.UserProfiles.Local
+                                            .Where(u => (u.UserLogin == tbxLogin.Text) &&
+                                                        (u.UserPassword == tbxPassword.Text))
+                                            .First();
+
+                Hide();
+                switch (activeUser.RoleId)
+                {
+                    case 1:
+                        // super admin
+                        SuperAdminForm saForm = new SuperAdminForm(context);
+                        saForm.ShowDialog();
+                        break;
+
+                    case 2:
+                        // admin
+
+                        break;
+
+                    case 3:
+                        // cashier
+
+                        break;
+                }
 
 
-            } else
+
+            }
+            else
             {
                 MessageBox.Show("Wrong login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -47,7 +72,7 @@ namespace StoreWinForms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            context.UserProfiles.Load();
         }
     }
 }

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\DisplayUsers.cs" />
+    <Compile Include="BusinessLayer\User.cs" />
     <Compile Include="DbLayer\Category.cs" />
     <Compile Include="DbLayer\Good.cs" />
     <Compile Include="DbLayer\Manufacturer.cs" />

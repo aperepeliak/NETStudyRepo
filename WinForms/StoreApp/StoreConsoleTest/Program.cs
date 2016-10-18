@@ -23,14 +23,12 @@ namespace StoreConsoleTest
             //    Console.WriteLine($"{g.GoodName}, {g.Stock}");
             //}
 
-            context.UserProfiles.Load();
+            var test = context.UserProfiles.Include("Role").ToList();
 
-            var query = from u in context.UserProfiles.Local
-                        select u.UserLogin;
-
-            foreach (var item in query)
+            foreach (var item in test)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"{item.UserLogin}, {item.Role.RoleName}");
+
             }
 
 
