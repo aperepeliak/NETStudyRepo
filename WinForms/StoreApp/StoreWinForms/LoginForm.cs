@@ -32,6 +32,16 @@ namespace StoreWinForms
         {
             context.UserProfiles.Load();
 
+            if (context.UserProfiles.Local.Any(u => (u.UserLogin == tbxLogin.Text) && (u.UserPassword == tbxPassword.Text)))
+            {
+                // (SA, student)
+
+
+            } else
+            {
+                MessageBox.Show("Wrong login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 

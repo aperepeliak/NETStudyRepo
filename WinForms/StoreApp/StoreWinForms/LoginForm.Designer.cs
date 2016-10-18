@@ -101,6 +101,7 @@
             this.Controls.Add(this.tbxLogin);
             this.Controls.Add(this.lblLogin);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to Store";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
