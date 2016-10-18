@@ -79,6 +79,7 @@
             this.dgvSuper.Location = new System.Drawing.Point(12, 27);
             this.dgvSuper.Name = "dgvSuper";
             this.dgvSuper.ReadOnly = true;
+            this.dgvSuper.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuper.Size = new System.Drawing.Size(730, 167);
             this.dgvSuper.TabIndex = 1;
             // 

@@ -39,9 +39,9 @@
             this.btnRemovePhoto = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addGoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editGoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -64,18 +64,21 @@
             this.goodsToolStripMenuItem.Name = "goodsToolStripMenuItem";
             this.goodsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.goodsToolStripMenuItem.Text = "Goods";
+            this.goodsToolStripMenuItem.Click += new System.EventHandler(this.goodsToolStripMenuItem_Click);
             // 
             // manufacturersToolStripMenuItem
             // 
             this.manufacturersToolStripMenuItem.Name = "manufacturersToolStripMenuItem";
             this.manufacturersToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.manufacturersToolStripMenuItem.Text = "Manufacturers";
+            this.manufacturersToolStripMenuItem.Click += new System.EventHandler(this.manufacturersToolStripMenuItem_Click);
             // 
             // categoriesToolStripMenuItem
             // 
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
             this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.categoriesToolStripMenuItem.Text = "Categories";
+            this.categoriesToolStripMenuItem.Click += new System.EventHandler(this.categoriesToolStripMenuItem_Click);
             // 
             // dgvGoods
             // 
@@ -83,14 +86,17 @@
             this.dgvGoods.AllowUserToDeleteRows = false;
             this.dgvGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGoods.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvGoods.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvGoods.Location = new System.Drawing.Point(13, 28);
             this.dgvGoods.Name = "dgvGoods";
             this.dgvGoods.ReadOnly = true;
+            this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGoods.Size = new System.Drawing.Size(474, 278);
             this.dgvGoods.TabIndex = 1;
             // 
             // flwPhoto
             // 
+            this.flwPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flwPhoto.Location = new System.Drawing.Point(493, 57);
             this.flwPhoto.Name = "flwPhoto";
             this.flwPhoto.Size = new System.Drawing.Size(200, 249);
@@ -122,33 +128,34 @@
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addGoodToolStripMenuItem,
-            this.editGoodToolStripMenuItem,
+            this.addToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 70);
-            // 
-            // addGoodToolStripMenuItem
-            // 
-            this.addGoodToolStripMenuItem.Name = "addGoodToolStripMenuItem";
-            this.addGoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.addGoodToolStripMenuItem.Text = "Add Good";
-            // 
-            // editGoodToolStripMenuItem
-            // 
-            this.editGoodToolStripMenuItem.Name = "editGoodToolStripMenuItem";
-            this.editGoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.editGoodToolStripMenuItem.Text = "Edit Good";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 70);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // AdminForm
             // 
@@ -164,6 +171,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AdminForm";
             this.Text = "AdminForm";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).EndInit();
@@ -185,8 +193,8 @@
         private System.Windows.Forms.Button btnRemovePhoto;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addGoodToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editGoodToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

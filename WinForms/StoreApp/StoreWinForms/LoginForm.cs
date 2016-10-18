@@ -50,7 +50,8 @@ namespace StoreWinForms
 
                     case 2:
                         // admin
-                        AdminForm 
+                        AdminForm aForm = new AdminForm();
+                        aForm.ShowDialog();
                         break;
 
                     case 3:
