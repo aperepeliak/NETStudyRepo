@@ -17,6 +17,11 @@ namespace StoreWinForms
     {
         StoreContext context;
         BindingSource bSource;
+        List<BusinessGood> dataGood;
+        List<BusinessManufacturer> dataManufacturer;
+        List<BusinessCategory> dataCategory;
+
+        public enum Entity { Manufacturer, Category };
 
         public AdminForm()
         {
@@ -31,9 +36,9 @@ namespace StoreWinForms
             context.Manufacturers.Load();
             context.Categories.Load();
 
-            List<BusinessGood> data = DisplayGoods.GetGoods(context);
+            dataGood = DisplayGoods.GetGoods(context);
 
-            bSource.DataSource = data;
+            bSource.DataSource = dataGood;
             dgvGoods.DataSource = bSource;
         }
 
@@ -44,33 +49,35 @@ namespace StoreWinForms
 
         private void manufacturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<BusinessManufacturer> data = DisplayManufacturers.GetManufacturers(context);
+            dataManufacturer = DisplayManufacturers.GetManufacturers(context);
 
             bSource.DataSource = null;
-            bSource.DataSource = data;
+            bSource.DataSource = dataManufacturer;
             dgvGoods.DataSource = bSource;
 
             btnAddPhoto.Enabled = false;
             btnRemovePhoto.Enabled = false;
+            flwPhoto.Enabled = false;
         }
 
         private void categoriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<BusinessCategory> data = DisplayCategory.GetCategories(context);
+            dataCategory = DisplayCategory.GetCategories(context);
 
             bSource.DataSource = null;
-            bSource.DataSource = data;
+            bSource.DataSource = dataCategory;
             dgvGoods.DataSource = bSource;
 
             btnAddPhoto.Enabled = false;
             btnRemovePhoto.Enabled = false;
+            flwPhoto.Enabled = false;
         }
 
         private void goodsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<BusinessGood> data = DisplayGoods.GetGoods(context);
+            dataGood = DisplayGoods.GetGoods(context);
             bSource.DataSource = null;
-            bSource.DataSource = data;
+            bSource.DataSource = dataGood;
             dgvGoods.DataSource = bSource;
 
             btnAddPhoto.Enabled = true;
@@ -83,17 +90,45 @@ namespace StoreWinForms
             {
                 var item = bSource.Current as BusinessGood;
 
-                GoodManipForm editGood = new GoodManipForm(context, item.GoodId);
-                editGood.ShowDialog();
+                GoodManipForm edit = new GoodManipForm(context, item.GoodId);
+                edit.ShowDialog();
                 RefreshDgv();
             }
             else if (bSource.Current is BusinessManufacturer)
             {
-                MessageBox.Show("Manuf");
+                var item = bSource.Current as BusinessManufacturer;
+                ManufCatManipForm edit = new ManufCatManipForm(context, Entity.Manufacturer, item.ManufacturerId);
+                edit.txtManufCat.Text = item.ManufacturerName;
+                DialogResult res = edit.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    foreach (var m in dataManufacturer)
+                    {
+                        if (m.ManufacturerId == item.ManufacturerId)
+                        {
+                            m.ManufacturerName = edit.txtManufCat.Text;
+                        }
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Cat");
+                var item = bSource.Current as BusinessCategory;
+                ManufCatManipForm edit = new ManufCatManipForm(context, Entity.Category, item.CategoryId);
+                edit.txtManufCat.Text = item.CategoryName;
+                DialogResult res = edit.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    foreach (var c in dataCategory)
+                    {
+                        if (c.CategoryId == item.CategoryId)
+                        {
+                            c.CategoryName = edit.txtManufCat.Text;
+                        }
+                    }
+                }
             }
         }
 
@@ -101,10 +136,31 @@ namespace StoreWinForms
         {
             if (bSource.Current is BusinessGood)
             {
-                GoodManipForm addGood = new GoodManipForm(context);
-
-                addGood.ShowDialog();
+                GoodManipForm add = new GoodManipForm(context);
+                add.ShowDialog();
                 RefreshDgv();
+            }
+            else if (bSource.Current is BusinessManufacturer)
+            {
+                ManufCatManipForm add = new ManufCatManipForm(context, Entity.Manufacturer);
+                DialogResult res = add.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    dataManufacturer = DisplayManufacturers.GetManufacturers(context);
+                    bSource.DataSource = dataManufacturer;
+                }
+            }
+            else
+            {
+                ManufCatManipForm add = new ManufCatManipForm(context, Entity.Category);
+                DialogResult res = add.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    dataCategory = DisplayCategory.GetCategories(context);
+                    bSource.DataSource = dataCategory;
+                }
             }
         }
 
