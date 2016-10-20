@@ -182,6 +182,40 @@ namespace StoreWinForms
                     RefreshDgv();
                 }
             }
+            else if (bSource.Current is BusinessManufacturer)
+            {
+                BusinessManufacturer item = bSource.Current as BusinessManufacturer;
+                DialogResult confirmDeletion = MessageBox.Show($"Are you sure you would like to delete {item.ManufacturerName}?", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (confirmDeletion == DialogResult.Yes)
+                {
+                    Manufacturer manuf = context.Manufacturers.Local
+                    .Where(m => m.ManufacturerId == item.ManufacturerId)
+                    .FirstOrDefault();
+
+                    context.Manufacturers.Remove(manuf);
+                    context.SaveChanges();
+                    dataManufacturer = DisplayManufacturers.GetManufacturers(context);
+                    bSource.DataSource = dataManufacturer;
+                }
+            }
+            else
+            {
+                BusinessCategory item = bSource.Current as BusinessCategory;
+                DialogResult confirmDeletion = MessageBox.Show($"Are you sure you would like to delete {item.CategoryName}?", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (confirmDeletion == DialogResult.Yes)
+                {
+                    Category category = context.Categories.Local
+                    .Where(c => c.CategoryId == item.CategoryId)
+                    .FirstOrDefault();
+
+                    context.Categories.Remove(category);
+                    context.SaveChanges();
+                    dataCategory = DisplayCategory.GetCategories(context);
+                    bSource.DataSource = dataCategory;
+                }
+            }
         }
 
         private void RefreshDgv()

@@ -44,13 +44,13 @@ namespace StoreWinForms
                     manuf = context.Manufacturers.Local
                         .Where(m => m.ManufacturerId == itemId)
                         .FirstOrDefault();
-                } else
+                }
+                else
                 {
                     manuf = new Manufacturer();
                 }
 
                 manuf.ManufacturerName = txtManufCat.Text;
-                
 
                 if (itemId == 0)
                     context.Manufacturers.Add(manuf);
@@ -74,7 +74,6 @@ namespace StoreWinForms
                 }
 
                 category.CategoryName = txtManufCat.Text;
-
 
                 if (itemId == 0)
                     context.Categories.Add(category);
