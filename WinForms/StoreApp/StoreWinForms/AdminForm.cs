@@ -262,8 +262,8 @@ namespace StoreWinForms
         {
             Image img = Image.FromFile(fullpath);
             PictureBox p = new PictureBox();
-            p.Width = 175;
-            p.Height = 175;
+            p.Width = 180;
+            p.Height = 180;
             p.Image = FixedSize(img, p.Width, p.Height, true);
             flwPhoto.Controls.Add(p);
             img.Dispose();
