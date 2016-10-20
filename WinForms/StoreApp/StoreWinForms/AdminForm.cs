@@ -73,6 +73,8 @@ namespace StoreWinForms
             if (bSource.Current is BusinessGood)
             {
                 var item = bSource.Current as BusinessGood;
+
+                GoodManipForm editGood = new GoodManipForm(context, item.GoodId);
             }
             else if (bSource.Current is BusinessManufacturer)
             {

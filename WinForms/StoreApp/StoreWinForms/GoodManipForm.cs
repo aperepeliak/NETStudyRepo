@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StoreWinForms
 {
-    public partial class AdminCRUDForm : Form
+    public partial class GoodManipForm : Form
     {
-        public AdminCRUDForm()
+        public GoodManipForm()
         {
             InitializeComponent();
         }
