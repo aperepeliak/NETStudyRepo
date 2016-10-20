@@ -93,6 +93,7 @@
             this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGoods.Size = new System.Drawing.Size(474, 278);
             this.dgvGoods.TabIndex = 1;
+            this.dgvGoods.SelectionChanged += new System.EventHandler(this.dgvGoods_SelectionChanged);
             // 
             // contextMenuStrip1
             // 
@@ -101,7 +102,7 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 70);
             // 
             // addToolStripMenuItem
             // 
@@ -129,7 +130,7 @@
             this.flwPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flwPhoto.Location = new System.Drawing.Point(493, 57);
             this.flwPhoto.Name = "flwPhoto";
-            this.flwPhoto.Size = new System.Drawing.Size(200, 249);
+            this.flwPhoto.Size = new System.Drawing.Size(200, 200);
             this.flwPhoto.TabIndex = 2;
             // 
             // btnAddPhoto
@@ -140,6 +141,7 @@
             this.btnAddPhoto.TabIndex = 3;
             this.btnAddPhoto.Text = "Add Photo";
             this.btnAddPhoto.UseVisualStyleBackColor = true;
+            this.btnAddPhoto.Click += new System.EventHandler(this.btnAddPhoto_Click);
             // 
             // btnRemovePhoto
             // 
@@ -149,10 +151,11 @@
             this.btnRemovePhoto.TabIndex = 4;
             this.btnRemovePhoto.Text = "Remove Photo";
             this.btnRemovePhoto.UseVisualStyleBackColor = true;
+            this.btnRemovePhoto.Click += new System.EventHandler(this.btnRemovePhoto_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(618, 312);
+            this.btnExit.Location = new System.Drawing.Point(618, 283);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 5;
@@ -164,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 347);
+            this.ClientSize = new System.Drawing.Size(705, 316);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRemovePhoto);
             this.Controls.Add(this.btnAddPhoto);
