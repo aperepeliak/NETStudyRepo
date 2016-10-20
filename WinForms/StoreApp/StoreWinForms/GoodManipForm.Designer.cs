@@ -30,9 +30,9 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtCount = new System.Windows.Forms.TextBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.lblCount = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.cmbCat = new System.Windows.Forms.ComboBox();
             this.lblCat = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -60,13 +61,14 @@
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtCount
+            // txtStock
             // 
-            this.txtCount.Location = new System.Drawing.Point(118, 206);
-            this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(100, 20);
-            this.txtCount.TabIndex = 21;
+            this.txtStock.Location = new System.Drawing.Point(118, 206);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(100, 20);
+            this.txtStock.TabIndex = 21;
             // 
             // txtPrice
             // 
@@ -75,14 +77,14 @@
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 20;
             // 
-            // lblCount
+            // lblStock
             // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(126, 190);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(46, 13);
-            this.lblCount.TabIndex = 19;
-            this.lblCount.Text = "Quantity";
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(126, 190);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(35, 13);
+            this.lblStock.TabIndex = 19;
+            this.lblStock.Text = "Stock";
             // 
             // lblPrice
             // 
@@ -150,9 +152,9 @@
             this.ClientSize = new System.Drawing.Size(350, 311);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtCount);
+            this.Controls.Add(this.txtStock);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.lblCount);
+            this.Controls.Add(this.lblStock);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.cmbCat);
             this.Controls.Add(this.lblCat);
@@ -162,6 +164,7 @@
             this.Controls.Add(this.lblGoodName);
             this.Name = "GoodManipForm";
             this.Text = "GoodManipForm";
+            this.Load += new System.EventHandler(this.GoodManipForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,9 +174,9 @@
 
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtCount;
+        private System.Windows.Forms.TextBox txtStock;
         public System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.ComboBox cmbCat;
         private System.Windows.Forms.Label lblCat;
