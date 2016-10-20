@@ -23,8 +23,6 @@ namespace StoreWinForms
         List<BusinessManufacturer> dataManufacturer;
         List<BusinessCategory> dataCategory;
 
-        List<string> PhotosToDelete;
-
         public enum Entity { Manufacturer, Category };
 
         public AdminForm()
@@ -32,7 +30,6 @@ namespace StoreWinForms
             InitializeComponent();
             context = new StoreContext();
             bSource = new BindingSource();
-            PhotosToDelete = new List<string>();
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -56,10 +53,6 @@ namespace StoreWinForms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
-            //foreach (var photo in PhotosToDelete)
-            //{
-            //    File.Delete(photo);
-            //}
         }
 
         private void manufacturersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -236,8 +229,8 @@ namespace StoreWinForms
         private void RefreshDgv()
         {
             dgvGoods.DataSource = null;
-            List<BusinessGood> data = DisplayGoods.GetGoods(context);
-            bSource.DataSource = data;
+            dataGood = DisplayGoods.GetGoods(context);
+            bSource.DataSource = dataGood;
             dgvGoods.DataSource = bSource;
         }
 
@@ -262,16 +255,18 @@ namespace StoreWinForms
 
                 context.SaveChanges();
             }
+            open.Dispose();
         }
 
         private void AddPhotoFlowPanel(string fullpath)
         {
             Image img = Image.FromFile(fullpath);
             PictureBox p = new PictureBox();
-            p.Width = 200;
-            p.Height = 200;
+            p.Width = 175;
+            p.Height = 175;
             p.Image = FixedSize(img, p.Width, p.Height, true);
             flwPhoto.Controls.Add(p);
+            img.Dispose();
         }
 
         private System.Drawing.Image FixedSize(Image image,
@@ -358,25 +353,25 @@ namespace StoreWinForms
                         Where(ph => ph.GoodId == itemId).FirstOrDefault();
 
             string photoPath = PhotoToDelete.PhotoPath;
+            
 
-            Image img = Image.FromFile(photoPath);
-            PictureBox p = new PictureBox();
-            p.Image = img;
-
-            flwPhoto.Controls.Remove(p);
-
-            p.Image = null;
-
-            //PhotosToDelete.Add(photoPath);
-
-            bSource = null;
+            
             context.Photos.Local.Remove(PhotoToDelete);
             context.SaveChanges();
             File.Delete(photoPath);
-            List<BusinessGood> data = DisplayGoods.GetGoods(context);
-            bSource.DataSource = data;
-            dgvGoods.DataSource = bSource;
 
+            flwPhoto.Controls.Clear();
+            flwPhoto.Update();
+            if (bSource.Current is BusinessGood)
+            {
+                var list = context.Photos.Local
+                .Where(g => g.GoodId == (bSource.Current as BusinessGood).GoodId)
+                .ToList();
+                foreach (var item in list)
+                {
+                    AddPhotoFlowPanel(item.PhotoPath);
+                }
+            }
         }
     }
 }

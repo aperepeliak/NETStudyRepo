@@ -127,6 +127,7 @@
             // 
             // flwPhoto
             // 
+            this.flwPhoto.AutoScroll = true;
             this.flwPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flwPhoto.Location = new System.Drawing.Point(493, 57);
             this.flwPhoto.Name = "flwPhoto";
