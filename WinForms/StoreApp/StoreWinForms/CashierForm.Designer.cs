@@ -32,11 +32,11 @@
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.lblGoods = new System.Windows.Forms.Label();
             this.lblCart = new System.Windows.Forms.Label();
-            this.btnNewCart = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnShowSales = new System.Windows.Forms.Button();
+            this.lblTip = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,7 @@
             this.dgvGoods.ReadOnly = true;
             this.dgvGoods.Size = new System.Drawing.Size(499, 308);
             this.dgvGoods.TabIndex = 0;
+            this.dgvGoods.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGoods_CellMouseDoubleClick);
             // 
             // dgvCart
             // 
@@ -76,22 +77,13 @@
             this.lblCart.AutoSize = true;
             this.lblCart.Location = new System.Drawing.Point(516, 13);
             this.lblCart.Name = "lblCart";
-            this.lblCart.Size = new System.Drawing.Size(26, 13);
+            this.lblCart.Size = new System.Drawing.Size(63, 13);
             this.lblCart.TabIndex = 3;
-            this.lblCart.Text = "Cart";
-            // 
-            // btnNewCart
-            // 
-            this.btnNewCart.Location = new System.Drawing.Point(550, 349);
-            this.btnNewCart.Name = "btnNewCart";
-            this.btnNewCart.Size = new System.Drawing.Size(75, 23);
-            this.btnNewCart.TabIndex = 4;
-            this.btnNewCart.Text = "New Cart";
-            this.btnNewCart.UseVisualStyleBackColor = true;
+            this.lblCart.Text = "Current Cart";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(631, 349);
+            this.btnClear.Location = new System.Drawing.Point(519, 348);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 5;
@@ -100,7 +92,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(712, 349);
+            this.button3.Location = new System.Drawing.Point(600, 348);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 23);
             this.button3.TabIndex = 6;
@@ -109,38 +101,49 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(437, 349);
+            this.btnExit.Location = new System.Drawing.Point(733, 348);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnShowSales
             // 
-            this.btnShowSales.Location = new System.Drawing.Point(13, 348);
+            this.btnShowSales.Location = new System.Drawing.Point(375, 348);
             this.btnShowSales.Name = "btnShowSales";
             this.btnShowSales.Size = new System.Drawing.Size(116, 23);
             this.btnShowSales.TabIndex = 8;
             this.btnShowSales.Text = "Show all Sales";
             this.btnShowSales.UseVisualStyleBackColor = true;
             // 
+            // lblTip
+            // 
+            this.lblTip.AutoSize = true;
+            this.lblTip.Location = new System.Drawing.Point(13, 353);
+            this.lblTip.Name = "lblTip";
+            this.lblTip.Size = new System.Drawing.Size(296, 13);
+            this.lblTip.TabIndex = 9;
+            this.lblTip.Text = "Tip: Doubleclick the product you would like to add to the Cart";
+            // 
             // CashierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 383);
+            this.Controls.Add(this.lblTip);
             this.Controls.Add(this.btnShowSales);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnNewCart);
             this.Controls.Add(this.lblCart);
             this.Controls.Add(this.lblGoods);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.dgvGoods);
             this.Name = "CashierForm";
             this.Text = "CashierForm";
+            this.Load += new System.EventHandler(this.CashierForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.ResumeLayout(false);
@@ -154,10 +157,10 @@
         private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblGoods;
         private System.Windows.Forms.Label lblCart;
-        private System.Windows.Forms.Button btnNewCart;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnShowSales;
+        private System.Windows.Forms.Label lblTip;
     }
 }

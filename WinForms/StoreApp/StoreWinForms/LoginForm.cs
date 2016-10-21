@@ -56,19 +56,17 @@ namespace StoreWinForms
 
                     case 3:
                         // cashier
-                        
+                        CashierForm cForm = new CashierForm();
+                        cForm.ShowDialog();
                         break;
                 }
 
                 Close();
-
             }
             else
             {
                 MessageBox.Show("Wrong login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
