@@ -353,9 +353,7 @@ namespace StoreWinForms
                         Where(ph => ph.GoodId == itemId).FirstOrDefault();
 
             string photoPath = PhotoToDelete.PhotoPath;
-            
-
-            
+                 
             context.Photos.Local.Remove(PhotoToDelete);
             context.SaveChanges();
             File.Delete(photoPath);

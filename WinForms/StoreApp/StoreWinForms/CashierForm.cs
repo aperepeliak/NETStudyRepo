@@ -110,7 +110,6 @@ namespace StoreWinForms
 
                     context.Database.ExecuteSqlCommand("exec [dbo].[InsertSalePos] @SaleId, @GoodId, @Quantity",
                         parDetail);
-
                 }
                 tran.Commit();
 
