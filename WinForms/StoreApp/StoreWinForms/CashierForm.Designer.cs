@@ -90,6 +90,7 @@
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear Cart";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // button3
             // 

@@ -69,6 +69,18 @@ namespace StoreWinForms
             if (f)
                 sale.Add(new CartGood { GoodId = good.GoodId, GoodName = good.GoodName, Quantity = 1, CartPosSum = good.Price });
 
+            CartDgvRefresh();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            sale = null;
+            sale = new List<CartGood>();
+            CartDgvRefresh();
+        }
+
+        private void CartDgvRefresh()
+        {
             dgvCart.DataSource = null;
             cartSource.DataSource = sale;
             dgvCart.DataSource = cartSource;
