@@ -55,7 +55,7 @@
             this.categoriesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(705, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -84,6 +84,7 @@
             // 
             this.dgvGoods.AllowUserToAddRows = false;
             this.dgvGoods.AllowUserToDeleteRows = false;
+            this.dgvGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGoods.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvGoods.GridColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -91,7 +92,7 @@
             this.dgvGoods.Name = "dgvGoods";
             this.dgvGoods.ReadOnly = true;
             this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGoods.Size = new System.Drawing.Size(474, 278);
+            this.dgvGoods.Size = new System.Drawing.Size(653, 278);
             this.dgvGoods.TabIndex = 1;
             this.dgvGoods.SelectionChanged += new System.EventHandler(this.dgvGoods_SelectionChanged);
             // 
@@ -107,21 +108,21 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -129,14 +130,14 @@
             // 
             this.flwPhoto.AutoScroll = true;
             this.flwPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flwPhoto.Location = new System.Drawing.Point(493, 57);
+            this.flwPhoto.Location = new System.Drawing.Point(672, 57);
             this.flwPhoto.Name = "flwPhoto";
             this.flwPhoto.Size = new System.Drawing.Size(200, 200);
             this.flwPhoto.TabIndex = 2;
             // 
             // btnAddPhoto
             // 
-            this.btnAddPhoto.Location = new System.Drawing.Point(493, 28);
+            this.btnAddPhoto.Location = new System.Drawing.Point(686, 28);
             this.btnAddPhoto.Name = "btnAddPhoto";
             this.btnAddPhoto.Size = new System.Drawing.Size(92, 23);
             this.btnAddPhoto.TabIndex = 3;
@@ -146,7 +147,7 @@
             // 
             // btnRemovePhoto
             // 
-            this.btnRemovePhoto.Location = new System.Drawing.Point(605, 28);
+            this.btnRemovePhoto.Location = new System.Drawing.Point(784, 27);
             this.btnRemovePhoto.Name = "btnRemovePhoto";
             this.btnRemovePhoto.Size = new System.Drawing.Size(88, 23);
             this.btnRemovePhoto.TabIndex = 4;
@@ -156,7 +157,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(618, 283);
+            this.btnExit.Location = new System.Drawing.Point(797, 281);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 5;
@@ -168,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 316);
+            this.ClientSize = new System.Drawing.Size(884, 316);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRemovePhoto);
             this.Controls.Add(this.btnAddPhoto);
