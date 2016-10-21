@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvSales = new System.Windows.Forms.DataGridView();
             this.dgvSalesPos = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
-            this.dgvSales = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesPos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesPos)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -55,15 +55,33 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(724, 390);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // dgvSales
+            // 
+            this.dgvSales.AllowUserToAddRows = false;
+            this.dgvSales.AllowUserToDeleteRows = false;
+            this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSales.Location = new System.Drawing.Point(3, 3);
+            this.dgvSales.Name = "dgvSales";
+            this.dgvSales.ReadOnly = true;
+            this.tableLayoutPanel1.SetRowSpan(this.dgvSales, 2);
+            this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSales.Size = new System.Drawing.Size(457, 384);
+            this.dgvSales.TabIndex = 0;
+            this.dgvSales.SelectionChanged += new System.EventHandler(this.dgvSales_SelectionChanged);
+            // 
             // dgvSalesPos
             // 
             this.dgvSalesPos.AllowUserToAddRows = false;
             this.dgvSalesPos.AllowUserToDeleteRows = false;
+            this.dgvSalesPos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesPos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesPos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSalesPos.Location = new System.Drawing.Point(466, 3);
             this.dgvSalesPos.Name = "dgvSalesPos";
             this.dgvSalesPos.ReadOnly = true;
+            this.dgvSalesPos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSalesPos.Size = new System.Drawing.Size(255, 350);
             this.dgvSalesPos.TabIndex = 1;
             // 
@@ -79,19 +97,6 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // dgvSales
-            // 
-            this.dgvSales.AllowUserToAddRows = false;
-            this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSales.Location = new System.Drawing.Point(3, 3);
-            this.dgvSales.Name = "dgvSales";
-            this.dgvSales.ReadOnly = true;
-            this.tableLayoutPanel1.SetRowSpan(this.dgvSales, 2);
-            this.dgvSales.Size = new System.Drawing.Size(457, 384);
-            this.dgvSales.TabIndex = 0;
-            // 
             // ShowSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,9 +105,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ShowSales";
             this.Text = "ShowSales";
+            this.Load += new System.EventHandler(this.ShowSales_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesPos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesPos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -126,7 +126,7 @@ namespace StoreWinForms
 
         private void btnShowSales_Click(object sender, EventArgs e)
         {
-            ShowSales showSales = new ShowSales();
+            ShowSales showSales = new ShowSales(context);
             showSales.ShowDialog();
         }
     }
