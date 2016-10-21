@@ -49,6 +49,7 @@
             this.dgvGoods.Location = new System.Drawing.Point(13, 35);
             this.dgvGoods.Name = "dgvGoods";
             this.dgvGoods.ReadOnly = true;
+            this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGoods.Size = new System.Drawing.Size(499, 308);
             this.dgvGoods.TabIndex = 0;
             this.dgvGoods.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGoods_CellMouseDoubleClick);
@@ -60,7 +61,7 @@
             this.dgvCart.Location = new System.Drawing.Point(519, 35);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
-            this.dgvCart.Size = new System.Drawing.Size(289, 308);
+            this.dgvCart.Size = new System.Drawing.Size(453, 308);
             this.dgvCart.TabIndex = 1;
             // 
             // lblGoods
@@ -83,25 +84,25 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(519, 348);
+            this.btnClear.Location = new System.Drawing.Point(549, 349);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(100, 23);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear Cart";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(600, 348);
+            this.button3.Location = new System.Drawing.Point(655, 349);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 23);
+            this.button3.Size = new System.Drawing.Size(100, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Complete Sale";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(733, 348);
+            this.btnExit.Location = new System.Drawing.Point(897, 349);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 7;
@@ -111,9 +112,9 @@
             // 
             // btnShowSales
             // 
-            this.btnShowSales.Location = new System.Drawing.Point(375, 348);
+            this.btnShowSales.Location = new System.Drawing.Point(412, 349);
             this.btnShowSales.Name = "btnShowSales";
-            this.btnShowSales.Size = new System.Drawing.Size(116, 23);
+            this.btnShowSales.Size = new System.Drawing.Size(100, 23);
             this.btnShowSales.TabIndex = 8;
             this.btnShowSales.Text = "Show all Sales";
             this.btnShowSales.UseVisualStyleBackColor = true;
@@ -131,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 383);
+            this.ClientSize = new System.Drawing.Size(984, 383);
             this.Controls.Add(this.lblTip);
             this.Controls.Add(this.btnShowSales);
             this.Controls.Add(this.btnExit);
