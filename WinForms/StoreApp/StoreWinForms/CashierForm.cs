@@ -21,7 +21,7 @@ namespace StoreWinForms
         BindingSource bSource;
         BindingSource cartSource;
         List<BusinessGood> dataGood;
-        List<CartGood> sale;
+        BindingList<CartGood> sale;
 
         public CashierForm(UserProfile activeUser)
         {
@@ -45,7 +45,7 @@ namespace StoreWinForms
             context.Sales.Load();
             context.SalePos.Load();
 
-            sale = new List<CartGood>();
+            sale = new BindingList<CartGood>();
             dataGood = DisplayGoods.GetGoods(context);
 
             bSource.DataSource = dataGood;
@@ -72,21 +72,15 @@ namespace StoreWinForms
             if (f)
                 sale.Add(new CartGood { GoodId = good.GoodId, GoodName = good.GoodName, Quantity = 1, CartPosSum = good.Price });
 
-            CartDgvRefresh();
+            dgvCart.Refresh();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             sale = null;
-            sale = new List<CartGood>();
-            CartDgvRefresh();
-        }
+            sale = new BindingList<CartGood>();
+            dgvCart.DataSource = sale;
 
-        private void CartDgvRefresh()
-        {
-            dgvCart.DataSource = null;
-            cartSource.DataSource = sale;
-            dgvCart.DataSource = cartSource;
         }
 
         // Complete Sale button
@@ -121,8 +115,8 @@ namespace StoreWinForms
                 tran.Commit();
 
                 sale = null;
-                sale = new List<CartGood>();
-                CartDgvRefresh();
+                sale = new BindingList<CartGood>();
+                dgvCart.DataSource = sale;
             }
             catch (Exception exc)
             {

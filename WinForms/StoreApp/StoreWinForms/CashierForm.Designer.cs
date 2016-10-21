@@ -61,6 +61,7 @@
             this.dgvCart.Location = new System.Drawing.Point(519, 35);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
+            this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCart.Size = new System.Drawing.Size(453, 308);
             this.dgvCart.TabIndex = 1;
             // 
