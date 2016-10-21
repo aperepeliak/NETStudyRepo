@@ -123,5 +123,11 @@ namespace StoreWinForms
                 tran.Rollback();          
             }
         }
+
+        private void btnShowSales_Click(object sender, EventArgs e)
+        {
+            ShowSales showSales = new ShowSales();
+            showSales.ShowDialog();
+        }
     }
 }

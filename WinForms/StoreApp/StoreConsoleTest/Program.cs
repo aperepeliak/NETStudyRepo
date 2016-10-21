@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using StoreDataLayer.DbLayer;
 using System.Data.Entity;
+using StoreDataLayer.BusinessLayer;
 
 namespace StoreConsoleTest
 {
@@ -13,15 +14,17 @@ namespace StoreConsoleTest
     {
         static void Main(string[] args)
         {
-            string n = "0f8fad5b-d9cb-469f-a165-70867728950e";
+            StoreContext context = new StoreContext();
 
-            string t = n.Substring(0, 23);
+            context.SalePos.Load();
 
-            Console.WriteLine(n);
-            Console.WriteLine(t);
+            var test = DisplaySalePos.GetSalePos(context, 5);
 
+            foreach (var item in test)
+            {
+                Console.WriteLine($"{item.GoodName} {item.Quantity} {item.TotalSum}");
+            }
 
-            Console.WriteLine("\n\nPress any key...");
             Console.ReadKey();
         }
     }

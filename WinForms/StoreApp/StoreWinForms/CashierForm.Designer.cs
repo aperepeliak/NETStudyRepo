@@ -121,6 +121,7 @@
             this.btnShowSales.TabIndex = 8;
             this.btnShowSales.Text = "Show all Sales";
             this.btnShowSales.UseVisualStyleBackColor = true;
+            this.btnShowSales.Click += new System.EventHandler(this.btnShowSales_Click);
             // 
             // lblTip
             // 

@@ -54,10 +54,14 @@
     <Compile Include="BusinessLayer\BusinessCategory.cs" />
     <Compile Include="BusinessLayer\BusinessGood.cs" />
     <Compile Include="BusinessLayer\BusinessManufacturer.cs" />
+    <Compile Include="BusinessLayer\BusinessSale.cs" />
+    <Compile Include="BusinessLayer\BusinessSalePos.cs" />
     <Compile Include="BusinessLayer\CartGood.cs" />
     <Compile Include="BusinessLayer\DisplayCategory.cs" />
     <Compile Include="BusinessLayer\DisplayGoods.cs" />
     <Compile Include="BusinessLayer\DisplayManufacturers.cs" />
+    <Compile Include="BusinessLayer\DisplaySalePos.cs" />
+    <Compile Include="BusinessLayer\DisplaySales.cs" />
     <Compile Include="BusinessLayer\DisplayUsers.cs" />
     <Compile Include="BusinessLayer\User.cs" />
     <Compile Include="DbLayer\Category.cs" />
