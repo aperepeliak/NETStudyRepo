@@ -86,41 +86,44 @@ namespace StoreWinForms
         // Complete Sale button
         private void button3_Click(object sender, EventArgs e)
         {
-            var tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted);
-            try
+            if (sale.Count != 0)
             {
-                Sale newSale = new Sale()
+                var tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted);
+                try
                 {
-                    SaleDate = DateTime.Now,
-                    SaleNumber = Guid.NewGuid().ToString().Substring(0,23),
-                    UserId = activeUser.UserId,
-                    SaleAmount = 0
-                };
+                    Sale newSale = new Sale()
+                    {
+                        SaleDate = DateTime.Now,
+                        SaleNumber = Guid.NewGuid().ToString().Substring(0, 23),
+                        UserId = activeUser.UserId,
+                        SaleAmount = 0
+                    };
 
-                context.Sales.Add(newSale);
-                context.SaveChanges();
+                    context.Sales.Add(newSale);
+                    context.SaveChanges();
 
-                foreach (var item in sale)
-                {
-                    object[] parDetail = new object[] {
+                    foreach (var item in sale)
+                    {
+                        object[] parDetail = new object[] {
                             new SqlParameter("@SaleId", newSale.SaleId),
                             new SqlParameter("@GoodId", item.GoodId),
                             new SqlParameter("@Quantity", item.Quantity),
                             };
 
-                    context.Database.ExecuteSqlCommand("exec [dbo].[InsertSalePos] @SaleId, @GoodId, @Quantity",
-                        parDetail);
-                }
-                tran.Commit();
+                        context.Database.ExecuteSqlCommand("exec [dbo].[InsertSalePos] @SaleId, @GoodId, @Quantity",
+                            parDetail);
+                    }
+                    tran.Commit();
 
-                sale = null;
-                sale = new BindingList<CartGood>();
-                dgvCart.DataSource = sale;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-                tran.Rollback();          
+                    sale = null;
+                    sale = new BindingList<CartGood>();
+                    dgvCart.DataSource = sale;
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                    tran.Rollback();
+                }
             }
         }
 

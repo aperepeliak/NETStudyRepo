@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvGoods = new System.Windows.Forms.DataGridView();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.lblGoods = new System.Windows.Forms.Label();
             this.lblCart = new System.Windows.Forms.Label();
@@ -37,38 +36,33 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnShowSales = new System.Windows.Forms.Button();
             this.lblTip = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).BeginInit();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvGoods = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvGoods
-            // 
-            this.dgvGoods.AllowUserToAddRows = false;
-            this.dgvGoods.AllowUserToDeleteRows = false;
-            this.dgvGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGoods.Location = new System.Drawing.Point(13, 35);
-            this.dgvGoods.Name = "dgvGoods";
-            this.dgvGoods.ReadOnly = true;
-            this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGoods.Size = new System.Drawing.Size(499, 308);
-            this.dgvGoods.TabIndex = 0;
-            this.dgvGoods.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGoods_CellMouseDoubleClick);
             // 
             // dgvCart
             // 
             this.dgvCart.AllowUserToAddRows = false;
+            this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Location = new System.Drawing.Point(519, 35);
+            this.dgvCart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCart.Location = new System.Drawing.Point(495, 25);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(453, 308);
+            this.dgvCart.Size = new System.Drawing.Size(486, 314);
             this.dgvCart.TabIndex = 1;
             // 
             // lblGoods
             // 
+            this.lblGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblGoods.AutoSize = true;
-            this.lblGoods.Location = new System.Drawing.Point(13, 13);
+            this.lblGoods.Location = new System.Drawing.Point(3, 9);
             this.lblGoods.Name = "lblGoods";
             this.lblGoods.Size = new System.Drawing.Size(84, 13);
             this.lblGoods.TabIndex = 2;
@@ -76,8 +70,9 @@
             // 
             // lblCart
             // 
+            this.lblCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCart.AutoSize = true;
-            this.lblCart.Location = new System.Drawing.Point(516, 13);
+            this.lblCart.Location = new System.Drawing.Point(495, 9);
             this.lblCart.Name = "lblCart";
             this.lblCart.Size = new System.Drawing.Size(63, 13);
             this.lblCart.TabIndex = 3;
@@ -85,9 +80,10 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(549, 349);
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClear.Location = new System.Drawing.Point(133, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(100, 23);
+            this.btnClear.Size = new System.Drawing.Size(92, 29);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear Cart";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -95,9 +91,10 @@
             // 
             // btnComplete
             // 
-            this.btnComplete.Location = new System.Drawing.Point(655, 349);
+            this.btnComplete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnComplete.Location = new System.Drawing.Point(231, 3);
             this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(100, 23);
+            this.btnComplete.Size = new System.Drawing.Size(102, 29);
             this.btnComplete.TabIndex = 6;
             this.btnComplete.Text = "Complete Sale";
             this.btnComplete.UseVisualStyleBackColor = true;
@@ -105,9 +102,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(897, 349);
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExit.Location = new System.Drawing.Point(410, 3);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(65, 29);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -115,9 +113,10 @@
             // 
             // btnShowSales
             // 
-            this.btnShowSales.Location = new System.Drawing.Point(412, 349);
+            this.btnShowSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnShowSales.Location = new System.Drawing.Point(3, 3);
             this.btnShowSales.Name = "btnShowSales";
-            this.btnShowSales.Size = new System.Drawing.Size(100, 23);
+            this.btnShowSales.Size = new System.Drawing.Size(124, 29);
             this.btnShowSales.TabIndex = 8;
             this.btnShowSales.Text = "Show all Sales";
             this.btnShowSales.UseVisualStyleBackColor = true;
@@ -125,40 +124,90 @@
             // 
             // lblTip
             // 
+            this.lblTip.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTip.AutoSize = true;
-            this.lblTip.Location = new System.Drawing.Point(13, 353);
+            this.lblTip.Location = new System.Drawing.Point(3, 356);
             this.lblTip.Name = "lblTip";
             this.lblTip.Size = new System.Drawing.Size(296, 13);
             this.lblTip.TabIndex = 9;
             this.lblTip.Text = "Tip: Doubleclick the product you would like to add to the Cart";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvGoods, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblGoods, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblTip, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dgvCart, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCart, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.624606F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.3754F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 383);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // dgvGoods
+            // 
+            this.dgvGoods.AllowUserToAddRows = false;
+            this.dgvGoods.AllowUserToDeleteRows = false;
+            this.dgvGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGoods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvGoods.Location = new System.Drawing.Point(3, 25);
+            this.dgvGoods.Name = "dgvGoods";
+            this.dgvGoods.ReadOnly = true;
+            this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGoods.Size = new System.Drawing.Size(486, 314);
+            this.dgvGoods.TabIndex = 1;
+            this.dgvGoods.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGoods_CellMouseDoubleClick);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel2.Controls.Add(this.btnShowSales, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnClear, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnComplete, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnExit, 4, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(495, 345);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(486, 35);
+            this.tableLayoutPanel2.TabIndex = 10;
             // 
             // CashierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 383);
-            this.Controls.Add(this.lblTip);
-            this.Controls.Add(this.btnShowSales);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnComplete);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.lblCart);
-            this.Controls.Add(this.lblGoods);
-            this.Controls.Add(this.dgvCart);
-            this.Controls.Add(this.dgvGoods);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CashierForm";
             this.Text = "CashierForm";
             this.Load += new System.EventHandler(this.CashierForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvGoods;
         private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblGoods;
         private System.Windows.Forms.Label lblCart;
@@ -167,5 +216,8 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnShowSales;
         private System.Windows.Forms.Label lblTip;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView dgvGoods;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
