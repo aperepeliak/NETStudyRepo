@@ -56,7 +56,7 @@ namespace StoreWinForms
 
                     case 3:
                         // cashier
-
+                        
                         break;
                 }
 
