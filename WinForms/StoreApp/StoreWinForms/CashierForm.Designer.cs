@@ -33,7 +33,7 @@
             this.lblGoods = new System.Windows.Forms.Label();
             this.lblCart = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnComplete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnShowSales = new System.Windows.Forms.Button();
             this.lblTip = new System.Windows.Forms.Label();
@@ -92,14 +92,15 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button3
+            // btnComplete
             // 
-            this.button3.Location = new System.Drawing.Point(655, 349);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Complete Sale";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnComplete.Location = new System.Drawing.Point(655, 349);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(100, 23);
+            this.btnComplete.TabIndex = 6;
+            this.btnComplete.Text = "Complete Sale";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnExit
             // 
@@ -137,7 +138,7 @@
             this.Controls.Add(this.lblTip);
             this.Controls.Add(this.btnShowSales);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblCart);
             this.Controls.Add(this.lblGoods);
@@ -160,7 +161,7 @@
         private System.Windows.Forms.Label lblGoods;
         private System.Windows.Forms.Label lblCart;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnComplete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnShowSales;
         private System.Windows.Forms.Label lblTip;

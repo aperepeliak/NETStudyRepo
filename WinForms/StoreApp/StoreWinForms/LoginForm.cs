@@ -56,7 +56,7 @@ namespace StoreWinForms
 
                     case 3:
                         // cashier
-                        CashierForm cForm = new CashierForm();
+                        CashierForm cForm = new CashierForm(activeUser);
                         cForm.ShowDialog();
                         break;
                 }

@@ -13,23 +13,12 @@ namespace StoreConsoleTest
     {
         static void Main(string[] args)
         {
-            StoreContext context = new StoreContext();
+            string n = "0f8fad5b-d9cb-469f-a165-70867728950e";
 
-            //context.Goods.Load();
-            //List<Good> test = new List<Good>();
-            //test = context.Goods.Local.ToList();
-            //foreach (var g in test)
-            //{
-            //    Console.WriteLine($"{g.GoodName}, {g.Stock}");
-            //}
+            string t = n.Substring(0, 23);
 
-            var test = context.UserProfiles.Include("Role").ToList();
-
-            foreach (var item in test)
-            {
-                Console.WriteLine($"{item.UserLogin}, {item.Role.RoleName}");
-
-            }
+            Console.WriteLine(n);
+            Console.WriteLine(t);
 
 
             Console.WriteLine("\n\nPress any key...");

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,18 +16,20 @@ namespace StoreWinForms
 {
     public partial class CashierForm : Form
     {
+        UserProfile activeUser;
         StoreContext context;
         BindingSource bSource;
         BindingSource cartSource;
         List<BusinessGood> dataGood;
         List<CartGood> sale;
 
-        public CashierForm()
+        public CashierForm(UserProfile activeUser)
         {
             InitializeComponent();
             context = new StoreContext();
             bSource = new BindingSource();
             cartSource = new BindingSource();
+            this.activeUser = activeUser;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -84,6 +87,48 @@ namespace StoreWinForms
             dgvCart.DataSource = null;
             cartSource.DataSource = sale;
             dgvCart.DataSource = cartSource;
+        }
+
+        // Complete Sale button
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted);
+            try
+            {
+                Sale newSale = new Sale()
+                {
+                    SaleDate = DateTime.Now,
+                    SaleNumber = Guid.NewGuid().ToString().Substring(0,23),
+                    UserId = activeUser.UserId,
+                    SaleAmount = 0
+                };
+
+                context.Sales.Add(newSale);
+                context.SaveChanges();
+
+                foreach (var item in sale)
+                {
+                    object[] parDetail = new object[] {
+                            new SqlParameter("@SaleId", newSale.SaleId),
+                            new SqlParameter("@GoodId", item.GoodId),
+                            new SqlParameter("@Quantity", item.Quantity),
+                            };
+
+                    context.Database.ExecuteSqlCommand("exec [dbo].[InsertSalePos] @SaleId, @GoodId, @Quantity",
+                        parDetail);
+
+                }
+                tran.Commit();
+
+                sale = null;
+                sale = new List<CartGood>();
+                CartDgvRefresh();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                tran.Rollback();          
+            }
         }
     }
 }
