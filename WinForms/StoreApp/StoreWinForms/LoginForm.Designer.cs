@@ -100,6 +100,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.tbxLogin);
             this.Controls.Add(this.lblLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to Store";

@@ -38,13 +38,37 @@ namespace StoreWinForms
 
                 cmbManuf.DisplayMember = "ManufacturerName";
                 cmbManuf.ValueMember = "ManufacturerId";
-                cmbManuf.DataSource = context.Manufacturers.Local;
-                cmbManuf.SelectedValue = good.ManufacturerId;
+
+                var ManufacturerList = new Manufacturer[]
+                {
+                    new Manufacturer {ManufacturerName = "Not selected", ManufacturerId = 0 }
+                }
+                .Union(context.Manufacturers.Local)
+                .ToList();
+
+                cmbManuf.DataSource = ManufacturerList;
+
+                if (good.ManufacturerId != null)
+                    cmbManuf.SelectedValue = good.ManufacturerId;
+                else
+                    cmbManuf.SelectedValue = 0;
 
                 cmbCat.DisplayMember = "CategoryName";
                 cmbCat.ValueMember = "CategoryId";
-                cmbCat.DataSource = context.Categories.Local;
-                cmbCat.SelectedValue = good.CategoryId;
+
+                var categoryList = new Category[]
+                {
+                    new Category { CategoryName = "Not selected", CategoryId = 0 }
+                }
+                .Union(context.Categories.Local)
+                .ToList();
+
+                cmbCat.DataSource = categoryList;
+
+                if (good.CategoryId != null)
+                    cmbCat.SelectedValue = good.CategoryId;
+                else
+                    cmbCat.SelectedValue = 0;          
             }
             else
             {
@@ -79,8 +103,18 @@ namespace StoreWinForms
             }
 
             good.GoodName = txtGoodName.Text;
-            good.ManufacturerId = (int)cmbManuf.SelectedValue;
-            good.CategoryId = (int)cmbCat.SelectedValue;
+
+            if ((int)cmbManuf.SelectedValue == 0)
+                good.ManufacturerId = null;
+            else
+                good.ManufacturerId = (int)cmbManuf.SelectedValue;
+
+
+            if ((int)cmbCat.SelectedValue == 0)
+                good.CategoryId = null;
+            else
+                good.CategoryId = (int)cmbCat.SelectedValue;
+
             good.Price = Convert.ToDecimal(txtPrice.Text);
             good.Stock = Convert.ToDecimal(txtStock.Text);
 
