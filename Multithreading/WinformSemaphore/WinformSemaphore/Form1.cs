@@ -16,5 +16,10 @@ namespace WinformSemaphore
         {
             InitializeComponent();
         }
+
+        private void btnCreateThread_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
