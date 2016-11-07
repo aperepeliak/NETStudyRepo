@@ -56,6 +56,7 @@
             this.lbxWorking.Name = "lbxWorking";
             this.lbxWorking.Size = new System.Drawing.Size(120, 56);
             this.lbxWorking.TabIndex = 1;
+            this.lbxWorking.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbxWorking_MouseDoubleClick);
             // 
             // lbxWaiting
             // 
@@ -81,6 +82,7 @@
             this.lbxCreated.Name = "lbxCreated";
             this.lbxCreated.Size = new System.Drawing.Size(120, 56);
             this.lbxCreated.TabIndex = 5;
+            this.lbxCreated.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbxCreated_MouseDoubleClick);
             // 
             // label3
             // 
@@ -107,6 +109,11 @@
             this.numThreads.Size = new System.Drawing.Size(155, 20);
             this.numThreads.TabIndex = 7;
             this.numThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numThreads.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // btnCreateThread
             // 
