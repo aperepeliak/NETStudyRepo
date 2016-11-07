@@ -35,8 +35,10 @@ namespace WinformSemaphore
 
         private void ThreadFunc(object args)
         {
-            //Pool.WaitOne();
-            //MessageBox.Show("Test");
+            Pool.WaitOne();
+
+            
+            
         }
 
         private void lbxCreated_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -46,7 +48,6 @@ namespace WinformSemaphore
             var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
 
             selected.Start();
-            Pool.WaitOne();
 
             if (selected.ThreadState == ThreadState.Running)
             {
@@ -64,7 +65,7 @@ namespace WinformSemaphore
         {
             string threadNum = lbxCreated.SelectedItem.ToString().Substring(6, 1);
             var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
-            selected.Abort();
+            Pool.Release();
         }
     }
 }
