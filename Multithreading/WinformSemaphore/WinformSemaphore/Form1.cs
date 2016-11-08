@@ -11,11 +11,15 @@ using System.Windows.Forms;
 
 namespace WinformSemaphore
 {
+    public delegate void MyDelegate();
+
     public partial class Form1 : Form
     {
         private static int counter;
         public static Semaphore Pool { get; set; }
         public List<Thread> threads;
+
+        public event MyDelegate myEvent = null;
 
         public Form1()
         {
@@ -23,6 +27,19 @@ namespace WinformSemaphore
             counter = 0;
             Pool = new Semaphore((int)numThreads.Value, (int)numThreads.Value);
             threads = new List<Thread>();
+
+            myEvent += Form1_myEvent;
+        }
+
+        private void Form1_myEvent()
+        {
+            Pool.Release();
+        }
+
+        public void InvokeEvent()
+        {
+            myEvent.Invoke();
+            MessageBox.Show("released");
         }
 
         private void btnCreateThread_Click(object sender, EventArgs e)
@@ -35,10 +52,7 @@ namespace WinformSemaphore
 
         private void ThreadFunc(object args)
         {
-            Pool.WaitOne();
-
-            
-            
+            Pool.WaitOne();  
         }
 
         private void lbxCreated_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -57,15 +71,18 @@ namespace WinformSemaphore
             {
                 lbxWaiting.Items.Add($"Поток {selected.Name} --> ожидает");
             }
-            MessageBox.Show(selected.ThreadState.ToString());
+            //MessageBox.Show(selected.ThreadState.ToString());
             lbxCreated.Items.Remove($"Поток {selected.Name} --> создан");
         }
 
         private void lbxWorking_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            string threadNum = lbxCreated.SelectedItem.ToString().Substring(6, 1);
-            var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
-            Pool.Release();
+            if (lbxWorking.SelectedItem != null)
+            {
+                string threadNum = lbxWorking.SelectedItem.ToString().Substring(6, 1);
+                var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
+                InvokeEvent();
+            }     
         }
     }
 }
