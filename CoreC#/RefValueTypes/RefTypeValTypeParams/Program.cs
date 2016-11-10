@@ -15,16 +15,27 @@ namespace RefTypeValTypeParams
 
             Console.WriteLine("\nBefore by value call: ");
             fred.Display();
-
             SendAPersonByValue(fred);
-
             Console.WriteLine("\nAfter the call: ");
             fred.Display();
+
+            Person mel = new Person("Mel", 14);
+            Console.WriteLine("\nBefore by reference call: ");
+            mel.Display();
+            SendAPersonByReference(ref mel);
+            Console.WriteLine("\nAfter the call: ");
+            mel.Display();
         }
 
         static void SendAPersonByValue(Person p)
         {
             p.personAge = 99;
+            p = new Person("Nikki", 99);
+        }
+
+        static void SendAPersonByReference(ref Person p)
+        {
+            p.personAge = 55;
             p = new Person("Nikki", 99);
         }
     }
