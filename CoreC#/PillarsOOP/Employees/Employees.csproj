@@ -44,10 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+<<<<<<< HEAD
     <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesPerson.cs" />
+=======
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+>>>>>>> 4551441adf12c2f51c6045df7bd6c22e61837612
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
