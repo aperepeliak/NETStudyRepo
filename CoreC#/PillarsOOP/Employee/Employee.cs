@@ -14,6 +14,11 @@ namespace Employee
         private float currPay;
         private int empAge;
 
+        public readonly string empSSN;
+
+        // 'has-a' relation
+        protected BenefitPackage empBenefits = new BenefitPackage();
+
         // Properties
         public string Name
         {
@@ -44,6 +49,12 @@ namespace Employee
             Pay = pay;
         }
 
+        public Employee(string name, int age, int id, float pay, string ssn)
+            :this(name, age, id, pay)
+        {
+            empSSN = ssn;
+        }
+
         // Methods
         public void GiveBonus(float amount)
         {
@@ -57,5 +68,14 @@ namespace Employee
             Console.WriteLine($"Age: {Age}");
             Console.WriteLine($"Pay: {Pay}");
         }
+
+        // Exposing the contained empBenefits object
+        public double GetBenefitCost()
+        {
+            return empBenefits.ComputePayDeduction();
+        }
+
+        // Or we can make use of its functionality using property
+        public BenefitPackage Benefits { get; set; }
     }
 }
