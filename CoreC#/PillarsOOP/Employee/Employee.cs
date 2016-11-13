@@ -8,6 +8,14 @@ namespace Employee
 {
     class Employee
     {
+        public class BenefitPackage
+        {
+            public double ComputePayDeduction()
+            {
+                return 125.0;
+            }
+        }
+
         // Field data
         private string empName;
         private int empID;
