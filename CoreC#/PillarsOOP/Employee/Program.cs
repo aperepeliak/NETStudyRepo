@@ -22,6 +22,17 @@ namespace Employee
         static void GivePromotion(Employee emp)
         {
             Console.WriteLine($"{emp.Name} was promoted!");
+            // using casting
+
+            if (emp is SalesPerson)
+            {
+                Console.WriteLine($"{emp.Name} made {((SalesPerson)emp).SalesNumber} sale(s)\n");
+            }
+            if (emp is Manager)
+            {
+                Console.WriteLine($"{emp.Name} had {((Manager)emp).StockOptions} stock options...\n");
+            }
+
         }
     }
 }

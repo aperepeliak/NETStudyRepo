@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee", "Employee\Employ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes\Shapes.csproj", "{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Polymorphism", "Polymorphism", "{C684559B-D256-4721-8AAC-2C82AA5F8EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOverrides", "ObjectOverrides\ObjectOverrides.csproj", "{2C2A75CD-B29E-4469-82B9-31D625E72013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2A75CD-B29E-4469-82B9-31D625E72013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2A75CD-B29E-4469-82B9-31D625E72013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2A75CD-B29E-4469-82B9-31D625E72013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2A75CD-B29E-4469-82B9-31D625E72013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +61,6 @@ Global
 		{B37663C9-605A-489F-B514-190E07C209EA} = {F06FAD14-3276-4AE8-BCF2-BEFFC47FB09D}
 		{3E894908-3568-4798-AC87-E2BF6C1EFFA3} = {2502158B-49A5-4C97-893E-46BA02264356}
 		{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7} = {2502158B-49A5-4C97-893E-46BA02264356}
+		{2C2A75CD-B29E-4469-82B9-31D625E72013} = {C684559B-D256-4721-8AAC-2C82AA5F8EA7}
 	EndGlobalSection
 EndGlobal
