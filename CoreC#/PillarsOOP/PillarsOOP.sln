@@ -9,17 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoProps", "AutoProps\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstData", "ConstData\ConstData.csproj", "{B37663C9-605A-489F-B514-190E07C209EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Encapsulation", "Encapsulation", "{F06FAD14-3276-4AE8-BCF2-BEFFC47FB09D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Encapsulation", "1-Encapsulation", "{F06FAD14-3276-4AE8-BCF2-BEFFC47FB09D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inheritance", "Inheritance", "{2502158B-49A5-4C97-893E-46BA02264356}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Inheritance", "2-Inheritance", "{2502158B-49A5-4C97-893E-46BA02264356}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee", "Employee\Employee.csproj", "{3E894908-3568-4798-AC87-E2BF6C1EFFA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes\Shapes.csproj", "{F60B56D5-5FD7-4FD0-BFA3-64B11888C7A7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Polymorphism", "Polymorphism", "{C684559B-D256-4721-8AAC-2C82AA5F8EA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Polymorphism", "3-Polymorphism", "{C684559B-D256-4721-8AAC-2C82AA5F8EA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOverrides", "ObjectOverrides\ObjectOverrides.csproj", "{2C2A75CD-B29E-4469-82B9-31D625E72013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-ExceptionHandling", "4-ExceptionHandling", "{7435B8A3-F240-46DE-9374-F869CB8D10F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
