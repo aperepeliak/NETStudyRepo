@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,16 @@ namespace SimpleException
 
                 Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Source: {0}", e.Source);
+
+                Console.WriteLine("\n-> Custom Data:");
+                foreach (DictionaryEntry de in e.Data)
+                {
+                    Console.WriteLine("-> {0} : {1}", de.Key, de.Value);
+                }
+
+                Console.WriteLine("More details: {0}", e.HelpLink);
+
+                //Console.WriteLine("Stack: {0}", e.StackTrace);
             }
             
         }

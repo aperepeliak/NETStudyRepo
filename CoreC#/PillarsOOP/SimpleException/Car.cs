@@ -47,8 +47,13 @@ namespace SimpleException
                     Console.WriteLine($"{PetName} has overheated.");
                     CurrSpeed = 0;
                     carIsDead = true;
+                    Exception ex = new Exception(string.Format("{0} has overheated!", PetName));
+                    ex.HelpLink = "https://google.com";
 
-                    throw new Exception(string.Format("{0} has overheated!", PetName));
+                    ex.Data.Add("Timestamp", string.Format("The car exploded at: {0}", DateTime.Now));
+                    ex.Data.Add("Cause", "You have a lead foot.");
+                    throw ex;
+                    
                 }
                 else
                 {
