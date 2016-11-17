@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICloneableExample", "IClone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomInterface", "CustomInterface\CustomInterface.csproj", "{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceNameClash", "InterfaceNameClash\InterfaceNameClash.csproj", "{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,5 +107,6 @@ Global
 		{BED10604-DE4E-4EAC-8854-EB25366DA604} = {7435B8A3-F240-46DE-9374-F869CB8D10F2}
 		{B592E453-85E6-4246-B5C0-1BD4677B8411} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
+		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 	EndGlobalSection
 EndGlobal
