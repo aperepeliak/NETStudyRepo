@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceHierarchy", "Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleInheritance", "MultipleInheritance\MultipleInheritance.csproj", "{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEnumerator", "CustomEnumerator\CustomEnumerator.csproj", "{84F5D62C-DF8C-4C07-B4DC-80C745C702B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F5D62C-DF8C-4C07-B4DC-80C745C702B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F5D62C-DF8C-4C07-B4DC-80C745C702B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F5D62C-DF8C-4C07-B4DC-80C745C702B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F5D62C-DF8C-4C07-B4DC-80C745C702B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +128,6 @@ Global
 		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{561123C0-0F58-4046-A58C-83889F81C22E} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
+		{84F5D62C-DF8C-4C07-B4DC-80C745C702B5} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 	EndGlobalSection
 EndGlobal
