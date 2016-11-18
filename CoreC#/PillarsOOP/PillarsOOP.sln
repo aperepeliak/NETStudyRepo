@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomInterface", "CustomIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceNameClash", "InterfaceNameClash\InterfaceNameClash.csproj", "{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceHierarchy", "InterfaceHierarchy\InterfaceHierarchy.csproj", "{561123C0-0F58-4046-A58C-83889F81C22E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleInheritance", "MultipleInheritance\MultipleInheritance.csproj", "{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,14 @@ Global
 		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561123C0-0F58-4046-A58C-83889F81C22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561123C0-0F58-4046-A58C-83889F81C22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561123C0-0F58-4046-A58C-83889F81C22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561123C0-0F58-4046-A58C-83889F81C22E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,5 +120,7 @@ Global
 		{B592E453-85E6-4246-B5C0-1BD4677B8411} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{2A4F6540-ECAE-4D20-BFB6-6FE05FFE0A05} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{C922BFFA-1A65-4F69-9581-FD1CDD5572A7} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
+		{561123C0-0F58-4046-A58C-83889F81C22E} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
+		{B56320A1-4F9A-4F19-A706-F8DC93B3CB5B} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 	EndGlobalSection
 EndGlobal
