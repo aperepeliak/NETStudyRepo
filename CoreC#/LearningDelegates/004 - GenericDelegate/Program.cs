@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace _004___GenericDelegate
 {
-
     // this generic delegate can represent any method returning void 
     // and taking a single parameter of type T
     public delegate void MyGenericDelegate<T>(T arg);
