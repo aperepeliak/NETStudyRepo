@@ -8,24 +8,26 @@ namespace MyAssembly
 {
     public class Circle : Figure, IFigure
     {
+        public double R { get; set; }
+
         public double Area()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Display()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw()
-        {
-            throw new NotImplementedException();
+            return (Math.PI * R * R);
         }
 
         public double Perimeter()
         {
-            throw new NotImplementedException();
+            return (2 * Math.PI * R);
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("\t=> Displaying CIRCLE");
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine("\t=> Drawing CIRCLE");
         }
     }
 }

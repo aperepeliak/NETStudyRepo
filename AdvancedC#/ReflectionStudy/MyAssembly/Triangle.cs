@@ -8,24 +8,29 @@ namespace MyAssembly
 {
     public class Triangle : Figure, IFigure
     {
+        public double A { get; set; }
+        public double B { get; set; }
+        public double C { get; set; }
+
         public double Area()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Display()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw()
-        {
-            throw new NotImplementedException();
+            double p = Perimeter() / 2;
+            return (Math.Sqrt(p * (p - A) * (p - B) * (p - C)));
         }
 
         public double Perimeter()
         {
-            throw new NotImplementedException();
+            return (A + B + C);
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("\t=> Displaying TRIANGLE");
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine("\t=> Drawing TRIANGLE");
         }
     }
 }

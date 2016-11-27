@@ -8,24 +8,26 @@ namespace MyAssembly
 {
     public class Square : Figure, IFigure
     {
+        public double A { get; set; }
+
         public double Area()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Display()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw()
-        {
-            throw new NotImplementedException();
+            return A * A;
         }
 
         public double Perimeter()
         {
-            throw new NotImplementedException();
+            return 4 * A;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("\t=> Displaying SQUARE");
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine("\t=> Drawing SQUARE");
         }
     }
 }
