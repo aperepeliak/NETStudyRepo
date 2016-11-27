@@ -25,12 +25,16 @@ namespace MyAssembly
 
         public void Display()
         {
-            Console.WriteLine("\t=> Displaying TRIANGLE");
+            Console.WriteLine("\n**** Info about triangle: ****");
+            Console.WriteLine($"  > Sides\t: [{A}, {B}, {C}]");
+            Console.WriteLine($"  > Perimeter\t: {Perimeter()}");
+            Console.WriteLine($"  > Area\t: {Area()}");
+            Draw();
         }
 
         public override void Draw()
         {
-            Console.WriteLine("\t=> Drawing TRIANGLE");
+            Console.WriteLine("  > Drawing TRIANGLE");
         }
     }
 }

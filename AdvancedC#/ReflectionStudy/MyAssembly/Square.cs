@@ -22,12 +22,16 @@ namespace MyAssembly
 
         public void Display()
         {
-            Console.WriteLine("\t=> Displaying SQUARE");
+            Console.WriteLine("\n**** Info about square: ****");
+            Console.WriteLine($"  > Side\t: {A}");
+            Console.WriteLine($"  > Perimeter\t: {Perimeter()}");
+            Console.WriteLine($"  > Area\t: {Area()}");
+            Draw();
         }
 
         public override void Draw()
         {
-            Console.WriteLine("\t=> Drawing SQUARE");
+            Console.WriteLine("  > Drawing SQUARE");
         }
     }
 }
