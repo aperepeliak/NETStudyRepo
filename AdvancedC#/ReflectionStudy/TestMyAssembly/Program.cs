@@ -18,7 +18,7 @@ namespace TestMyAssembly
             try
             {
                 assembly = Assembly.Load("MyAssembly");
-                Console.WriteLine("Сборка MyAssembly - успешно загружена.");
+                Console.WriteLine("MyAssembly has been successfully loaded.");
             }
             catch (FileNotFoundException ex)
             {
@@ -26,35 +26,48 @@ namespace TestMyAssembly
             }
 
             GetTriangleData(4.5, 6, 10);
-
+            GetSquareData(5);
+            GetCircleData(4);
         }
 
         private static void GetTriangleData(double a, double b, double c)
         {
             Type Triangle = assembly.GetType("MyAssembly.Triangle");
-            object instanceTriangle = Activator.CreateInstance(Triangle);
+            object instance = Activator.CreateInstance(Triangle);
 
             PropertyInfo A = Triangle.GetProperty("A");
             PropertyInfo B = Triangle.GetProperty("B");
             PropertyInfo C = Triangle.GetProperty("C");
-            A.SetValue(instanceTriangle, a);
-            B.SetValue(instanceTriangle, b);
-            C.SetValue(instanceTriangle, c);
+            A.SetValue(instance, a);
+            B.SetValue(instance, b);
+            C.SetValue(instance, c);
 
             MethodInfo Display = Triangle.GetMethod("Display");
-            Display.Invoke(instanceTriangle, null);
+            Display.Invoke(instance, null);
         }
 
         private static void GetSquareData(double a)
         {
             Type Square = assembly.GetType("MyAssembly.Square");
+            object instance = Activator.CreateInstance(Square);
 
+            PropertyInfo A = Square.GetProperty("A");
+            A.SetValue(instance, a);
+
+            MethodInfo Display = Square.GetMethod("Display");
+            Display.Invoke(instance, null);
         }
 
         private static void GetCircleData(double r)
         {
             Type Circle = assembly.GetType("MyAssembly.Circle");
+            object instance = Activator.CreateInstance(Circle);
 
+            PropertyInfo R = Circle.GetProperty("R");
+            R.SetValue(instance, r);
+
+            MethodInfo Display = Circle.GetMethod("Display");
+            Display.Invoke(instance, null);
         }
     }
 }
