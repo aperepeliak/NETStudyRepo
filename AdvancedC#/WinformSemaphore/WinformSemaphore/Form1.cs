@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WinformSemaphore
 {
@@ -18,6 +19,7 @@ namespace WinformSemaphore
         public List<Thread> threads;
 
         public event Action actionEvent;
+        public event EventHandler<TimerEventArgs> UpdateTime;
 
         public Form1()
         {
@@ -27,6 +29,7 @@ namespace WinformSemaphore
             threads = new List<Thread>();
 
             actionEvent += Form1_actionEvent;
+            UpdateTime += Form1_UpdateTime;
         }
 
         private void Form1_actionEvent()
@@ -55,9 +58,26 @@ namespace WinformSemaphore
         private void ThreadFunc(object args)
         {
             Pool.WaitOne();
-            
+
             // Timer
-               
+            System.Timers.Timer t = new System.Timers.Timer(1000);
+            t.Elapsed += T_Elapsed;
+            t.Enabled = true;
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
+                    
+        }
+
+        private void Form1_UpdateTime(object sender, TimerEventArgs e)
+        {
+            int index = Convert.ToInt32(e.threadNum);
+            lbxWorking.Items[index] = "Test";
+        }
+
+        private void T_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            UpdateTime?.Invoke(this, new TimerEventArgs(s.ElapsedMilliseconds.ToString(), args.ToString()));
         }
 
         private void lbxCreated_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -66,7 +86,7 @@ namespace WinformSemaphore
 
             var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
 
-            selected.Start();
+            selected.Start(threadNum);
 
             if (Pool.WaitOne(0))
             {
@@ -75,7 +95,6 @@ namespace WinformSemaphore
             {
                 lbxWaiting.Items.Add($"Поток {selected.Name} --> ожидает");
             }
-            //MessageBox.Show(selected.ThreadState.ToString());
             lbxCreated.Items.Remove($"Поток {selected.Name} --> создан");
         }
 
@@ -83,8 +102,6 @@ namespace WinformSemaphore
         {
             if (lbxWorking.SelectedItem != null)
             {
-                //string threadNum = lbxWorking.SelectedItem.ToString().Substring(6, 1);
-                //var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
                 InvokeEvent();
             }     
         }
