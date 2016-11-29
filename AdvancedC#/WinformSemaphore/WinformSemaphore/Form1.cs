@@ -19,23 +19,23 @@ namespace WinformSemaphore
         public static Semaphore Pool { get; set; }
         public List<Thread> threads;
 
+        private int initialCounter = 0;
+
         bool stopTimer = false;
 
         public event Action actionEvent;
         public event Action stopCountdown;
-        //public event EventHandler<TimerEventArgs> UpdateTime;
 
         public Form1()
         {
             InitializeComponent();
             counter = 0;
             remover = 0;
-            Pool = new Semaphore((int)numThreads.Value, (int)numThreads.Value);
+            Pool = new Semaphore(0, (int)numThreads.Value);
             threads = new List<Thread>();
 
             actionEvent += Form1_actionEvent;
             stopCountdown += Form1_stopCountdown;
-            //UpdateTime += Form1_UpdateTime;
         }
 
         private void Form1_stopCountdown()
@@ -45,7 +45,6 @@ namespace WinformSemaphore
 
         private void Form1_actionEvent()
         {
-            Pool.Release(1);
             lbxWorking.Items.RemoveAt(0);
             
             stopCountdown.Invoke();
@@ -55,10 +54,6 @@ namespace WinformSemaphore
         public void InvokeEvent()
         {
             actionEvent.Invoke();
-            //if (lbxWaiting.Items.Count > 0)
-            //{
-            //    string threadNum = lbxWaiting.SelectedItem.ToString().Substring(6, 1);
-            //}
         }
 
         private void btnCreateThread_Click(object sender, EventArgs e)
@@ -83,7 +78,6 @@ namespace WinformSemaphore
             
             t.Elapsed += delegate
             {
-                //txtTest.Text = args.ToString();
                 this.Invoke((MethodInvoker)delegate {
                     txtTest.Text = (s.ElapsedMilliseconds / 1000).ToString(); // runs on UI thread
                 });
@@ -96,29 +90,11 @@ namespace WinformSemaphore
                     this.Invoke((MethodInvoker)delegate
                     {
                         txtTest.Text = "";
-                    });
+                    });             
                 }
             };
 
-            
-
-
-
-
-            //Stopwatch s = new Stopwatch();
-            //s.Start();
-
-        }
-
-        //private void Form1_UpdateTime(object sender, TimerEventArgs e)
-        //{
-        //    int index = Convert.ToInt32(e.threadNum);
-        //    lbxWorking.Items[index] = "Test";
-        //}
-
-        private void T_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            //UpdateTime?.Invoke(this, new TimerEventArgs(s.ElapsedMilliseconds.ToString(), args.ToString()));
+            Pool.Release(1);
         }
 
         private void lbxCreated_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -128,6 +104,11 @@ namespace WinformSemaphore
             var selected = threads.Where(t => t.Name.StartsWith(threadNum)).FirstOrDefault();
 
             selected.Start(threadNum);
+
+            if (initialCounter < (int)numThreads.Value)
+            {
+                Pool.Release(1);
+            }
 
             if (Pool.WaitOne(0))
             {
