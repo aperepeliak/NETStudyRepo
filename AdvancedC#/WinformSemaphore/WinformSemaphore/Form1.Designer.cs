@@ -37,6 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numThreads = new System.Windows.Forms.NumericUpDown();
             this.btnCreateThread = new System.Windows.Forms.Button();
+            this.txtTest = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numThreads)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,11 +126,19 @@
             this.btnCreateThread.UseVisualStyleBackColor = true;
             this.btnCreateThread.Click += new System.EventHandler(this.btnCreateThread_Click);
             // 
+            // txtTest
+            // 
+            this.txtTest.Location = new System.Drawing.Point(205, 124);
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(100, 20);
+            this.txtTest.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 182);
+            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.btnCreateThread);
             this.Controls.Add(this.numThreads);
             this.Controls.Add(this.label4);
@@ -158,6 +167,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numThreads;
         private System.Windows.Forms.Button btnCreateThread;
+        private System.Windows.Forms.TextBox txtTest;
     }
 }
 
