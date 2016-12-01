@@ -66,7 +66,7 @@
             this.numThreads.TabIndex = 17;
             this.numThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numThreads.Value = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});

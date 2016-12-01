@@ -14,12 +14,22 @@ namespace SemaphoreRefactor
     {
         ThreadAPI threadAPI;
         static int counter = 0;
-        static int launchCounter = 0;
+
         public MainView()
         {
             InitializeComponent();
 
             threadAPI = new ThreadAPI((int)numThreads.Value);
+
+            threadAPI.onTimerUpdate += (secondsPassed) =>
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    txtTest.Text = secondsPassed.ToString();
+                });
+
+
+            }; 
         }
 
         private void btnCreateThread_Click(object sender, EventArgs e)
