@@ -18,14 +18,16 @@ namespace SemaphoreMVC
             Application.SetCompatibleTextRenderingDefault(false);
 
             MainView view = new MainView();
-            ThreadAPI model = new ThreadAPI(2);
+            ThreadAPI model = new ThreadAPI();
 
-            view.onStopThread += () =>
-            {
-                model.onReadyToStop += () => true;
-            };
+            // Subscribing for view events
+            view.onFormLoad += (num) => model.SetPool(num);
+            view.onCreateThread += (counter) => model.CreateThread(counter);
+            view.onLaunchThread += () => model.LaunchThread();
+            view.onStopThread += () => model.onReadyToStop += () => true;
 
-            //view.Load +=
+            // Subscribing for model events
+            model.onTimerUpdate += (threadNum, timerCounter) => view.UpdateState(threadNum, timerCounter);
 
             Application.Run(view);
         }

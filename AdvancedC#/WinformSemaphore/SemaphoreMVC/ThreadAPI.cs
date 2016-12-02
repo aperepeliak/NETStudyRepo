@@ -13,16 +13,21 @@ namespace SemaphoreMVC
         private Queue<Thread> threads;
         private Semaphore Pool;
 
-        public event Action<int> onTimerUpdate;
+        public event Action<int, int> onTimerUpdate;
         public event Func<bool> onReadyToStop;
 
-        public ThreadAPI(int semaphoreNumThreads)
+        public ThreadAPI()
         {
             threads = new Queue<Thread>();
+        }
+
+        public void SetPool(int semaphoreNumThreads)
+        {
+            int test = semaphoreNumThreads;
             Pool = new Semaphore(semaphoreNumThreads, semaphoreNumThreads);
         }
 
-        public void createThread(int counter)
+        public void CreateThread(int counter)
         {
             threads.Enqueue(new Thread(ThreadMain) { Name = counter.ToString() });
         }
@@ -31,19 +36,15 @@ namespace SemaphoreMVC
         {
             Pool.WaitOne();
 
-            //System.Windows.Forms.MessageBox.Show(Pool.Release().ToString());
-
-            //System.Windows.Forms.MessageBox.Show(threads.().ThreadState.ToString());
-
             System.Timers.Timer t = new System.Timers.Timer(1000);
             t.Enabled = true;
-            int counter = 0;
+            int timerCounter = 1;
 
             t.Elapsed += (sender, e) =>
             {
-                onTimerUpdate?.Invoke(counter++);
+                onTimerUpdate?.Invoke((int)args, timerCounter++);
 
-                if(onReadyToStop?.Invoke() == true)
+                if (onReadyToStop?.Invoke() == true)
                 {
                     t.Stop();
                     Pool.Release(1);
@@ -54,7 +55,8 @@ namespace SemaphoreMVC
         public void LaunchThread()
         {
             Thread toLaunch = threads.Dequeue();
-            toLaunch.Start();
+            int threadNumber = int.Parse(toLaunch.Name);
+            toLaunch.Start(threadNumber);
         }
     }
 }

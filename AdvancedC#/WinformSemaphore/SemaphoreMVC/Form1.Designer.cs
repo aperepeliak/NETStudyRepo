@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTest = new System.Windows.Forms.TextBox();
             this.btnCreateThread = new System.Windows.Forms.Button();
             this.numThreads = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,13 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numThreads)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtTest
-            // 
-            this.txtTest.Location = new System.Drawing.Point(183, 113);
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(100, 20);
-            this.txtTest.TabIndex = 19;
             // 
             // btnCreateThread
             // 
@@ -122,6 +114,7 @@
             this.lbxWorking.Name = "lbxWorking";
             this.lbxWorking.Size = new System.Drawing.Size(120, 56);
             this.lbxWorking.TabIndex = 11;
+            this.lbxWorking.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbxWorking_MouseDoubleClick);
             // 
             // label1
             // 
@@ -137,7 +130,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 150);
-            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.btnCreateThread);
             this.Controls.Add(this.numThreads);
             this.Controls.Add(this.label4);
@@ -149,6 +141,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MainView";
             this.Text = "Semaphore";
+            this.Load += new System.EventHandler(this.MainView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numThreads)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,8 +149,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtTest;
         private System.Windows.Forms.Button btnCreateThread;
         private System.Windows.Forms.NumericUpDown numThreads;
         private System.Windows.Forms.Label label4;

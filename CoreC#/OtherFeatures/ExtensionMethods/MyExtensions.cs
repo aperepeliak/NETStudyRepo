@@ -25,7 +25,7 @@ namespace MyExt
             // 3) back to string
             string newDigits = new string(digits);
 
-            // 4) bacl to int
+            // 4) back to int
             return int.Parse(newDigits);
         }
     }

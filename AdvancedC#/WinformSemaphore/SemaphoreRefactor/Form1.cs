@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SemaphoreRefactor
+namespace SemaphoreMVC
 {
     public partial class MainView : Form
     {
         ThreadAPI threadAPI;
         static int counter = 0;
+
+        public event Action onStopThread;
 
         public MainView()
         {
