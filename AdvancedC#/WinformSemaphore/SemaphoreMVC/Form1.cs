@@ -12,7 +12,6 @@ namespace SemaphoreMVC
 {
     public partial class MainView : Form
     {
-
         static int threadsCounter = 0;
         private int launchedThreadsCounter = 0;
 
@@ -23,7 +22,7 @@ namespace SemaphoreMVC
         public event Action<int> onFormLoad;
         public event Action<int> onCreateThread;
         public event Action onLaunchThread;
-        public event Action onStopThread;
+        public event Action<int> onStopThread;
 
         public MainView()
         {
@@ -70,23 +69,29 @@ namespace SemaphoreMVC
 
         private void lbxWorking_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            onStopThread?.Invoke();
+            if (lbxWorking.Items.Count != 0)
+            {
+                int parsedThreadNum = GetParsedThreadNum(0);
+                onStopThread?.Invoke(parsedThreadNum);
+                lbxWorking.Items.RemoveAt(0);
+                if (waitingThreads.Count != 0)
+                {
+                    string changeStatus = waitingThreads[0].Replace("ожидает", "0");
+                    lbxWorking.Items.Add(changeStatus);
+                    waitingThreads.RemoveAt(0);
+                }
+                else
+                {
+                    launchedThreadsCounter--;
+                }
+            }
         }
 
         public void UpdateState(int threadNum, int timerCounter)
         {
             for (int i = 0; i < lbxWorking.Items.Count; i++)
             {
-                char[] working = lbxWorking.Items[i].ToString().Replace("Поток ", "").ToCharArray();
-                List<char> buf = new List<char>();
-                for (int j = 0; j < working.Length; j++)
-                {
-                    if (working[j] != ' ')
-                        buf.Add(working[j]);
-                    else
-                        break;
-                }
-                int parsedThreadNum = int.Parse(string.Join("", buf));
+                int parsedThreadNum = GetParsedThreadNum(i);
                 if (parsedThreadNum == threadNum)
                 {
                     this.Invoke((MethodInvoker)delegate
@@ -96,6 +101,20 @@ namespace SemaphoreMVC
                     break;
                 }
             }
+        }
+
+        private int GetParsedThreadNum(int i)
+        {
+            char[] working = lbxWorking.Items[i].ToString().Replace("Поток ", "").ToCharArray();
+            List<char> buf = new List<char>();
+            for (int j = 0; j < working.Length; j++)
+            {
+                if (working[j] != ' ')
+                    buf.Add(working[j]);
+                else
+                    break;
+            }
+            return int.Parse(string.Join("", buf));
         }
     }
 }

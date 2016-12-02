@@ -15,6 +15,7 @@ namespace SemaphoreMVC
 
         public event Action<int, int> onTimerUpdate;
         public event Func<bool> onReadyToStop;
+        public event Func<int> onStopThreadNum;
 
         public ThreadAPI()
         {
@@ -44,7 +45,8 @@ namespace SemaphoreMVC
             {
                 onTimerUpdate?.Invoke((int)args, timerCounter++);
 
-                if (onReadyToStop?.Invoke() == true)
+                if (onReadyToStop?.Invoke() == true &&
+                    onStopThreadNum?.Invoke() == (int)args)
                 {
                     t.Stop();
                     Pool.Release(1);

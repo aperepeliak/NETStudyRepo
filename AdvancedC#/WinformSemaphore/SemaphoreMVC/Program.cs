@@ -24,7 +24,12 @@ namespace SemaphoreMVC
             view.onFormLoad += (num) => model.SetPool(num);
             view.onCreateThread += (counter) => model.CreateThread(counter);
             view.onLaunchThread += () => model.LaunchThread();
-            view.onStopThread += () => model.onReadyToStop += () => true;
+
+            view.onStopThread += (threadNum) =>
+            {
+                model.onReadyToStop += () => true;
+                model.onStopThreadNum += () => threadNum;
+            };
 
             // Subscribing for model events
             model.onTimerUpdate += (threadNum, timerCounter) => view.UpdateState(threadNum, timerCounter);

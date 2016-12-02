@@ -52,13 +52,14 @@
             // 
             // numThreads
             // 
+            this.numThreads.Enabled = false;
             this.numThreads.Location = new System.Drawing.Point(15, 113);
             this.numThreads.Name = "numThreads";
             this.numThreads.Size = new System.Drawing.Size(105, 20);
             this.numThreads.TabIndex = 17;
             this.numThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numThreads.Value = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
