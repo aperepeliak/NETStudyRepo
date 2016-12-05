@@ -22,12 +22,20 @@ namespace _001_LinqOverQuery
 
             // Print only items less than 10
             var subset = from i in numbers
-                                      where i < 10
-                                      select i;
+                         where i < 10
+                         select i;
 
-            foreach(var i in subset)
-                Console.WriteLine($"Item: {i}");
+            foreach (var i in subset)
+                Console.WriteLine($"{i} < 10");
 
+            // Change the array (deferred execution benefits demo)
+            numbers[0] = 4;
+            Console.WriteLine("-----");
+
+            foreach(var j in subset)
+                Console.WriteLine($"{j} < 10");
+
+            Console.WriteLine();
             ReflectOverQueryResults(subset);
         }
 
@@ -56,6 +64,18 @@ namespace _001_LinqOverQuery
             Console.WriteLine($"resultSet is of type: {resultSet.GetType().Name}");
             Console.WriteLine($"resultSet location  : {resultSet.GetType().Assembly.GetName().Name}");
             Console.WriteLine($"\n==== END ====\n");
+        }
+
+        static void ImmediateExec()
+        {
+            int[] nums = { 10, 20, 30, 40, 1, 2, 3, 4, 5 };
+
+            // Get data right now as int[]
+            int[] subsetAsIntArray =
+                (from i in nums where i < 10 select i).ToArray();
+
+            List<int> subsetAsList =
+                (from i in nums where i < 10 select i).ToList();
         }
     }
 }
