@@ -21,7 +21,7 @@ namespace _005___ActionAndFuncDelegates
 
             //Func<int, int, int> funcTarget = new Func<int, int, int>(Add);
 
-            // Using method conversion syntax
+            // Using group conversion syntax
             Func<int, int, int> funcTarget = Add;
 
             int result = funcTarget(5, 9);
