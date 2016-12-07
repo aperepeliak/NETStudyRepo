@@ -17,20 +17,16 @@ namespace SemaphoreMVC
         public event Func<bool> onReadyToStop;
         public event Func<int> onStopThreadNum;
 
-        public ThreadAPI()
-        {
-            threads = new Queue<Thread>();
-        }
+        public ThreadAPI() { threads = new Queue<Thread>(); }
 
         public void SetPool(int semaphoreNumThreads)
         {
-            int test = semaphoreNumThreads;
             Pool = new Semaphore(semaphoreNumThreads, semaphoreNumThreads);
         }
 
         public void CreateThread(int counter)
         {
-            threads.Enqueue(new Thread(ThreadMain) { Name = counter.ToString() });
+            threads.Enqueue(new Thread(ThreadMain) { Name = counter.ToString(), IsBackground = true });
         }
 
         private void ThreadMain(object args)
