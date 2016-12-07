@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformSemaphore", "WinformSemaphore\WinformSemaphore.csproj", "{E14BCF5C-DC8D-4523-9267-8F0F58B07E6A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSemaTest", "ConsoleSemaTest\ConsoleSemaTest.csproj", "{59A9377F-081F-4FB4-9EFA-E778956EF228}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemaphoreRefactor", "SemaphoreRefactor\SemaphoreRefactor.csproj", "{CE6736E7-E392-4ECF-98BF-4F4BE2EAB7E8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemaphoreMVC", "SemaphoreMVC\SemaphoreMVC.csproj", "{BDDA9093-F9AD-408B-A16A-C05F7EC2C907}"
 EndProject
 Global
@@ -17,18 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E14BCF5C-DC8D-4523-9267-8F0F58B07E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E14BCF5C-DC8D-4523-9267-8F0F58B07E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E14BCF5C-DC8D-4523-9267-8F0F58B07E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E14BCF5C-DC8D-4523-9267-8F0F58B07E6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59A9377F-081F-4FB4-9EFA-E778956EF228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59A9377F-081F-4FB4-9EFA-E778956EF228}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59A9377F-081F-4FB4-9EFA-E778956EF228}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59A9377F-081F-4FB4-9EFA-E778956EF228}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE6736E7-E392-4ECF-98BF-4F4BE2EAB7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE6736E7-E392-4ECF-98BF-4F4BE2EAB7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE6736E7-E392-4ECF-98BF-4F4BE2EAB7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE6736E7-E392-4ECF-98BF-4F4BE2EAB7E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDDA9093-F9AD-408B-A16A-C05F7EC2C907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDDA9093-F9AD-408B-A16A-C05F7EC2C907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDDA9093-F9AD-408B-A16A-C05F7EC2C907}.Release|Any CPU.ActiveCfg = Release|Any CPU
