@@ -49,10 +49,129 @@ namespace _005_GroupingJoiningAggregating
 
             #region Grouping
 
+            var query =
+                from car in cars
+                group car by car.Manufacturer.ToUpper() into manuf
+                orderby manuf.Key ascending
+                select manuf;
+
+            // Extension method syntax analogue
+            var query2 =
+                cars.GroupBy(c => c.Manufacturer.ToUpper())
+                .OrderBy(g => g.Key);
+
+
+
+            // Key is value that query is grouped by (in this case by Manufacturer)
+            // Key maybe equal Ford, Toyota etc.
+            // 
+            //foreach (var group in query)
+            //{
+            //    // Console.WriteLine($"{group.Key,-35} has {group.Count()} cars");
+
+            //    // We can iterate over group
+            //    Console.WriteLine($"{group.Key}");
+            //    foreach (var car in group.OrderByDescending(c => c.Combined).Take(2))
+            //    {
+            //        Console.WriteLine($"\t{car.Name,-35} {car.Combined}");
+            //    }
+            //    Console.WriteLine(new string('=', 50));
+            //}
+            #endregion
+
+            #region GroupJoin
+
+            var query3 =
+                from manuf in manufacturers
+                join car in cars on manuf.Name equals car.Manufacturer
+                    into carGroup
+                orderby manuf.Name
+                select new
+                {
+                    Manufacturer = manuf,
+                    Cars = carGroup
+                };
+
+            // Same using extension method syntax
+            var query4 =
+                manufacturers.GroupJoin(
+                    cars,
+                    m => m.Name,
+                    c => c.Manufacturer,
+                    (m, cg) => new { Manufacturer = m, Cars = cg }
+                )
+                .OrderBy(m => m.Manufacturer.Name);
+
+            //foreach (var group in query4)
+            //{
+            //    Console.WriteLine($"{group.Manufacturer.Name} : {group.Manufacturer.Headquaters}");
+            //    foreach (var car in group.Cars.OrderByDescending(c => c.Combined).Take(2))
+            //    {
+            //        Console.WriteLine($"\t{car.Name,-35} {car.Combined}");
+            //    }
+            //}
+
+            // Mini-challenge
+            var query5 =
+                from manuf in manufacturers
+                join car in cars on manuf.Name equals car.Manufacturer
+                    into carGroup
+                select new
+                {
+                    Manufacturer = manuf,
+                    Cars = carGroup
+                } into result
+                group result by result.Manufacturer.Headquaters.ToUpper();
+
+            // Extension method syntax
+            var query6 =
+                manufacturers.GroupJoin(
+                    cars,
+                    m => m.Name,
+                    c => c.Manufacturer,
+                    (m, g) => new { Manufacturer = m, Cars = g })
+               .GroupBy(m => m.Manufacturer.Headquaters);
+
+            //foreach (var group in query6)
+            //{
+            //    Console.WriteLine($"{group.Key}");
+            //    foreach (var car in group
+            //        .SelectMany(g => g.Cars)
+            //        .OrderByDescending(c => c.Combined)
+            //        .Take(3))
+            //    {
+            //        Console.WriteLine($"\t{car.Name} : {car.Combined}");
+            //    }
+            //}
+
 
 
             #endregion
 
+            #region Aggregating Data
+
+            var query7 =
+                from car in cars
+                group car by car.Manufacturer into carGroup
+                select new
+                {
+                    Name = carGroup.Key,
+                    Max = carGroup.Max(c => c.Combined),
+                    Min = carGroup.Min(c => c.Combined),
+                    Avg = carGroup.Average(c => c.Combined)
+                } into result
+                orderby result.Max descending
+                select result;
+
+            foreach (var result in query7)
+            {
+                Console.WriteLine($"{result.Name}");
+                Console.WriteLine($"\tMax: {result.Max}");
+                Console.WriteLine($"\tMin: {result.Min}");
+                Console.WriteLine($"\tAvg: {result.Avg, 3:N}");
+            }
+
+            #endregion
 
         }
 
