@@ -16,7 +16,27 @@ namespace _006_LINQtoXML
         {
             CreateXML();
 
+            QueryXML();
+        }
 
+        private static void QueryXML()
+        {
+            var document = XDocument.Load("fuel.xml");
+
+            var query =
+                from element in document.Element("Cars").Elements("Car")
+                where element.Attribute("Manufacturer")?.Value == "BMW"
+                select element;
+
+            var method =
+                document.Element("Cars").Elements("Car")
+                .Where(e => e.Attribute("Manufacturer")?.Value == "BMW")
+                .Select(e => e);
+
+            foreach (var car in method.Take(10))
+            {
+                Console.WriteLine(car);
+            }
         }
 
         private static void CreateXML()
