@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001-AsyncDelegate", "AsyncD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002-AsyncCallbackDelegate", "002-AsyncCallbackDelegate\002-AsyncCallbackDelegate.csproj", "{8D2A84B1-A055-47B5-9F99-19CF865C7915}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003-SimpleMultithreadApp", "003-SimpleMultithreadApp\003-SimpleMultithreadApp.csproj", "{4FAF2114-6C4B-4AB1-85E0-809B32BC88C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8D2A84B1-A055-47B5-9F99-19CF865C7915}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2A84B1-A055-47B5-9F99-19CF865C7915}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2A84B1-A055-47B5-9F99-19CF865C7915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FAF2114-6C4B-4AB1-85E0-809B32BC88C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FAF2114-6C4B-4AB1-85E0-809B32BC88C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FAF2114-6C4B-4AB1-85E0-809B32BC88C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FAF2114-6C4B-4AB1-85E0-809B32BC88C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
