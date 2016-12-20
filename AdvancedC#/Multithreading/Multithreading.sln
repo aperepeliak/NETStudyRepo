@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004-MultithreadSync", "Mult
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004-TimerApp", "004-TimerApp\004-TimerApp.csproj", "{7049F6BE-8EA3-4A15-9BFA-7C4A3B9CC32A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005-DataParallelismWithForEach", "005-DataParallelismWithForEach\005-DataParallelismWithForEach.csproj", "{A351FA8F-3FC6-467F-ABE7-94D669375BBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7049F6BE-8EA3-4A15-9BFA-7C4A3B9CC32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7049F6BE-8EA3-4A15-9BFA-7C4A3B9CC32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7049F6BE-8EA3-4A15-9BFA-7C4A3B9CC32A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A351FA8F-3FC6-467F-ABE7-94D669375BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A351FA8F-3FC6-467F-ABE7-94D669375BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A351FA8F-3FC6-467F-ABE7-94D669375BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A351FA8F-3FC6-467F-ABE7-94D669375BBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
