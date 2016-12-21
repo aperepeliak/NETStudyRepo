@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005-DataParallelismWithForE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006-MyEBookReader", "006-MyEBookReader\006-MyEBookReader.csproj", "{8710D9FE-4B4D-4148-A8A6-9E570860BFC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007-CSharpAsync", "007-CSharpAsync\007-CSharpAsync.csproj", "{775E2D7A-F571-49A4-ACDA-1CF990E58489}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{8710D9FE-4B4D-4148-A8A6-9E570860BFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8710D9FE-4B4D-4148-A8A6-9E570860BFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8710D9FE-4B4D-4148-A8A6-9E570860BFC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{775E2D7A-F571-49A4-ACDA-1CF990E58489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{775E2D7A-F571-49A4-ACDA-1CF990E58489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{775E2D7A-F571-49A4-ACDA-1CF990E58489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{775E2D7A-F571-49A4-ACDA-1CF990E58489}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
