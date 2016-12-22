@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002-DriveInfoApp", "002-Dri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003-SimpleFileIO", "003-SimpleFileIO\003-SimpleFileIO.csproj", "{0B118311-53EC-427B-B863-A9FDE9FDAD19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004-FileStreamApp", "004-FileStreamApp\004-FileStreamApp.csproj", "{C56BE084-D905-463F-99A5-BFEAE482ED1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0B118311-53EC-427B-B863-A9FDE9FDAD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B118311-53EC-427B-B863-A9FDE9FDAD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B118311-53EC-427B-B863-A9FDE9FDAD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56BE084-D905-463F-99A5-BFEAE482ED1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56BE084-D905-463F-99A5-BFEAE482ED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56BE084-D905-463F-99A5-BFEAE482ED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56BE084-D905-463F-99A5-BFEAE482ED1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
