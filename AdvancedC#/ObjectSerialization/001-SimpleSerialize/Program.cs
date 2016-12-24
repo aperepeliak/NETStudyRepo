@@ -25,9 +25,29 @@ namespace _001_SimpleSerialize
 
             // SaveAsSoapFormat(jbc, "CarDataSOAP.soap");
 
-            SaveAsXmlFormat(jbc, "CarDataXML");
+            // SaveAsXmlFormat(jbc, "CarDataXML");
+
+            SaveListofCars();
 
             Console.ReadKey();
+        }
+
+        private static void SaveListofCars()
+        {
+            List<JamesBondCar> myCars = new List<JamesBondCar>();
+
+            myCars.Add(new JamesBondCar(true, true));
+            myCars.Add(new JamesBondCar(true, false));
+            myCars.Add(new JamesBondCar(false, true));
+            myCars.Add(new JamesBondCar());
+
+            using (Stream fStream = new FileStream("CarCollection.xml",
+                FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                XmlSerializer xmlFormat = new XmlSerializer(typeof(List<JamesBondCar>));
+                xmlFormat.Serialize(fStream, myCars);
+            }
+            Console.WriteLine(" > Saved list of cars!");
         }
 
         private static void SaveAsXmlFormat(object objGraph, string fileName)
