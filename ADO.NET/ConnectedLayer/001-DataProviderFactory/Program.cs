@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Configuration;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace _001_DataProviderFactory
 {
@@ -14,7 +15,8 @@ namespace _001_DataProviderFactory
         static void Main(string[] args)
         {
             string dataProvider = ConfigurationManager.AppSettings["provider"];
-            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            string connectionString =
+                ConfigurationManager.ConnectionStrings["AutoLotSqlProvider"].ConnectionString;
 
             DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
 
@@ -28,6 +30,12 @@ namespace _001_DataProviderFactory
                 Console.WriteLine($"Your connection object is a: {conn.GetType().Name}");
                 conn.ConnectionString = connectionString;
                 conn.Open();
+
+                var sqlConnection = conn as SqlConnection;
+                if (sqlConnection != null)
+                {
+                    Console.WriteLine($"Version of SQLServer used: {sqlConnection.ServerVersion}");
+                }
 
                 DbCommand command = factory.CreateCommand();
                 if (command == null)
