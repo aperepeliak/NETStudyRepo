@@ -31,7 +31,7 @@ namespace AutoLotCUIClient
                 ShowInstructions();
                 do
                 {
-                    Console.Write("\nPlease enter our command: ");
+                    Console.Write("\nPlease enter your command: ");
                     userCommand = Console.ReadLine();
                     Console.WriteLine();
                     switch (userCommand?.ToUpper() ?? "")

@@ -115,6 +115,65 @@ namespace AutoLotDAL.ConnectedLayer
             return carPetName;
         }
 
+        public void ProcessCreditRisk(bool throwEx, int custID)
+        {
+            string fName;
+            string lName;
+
+            var cmdSelect = new SqlCommand($"Select * from Customers where CustId = {custID}",
+                _sqlConnection);
+
+            using (var dataReader = cmdSelect.ExecuteReader())
+            {
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    fName = (string)dataReader["FirstName"];
+                    lName = (string)dataReader["LastName"];
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            var cmdRemove =
+                new SqlCommand($"Delete from Customers where CustId = {custID}",
+                _sqlConnection);
+
+            var cmdInsert =
+                new SqlCommand("Insert into CreditRisks" +
+                $"(FirstName, LastName) Values('{fName}', '{lName}')",
+                _sqlConnection);
+
+            SqlTransaction tx = null;
+
+            try
+            {
+                tx = _sqlConnection.BeginTransaction();
+
+                // Enlisting commands in the transaction
+                cmdInsert.Transaction = tx;
+                cmdRemove.Transaction = tx;
+
+                cmdInsert.ExecuteNonQuery();
+                cmdRemove.ExecuteNonQuery();
+
+                // Error simulation
+                if (throwEx)
+                {
+                    throw new Exception("Error! Transaction failed...");
+                }
+
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                tx?.Rollback();
+            }
+        }
+
         public void OpenConnection(string connectionString)
         {
             _sqlConnection = new SqlConnection { ConnectionString = connectionString };
