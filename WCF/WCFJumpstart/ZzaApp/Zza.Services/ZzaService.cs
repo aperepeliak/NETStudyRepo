@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Zza.Data;
@@ -8,13 +9,14 @@ using Zza.Entities;
 
 namespace Zza.Services
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class ZzaService : IZzaService, IDisposable
     {
         readonly ZzaDbContext _Context = new ZzaDbContext();
 
         public void Dispose()
         {
-
+            _Context.Dispose();
         }
 
         public List<Customer> GetCustomers()
@@ -27,6 +29,7 @@ namespace Zza.Services
             return _Context.Products.ToList();
         }
 
+        [OperationBehavior(TransactionScopeRequired = true)]
         public void SubmitOrder(Order order)
         {
             _Context.Orders.Add(order);
