@@ -53,9 +53,39 @@ namespace _002_WindowsFormsDataBinding
             carInvGridView.DataSource = invTable;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void btnRemoveCar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataRow[] rowToDelete = invTable.Select($"Id={int.Parse(txtCarToRemove.Text)}");
+                rowToDelete[0].Delete();
+                invTable.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            var filterStr = $"Make='{txtViewMake.Text}'";
+
+            // Find all rows matching the filter
+            DataRow[] makes = invTable.Select(filterStr);
+
+            if (makes.Length == 0)
+            {
+                MessageBox.Show("Sorry, no cars...", "Selection error!");
+            } else
+            {
+                string strMake = null;
+                for (int i = 0; i < makes.Length; i++)
+                {
+                    strMake += makes[i]["PetName"] + "\n";
+                }
+                MessageBox.Show(strMake, $"We have {txtViewMake.Text}s named: ");
+            }
         }
     }
 }
