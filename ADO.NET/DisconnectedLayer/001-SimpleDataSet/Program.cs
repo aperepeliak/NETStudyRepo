@@ -20,17 +20,26 @@ namespace _001_SimpleDataSet
 
             FillDataSet(carsInventory);
 
-            // PrintDataSet(carsInventory);
-            PrintTable(carsInventory);
+            PrintDataSet(carsInventory);
 
             // ManipulateDataRowState();
 
             Console.ReadLine();
         }
 
-        private static void PrintTable(DataSet carsInventory)
+        private static void PrintTable(DataTable dt)
         {
+            DataTableReader dtReader = dt.CreateDataReader();
 
+            while (dtReader.Read())
+            {
+                for (int i = 0; i < dtReader.FieldCount; i++)
+                {
+                    Console.Write($"{dtReader.GetValue(i).ToString().Trim()}\t");
+                }
+                Console.WriteLine();
+            }
+            dtReader.Close();
         }
 
         private static void PrintDataSet(DataSet ds)
@@ -48,18 +57,20 @@ namespace _001_SimpleDataSet
 
                 for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
                 {
-                    Console.Write($"{dt.Columns[curCol].ColumnName}\t");
+                    Console.Write($"{dt.Columns[curCol].ColumnName.Trim()}\t");
                 }
                 Console.WriteLine("\n-----------------------------------");
 
-                for (int curRow = 0; curRow < dt.Rows.Count; curRow++)
-                {
-                    for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
-                    {
-                        Console.Write($"{dt.Rows[curRow][curCol]}\t");
-                    }
-                    Console.WriteLine();
-                }
+                PrintTable(dt);
+
+                //for (int curRow = 0; curRow < dt.Rows.Count; curRow++)
+                //{
+                //    for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
+                //    {
+                //        Console.Write($"{dt.Rows[curRow][curCol]}\t");
+                //    }
+                //    Console.WriteLine();
+                //}
             }
         }
 
