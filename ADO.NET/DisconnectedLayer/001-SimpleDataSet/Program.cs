@@ -14,6 +14,9 @@ namespace _001_SimpleDataSet
         {
             var carsInventory = new DataSet("Car Inventory");
 
+            // As an option
+            // carsInventory.ReadXml("carsDataSet.xml");
+
             carsInventory.ExtendedProperties["TimeStamp"] = DateTime.Now;
             carsInventory.ExtendedProperties["DataSetID"] = Guid.NewGuid();
             carsInventory.ExtendedProperties["Company"] = "Ingul";
@@ -22,9 +25,24 @@ namespace _001_SimpleDataSet
 
             PrintDataSet(carsInventory);
 
+            // SaveAndLoadAsXml(carsInventory);
+
             // ManipulateDataRowState();
 
             Console.ReadLine();
+        }
+
+        private static void SaveAndLoadAsXml(DataSet ds)
+        {
+            // Save
+            ds.WriteXml("carsDataSet.xml");
+            ds.WriteXmlSchema("carsDataSet.xsd");
+
+            // Clear out DataSet
+            ds.Clear();
+
+            // Load ds from file
+            ds.ReadXml("carsDataSet.xml");
         }
 
         private static void PrintTable(DataTable dt)
