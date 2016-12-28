@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,16 +19,48 @@ namespace _001_SimpleDataSet
             carsInventory.ExtendedProperties["Company"] = "Ingul";
 
             FillDataSet(carsInventory);
-            PrintDataSet(carsInventory);
+
+            // PrintDataSet(carsInventory);
+            PrintTable(carsInventory);
 
             // ManipulateDataRowState();
 
             Console.ReadLine();
         }
 
-        private static void PrintDataSet(DataSet carsInventory)
+        private static void PrintTable(DataSet carsInventory)
         {
 
+        }
+
+        private static void PrintDataSet(DataSet ds)
+        {
+            Console.WriteLine($"DataSet is named: {ds.DataSetName}");
+            foreach (DictionaryEntry de in ds.ExtendedProperties)
+            {
+                Console.WriteLine($"Key = {de.Key}, Value = {de.Value}");
+            }
+            Console.WriteLine();
+
+            foreach (DataTable dt in ds.Tables)
+            {
+                Console.WriteLine($"=> {dt.TableName} Table: ");
+
+                for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
+                {
+                    Console.Write($"{dt.Columns[curCol].ColumnName}\t");
+                }
+                Console.WriteLine("\n-----------------------------------");
+
+                for (int curRow = 0; curRow < dt.Rows.Count; curRow++)
+                {
+                    for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
+                    {
+                        Console.Write($"{dt.Rows[curRow][curCol]}\t");
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
 
         private static void FillDataSet(DataSet ds)
