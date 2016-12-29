@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002-WindowsFormsDataBinding
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003-SimpleSQLDataAdapter", "003-SimpleSQLDataAdapter\003-SimpleSQLDataAdapter.csproj", "{D780B31A-A06E-4BA5-848A-933447F50848}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryDALDC-GUI", "InventoryDALDC-GUI\InventoryDALDC-GUI.csproj", "{C2C44255-DCD4-4994-B1BD-F896E7DEA0DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D780B31A-A06E-4BA5-848A-933447F50848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D780B31A-A06E-4BA5-848A-933447F50848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D780B31A-A06E-4BA5-848A-933447F50848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2C44255-DCD4-4994-B1BD-F896E7DEA0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2C44255-DCD4-4994-B1BD-F896E7DEA0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2C44255-DCD4-4994-B1BD-F896E7DEA0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2C44255-DCD4-4994-B1BD-F896E7DEA0DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
