@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004-InventoryDALDC-GUI", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005-MultitabledDS-GUI", "005-MultitabledDS-GUI\005-MultitabledDS-GUI.csproj", "{9FE328BE-0823-4030-A9AF-E99150E122F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006-StronglyTypedDSConsole", "006-StronglyTypedDSConsole\006-StronglyTypedDSConsole.csproj", "{FD0A2067-6A85-4A40-B533-C0786DE2719B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9FE328BE-0823-4030-A9AF-E99150E122F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE328BE-0823-4030-A9AF-E99150E122F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE328BE-0823-4030-A9AF-E99150E122F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0A2067-6A85-4A40-B533-C0786DE2719B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0A2067-6A85-4A40-B533-C0786DE2719B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0A2067-6A85-4A40-B533-C0786DE2719B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0A2067-6A85-4A40-B533-C0786DE2719B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
