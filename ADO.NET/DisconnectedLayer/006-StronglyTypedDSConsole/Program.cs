@@ -16,6 +16,8 @@ namespace _006_StronglyTypedDSConsole
             var table = new AutoLotDataSet.InventoryDataTable();
             var adapter = new InventoryTableAdapter();
 
+            AddRecords(table, adapter);
+            table.Clear();
             adapter.Fill(table);
             PrintInventory(table);
             Console.ReadLine();
@@ -36,6 +38,27 @@ namespace _006_StronglyTypedDSConsole
                     Console.Write(table.Rows[curRow][curCol] + "\t");
                 }
                 Console.WriteLine();
+            }
+        }
+
+        public static void AddRecords(AutoLotDataSet.InventoryDataTable table,
+            InventoryTableAdapter adapter)
+        {
+            try
+            {
+                AutoLotDataSet.InventoryRow newRow = table.NewInventoryRow();
+                newRow.Color = "Purple";
+                newRow.Make = "BMW";
+                newRow.PetName = "Carl";
+
+                table.AddInventoryRow(newRow);
+                table.AddInventoryRow("Yugo", "Green", "Zippy");
+
+                adapter.Update(table);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
