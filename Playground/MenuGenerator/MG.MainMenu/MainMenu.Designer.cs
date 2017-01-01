@@ -29,31 +29,34 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnGenerate = new System.Windows.Forms.Button();
+            this.chkSeason = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numSecondDishes = new System.Windows.Forms.NumericUpDown();
+            this.numFirstDishes = new System.Windows.Forms.NumericUpDown();
+            this.txtResult = new System.Windows.Forms.RichTextBox();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.txtIngrdients = new System.Windows.Forms.RichTextBox();
+            this.btnManageRecipes = new System.Windows.Forms.Button();
+            this.btnManageIngrds = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSecondDishes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstDishes)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.btnGenerate);
+            this.groupBox1.Controls.Add(this.chkSeason);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.btnAccept);
+            this.groupBox1.Controls.Add(this.numSecondDishes);
+            this.groupBox1.Controls.Add(this.numFirstDishes);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(258, 178);
@@ -61,28 +64,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры генератора";
             // 
-            // numericUpDown1
+            // btnGenerate
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 41);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown1.TabIndex = 0;
+            this.btnGenerate.Location = new System.Drawing.Point(142, 149);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(110, 23);
+            this.btnGenerate.TabIndex = 5;
+            this.btnGenerate.Text = "Сгенерировать";
+            this.btnGenerate.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
+            // chkSeason
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 67);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "первых блюд";
+            this.chkSeason.AutoSize = true;
+            this.chkSeason.Location = new System.Drawing.Point(7, 112);
+            this.chkSeason.Name = "chkSeason";
+            this.chkSeason.Size = new System.Drawing.Size(143, 17);
+            this.chkSeason.TabIndex = 4;
+            this.chkSeason.Text = "Учитывать сезонность";
+            this.chkSeason.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -93,50 +92,55 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "вторых блюд";
             // 
-            // checkBox1
+            // label1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 112);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(143, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Учитывать сезонность";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(73, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "первых блюд";
             // 
-            // button1
+            // numSecondDishes
             // 
-            this.button1.Location = new System.Drawing.Point(142, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Сгенерировать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.numSecondDishes.Location = new System.Drawing.Point(6, 67);
+            this.numSecondDishes.Name = "numSecondDishes";
+            this.numSecondDishes.Size = new System.Drawing.Size(61, 20);
+            this.numSecondDishes.TabIndex = 1;
+            this.numSecondDishes.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
-            // richTextBox1
+            // numFirstDishes
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 218);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(258, 195);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.numFirstDishes.Location = new System.Drawing.Point(6, 41);
+            this.numFirstDishes.Name = "numFirstDishes";
+            this.numFirstDishes.Size = new System.Drawing.Size(61, 20);
+            this.numFirstDishes.TabIndex = 0;
+            this.numFirstDishes.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
-            // button2
+            // txtResult
             // 
-            this.button2.Location = new System.Drawing.Point(12, 420);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Принимается";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtResult.Location = new System.Drawing.Point(12, 218);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(258, 195);
+            this.txtResult.TabIndex = 1;
+            this.txtResult.Text = "";
             // 
-            // button3
+            // btnAccept
             // 
-            this.button3.Location = new System.Drawing.Point(174, 419);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Еще раз!";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAccept.Location = new System.Drawing.Point(7, 149);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(96, 23);
+            this.btnAccept.TabIndex = 2;
+            this.btnAccept.Text = "Принимается";
+            this.btnAccept.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -150,38 +154,57 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(283, 197);
+            this.label4.Location = new System.Drawing.Point(279, 197);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(150, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Ингридиенты:";
+            this.label4.Text = "Необходимые ингридиенты:";
             // 
-            // richTextBox2
+            // txtIngrdients
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(276, 218);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(258, 195);
-            this.richTextBox2.TabIndex = 6;
-            this.richTextBox2.Text = "";
+            this.txtIngrdients.Location = new System.Drawing.Point(276, 218);
+            this.txtIngrdients.Name = "txtIngrdients";
+            this.txtIngrdients.Size = new System.Drawing.Size(258, 195);
+            this.txtIngrdients.TabIndex = 6;
+            this.txtIngrdients.Text = "";
+            // 
+            // btnManageRecipes
+            // 
+            this.btnManageRecipes.Location = new System.Drawing.Point(345, 23);
+            this.btnManageRecipes.Name = "btnManageRecipes";
+            this.btnManageRecipes.Size = new System.Drawing.Size(190, 60);
+            this.btnManageRecipes.TabIndex = 7;
+            this.btnManageRecipes.Text = "Управление рецептами";
+            this.btnManageRecipes.UseVisualStyleBackColor = true;
+            // 
+            // btnManageIngrds
+            // 
+            this.btnManageIngrds.Location = new System.Drawing.Point(345, 89);
+            this.btnManageIngrds.Name = "btnManageIngrds";
+            this.btnManageIngrds.Size = new System.Drawing.Size(190, 60);
+            this.btnManageIngrds.TabIndex = 8;
+            this.btnManageIngrds.Text = "Управление ингридиентами";
+            this.btnManageIngrds.UseVisualStyleBackColor = true;
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 468);
-            this.Controls.Add(this.richTextBox2);
+            this.ClientSize = new System.Drawing.Size(547, 427);
+            this.Controls.Add(this.btnManageIngrds);
+            this.Controls.Add(this.btnManageRecipes);
+            this.Controls.Add(this.txtIngrdients);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainMenu";
             this.Text = "Добро пожаловать в МенюГенератор";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSecondDishes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstDishes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,18 +213,19 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkSeason;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown numSecondDishes;
+        private System.Windows.Forms.NumericUpDown numFirstDishes;
+        private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.RichTextBox txtResult;
+        private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox txtIngrdients;
+        private System.Windows.Forms.Button btnManageRecipes;
+        private System.Windows.Forms.Button btnManageIngrds;
     }
 }
 
