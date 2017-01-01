@@ -66,12 +66,14 @@
             // 
             // btnGenerate
             // 
+            this.btnGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGenerate.Location = new System.Drawing.Point(142, 149);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(110, 23);
             this.btnGenerate.TabIndex = 5;
             this.btnGenerate.Text = "Сгенерировать";
             this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // chkSeason
             // 
@@ -135,6 +137,8 @@
             // 
             // btnAccept
             // 
+            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccept.Enabled = false;
             this.btnAccept.Location = new System.Drawing.Point(7, 149);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(96, 23);
@@ -170,6 +174,7 @@
             // 
             // btnManageRecipes
             // 
+            this.btnManageRecipes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnManageRecipes.Location = new System.Drawing.Point(345, 23);
             this.btnManageRecipes.Name = "btnManageRecipes";
             this.btnManageRecipes.Size = new System.Drawing.Size(190, 60);
@@ -179,6 +184,7 @@
             // 
             // btnManageIngrds
             // 
+            this.btnManageIngrds.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnManageIngrds.Location = new System.Drawing.Point(345, 89);
             this.btnManageIngrds.Name = "btnManageIngrds";
             this.btnManageIngrds.Size = new System.Drawing.Size(190, 60);
