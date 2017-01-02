@@ -8,7 +8,7 @@ namespace MG.Entities
 {
     [Serializable]
     public class Recipe
-    {
+    {    
         public int Id { get; set; }
         public string Name { get; set; }
         public List<IngridientInfo> Ingridients { get; set; }

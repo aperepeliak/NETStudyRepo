@@ -11,6 +11,6 @@ namespace MG.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Unit UnitMeasure { get; set; }
+        public Unit Units { get; set; }
     }
 }

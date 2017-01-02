@@ -17,21 +17,45 @@ namespace MG.MainMenu
     public partial class MainMenu : Form
     {
         List<Recipe> recipes = null;
+        RecipeData data = null;
 
         public MainMenu()
         {
             InitializeComponent();
 
-            if (!File.Exists("Recipes.xml"))
-            {
-                recipes = SeedData();
-                using (Stream fStream = new FileStream("Recipes.xml",
-                 FileMode.Create, FileAccess.Write, FileShare.None))
-                {
-                    XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Recipe>));
-                    xmlFormat.Serialize(fStream, recipes);
-                }
-            }
+            data = new RecipeData();
+
+
+            //if (!File.Exists("Recipes.xml"))
+            //{
+            //    recipes = SeedData();
+                //var document = new XDocument();
+
+                //var ingrds = new XElement("Ingredients");
+
+                //var ingrEls =
+                //    from ingr in ingrds
+
+                //var rcps = new XElement("Recipes");
+
+                //var elements = 
+                //    from r in recipes
+                //    select new XElement("Recipe",
+                //        new XAttribute("Name", r.Name),
+                //        new XAttribute("Category", r.DishCategory),
+                //        new XAttribute("Seasonality", r.Seasonality),
+                //        new XElement("Ingredients", )
+
+                //        );
+
+
+            //    using (Stream fStream = new FileStream("Recipes.xml",
+            //     FileMode.Create, FileAccess.Write, FileShare.None))
+            //    {
+            //        XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Recipe>));
+            //        xmlFormat.Serialize(fStream, recipes);
+            //    }
+            //}
         }
 
         private List<Recipe> SeedData()
@@ -57,7 +81,7 @@ namespace MG.MainMenu
                         new IngridientInfo()
                         {
                             Id = 1,
-                            Ingridient = new Ingridient() {Id = 1, Name = "Картофель", UnitMeasure = kilos },
+                            Ingridient = new Ingridient() {Id = 1, Name = "Картофель", Units = kilos },
                             Amount = 1.5
                         }
                     }
@@ -71,19 +95,19 @@ namespace MG.MainMenu
                         new IngridientInfo()
                         {
                             Id = 1,
-                            Ingridient = new Ingridient() {Id = 1, Name = "Картофель", UnitMeasure = kilos },
+                            Ingridient = new Ingridient() {Id = 1, Name = "Картофель", Units = kilos },
                             Amount = 0.2
                         },
                         new IngridientInfo()
                         {
                             Id = 2,
-                            Ingridient = new Ingridient() {Id = 2, Name = "Рыба", UnitMeasure = kilos },
+                            Ingridient = new Ingridient() {Id = 2, Name = "Рыба", Units = kilos },
                             Amount = 0.9
                         },
                         new IngridientInfo()
                         {
                             Id = 3,
-                            Ingridient = new Ingridient() {Id = 3, Name = "Рис", UnitMeasure = kilos },
+                            Ingridient = new Ingridient() {Id = 3, Name = "Рис", Units = kilos },
                             Amount = 0.1
                         }
                     }
