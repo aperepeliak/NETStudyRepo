@@ -11,7 +11,7 @@ namespace MG.Entities
     {    
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<IngridientInfo> Ingridients { get; set; }
+        public List<IngredientInfo> Ingridients { get; set; }
         public Season Seasonality { get; set; }
         public Category DishCategory { get; set; }
     }

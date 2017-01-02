@@ -33,10 +33,10 @@
             this.chkSeason = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.numSecondDishes = new System.Windows.Forms.NumericUpDown();
             this.numFirstDishes = new System.Windows.Forms.NumericUpDown();
             this.txtResult = new System.Windows.Forms.RichTextBox();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIngrdients = new System.Windows.Forms.RichTextBox();
@@ -103,6 +103,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "первых блюд";
             // 
+            // btnAccept
+            // 
+            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccept.Enabled = false;
+            this.btnAccept.Location = new System.Drawing.Point(7, 149);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(96, 23);
+            this.btnAccept.TabIndex = 2;
+            this.btnAccept.Text = "Принимается";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            // 
             // numSecondDishes
             // 
             this.numSecondDishes.Location = new System.Drawing.Point(6, 67);
@@ -135,17 +146,6 @@
             this.txtResult.TabIndex = 1;
             this.txtResult.Text = "";
             // 
-            // btnAccept
-            // 
-            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccept.Enabled = false;
-            this.btnAccept.Location = new System.Drawing.Point(7, 149);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(96, 23);
-            this.btnAccept.TabIndex = 2;
-            this.btnAccept.Text = "Принимается";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -162,7 +162,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Необходимые ингридиенты:";
+            this.label4.Text = "Необходимые ингредиенты:";
             // 
             // txtIngrdients
             // 
@@ -189,7 +189,7 @@
             this.btnManageIngrds.Name = "btnManageIngrds";
             this.btnManageIngrds.Size = new System.Drawing.Size(190, 60);
             this.btnManageIngrds.TabIndex = 8;
-            this.btnManageIngrds.Text = "Управление ингридиентами";
+            this.btnManageIngrds.Text = "Управление ингредиентами";
             this.btnManageIngrds.UseVisualStyleBackColor = true;
             // 
             // MainMenu

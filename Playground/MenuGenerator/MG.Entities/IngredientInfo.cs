@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace MG.Entities
 {
     [Serializable]
-    public class Ingridient
+    public class IngredientInfo
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Unit Units { get; set; }
+        public Ingredient Ingridient { get; set; }
+        public double Amount { get; set; }
     }
 }
