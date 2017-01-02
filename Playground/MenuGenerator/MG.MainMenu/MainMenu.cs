@@ -38,7 +38,7 @@ namespace MG.MainMenu
                         new XAttribute("Seasonality", r.Seasonality.Name),
 
                         new XElement("Ingredients",
-                            from i in r.Ingridients
+                            from i in r.Ingredients
                             select new XElement
                                 ("IngredientInfo",
                                     new XElement
@@ -59,54 +59,50 @@ namespace MG.MainMenu
 
         private List<Recipe> SeedData()
         {
-            var fallWinter = new Season() { Id = 1, Name = "FallWinter" };
-            var springSummer = new Season() { Id = 2, Name = "SpringSummer" };
-            var allSeason = new Season() { Id = 3, Name = "AllSeason" };
+            var fallWinter = new Season() { Name = "FallWinter" };
+            var springSummer = new Season() { Name = "SpringSummer" };
+            var allSeason = new Season() { Name = "AllSeason" };
 
-            var firstDishes = new Category() { Id = 1, Name = "FirstDishes" };
-            var secondDishes = new Category() { Id = 2, Name = "SecondDishes" };
+            var firstDishes = new Category() { Name = "FirstDishes" };
+            var secondDishes = new Category() {Name = "SecondDishes" };
 
-            var kilos = new Unit() { Id = 1, Name = "кг" };
-            var litres = new Unit() { Id = 2, Name = "л" };
+            var kilos = new Unit() { Name = "кг" };
+            var litres = new Unit() { Name = "л" };
 
             recipes = new List<Recipe>()
             {
                 new Recipe()
                 {
-                    Id = 1, DishCategory = secondDishes, Seasonality = allSeason,
+                    DishCategory = secondDishes, Seasonality = allSeason,
                     Name = "Mashed potato",
-                    Ingridients = new List<IngredientInfo>()
+                    Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Id = 1,
-                            Ingredient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Картофель", Units = kilos },
                             Amount = 1.5
                         }
                     }
                 },
                 new Recipe()
                 {
-                    Id = 2, DishCategory = firstDishes, Seasonality = allSeason,
+                    DishCategory = firstDishes, Seasonality = allSeason,
                     Name = "Уха",
-                    Ingridients = new List<IngredientInfo>()
+                    Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Id = 1,
-                            Ingredient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Картофель", Units = kilos },
                             Amount = 0.2
                         },
                         new IngredientInfo()
                         {
-                            Id = 2,
-                            Ingredient = new Ingredient() {Id = 2, Name = "Рыба", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Рыба", Units = kilos },
                             Amount = 0.9
                         },
                         new IngredientInfo()
                         {
-                            Id = 3,
-                            Ingredient = new Ingredient() {Id = 3, Name = "Рис", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Рис", Units = kilos },
                             Amount = 0.1
                         }
                     }
@@ -125,7 +121,20 @@ namespace MG.MainMenu
                 if (document.Root == null)
                     throw new Exception("У вас пока не добавлено ни одного рецепта!");
                 else
-                    MessageBox.Show("Loaded");
+                {
+                    var query =
+                        from recipe in document.Element("Recipes").Elements("Recipe")
+                        select new Recipe
+                        {
+                            Name = recipe.Name.ToString(),
+                            Seasonality = new Season() { Name = recipe.Attribute("Seasonality").Value },
+                             DishCategory = new Category() { Name = recipe.Attribute("DishCategory").Value }
+                        };
+
+                     recipes = query.ToList();
+
+                }
+                    
             }
             catch (Exception ex)
             {
