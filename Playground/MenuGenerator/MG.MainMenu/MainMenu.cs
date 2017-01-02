@@ -28,37 +28,32 @@ namespace MG.MainMenu
                 recipes = SeedData();
                 var document = new XDocument();
 
-                var ingrds = new XElement("Ingredients");
-
                 var rcps = new XElement("Recipes");
 
                 var elements =
                     from r in recipes
                     select new XElement("Recipe",
                         new XAttribute("Name", r.Name),
-                        new XAttribute("Category", r.DishCategory),
-                        new XAttribute("Seasonality", r.Seasonality),
-                        
-                        
-                        new XElement("Ingredients", 
-                            from i in r.Ingridients
-                            select new XElement("IngredientInfo",
-                            new XElement("Ingredient")
-                                
-                            
-                            )
-                        
-                        )
+                        new XAttribute("Category", r.DishCategory.Name),
+                        new XAttribute("Seasonality", r.Seasonality.Name),
 
+                        new XElement("Ingredients",
+                            from i in r.Ingridients
+                            select new XElement
+                                ("IngredientInfo",
+                                    new XElement
+                                        ("Ingredient",
+                                    new XAttribute("Name", i.Ingredient.Name),
+                                    new XAttribute("Units", i.Ingredient.Units.Name)
+                                        ),
+                            new XElement("Amount", i.Amount)
+                                )
+                            )   
                         );
 
-
-                //using (Stream fStream = new FileStream("Recipes.xml",
-                // FileMode.Create, FileAccess.Write, FileShare.None))
-                //{
-                //    XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Recipe>));
-                //    xmlFormat.Serialize(fStream, recipes);
-                //}
+                rcps.Add(elements);
+                document.Add(rcps);
+                document.Save("Recipes.xml");
             }
         }
 
@@ -85,7 +80,7 @@ namespace MG.MainMenu
                         new IngredientInfo()
                         {
                             Id = 1,
-                            Ingridient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
                             Amount = 1.5
                         }
                     }
@@ -99,19 +94,19 @@ namespace MG.MainMenu
                         new IngredientInfo()
                         {
                             Id = 1,
-                            Ingridient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Id = 1, Name = "Картофель", Units = kilos },
                             Amount = 0.2
                         },
                         new IngredientInfo()
                         {
                             Id = 2,
-                            Ingridient = new Ingredient() {Id = 2, Name = "Рыба", Units = kilos },
+                            Ingredient = new Ingredient() {Id = 2, Name = "Рыба", Units = kilos },
                             Amount = 0.9
                         },
                         new IngredientInfo()
                         {
                             Id = 3,
-                            Ingridient = new Ingredient() {Id = 3, Name = "Рис", Units = kilos },
+                            Ingredient = new Ingredient() {Id = 3, Name = "Рис", Units = kilos },
                             Amount = 0.1
                         }
                     }
@@ -129,6 +124,8 @@ namespace MG.MainMenu
                 var document = XDocument.Load("Recipes.xml");
                 if (document.Root == null)
                     throw new Exception("У вас пока не добавлено ни одного рецепта!");
+                else
+                    MessageBox.Show("Loaded");
             }
             catch (Exception ex)
             {
