@@ -12,7 +12,6 @@ namespace MG.MainMenu
 {
     public class RecipesModel
     {
-        //List<Recipe> recipes;
         XDocument document;
 
         public List<Recipe> Recipes { get; }
@@ -55,6 +54,8 @@ namespace MG.MainMenu
                     );
 
             rcps.Add(elements);
+
+            document = new XDocument();
             document.Add(rcps);
             document.Save("Recipes.xml");
         }

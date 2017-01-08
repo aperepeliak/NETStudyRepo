@@ -25,26 +25,9 @@ namespace MG.MainMenu
             model = new RecipesModel();
         }
 
-       
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var document = XDocument.Load("Recipes.xml");
-                if (document.Root == null)
-                    throw new Exception("У вас пока не добавлено ни одного рецепта!");
-                else
-                {
-                    recipes = model.GetDataFromXml();
-                    MessageBox.Show(recipes[1].Name);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка");
-            }
+            MessageBox.Show(model.Recipes[0].Name);
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
