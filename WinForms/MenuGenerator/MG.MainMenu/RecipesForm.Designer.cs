@@ -42,6 +42,8 @@
             this.btnDeleteRecipe = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvRecipes = new System.Windows.Forms.DataGridView();
+            this.btnAddCategory = new System.Windows.Forms.Button();
+            this.btnAddSeasonality = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).BeginInit();
@@ -49,6 +51,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAddSeasonality);
+            this.groupBox1.Controls.Add(this.btnAddCategory);
             this.groupBox1.Controls.Add(this.btnChangeRecipe);
             this.groupBox1.Controls.Add(this.btnAddRecipe);
             this.groupBox1.Controls.Add(this.label4);
@@ -105,7 +109,7 @@
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(127, 62);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(181, 21);
+            this.cmbCategory.Size = new System.Drawing.Size(156, 21);
             this.cmbCategory.TabIndex = 1;
             // 
             // cnmSeason
@@ -113,7 +117,7 @@
             this.cnmSeason.FormattingEnabled = true;
             this.cnmSeason.Location = new System.Drawing.Point(127, 89);
             this.cnmSeason.Name = "cnmSeason";
-            this.cnmSeason.Size = new System.Drawing.Size(181, 21);
+            this.cnmSeason.Size = new System.Drawing.Size(156, 21);
             this.cnmSeason.TabIndex = 6;
             // 
             // dgvIngredients
@@ -179,6 +183,24 @@
             this.dgvRecipes.Size = new System.Drawing.Size(354, 319);
             this.dgvRecipes.TabIndex = 13;
             // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Location = new System.Drawing.Point(288, 62);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(19, 21);
+            this.btnAddCategory.TabIndex = 14;
+            this.btnAddCategory.Text = "+";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            // 
+            // btnAddSeasonality
+            // 
+            this.btnAddSeasonality.Location = new System.Drawing.Point(288, 89);
+            this.btnAddSeasonality.Name = "btnAddSeasonality";
+            this.btnAddSeasonality.Size = new System.Drawing.Size(19, 21);
+            this.btnAddSeasonality.TabIndex = 15;
+            this.btnAddSeasonality.Text = "+";
+            this.btnAddSeasonality.UseVisualStyleBackColor = true;
+            // 
             // RecipesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,5 +237,7 @@
         private System.Windows.Forms.Button btnChangeRecipe;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvRecipes;
+        private System.Windows.Forms.Button btnAddSeasonality;
+        private System.Windows.Forms.Button btnAddCategory;
     }
 }

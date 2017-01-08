@@ -18,6 +18,7 @@ namespace MG.MainMenu
     public partial class MainMenu : Form
     {
         RecipesModel model;
+        RecipesForm recipesForm;
 
         public MainMenu()
         {
@@ -33,6 +34,12 @@ namespace MG.MainMenu
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             model.SaveDataToXml();
+        }
+
+        private void btnManageRecipes_Click(object sender, EventArgs e)
+        {
+            recipesForm = new RecipesForm(model);
+            recipesForm.ShowDialog();
         }
     }
 }

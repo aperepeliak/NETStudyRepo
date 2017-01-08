@@ -12,9 +12,14 @@ namespace MG.MainMenu
 {
     public partial class RecipesForm : Form
     {
-        public RecipesForm()
+        private RecipesModel model;
+
+        public RecipesForm(RecipesModel model)
         {
             InitializeComponent();
+            this.model = model;
+
+            dgvRecipes.DataSource = model.Recipes;
         }
     }
 }

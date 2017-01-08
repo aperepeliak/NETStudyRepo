@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.MainMenu", "MG.MainMenu\MG.MainMenu.csproj", "{004375D8-B162-41BF-ADD3-3DBF75830F44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.WinApp", "MG.MainMenu\MG.WinApp.csproj", "{004375D8-B162-41BF-ADD3-3DBF75830F44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Entities", "MG.Entities\MG.Entities.csproj", "{D4EDEE97-0D9E-4A12-8393-B984ACFF978A}"
 EndProject

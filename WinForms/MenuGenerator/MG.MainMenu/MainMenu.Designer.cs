@@ -180,6 +180,7 @@
             this.btnManageRecipes.TabIndex = 7;
             this.btnManageRecipes.Text = "Управление рецептами";
             this.btnManageRecipes.UseVisualStyleBackColor = true;
+            this.btnManageRecipes.Click += new System.EventHandler(this.btnManageRecipes_Click);
             // 
             // MainMenu
             // 
