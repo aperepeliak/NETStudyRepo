@@ -13,7 +13,6 @@ namespace MG.MainMenu
     public class RecipesModel
     {
         XDocument document;
-
         public List<Recipe> Recipes { get; }
 
         public RecipesModel()
@@ -27,6 +26,29 @@ namespace MG.MainMenu
                 document = XDocument.Load("Recipes.xml");
                 Recipes = GetDataFromXml();
             }
+        }
+
+        public List<string> GetCategories()
+        {
+            return Recipes
+                .Select(r => r.Category)
+                .Distinct()
+                .ToList();
+        }
+
+        public List<string> GetSeasons()
+        {
+            return Recipes
+               .Select(r => r.Seasonality)
+               .Distinct()
+               .ToList();
+        }
+        public List<string> GetUnits()
+        {
+            return Recipes
+                .SelectMany(r => r.Ingredients, (r, ii) => ii.Ingredient.Units)
+                .Distinct()
+                .ToList();
         }
 
         public void SaveDataToXml()
@@ -91,8 +113,8 @@ namespace MG.MainMenu
             {
                 new Recipe()
                 {
-                    Category = "SecondDishes", Seasonality = "AllSeason",
-                    Name = "Mashed potato",
+                    Category = "Вторые блюда", Seasonality = "Всесезонность",
+                    Name = "Толченка",
                     Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
@@ -104,7 +126,7 @@ namespace MG.MainMenu
                 },
                 new Recipe()
                 {
-                    Category = "FirstDishes", Seasonality = "AllSeason",
+                    Category = "Первые блюда", Seasonality = "Всесезонность",
                     Name = "Уха",
                     Ingredients = new List<IngredientInfo>()
                     {

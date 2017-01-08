@@ -13,6 +13,7 @@ namespace MG.MainMenu.BusinessLayer
         public string Category { get; set; }
         public string Seasonality { get; set; }
 
+
         public static List<RecipesInfo> GetRecipesInfo(RecipesModel data)
         {
             var query = data.Recipes

@@ -21,6 +21,15 @@ namespace MG.MainMenu
             this.model = model;
 
             dgvRecipes.DataSource = RecipesInfo.GetRecipesInfo(model);
+
+            cmbCategory.DataSource = model.GetCategories();
+            cmbSeason.DataSource = model.GetSeasons();
+            cmbUnit.DataSource = model.GetUnits();
+        }
+
+        private void dgvRecipes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Test");
         }
     }
 }
