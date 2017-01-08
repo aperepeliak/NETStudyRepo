@@ -51,6 +51,8 @@ namespace MG.MainMenu
                 .ToList();
         }
 
+        internal bool isRecipeAlreadyExist(string text) => Recipes.Any(r => r.Name == text);
+
         public void SaveDataToXml()
         {
             var rcps = new XElement("Recipes");

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MG.MainMenu.BusinessLayer
 {
-    class IngredientsInfo
+    class IngredientView
     {
         public string Name { get; set; }
         public double Amount { get; set; }

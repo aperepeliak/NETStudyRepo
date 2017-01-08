@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace MG.MainMenu.BusinessLayer
 {
-    public class RecipesInfo
+    public class RecipeView
     {
         public string Name { get; set; }
         public string Category { get; set; }
         public string Seasonality { get; set; }
 
 
-        public static List<RecipesInfo> GetRecipesInfo(RecipesModel data)
+        public static List<RecipeView> GetRecipesInfo(RecipesModel data)
         {
             var query = data.Recipes
-                .Select(r => new RecipesInfo
+                .Select(r => new RecipeView
                 {
                     Name = r.Name,
                     Category = r.Category,

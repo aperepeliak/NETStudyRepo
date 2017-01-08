@@ -91,6 +91,7 @@
             this.btnAddIngredient.TabIndex = 23;
             this.btnAddIngredient.Text = "+";
             this.btnAddIngredient.UseVisualStyleBackColor = true;
+            this.btnAddIngredient.Click += new System.EventHandler(this.btnAddIngredient_Click);
             // 
             // cmbUnit
             // 
@@ -165,6 +166,7 @@
             this.btnAddRecipe.TabIndex = 9;
             this.btnAddRecipe.Text = "Добавить";
             this.btnAddRecipe.UseVisualStyleBackColor = true;
+            this.btnAddRecipe.Click += new System.EventHandler(this.btnAddRecipe_Click);
             // 
             // label4
             // 
@@ -177,6 +179,8 @@
             // 
             // dgvIngredients
             // 
+            this.dgvIngredients.AllowUserToAddRows = false;
+            this.dgvIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIngredients.Location = new System.Drawing.Point(7, 190);
             this.dgvIngredients.Name = "dgvIngredients";
@@ -189,7 +193,7 @@
             this.cmbSeason.FormattingEnabled = true;
             this.cmbSeason.Location = new System.Drawing.Point(95, 76);
             this.cmbSeason.Name = "cmbSeason";
-            this.cmbSeason.Size = new System.Drawing.Size(181, 21);
+            this.cmbSeason.Size = new System.Drawing.Size(180, 21);
             this.cmbSeason.TabIndex = 6;
             // 
             // cmbCategory
@@ -231,7 +235,7 @@
             // 
             this.txtRecipeName.Location = new System.Drawing.Point(95, 23);
             this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(181, 20);
+            this.txtRecipeName.Size = new System.Drawing.Size(180, 20);
             this.txtRecipeName.TabIndex = 0;
             // 
             // btnDeleteRecipe

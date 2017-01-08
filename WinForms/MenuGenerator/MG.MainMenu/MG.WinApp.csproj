@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLayer\IngredientsInfo.cs" />
-    <Compile Include="BusinessLayer\RecipesInfo.cs" />
+    <Compile Include="BusinessLayer\IngredientView.cs" />
+    <Compile Include="BusinessLayer\RecipeView.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
