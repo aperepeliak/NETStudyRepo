@@ -41,7 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtIngrdients = new System.Windows.Forms.RichTextBox();
             this.btnManageRecipes = new System.Windows.Forms.Button();
-            this.btnManageIngrds = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSecondDishes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFirstDishes)).BeginInit();
@@ -175,29 +174,18 @@
             // btnManageRecipes
             // 
             this.btnManageRecipes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManageRecipes.Location = new System.Drawing.Point(345, 23);
+            this.btnManageRecipes.Location = new System.Drawing.Point(345, 31);
             this.btnManageRecipes.Name = "btnManageRecipes";
             this.btnManageRecipes.Size = new System.Drawing.Size(190, 60);
             this.btnManageRecipes.TabIndex = 7;
             this.btnManageRecipes.Text = "Управление рецептами";
             this.btnManageRecipes.UseVisualStyleBackColor = true;
             // 
-            // btnManageIngrds
-            // 
-            this.btnManageIngrds.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManageIngrds.Location = new System.Drawing.Point(345, 89);
-            this.btnManageIngrds.Name = "btnManageIngrds";
-            this.btnManageIngrds.Size = new System.Drawing.Size(190, 60);
-            this.btnManageIngrds.TabIndex = 8;
-            this.btnManageIngrds.Text = "Управление ингредиентами";
-            this.btnManageIngrds.UseVisualStyleBackColor = true;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 427);
-            this.Controls.Add(this.btnManageIngrds);
             this.Controls.Add(this.btnManageRecipes);
             this.Controls.Add(this.txtIngrdients);
             this.Controls.Add(this.label4);
@@ -207,6 +195,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainMenu";
             this.Text = "Добро пожаловать в МенюГенератор";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSecondDishes)).EndInit();
@@ -231,7 +220,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox txtIngrdients;
         private System.Windows.Forms.Button btnManageRecipes;
-        private System.Windows.Forms.Button btnManageIngrds;
     }
 }
 

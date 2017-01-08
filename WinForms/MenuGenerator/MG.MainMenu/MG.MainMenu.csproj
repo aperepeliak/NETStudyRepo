@@ -65,6 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RecipesModel.cs" />
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
