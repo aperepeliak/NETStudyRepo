@@ -36,8 +36,8 @@ namespace MG.MainMenu
                 from r in Recipes
                 select new XElement("Recipe",
                     new XAttribute("Name", r.Name),
-                    new XAttribute("Category", r.DishCategory.Name),
-                    new XAttribute("Seasonality", r.Seasonality.Name),
+                    new XAttribute("Category", r.Category),
+                    new XAttribute("Seasonality", r.Seasonality),
 
                     new XElement("Ingredients",
                         from i in r.Ingredients
@@ -46,7 +46,7 @@ namespace MG.MainMenu
                                 new XElement
                                     ("Ingredient",
                                 new XAttribute("Name", i.Ingredient.Name),
-                                new XAttribute("Units", i.Ingredient.Units.Name)
+                                new XAttribute("Units", i.Ingredient.Units)
                                     ),
                         new XElement("Amount", i.Amount)
                             )
@@ -67,8 +67,8 @@ namespace MG.MainMenu
                         select new Recipe
                         {
                             Name = recipe.Attribute("Name").Value,
-                            Seasonality = new Season() { Name = recipe.Attribute("Seasonality").Value },
-                            DishCategory = new Category() { Name = recipe.Attribute("Category").Value },
+                            Seasonality = recipe.Attribute("Seasonality").Value,
+                            Category = recipe.Attribute("Category").Value,
                             Ingredients =
                                 (from ingrInfo in recipe.Element("Ingredients").Elements("IngredientInfo")
                                  select new IngredientInfo()
@@ -76,7 +76,7 @@ namespace MG.MainMenu
                                      Ingredient = new Ingredient()
                                      {
                                          Name = ingrInfo.Element("Ingredient").Attribute("Name").Value,
-                                         Units = new Unit() { Name = ingrInfo.Element("Ingredient").Attribute("Units").Value }
+                                         Units = ingrInfo.Element("Ingredient").Attribute("Units").Value
                                      },
                                      Amount = double.Parse(ingrInfo.Element("Amount").Value, CultureInfo.InvariantCulture)
                                  }).ToList()
@@ -87,50 +87,40 @@ namespace MG.MainMenu
 
         private List<Recipe> SeedData()
         {
-            var fallWinter = new Season() { Name = "FallWinter" };
-            var springSummer = new Season() { Name = "SpringSummer" };
-            var allSeason = new Season() { Name = "AllSeason" };
-
-            var firstDishes = new Category() { Name = "FirstDishes" };
-            var secondDishes = new Category() { Name = "SecondDishes" };
-
-            var kilos = new Unit() { Name = "кг" };
-            var litres = new Unit() { Name = "л" };
-
             var recipes = new List<Recipe>()
             {
                 new Recipe()
                 {
-                    DishCategory = secondDishes, Seasonality = allSeason,
+                    Category = "SecondDishes", Seasonality = "AllSeason",
                     Name = "Mashed potato",
                     Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Картофель", Units = "кг" },
                             Amount = 1.5
                         }
                     }
                 },
                 new Recipe()
                 {
-                    DishCategory = firstDishes, Seasonality = allSeason,
+                    Category = "FirstDishes", Seasonality = "AllSeason",
                     Name = "Уха",
                     Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Картофель", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Картофель", Units = "кг" },
                             Amount = 0.2
                         },
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Рыба", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Рыба", Units = "кг" },
                             Amount = 0.9
                         },
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Рис", Units = kilos },
+                            Ingredient = new Ingredient() {Name = "Рис", Units = "кг" },
                             Amount = 0.1
                         }
                     }

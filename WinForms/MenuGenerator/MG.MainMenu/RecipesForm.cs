@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MG.MainMenu.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace MG.MainMenu
             InitializeComponent();
             this.model = model;
 
-            dgvRecipes.DataSource = model.Recipes;
+            dgvRecipes.DataSource = RecipesInfo.GetRecipesInfo(model);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace MG.Entities
     public class Ingredient
     {
         public string Name { get; set; }
-        public Unit Units { get; set; }
+        public string Units { get; set; }
     }
 }
