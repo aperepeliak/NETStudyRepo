@@ -54,7 +54,15 @@ namespace MG.MainMenu
                 .ToList();
         }
 
-        internal bool isRecipeAlreadyExist(string text) => Recipes.Any(r => r.Name == text);
+        internal string[] GetAvailableIngredients()
+        {
+            return Recipes
+                .SelectMany(r => r.Ingredients, (r, ii) => ii.Ingredient.Name)
+                .Distinct()
+                .ToArray();
+        }
+
+        internal bool isRecipeAlreadyExist(string text) => Recipes.Any(r => r.Name.ToLower() == text.ToLower());
 
         public void SaveDataToXml()
         {
@@ -166,13 +174,6 @@ namespace MG.MainMenu
             string category, string season, BindingList<IngredientView> ingredientsSet)
         {
             var recipeName = currentRow.Cells["Name"].Value.ToString();
-            //var recipeCategory = currentRow.Cells["Category"].Value.ToString();
-            //var recipeSeason = currentRow.Cells["Seasonality"].Value.ToString();
-
-            //var recipeToChange = Recipes
-            //    .Where(r => r.Name == name && r.Category == category && r.Seasonality == season)
-            //    .FirstOrDefault();
-
             var recipeChanged = new Recipe
             {
                 Name = name,

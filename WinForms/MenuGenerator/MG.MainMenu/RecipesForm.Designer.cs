@@ -53,6 +53,7 @@
             this.contextMenuIngredients = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
@@ -62,6 +63,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnAddIngredient);
             this.groupBox1.Controls.Add(this.cmbUnit);
             this.groupBox1.Controls.Add(this.label8);
@@ -290,16 +292,26 @@
             // EditMenuItem
             // 
             this.EditMenuItem.Name = "EditMenuItem";
-            this.EditMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.EditMenuItem.Size = new System.Drawing.Size(128, 22);
             this.EditMenuItem.Text = "Изменить";
             this.EditMenuItem.Click += new System.EventHandler(this.EditMenuItem_Click);
             // 
             // DeleteMenuItem
             // 
             this.DeleteMenuItem.Name = "DeleteMenuItem";
-            this.DeleteMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteMenuItem.Size = new System.Drawing.Size(128, 22);
             this.DeleteMenuItem.Text = "Удалить";
             this.DeleteMenuItem.Click += new System.EventHandler(this.DeleteMenuItem_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(7, 342);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 24;
+            this.btnClear.Text = "Очистить";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // RecipesForm
             // 
@@ -352,5 +364,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuIngredients;
         private System.Windows.Forms.ToolStripMenuItem EditMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteMenuItem;
+        private System.Windows.Forms.Button btnClear;
     }
 }

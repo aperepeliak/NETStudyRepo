@@ -31,6 +31,12 @@ namespace MG.MainMenu
             cmbCategory.DataSource = model.GetCategories();
             cmbSeason.DataSource = model.GetSeasons();
             cmbUnit.DataSource = model.GetUnits();
+
+            AutoCompleteStringCollection availableIngredients = new AutoCompleteStringCollection();
+            availableIngredients.AddRange(model.GetAvailableIngredients());
+            txtIngredientName.AutoCompleteCustomSource = availableIngredients;
+            txtIngredientName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtIngredientName.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void dgvRecipes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -114,6 +120,12 @@ namespace MG.MainMenu
 
                 ingredientsSet = new BindingList<IngredientView>();
                 dgvIngredients.DataSource = ingredientsSet;
+
+                AutoCompleteStringCollection availableIngredients = new AutoCompleteStringCollection();
+                availableIngredients.AddRange(model.GetAvailableIngredients());
+                txtIngredientName.AutoCompleteCustomSource = availableIngredients;
+                txtIngredientName.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtIngredientName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
         }
 
@@ -123,17 +135,52 @@ namespace MG.MainMenu
 
             recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
             dgvRecipes.DataSource = recipesSet;
+
+            ClearForm();
         }
 
         private void EditMenuItem_Click(object sender, EventArgs e)
         {
+            var editForm = new EditIngredForm(model,
+                dgvIngredients.CurrentRow.Cells[0].Value.ToString(),
+                (double)dgvIngredients.CurrentRow.Cells[1].Value,
+                dgvIngredients.CurrentRow.Cells[2].Value.ToString());
 
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                var index = dgvIngredients.CurrentRow.Index;
+                if (editForm.txtIngredientName.Text == string.Empty)
+                {
+                    MessageBox.Show("Не задано название ингредиента.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (editForm.txtIngredientName.Text != ingredientsSet[index].Name)
+                {
+                    if (ingredientsSet.Any(i => i.Name == editForm.txtIngredientName.Text))
+                    {
+                        MessageBox.Show("Ингредиент с таким названием уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                else if (editForm.numAmount.Value == 0)
+                {
+                    MessageBox.Show("Не задано количество.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (editForm.cmbUnit.Text == string.Empty)
+                {
+                    MessageBox.Show("Не задана единица измерения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    ingredientsSet[index].Name = editForm.txtIngredientName.Text;
+                    ingredientsSet[index].Amount = (double)editForm.numAmount.Value;
+                    ingredientsSet[index].Unit = editForm.cmbUnit.Text;
+                }
+            }
         }
 
         private void DeleteMenuItem_Click(object sender, EventArgs e)
         {
-  
-            ingredientsSet.RemoveAt(dgvIngredients.CurrentRow.Index);            
+            ingredientsSet.RemoveAt(dgvIngredients.CurrentRow.Index);
         }
 
         private void btnChangeRecipe_Click(object sender, EventArgs e)
@@ -162,14 +209,23 @@ namespace MG.MainMenu
                 recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
                 dgvRecipes.DataSource = recipesSet;
 
-                txtRecipeName.Text = string.Empty;
-                txtIngredientName.Text = string.Empty;
-
-                ingredientsSet = new BindingList<IngredientView>();
-                dgvIngredients.DataSource = ingredientsSet;
-
-                btnChangeRecipe.Enabled = false;
+                ClearForm();
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
+            txtRecipeName.Text = string.Empty;
+            txtIngredientName.Text = string.Empty;
+            ingredientsSet = new BindingList<IngredientView>();
+            dgvIngredients.DataSource = ingredientsSet;
+
+            btnChangeRecipe.Enabled = false;
         }
     }
 }
