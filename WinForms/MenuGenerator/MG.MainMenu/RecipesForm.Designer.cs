@@ -240,13 +240,13 @@
             // 
             // btnDeleteRecipe
             // 
-            this.btnDeleteRecipe.Enabled = false;
             this.btnDeleteRecipe.Location = new System.Drawing.Point(292, 354);
             this.btnDeleteRecipe.Name = "btnDeleteRecipe";
             this.btnDeleteRecipe.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteRecipe.TabIndex = 11;
             this.btnDeleteRecipe.Text = "Удалить";
             this.btnDeleteRecipe.UseVisualStyleBackColor = true;
+            this.btnDeleteRecipe.Click += new System.EventHandler(this.btnDeleteRecipe_Click);
             // 
             // label5
             // 
@@ -259,10 +259,13 @@
             // 
             // dgvRecipes
             // 
+            this.dgvRecipes.AllowUserToAddRows = false;
+            this.dgvRecipes.AllowUserToDeleteRows = false;
             this.dgvRecipes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRecipes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecipes.Location = new System.Drawing.Point(13, 29);
             this.dgvRecipes.Name = "dgvRecipes";
+            this.dgvRecipes.ReadOnly = true;
             this.dgvRecipes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecipes.Size = new System.Drawing.Size(354, 319);
             this.dgvRecipes.TabIndex = 13;

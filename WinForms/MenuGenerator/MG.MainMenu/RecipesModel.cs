@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using MG.MainMenu.BusinessLayer;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace MG.MainMenu
 {
@@ -129,6 +130,19 @@ namespace MG.MainMenu
                     Amount = i.Amount
                 }).ToList()
             });
+        }
+
+        internal void DeleteRecipe(DataGridViewRow currentRow)
+        {
+            var name = currentRow.Cells["Name"].Value.ToString();
+            var category = currentRow.Cells["Category"].Value.ToString();
+            var season = currentRow.Cells["Seasonality"].Value.ToString();
+
+            var recipeToDelete = Recipes
+                .Where(r => r.Name == name && r.Category == category && r.Seasonality == season)
+                .FirstOrDefault();
+
+            Recipes.Remove(recipeToDelete);
         }
 
         private List<Recipe> SeedData()

@@ -99,8 +99,23 @@ namespace MG.MainMenu
                     ingredientsSet
                     );
 
+                recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
+                dgvRecipes.DataSource = recipesSet;
 
+                txtRecipeName.Text = string.Empty;
+                txtIngredientName.Text = string.Empty;
+
+                ingredientsSet = new BindingList<IngredientView>();
+                dgvIngredients.DataSource = ingredientsSet;
             }
+        }
+
+        private void btnDeleteRecipe_Click(object sender, EventArgs e)
+        {
+            model.DeleteRecipe(dgvRecipes.CurrentRow);
+
+            recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
+            dgvRecipes.DataSource = recipesSet;
         }
     }
 }
