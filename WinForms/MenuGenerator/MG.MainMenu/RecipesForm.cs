@@ -160,7 +160,6 @@ namespace MG.MainMenu
                         MessageBox.Show("Ингредиент с таким названием уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
                 else if (editForm.numAmount.Value == 0)
                 {
                     MessageBox.Show("Не задано количество.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
