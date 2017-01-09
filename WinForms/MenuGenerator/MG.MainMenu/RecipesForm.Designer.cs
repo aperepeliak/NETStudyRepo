@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAddIngredient = new System.Windows.Forms.Button();
             this.cmbUnit = new System.Windows.Forms.ComboBox();
@@ -49,10 +50,14 @@
             this.btnDeleteRecipe = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvRecipes = new System.Windows.Forms.DataGridView();
+            this.contextMenuIngredients = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).BeginInit();
+            this.contextMenuIngredients.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -157,6 +162,7 @@
             this.btnChangeRecipe.TabIndex = 10;
             this.btnChangeRecipe.Text = "Изменить";
             this.btnChangeRecipe.UseVisualStyleBackColor = true;
+            this.btnChangeRecipe.Click += new System.EventHandler(this.btnChangeRecipe_Click);
             // 
             // btnAddRecipe
             // 
@@ -182,8 +188,10 @@
             this.dgvIngredients.AllowUserToAddRows = false;
             this.dgvIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIngredients.ContextMenuStrip = this.contextMenuIngredients;
             this.dgvIngredients.Location = new System.Drawing.Point(7, 190);
             this.dgvIngredients.Name = "dgvIngredients";
+            this.dgvIngredients.ReadOnly = true;
             this.dgvIngredients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIngredients.Size = new System.Drawing.Size(301, 146);
             this.dgvIngredients.TabIndex = 7;
@@ -271,6 +279,28 @@
             this.dgvRecipes.TabIndex = 13;
             this.dgvRecipes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecipes_CellDoubleClick);
             // 
+            // contextMenuIngredients
+            // 
+            this.contextMenuIngredients.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditMenuItem,
+            this.DeleteMenuItem});
+            this.contextMenuIngredients.Name = "contextMenuIngredients";
+            this.contextMenuIngredients.Size = new System.Drawing.Size(129, 48);
+            // 
+            // EditMenuItem
+            // 
+            this.EditMenuItem.Name = "EditMenuItem";
+            this.EditMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.EditMenuItem.Text = "Изменить";
+            this.EditMenuItem.Click += new System.EventHandler(this.EditMenuItem_Click);
+            // 
+            // DeleteMenuItem
+            // 
+            this.DeleteMenuItem.Name = "DeleteMenuItem";
+            this.DeleteMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteMenuItem.Text = "Удалить";
+            this.DeleteMenuItem.Click += new System.EventHandler(this.DeleteMenuItem_Click);
+            // 
             // RecipesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).EndInit();
+            this.contextMenuIngredients.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +347,8 @@
         private System.Windows.Forms.Button btnAddIngredient;
         private System.Windows.Forms.ComboBox cmbUnit;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ContextMenuStrip contextMenuIngredients;
+        private System.Windows.Forms.ToolStripMenuItem EditMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DeleteMenuItem;
     }
 }

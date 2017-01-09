@@ -124,5 +124,51 @@ namespace MG.MainMenu
             recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
             dgvRecipes.DataSource = recipesSet;
         }
+
+        private void EditMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChangeRecipe_Click(object sender, EventArgs e)
+        {
+            if (txtRecipeName.Text == string.Empty)
+            {
+                MessageBox.Show("Не задано название блюда.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cmbCategory.Text == string.Empty)
+            {
+                MessageBox.Show("Не задана категория блюда.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cmbSeason.Text == string.Empty)
+            {
+                MessageBox.Show("Не задана сезонность блюда.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (ingredientsSet.Count < 1)
+            {
+                MessageBox.Show("Блюдо должно содержать хотя бы один ингредиент.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                model.ChangeRecipe(dgvRecipes.CurrentRow, txtRecipeName.Text,
+                    cmbCategory.Text, cmbSeason.Text, ingredientsSet);
+
+                recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
+                dgvRecipes.DataSource = recipesSet;
+
+                txtRecipeName.Text = string.Empty;
+                txtIngredientName.Text = string.Empty;
+
+                ingredientsSet = new BindingList<IngredientView>();
+                dgvIngredients.DataSource = ingredientsSet;
+
+                btnChangeRecipe.Enabled = false;
+            }
+        }
     }
 }

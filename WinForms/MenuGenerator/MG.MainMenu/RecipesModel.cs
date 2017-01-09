@@ -162,6 +162,37 @@ namespace MG.MainMenu
             Recipes.Remove(recipeToDelete);
         }
 
+        internal void ChangeRecipe(DataGridViewRow currentRow, string name,
+            string category, string season, BindingList<IngredientView> ingredientsSet)
+        {
+            var recipeName = currentRow.Cells["Name"].Value.ToString();
+            //var recipeCategory = currentRow.Cells["Category"].Value.ToString();
+            //var recipeSeason = currentRow.Cells["Seasonality"].Value.ToString();
+
+            //var recipeToChange = Recipes
+            //    .Where(r => r.Name == name && r.Category == category && r.Seasonality == season)
+            //    .FirstOrDefault();
+
+            var recipeChanged = new Recipe
+            {
+                Name = name,
+                Category = category,
+                Seasonality = season,
+                Ingredients = ingredientsSet.Select(i => new IngredientInfo
+                {
+                    Ingredient = new Ingredient
+                    {
+                        Name = i.Name,
+                        Units = i.Unit
+                    },
+                    Amount = i.Amount
+                }).ToList()
+            };
+
+            var index = Recipes.FindIndex(r => r.Name == recipeName);
+            Recipes[index] = recipeChanged;
+        }
+
         private List<Recipe> SeedData()
         {
             var recipes = new List<Recipe>()
