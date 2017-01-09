@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="BusinessLayer\IngredientView.cs" />
     <Compile Include="BusinessLayer\RecipeView.cs" />
+    <Compile Include="EditIngredForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditIngredForm.Designer.cs">
+      <DependentUpon>EditIngredForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
       <DependentUpon>RecipesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RecipesModel.cs" />
+    <EmbeddedResource Include="EditIngredForm.resx">
+      <DependentUpon>EditIngredForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>

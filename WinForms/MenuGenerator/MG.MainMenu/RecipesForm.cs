@@ -132,7 +132,8 @@ namespace MG.MainMenu
 
         private void DeleteMenuItem_Click(object sender, EventArgs e)
         {
-
+  
+            ingredientsSet.RemoveAt(dgvIngredients.CurrentRow.Index);            
         }
 
         private void btnChangeRecipe_Click(object sender, EventArgs e)
