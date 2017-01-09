@@ -114,10 +114,10 @@
             // 
             this.numAmount.DecimalPlaces = 2;
             this.numAmount.Increment = new decimal(new int[] {
-            5,
+            25,
             0,
             0,
-            65536});
+            131072});
             this.numAmount.Location = new System.Drawing.Point(95, 162);
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(50, 20);

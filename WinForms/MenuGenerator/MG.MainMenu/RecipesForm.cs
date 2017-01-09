@@ -35,7 +35,14 @@ namespace MG.MainMenu
 
         private void dgvRecipes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Test");
+            btnChangeRecipe.Enabled = true;
+
+            txtRecipeName.Text = dgvRecipes.CurrentRow.Cells["Name"].Value.ToString();
+            cmbCategory.Text = dgvRecipes.CurrentRow.Cells["Category"].Value.ToString();
+            cmbSeason.Text = dgvRecipes.CurrentRow.Cells["Seasonality"].Value.ToString();
+
+            ingredientsSet = model.GetRecipeIngredients(txtRecipeName.Text);
+            dgvIngredients.DataSource = ingredientsSet;
         }
 
         private void btnAddIngredient_Click(object sender, EventArgs e)

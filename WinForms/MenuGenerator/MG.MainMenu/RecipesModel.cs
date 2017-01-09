@@ -87,6 +87,23 @@ namespace MG.MainMenu
             document.Save("Recipes.xml");
         }
 
+        internal BindingList<IngredientView> GetRecipeIngredients(string recipeName)
+        {
+            var query = Recipes
+                .Where(r => r.Name == recipeName)
+                .FirstOrDefault()
+                .Ingredients
+                .Select(ii => new IngredientView
+                {
+                    Name = ii.Ingredient.Name,
+                    Unit = ii.Ingredient.Units,
+                    Amount = ii.Amount
+                })
+                .ToList();
+
+            return new BindingList<IngredientView>(query);
+        }
+
         public List<Recipe> GetDataFromXml()
         {
             var query =
