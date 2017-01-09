@@ -14,7 +14,7 @@ namespace MG.MainMenu.BusinessLayer
         public string Seasonality { get; set; }
 
 
-        public static List<RecipeView> GetRecipesInfo(RecipesModel data)
+        public static List<RecipeView> GetRecipesView(RecipesModel data)
         {
             var query = data.Recipes
                 .Select(r => new RecipeView

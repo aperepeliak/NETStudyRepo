@@ -15,6 +15,7 @@ namespace MG.MainMenu
     {
         RecipesModel model;
         BindingList<IngredientView> ingredientsSet;
+        BindingList<RecipeView> recipesSet;
 
         public RecipesForm(RecipesModel model)
         {
@@ -22,8 +23,9 @@ namespace MG.MainMenu
             this.model = model;
 
             ingredientsSet = new BindingList<IngredientView>();
+            recipesSet = new BindingList<RecipeView>(RecipeView.GetRecipesView(model));
 
-            dgvRecipes.DataSource = RecipeView.GetRecipesInfo(model);
+            dgvRecipes.DataSource = recipesSet;
             dgvIngredients.DataSource = ingredientsSet;
 
             cmbCategory.DataSource = model.GetCategories();
@@ -91,7 +93,13 @@ namespace MG.MainMenu
             }
             else
             {
-                MessageBox.Show("Добавляем!!");
+                model.AddRecipe(txtRecipeName.Text,
+                    cmbCategory.Text,
+                    cmbSeason.Text,
+                    ingredientsSet
+                    );
+
+
             }
         }
     }

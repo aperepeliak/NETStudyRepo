@@ -277,6 +277,7 @@
             this.Controls.Add(this.dgvRecipes);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "RecipesForm";
             this.Text = "Управление рецептами";
             this.groupBox1.ResumeLayout(false);

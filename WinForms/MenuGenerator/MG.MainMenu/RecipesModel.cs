@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using MG.MainMenu.BusinessLayer;
+using System.ComponentModel;
 
 namespace MG.MainMenu
 {
@@ -107,6 +109,26 @@ namespace MG.MainMenu
                         };
 
             return query.ToList();
+        }
+
+        internal void AddRecipe(string name, string category, string season,
+            BindingList<IngredientView> ingredientsSet)
+        {
+            Recipes.Add(new Recipe
+            {
+                Name = name,
+                Category = category,
+                Seasonality = season,
+                Ingredients = ingredientsSet.Select(i => new IngredientInfo
+                {
+                    Ingredient = new Ingredient
+                    {
+                        Name = i.Name,
+                        Units = i.Unit
+                    },
+                    Amount = i.Amount
+                }).ToList()
+            });
         }
 
         private List<Recipe> SeedData()
