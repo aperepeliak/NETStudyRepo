@@ -36,6 +36,9 @@
     <Reference Include="MG.Entities">
       <HintPath>..\MG.Entities\bin\Debug\MG.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\..\..\files\morelinq-1.0-beta\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +60,8 @@
     <Compile Include="EditIngredForm.Designer.cs">
       <DependentUpon>EditIngredForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generator\GeneratorEngine.cs" />
+    <Compile Include="Generator\GeneratorParams.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
