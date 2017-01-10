@@ -24,6 +24,18 @@ namespace MG.MainMenu
         {
             InitializeComponent();
             model = new RecipesModel();
+
+            cmbOptionOne.DataSource = model.GetCategories();
+            
+
+            var listForCombo = new List<string> { "[пусто]" };
+            listForCombo.AddRange(model.GetCategories());
+
+            cmbOptionTwo.DataSource = listForCombo;
+            cmbOptionThree.DataSource = listForCombo;
+            cmbOptionFour.DataSource = listForCombo;
+
+
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -40,6 +52,19 @@ namespace MG.MainMenu
         {
             recipesForm = new RecipesForm(model);
             recipesForm.ShowDialog();
+        }
+
+        private void chkSeason_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeason.CheckState == CheckState.Checked)
+            {
+                lbxSeason.Enabled = true;
+                lbxSeason.DataSource = model.GetSeasons();
+            } else
+            {
+                lbxSeason.Enabled = true;
+                lbxSeason.DataSource = null;
+            }
         }
     }
 }

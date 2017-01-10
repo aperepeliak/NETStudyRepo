@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.numOptionFour = new System.Windows.Forms.NumericUpDown();
+            this.cmbOptionFour = new System.Windows.Forms.ComboBox();
             this.lbxSeason = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.numOptionThree = new System.Windows.Forms.NumericUpDown();
@@ -47,14 +50,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtIngrdients = new System.Windows.Forms.RichTextBox();
             this.btnManageRecipes = new System.Windows.Forms.Button();
-            this.cmbOptionFour = new System.Windows.Forms.ComboBox();
-            this.numOptionFour = new System.Windows.Forms.NumericUpDown();
-            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -83,6 +83,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры генератора";
             // 
+            // btnReset
+            // 
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.Enabled = false;
+            this.btnReset.Location = new System.Drawing.Point(159, 340);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(93, 23);
+            this.btnReset.TabIndex = 15;
+            this.btnReset.Text = "Сброс";
+            this.btnReset.UseVisualStyleBackColor = true;
+            // 
+            // numOptionFour
+            // 
+            this.numOptionFour.Location = new System.Drawing.Point(172, 140);
+            this.numOptionFour.Name = "numOptionFour";
+            this.numOptionFour.Size = new System.Drawing.Size(61, 20);
+            this.numOptionFour.TabIndex = 14;
+            // 
+            // cmbOptionFour
+            // 
+            this.cmbOptionFour.FormattingEnabled = true;
+            this.cmbOptionFour.Location = new System.Drawing.Point(9, 139);
+            this.cmbOptionFour.Name = "cmbOptionFour";
+            this.cmbOptionFour.Size = new System.Drawing.Size(141, 21);
+            this.cmbOptionFour.TabIndex = 13;
+            // 
             // lbxSeason
             // 
             this.lbxSeason.BackColor = System.Drawing.SystemColors.Window;
@@ -99,9 +125,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(8, 210);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 13);
+            this.label5.Size = new System.Drawing.Size(119, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Выберите текущие сезоны";
+            this.label5.Text = "Выберите сезонности";
             // 
             // numOptionThree
             // 
@@ -163,6 +189,7 @@
             this.chkSeason.TabIndex = 4;
             this.chkSeason.Text = "Учитывать сезонность";
             this.chkSeason.UseVisualStyleBackColor = true;
+            this.chkSeason.CheckedChanged += new System.EventHandler(this.chkSeason_CheckedChanged);
             // 
             // label1
             // 
@@ -190,11 +217,6 @@
             this.numOptionTwo.Name = "numOptionTwo";
             this.numOptionTwo.Size = new System.Drawing.Size(61, 20);
             this.numOptionTwo.TabIndex = 1;
-            this.numOptionTwo.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             // 
             // numOptionOne
             // 
@@ -253,32 +275,6 @@
             this.btnManageRecipes.UseVisualStyleBackColor = true;
             this.btnManageRecipes.Click += new System.EventHandler(this.btnManageRecipes_Click);
             // 
-            // cmbOptionFour
-            // 
-            this.cmbOptionFour.FormattingEnabled = true;
-            this.cmbOptionFour.Location = new System.Drawing.Point(9, 139);
-            this.cmbOptionFour.Name = "cmbOptionFour";
-            this.cmbOptionFour.Size = new System.Drawing.Size(141, 21);
-            this.cmbOptionFour.TabIndex = 13;
-            // 
-            // numOptionFour
-            // 
-            this.numOptionFour.Location = new System.Drawing.Point(172, 140);
-            this.numOptionFour.Name = "numOptionFour";
-            this.numOptionFour.Size = new System.Drawing.Size(61, 20);
-            this.numOptionFour.TabIndex = 14;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(159, 340);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(93, 23);
-            this.btnReset.TabIndex = 15;
-            this.btnReset.Text = "Сброс";
-            this.btnReset.UseVisualStyleBackColor = true;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,10 +294,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
