@@ -58,15 +58,15 @@ namespace MG.MainMenu
                 categoryQuantity.Add(item.key, item.value);
             }
 
-            string[] seasons = lbxSeason.SelectedItems.Cast<string>().ToArray();
+            string season = lbxSeason.SelectedItem.ToString();       
 
             var genParams = new GeneratorParams()
             {
                 CategoryQuantity = categoryQuantity,
-                Seasons = seasons
+                Season = season
             };
 
-            string[] result = GeneratorEngine.GetMenu(genParams);
+            string[] result = GeneratorEngine.GetMenu(model, genParams);
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
