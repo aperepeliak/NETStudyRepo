@@ -14,7 +14,7 @@ namespace MagicEightBallServiceClient
         {
             Console.WriteLine("***** Ask the Magic Ball *****\n");
 
-            using (var magicBall = new EightBallClient())
+            using (var magicBall = new EightBallClient("NetTcpBinding_IEightBall"))
             {
                 Console.Write("Your question -> ");
                 var question = Console.ReadLine();
