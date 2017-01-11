@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="aa770bcd-e7b9-4ac2-a3a0-bf15daad2e97" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/EmailValidator" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EmailValidatorService.wsdl" MetadataType="Wsdl" ID="3bbdf421-2184-4195-9321-fc09cf15f742" SourceId="1" SourceUrl="http://localhost:8080/EmailValidator?wsdl" />
+    <MetadataFile FileName="EmailValidator.disco" MetadataType="Disco" ID="beeeb67f-230d-4dfe-bf49-8c79c38549e3" SourceId="1" SourceUrl="http://localhost:8080/EmailValidator?disco" />
+    <MetadataFile FileName="EmailValidator.xsd" MetadataType="Schema" ID="bb22165c-1d5e-430c-964b-35b5273af863" SourceId="1" SourceUrl="http://localhost:8080/EmailValidator?xsd=xsd1" />
+    <MetadataFile FileName="EmailValidator1.xsd" MetadataType="Schema" ID="a44860e9-7c61-4a6b-acd8-73dad8ba9ece" SourceId="1" SourceUrl="http://localhost:8080/EmailValidator?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

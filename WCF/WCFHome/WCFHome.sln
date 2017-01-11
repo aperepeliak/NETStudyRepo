@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidatorServiceLib", "EmailValidatorServiceLib\EmailValidatorServiceLib.csproj", "{96A229E9-9B75-404D-91A9-27EC567D9DE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "001-EmailValidator", "001-EmailValidator", "{2772A131-BB6B-40A7-A396-99A442C43E70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidatorServiceHost", "EmailValidatorServiceHost\EmailValidatorServiceHost.csproj", "{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidatorServiceClient", "EmailValidatorServiceClient\EmailValidatorServiceClient.csproj", "{A7B042AF-B694-4BA5-916F-F58164FD50A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96A229E9-9B75-404D-91A9-27EC567D9DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A229E9-9B75-404D-91A9-27EC567D9DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A229E9-9B75-404D-91A9-27EC567D9DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A229E9-9B75-404D-91A9-27EC567D9DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B042AF-B694-4BA5-916F-F58164FD50A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B042AF-B694-4BA5-916F-F58164FD50A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B042AF-B694-4BA5-916F-F58164FD50A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B042AF-B694-4BA5-916F-F58164FD50A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96A229E9-9B75-404D-91A9-27EC567D9DE3} = {2772A131-BB6B-40A7-A396-99A442C43E70}
+		{5A2B6203-EE3D-405A-A223-AC4D5C3EC59E} = {2772A131-BB6B-40A7-A396-99A442C43E70}
+		{A7B042AF-B694-4BA5-916F-F58164FD50A9} = {2772A131-BB6B-40A7-A396-99A442C43E70}
+	EndGlobalSection
+EndGlobal
