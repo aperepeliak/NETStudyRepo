@@ -9,7 +9,7 @@ namespace EmailValidatorServiceClient
         {
             Console.WriteLine("***** Welcome to EmailValidator *****\n");
 
-            using (var emailValidator = new EmailValidatorClient())
+            using (var emailValidator = new EmailValidatorClient("NetTcpBinding_IEmailValidator"))
             {
                 Console.Write("Enter e-mail address to validate -> ");
                 string email = Console.ReadLine();
