@@ -24,6 +24,45 @@ namespace AutoLotDAL.ConnectedLayer
             }
         }
 
+        public void InsertAuto(string color, string make, string petName)
+        {
+            string sql = "Insert Into Inventory" +
+                            "(Make, Color, PetName) Values" +
+                            "(@Make, @Color, @PetName)";
+
+            using (SqlCommand command = new SqlCommand(sql, _sqlConnection))
+            {
+                SqlParameter parameter = new SqlParameter
+                {
+                    ParameterName = "@Make",
+                    Value = make,
+                    SqlDbType = SqlDbType.Char,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter
+                {
+                    ParameterName = "@Color",
+                    Value = color,
+                    SqlDbType = SqlDbType.Char,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter
+                {
+                    ParameterName = "@PetName",
+                    Value = petName,
+                    SqlDbType = SqlDbType.Char,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void DeleteCar(int id)
         {
             string sql = $"Delete from Inventory where CarId = '{id}'";
