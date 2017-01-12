@@ -30,15 +30,25 @@ namespace MathWindowsServiceHost
                 myHost = null;
             }
 
-            myHost = new ServiceHost(typeof(MathService));
+            myHost = new ServiceHost(typeof(MathService),
+                new Uri("http://localhost:8080/MathService"));
 
-            Uri address = new Uri("http://localhost:8080/MathServiceLibrary");
-            WSHttpBinding binding = new WSHttpBinding();
-            Type contract = typeof(IBasicMath);
+            //Uri address = new Uri("http://localhost:8080/MathService");
+            //WSHttpBinding binding = new WSHttpBinding();
+            //Type contract = typeof(IBasicMath);
+            //myHost.AddServiceEndpoint(contract, binding, address);
+
+            myHost.AddDefaultEndpoints();
+
+            myHost.Open();
         }
 
         protected override void OnStop()
         {
+            if (myHost != null)
+            {
+                myHost.Close();
+            }
         }
     }
 }
