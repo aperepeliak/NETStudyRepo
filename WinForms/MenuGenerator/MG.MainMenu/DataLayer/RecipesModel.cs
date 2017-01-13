@@ -56,21 +56,27 @@ namespace MG.MainMenu
                 .ToList();
         }
 
-        public List<string> GetAllRecipesOfSeasonAndCategory(string category, string season)
+        public List<string> GetAllRecipesOfSeasonAndCategory(string category, string season = null)
         {
+            if (season == null)
+            {
+                return Recipes.Where(r => r.Category == category)
+                .Select(r => r.Name)
+                .ToList();
+            }
             return Recipes.Where(r => r.Seasonality == season && r.Category == category)
                 .Select(r => r.Name)
                 .ToList();
         }
 
-        public List<IngredientInfo> GetRequiredIndredients(List<string> chosenRecipesList)
+        public List<string> GetRequiredIndredients(List<string> chosenRecipesList)
         {
             var requiredIngrdedients = Recipes
                  .Where(r => chosenRecipesList.Contains(r.Name))
                  .SelectMany(r => r.Ingredients)
                  .ToList();
 
-            return requiredIngrdedients
+            var groupedIngredients = requiredIngrdedients
                 .GroupBy(ii => ii.Ingredient)
                 .Select(g =>
                 {
@@ -79,8 +85,16 @@ namespace MG.MainMenu
                         Ingredient = new Ingredient { Name = g.Key.Name, Units = g.Key.Units },
                         Amount = g.Sum(a => a.Amount)
                     };
-                })
-                .ToList();
+                });
+
+            var result = new List<string>();
+
+            foreach (var i in groupedIngredients)
+            {
+                result.Add($"{i.Ingredient.Name} : {i.Amount} {i.Ingredient.Units}");
+            }
+
+            return result;
         }
 
         internal string[] GetAvailableIngredients()

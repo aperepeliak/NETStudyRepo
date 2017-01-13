@@ -58,7 +58,9 @@ namespace MG.MainMenu
                 categoryQuantity.Add(item.key, item.value);
             }
 
-            string season = lbxSeason.SelectedItem.ToString();       
+            string season = lbxSeason.SelectedItem == null ? 
+                null : 
+                lbxSeason.SelectedItem.ToString();     
 
             var genParams = new GeneratorParams()
             {
@@ -66,7 +68,24 @@ namespace MG.MainMenu
                 Season = season
             };
 
-            string[] result = GeneratorEngine.GetMenu(model, genParams);
+            List<string> chosenRecipes;
+            List<string> requiredIngredients;
+
+            try
+            {
+                GeneratorEngine.GetMenu(model, genParams,
+                out chosenRecipes, out requiredIngredients);
+
+                foreach (var recipe in chosenRecipes)
+                {
+                    txtResult.Text += $"{recipe}\n";
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }          
+
+            
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)

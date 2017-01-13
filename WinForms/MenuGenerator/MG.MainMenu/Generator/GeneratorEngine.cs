@@ -1,4 +1,5 @@
-﻿using MG.MainMenu.DataLayer;
+﻿using MG.Entities;
+using MG.MainMenu.DataLayer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,19 +12,15 @@ namespace MG.MainMenu.Generator
 {
     public static class GeneratorEngine
     {
-        public static string[] GetMenu(RecipesModel recipesModel, GeneratorParams genParams)
+        public static void GetMenu(RecipesModel recipesModel, GeneratorParams genParams,
+            out List<string> chosenRecipes, out List<string> requiredIngredients)
         {
-            string chosenRecipes = string.Empty;
-            string requiredIngredients = string.Empty;
+            chosenRecipes = new List<string>();
 
             var recentRecipesModel = new RecentRecipesModel();
-
-            var season = genParams.Season;
-            var chosenRecipesList = new List<string>();
-
             string[] recentRecipes = recentRecipesModel.RecentRecipes.ToArray();
 
-
+            var season = genParams.Season;
             foreach (var item in genParams.CategoryQuantity)
             {
                 string[] recipesToChooseFrom = GetRecipesToChooseFrom(recentRecipes, recipesModel, item.Key, season);
@@ -35,15 +32,13 @@ namespace MG.MainMenu.Generator
                 else
                 {
                     string[] selectedRecipesOfCategory = GetRandomRecipes(item.Value, recipesToChooseFrom);
-                    chosenRecipesList.AddRange(selectedRecipesOfCategory);
+                    chosenRecipes.AddRange(selectedRecipesOfCategory);
                 }
             }
 
-            recentRecipesModel.SaveDataToXml(chosenRecipesList);
+            // recentRecipesModel.SaveDataToXml(chosenRecipesList);
 
-            //requiredIngredients = recipesModel.GetRequiredIndredients(chosenRecipesList);
-
-            return new string[] { chosenRecipes, requiredIngredients };
+            requiredIngredients = recipesModel.GetRequiredIndredients(chosenRecipes);
         }
 
         private static string[] GetRandomRecipes(int quantity, string[] recipesToChooseFrom)
@@ -56,8 +51,7 @@ namespace MG.MainMenu.Generator
             while (selected.Count < quantity)
             {
                 double chance = rand.NextDouble();
-
-                if (chance < needed / available)
+                if (chance < (double)needed / available)
                 {
                     selected.Add(recipesToChooseFrom[available - 1]);
                     needed--;
