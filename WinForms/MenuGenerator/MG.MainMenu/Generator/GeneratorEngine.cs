@@ -41,6 +41,8 @@ namespace MG.MainMenu.Generator
 
             recentRecipesModel.SaveDataToXml(chosenRecipesList);
 
+            //requiredIngredients = recipesModel.GetRequiredIndredients(chosenRecipesList);
+
             return new string[] { chosenRecipes, requiredIngredients };
         }
 

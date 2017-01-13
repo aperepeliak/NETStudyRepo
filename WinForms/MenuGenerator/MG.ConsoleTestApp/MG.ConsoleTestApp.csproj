@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MG.Entities\MG.Entities.csproj">
+      <Project>{D4EDEE97-0D9E-4A12-8393-B984ACFF978A}</Project>
+      <Name>MG.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MG.MainMenu\MG.WinApp.csproj">
       <Project>{004375D8-B162-41BF-ADD3-3DBF75830F44}</Project>
       <Name>MG.WinApp</Name>

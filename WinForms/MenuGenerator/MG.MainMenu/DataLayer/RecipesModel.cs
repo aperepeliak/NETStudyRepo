@@ -63,6 +63,26 @@ namespace MG.MainMenu
                 .ToList();
         }
 
+        public List<IngredientInfo> GetRequiredIndredients(List<string> chosenRecipesList)
+        {
+            var requiredIngrdedients = Recipes
+                 .Where(r => chosenRecipesList.Contains(r.Name))
+                 .SelectMany(r => r.Ingredients)
+                 .ToList();
+
+            return requiredIngrdedients
+                .GroupBy(ii => ii.Ingredient)
+                .Select(g =>
+                {
+                    return new IngredientInfo
+                    {
+                        Ingredient = new Ingredient { Name = g.Key.Name, Units = g.Key.Units },
+                        Amount = g.Sum(a => a.Amount)
+                    };
+                })
+                .ToList();
+        }
+
         internal string[] GetAvailableIngredients()
         {
             return Recipes
@@ -209,36 +229,36 @@ namespace MG.MainMenu
             {
                 new Recipe()
                 {
-                    Category = "Вторые блюда", Seasonality = "Всесезонность",
-                    Name = "Толченка",
+                    Category = "Вторые блюда", Seasonality = "все",
+                    Name = "толченка",
                     Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Картофель", Units = "кг" },
+                            Ingredient = new Ingredient() {Name = "картофель", Units = "кг" },
                             Amount = 1.5
                         }
                     }
                 },
                 new Recipe()
                 {
-                    Category = "Первые блюда", Seasonality = "Всесезонность",
-                    Name = "Уха",
+                    Category = "Первые блюда", Seasonality = "все",
+                    Name = "уха",
                     Ingredients = new List<IngredientInfo>()
                     {
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Картофель", Units = "кг" },
+                            Ingredient = new Ingredient() {Name = "картофель", Units = "кг" },
                             Amount = 0.2
                         },
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Рыба", Units = "кг" },
+                            Ingredient = new Ingredient() {Name = "рыба", Units = "кг" },
                             Amount = 0.9
                         },
                         new IngredientInfo()
                         {
-                            Ingredient = new Ingredient() {Name = "Рис", Units = "кг" },
+                            Ingredient = new Ingredient() {Name = "рис", Units = "кг" },
                             Amount = 0.1
                         }
                     }

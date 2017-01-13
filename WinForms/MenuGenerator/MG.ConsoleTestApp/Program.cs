@@ -1,4 +1,6 @@
-﻿using MG.MainMenu.DataLayer;
+﻿using MG.Entities;
+using MG.MainMenu;
+using MG.MainMenu.DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +13,44 @@ namespace MG.ConsoleTestApp
     {
         static void Main(string[] args)
         {
-            var model = new RecentRecipesModel();
+            var model = new RecipesModel();
 
-            foreach (var item in model.RecentRecipes)
+            //string[] chosenRecipesList = { "уха", "толченка" };
+
+            //var requiredIngrdedients = model.Recipes
+            //     .Where(r => chosenRecipesList.Contains(r.Name))
+            //     .SelectMany(r => r.Ingredients)
+            //     .ToList();
+
+            //var res = requiredIngrdedients
+            //    .GroupBy(ii => ii.Ingredient.Name)
+            //    .Select(g =>
+            //    {
+            //        return new IngredientInfo
+            //        {
+            //            Ingredient = new Ingredient { Name = g.Key },
+            //            Amount = g.Sum(a => a.Amount)
+            //        };
+            //    })
+            //    .ToList();
+
+            //foreach (var i in res)
+            //{
+            //    Console.WriteLine($"Ingredient: {i.Ingredient.Name} Amount: {i.Amount} {i.Ingredient.Units}");
+            //    //Console.WriteLine(i.Key);
+            //}
+
+            var res = model.GetRequiredIndredients(new List<string>
             {
-                Console.WriteLine(item);
+                "уха", "толченка", "жаркое", "пицца"
+            });
+
+            foreach (var item in res)
+            {
+                Console.WriteLine($"Ingredient: {item.Ingredient.Name} : {item.Amount} {item.Ingredient.Units}");
             }
 
-            // model.SaveDataToXml(new string[] { "desert" });
+            Console.ReadLine();
         }
     }
 }
