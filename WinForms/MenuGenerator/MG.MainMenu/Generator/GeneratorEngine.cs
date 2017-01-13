@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MG.MainMenu.DataLayer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,24 +11,69 @@ namespace MG.MainMenu.Generator
 {
     public static class GeneratorEngine
     {
-        public static string[] GetMenu(RecipesModel model, GeneratorParams genParams)
+        public static string[] GetMenu(RecipesModel recipesModel, GeneratorParams genParams)
         {
             string chosenRecipes = string.Empty;
             string requiredIngredients = string.Empty;
 
-            
-
+            var recentRecipesModel = new RecentRecipesModel();
 
             var season = genParams.Season;
+            var chosenRecipesList = new List<string>();
+
+            string[] recentRecipes = recentRecipesModel.RecentRecipes.ToArray();
+
 
             foreach (var item in genParams.CategoryQuantity)
             {
-                //string[] recentRecipes = LoadRecentRecipes(item.Key);
-                //string[] recipesToChooseFrom = ExcludeRecentRecipesFromList(item.Key);
-                //string[] selectedRecipes = GetRandomRecipes();
+                string[] recipesToChooseFrom = GetRecipesToChooseFrom(recentRecipes, recipesModel, item.Key, season);
+
+                if (recipesToChooseFrom.Length < item.Value)
+                {
+                    throw new Exception("Недостаточно рецептов заданной категории");
+                }
+                else
+                {
+                    string[] selectedRecipesOfCategory = GetRandomRecipes(item.Value, recipesToChooseFrom);
+                    chosenRecipesList.AddRange(selectedRecipesOfCategory);
+                }
             }
 
+            recentRecipesModel.SaveDataToXml(chosenRecipesList);
+
             return new string[] { chosenRecipes, requiredIngredients };
+        }
+
+        private static string[] GetRandomRecipes(int quantity, string[] recipesToChooseFrom)
+        {
+            var selected = new List<string>();
+            var needed = quantity;
+            var available = recipesToChooseFrom.Length;
+            var rand = new Random();
+
+            while (selected.Count < quantity)
+            {
+                double chance = rand.NextDouble();
+
+                if (chance < needed / available)
+                {
+                    selected.Add(recipesToChooseFrom[available - 1]);
+                    needed--;
+                }
+                available--;
+            }
+
+            return selected.ToArray();
+        }
+
+        private static string[] GetRecipesToChooseFrom(string[] recentRecipes, RecipesModel recipesModel,
+            string category, string season)
+        {
+            List<string> recipesOfCategoryAndSeason = recipesModel.GetAllRecipesOfSeasonAndCategory(category, season);
+
+            return recipesOfCategoryAndSeason
+                .Where(r => !recentRecipes.Contains(r))
+                .ToArray();
         }
     }
 }

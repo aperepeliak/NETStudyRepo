@@ -56,6 +56,13 @@ namespace MG.MainMenu
                 .ToList();
         }
 
+        public List<string> GetAllRecipesOfSeasonAndCategory(string category, string season)
+        {
+            return Recipes.Where(r => r.Seasonality == season && r.Category == category)
+                .Select(r => r.Name)
+                .ToList();
+        }
+
         internal string[] GetAvailableIngredients()
         {
             return Recipes

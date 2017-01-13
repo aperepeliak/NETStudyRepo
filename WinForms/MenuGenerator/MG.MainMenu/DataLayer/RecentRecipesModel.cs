@@ -36,7 +36,7 @@ namespace MG.MainMenu.DataLayer
                 .ToList();
         }
 
-        public void SaveDataToXml(string[] chosenRecipes)
+        public void SaveDataToXml(List<string> chosenRecipes)
         {
             if (document != null)
             {
