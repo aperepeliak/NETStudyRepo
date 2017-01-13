@@ -15,18 +15,20 @@ namespace MG.MainMenu
 {
     public class RecipesModel
     {
+        private const string XMLSource = "Recipes.xml";
+
         XDocument document;
         public List<Recipe> Recipes { get; }
 
         public RecipesModel()
         {
-            if (!File.Exists("Recipes.xml"))
+            if (!File.Exists(XMLSource))
             {
                 Recipes = SeedData();
             }
             else
             {
-                document = XDocument.Load("Recipes.xml");
+                document = XDocument.Load(XMLSource);
                 Recipes = GetDataFromXml();
             }
         }
@@ -92,7 +94,7 @@ namespace MG.MainMenu
 
             document = new XDocument();
             document.Add(rcps);
-            document.Save("Recipes.xml");
+            document.Save(XMLSource);
         }
 
         internal BindingList<IngredientView> GetRecipeIngredients(string recipeName)
