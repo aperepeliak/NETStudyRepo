@@ -22,20 +22,12 @@ namespace MG.MainMenu.Generator
 
             foreach (var item in genParams.CategoryQuantity)
             {
-                string[] recentRecipes = LoadRecentRecipes(item.Key);
-                string[] recipesToChooseFrom = ExcludeRecentRecipesFromList(item.Key);
-                string[] selectedRecipes = GetRandomRecipes();
+                //string[] recentRecipes = LoadRecentRecipes(item.Key);
+                //string[] recipesToChooseFrom = ExcludeRecentRecipesFromList(item.Key);
+                //string[] selectedRecipes = GetRandomRecipes();
             }
 
             return new string[] { chosenRecipes, requiredIngredients };
-        }
-
-        private static string[] LoadRecentRecipes(string category)
-        {
-            if (File.Exists("RecentRecipes.xml"))
-            {
-                var document = XDocument.Load("RecentRecipes.xml");
-            }
         }
     }
 }

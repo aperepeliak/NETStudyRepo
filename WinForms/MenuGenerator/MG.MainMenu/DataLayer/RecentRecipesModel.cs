@@ -8,19 +8,21 @@ using System.Xml.Linq;
 
 namespace MG.MainMenu.DataLayer
 {
-    
+
     public class RecentRecipesModel
     {
+        private const string XMLSource = "RecentRecipes.xml";
         XDocument document;
         public List<string> RecentRecipes { get; }
 
         public RecentRecipesModel()
         {
-            if (File.Exists("Recipes.xml"))
+            if (File.Exists(XMLSource))
             {
-                document = XDocument.Load("RecentRecipes.xml");
+                document = XDocument.Load(XMLSource);
                 RecentRecipes = GetDataFromXml();
-            } else
+            }
+            else
             {
                 RecentRecipes = new List<string>();
             }
@@ -28,10 +30,44 @@ namespace MG.MainMenu.DataLayer
 
         private List<string> GetDataFromXml()
         {
-            var query =
+            return
                 document.Element("RecentRecipes").Elements("Iteration")
-                .Select(i => i.)
-                
+                .SelectMany(i => i.Elements("Recipe").Select(r => r.Attribute("Name").Value))
+                .ToList();
+        }
+
+        public void SaveDataToXml(string[] chosenRecipes)
+        {
+            if (document != null)
+            {
+                var newIteration = new XElement("Iteration",
+                        from r in chosenRecipes
+                        select new XElement("Recipe", new XAttribute("Name", r))
+                    );
+                document.Root.AddFirst(newIteration);
+
+                if (document.Root.Elements("Iteration").Count() == 6)
+                {
+                    document.Root.Elements("Iteration").Last().Remove();
+                }
+
+                document.Save(XMLSource);
+            }
+            else
+            {
+                document = new XDocument();
+
+                var recentRecipes = new XElement("RecentRecipes");
+
+                var newIteration = new XElement("Iteration",
+                        from r in chosenRecipes
+                        select new XElement("Recipe", new XAttribute("Name", r))
+                    );
+                recentRecipes.Add(newIteration);
+
+                document.Add(recentRecipes);
+                document.Save(XMLSource);
+            }
         }
     }
 }
