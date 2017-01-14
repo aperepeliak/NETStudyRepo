@@ -74,9 +74,16 @@ namespace MG.MainMenu
                 GeneratorEngine.GetMenu(model, genParams,
                 out chosenRecipes, out requiredIngredients);
 
+                int i = 1;
                 foreach (var recipe in chosenRecipes)
                 {
-                    txtResult.Text += $"{recipe}\n";
+                    txtResult.Text += $"{i++}.  {recipe}\n";
+                }
+
+                int k = 1;
+                foreach (var ingr in requiredIngredients)
+                {
+                    txtIngrdients.Text += $"{k++}.  {ingr}\n";
                 }
             }
             catch (Exception ex)

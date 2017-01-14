@@ -232,6 +232,7 @@
             // 
             // txtResult
             // 
+            this.txtResult.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtResult.Location = new System.Drawing.Point(276, 72);
             this.txtResult.Name = "txtResult";
             this.txtResult.Size = new System.Drawing.Size(258, 121);
@@ -258,6 +259,7 @@
             // 
             // txtIngrdients
             // 
+            this.txtIngrdients.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtIngrdients.Location = new System.Drawing.Point(276, 220);
             this.txtIngrdients.Name = "txtIngrdients";
             this.txtIngrdients.Size = new System.Drawing.Size(258, 180);

@@ -91,7 +91,7 @@ namespace MG.MainMenu
 
             foreach (var i in groupedIngredients)
             {
-                result.Add($"{i.Ingredient.Name} : {i.Amount} {i.Ingredient.Units}");
+                result.Add($"{i.Ingredient.Name} {(i.Ingredient.Name.Length < 4 ? "\t\t\t" : "\t\t")} : {i.Amount} {i.Ingredient.Units}");
             }
 
             return result;
