@@ -116,6 +116,7 @@
             this.lbxSeason.FormattingEnabled = true;
             this.lbxSeason.Location = new System.Drawing.Point(12, 229);
             this.lbxSeason.Name = "lbxSeason";
+            this.lbxSeason.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lbxSeason.Size = new System.Drawing.Size(141, 134);
             this.lbxSeason.TabIndex = 12;
             // 

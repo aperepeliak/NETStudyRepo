@@ -20,10 +20,10 @@ namespace MG.MainMenu.Generator
             var recentRecipesModel = new RecentRecipesModel();
             string[] recentRecipes = recentRecipesModel.RecentRecipes.ToArray();
 
-            var season = genParams.Season;
+            var seasons = genParams.Seasons;
             foreach (var item in genParams.CategoryQuantity)
             {
-                string[] recipesToChooseFrom = GetRecipesToChooseFrom(recentRecipes, recipesModel, item.Key, season);
+                string[] recipesToChooseFrom = GetRecipesToChooseFrom(recentRecipes, recipesModel, item.Key, seasons);
 
                 if (recipesToChooseFrom.Length < item.Value)
                 {
@@ -63,9 +63,9 @@ namespace MG.MainMenu.Generator
         }
 
         private static string[] GetRecipesToChooseFrom(string[] recentRecipes, RecipesModel recipesModel,
-            string category, string season)
+            string category, string[] seasons)
         {
-            List<string> recipesOfCategoryAndSeason = recipesModel.GetAllRecipesOfSeasonAndCategory(category, season);
+            List<string> recipesOfCategoryAndSeason = recipesModel.GetAllRecipesOfSeasonAndCategory(category, seasons);
 
             return recipesOfCategoryAndSeason
                 .Where(r => !recentRecipes.Contains(r))

@@ -58,14 +58,12 @@ namespace MG.MainMenu
                 categoryQuantity.Add(item.key, item.value);
             }
 
-            string season = lbxSeason.SelectedItem == null ? 
-                null : 
-                lbxSeason.SelectedItem.ToString();     
+            string[] seasons = lbxSeason.SelectedItems.Cast<string>().ToArray();
 
             var genParams = new GeneratorParams()
             {
                 CategoryQuantity = categoryQuantity,
-                Season = season
+                Seasons = seasons
             };
 
             List<string> chosenRecipes;
@@ -80,12 +78,13 @@ namespace MG.MainMenu
                 {
                     txtResult.Text += $"{recipe}\n";
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }          
+            }
 
-            
+
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
