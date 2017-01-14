@@ -79,6 +79,7 @@ namespace MG.MainMenu
                 };
 
                 ingredientsSet.Add(ingredient);
+                txtIngredientName.Text = string.Empty;
             }
         }
 
@@ -106,9 +107,9 @@ namespace MG.MainMenu
             }
             else
             {
-                model.AddRecipe(txtRecipeName.Text,
-                    cmbCategory.Text,
-                    cmbSeason.Text,
+                model.AddRecipe(txtRecipeName.Text.ToLower(),
+                    cmbCategory.Text.ToLower(),
+                    cmbSeason.Text.ToLower(),
                     ingredientsSet
                     );
 

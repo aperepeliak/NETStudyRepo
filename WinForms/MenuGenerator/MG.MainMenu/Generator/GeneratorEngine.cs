@@ -12,12 +12,11 @@ namespace MG.MainMenu.Generator
 {
     public static class GeneratorEngine
     {
-        public static void GetMenu(RecipesModel recipesModel, GeneratorParams genParams,
+        public static void GetMenu(RecipesModel recipesModel, RecentRecipesModel recentRecipesModel,
+            GeneratorParams genParams,
             out List<string> chosenRecipes, out List<string> requiredIngredients)
         {
             chosenRecipes = new List<string>();
-
-            var recentRecipesModel = new RecentRecipesModel();
             string[] recentRecipes = recentRecipesModel.RecentRecipes.ToArray();
 
             var seasons = genParams.Seasons;

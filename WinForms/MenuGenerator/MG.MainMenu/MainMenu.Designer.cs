@@ -50,15 +50,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtIngrdients = new System.Windows.Forms.RichTextBox();
             this.btnManageRecipes = new System.Windows.Forms.Button();
+            this.numRecipesHistoryCount = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.numRecipesHistoryCount);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.numOptionFour);
             this.groupBox1.Controls.Add(this.cmbOptionFour);
@@ -86,13 +91,13 @@
             // btnReset
             // 
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(159, 340);
+            this.btnReset.Location = new System.Drawing.Point(159, 287);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(93, 23);
+            this.btnReset.Size = new System.Drawing.Size(93, 43);
             this.btnReset.TabIndex = 15;
-            this.btnReset.Text = "Сброс";
+            this.btnReset.Text = "Очистить историю";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // numOptionFour
             // 
@@ -117,7 +122,7 @@
             this.lbxSeason.Location = new System.Drawing.Point(12, 229);
             this.lbxSeason.Name = "lbxSeason";
             this.lbxSeason.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lbxSeason.Size = new System.Drawing.Size(141, 134);
+            this.lbxSeason.Size = new System.Drawing.Size(141, 108);
             this.lbxSeason.TabIndex = 12;
             // 
             // label5
@@ -210,6 +215,7 @@
             this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Сохранить";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // numOptionTwo
             // 
@@ -277,6 +283,27 @@
             this.btnManageRecipes.UseVisualStyleBackColor = true;
             this.btnManageRecipes.Click += new System.EventHandler(this.btnManageRecipes_Click);
             // 
+            // numRecipesHistoryCount
+            // 
+            this.numRecipesHistoryCount.Location = new System.Drawing.Point(183, 351);
+            this.numRecipesHistoryCount.Name = "numRecipesHistoryCount";
+            this.numRecipesHistoryCount.Size = new System.Drawing.Size(63, 20);
+            this.numRecipesHistoryCount.TabIndex = 16;
+            this.numRecipesHistoryCount.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 353);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(169, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Сохранять последних рецептов:";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +327,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,6 +357,8 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.NumericUpDown numOptionFour;
         private System.Windows.Forms.ComboBox cmbOptionFour;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numRecipesHistoryCount;
     }
 }
 

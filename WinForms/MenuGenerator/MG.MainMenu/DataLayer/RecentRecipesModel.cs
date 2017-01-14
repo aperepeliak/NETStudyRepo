@@ -36,7 +36,7 @@ namespace MG.MainMenu.DataLayer
                 .ToList();
         }
 
-        public void SaveDataToXml(List<string> chosenRecipes)
+        public void SaveDataToXml(List<string> chosenRecipes, int historyCounter)
         {
             if (document != null)
             {
@@ -46,7 +46,7 @@ namespace MG.MainMenu.DataLayer
                     );
                 document.Root.AddFirst(newIteration);
 
-                if (document.Root.Elements("Iteration").Count() == 6)
+                while (document.Root.Elements("Iteration").Count() > historyCounter)
                 {
                     document.Root.Elements("Iteration").Last().Remove();
                 }
@@ -68,6 +68,12 @@ namespace MG.MainMenu.DataLayer
                 document.Add(recentRecipes);
                 document.Save(XMLSource);
             }
+        }
+
+        internal void ClearHistory()
+        {
+            document.Root.RemoveNodes();
+            document.Save(XMLSource);
         }
     }
 }

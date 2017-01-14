@@ -15,18 +15,22 @@ using System.Globalization;
 using MG.MainMenu.Generator;
 
 using MoreLinq;
+using MG.MainMenu.DataLayer;
 
 namespace MG.MainMenu
 {
     public partial class MainMenu : Form
     {
         RecipesModel model;
+        RecentRecipesModel recentRecipesModel;
         RecipesForm recipesForm;
+        List<string> chosenRecipes;
 
         public MainMenu()
         {
             InitializeComponent();
             model = new RecipesModel();
+            recentRecipesModel = new RecentRecipesModel();
 
             cmbOptionOne.DataSource = model.GetCategories();
 
@@ -40,6 +44,9 @@ namespace MG.MainMenu
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            txtResult.Text = string.Empty;
+            txtIngrdients.Text = string.Empty;
+
             var formData = new[]
             {
                 new { key = cmbOptionOne.Text, value = (int)numOptionOne.Value },
@@ -66,12 +73,11 @@ namespace MG.MainMenu
                 Seasons = seasons
             };
 
-            List<string> chosenRecipes;
             List<string> requiredIngredients;
 
             try
             {
-                GeneratorEngine.GetMenu(model, genParams,
+                GeneratorEngine.GetMenu(model, recentRecipesModel, genParams,
                 out chosenRecipes, out requiredIngredients);
 
                 int i = 1;
@@ -85,13 +91,13 @@ namespace MG.MainMenu
                 {
                     txtIngrdients.Text += $"{k++}.  {ingr}\n";
                 }
+
+                btnAccept.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -131,6 +137,20 @@ namespace MG.MainMenu
                 lbxSeason.Enabled = true;
                 lbxSeason.DataSource = null;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            recentRecipesModel.ClearHistory();
+            recentRecipesModel = new RecentRecipesModel();
+            MessageBox.Show("История очищена.");
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            recentRecipesModel.SaveDataToXml(chosenRecipes, (int)numRecipesHistoryCount.Value);
+            recentRecipesModel = new RecentRecipesModel();
+            btnAccept.Enabled = false;
         }
     }
 }
