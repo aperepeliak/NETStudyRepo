@@ -161,14 +161,7 @@ namespace MG.MainMenu
                 if (editForm.txtIngredientName.Text == string.Empty)
                 {
                     MessageBox.Show("Не задано название ингредиента.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (editForm.txtIngredientName.Text != ingredientsSet[index].Name)
-                {
-                    if (ingredientsSet.Any(i => i.Name == editForm.txtIngredientName.Text))
-                    {
-                        MessageBox.Show("Ингредиент с таким названием уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                }         
                 else if (editForm.numAmount.Value == 0)
                 {
                     MessageBox.Show("Не задано количество.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,6 +169,18 @@ namespace MG.MainMenu
                 else if (editForm.cmbUnit.Text == string.Empty)
                 {
                     MessageBox.Show("Не задана единица измерения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (editForm.txtIngredientName.Text != ingredientsSet[index].Name)
+                {
+                    if (ingredientsSet.Any(i => i.Name == editForm.txtIngredientName.Text))
+                    {
+                        MessageBox.Show("Ингредиент с таким названием уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } else
+                    {
+                        ingredientsSet[index].Name = editForm.txtIngredientName.Text;
+                        ingredientsSet[index].Amount = (double)editForm.numAmount.Value;
+                        ingredientsSet[index].Unit = editForm.cmbUnit.Text;
+                    }
                 }
                 else
                 {
