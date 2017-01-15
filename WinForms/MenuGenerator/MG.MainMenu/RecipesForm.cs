@@ -28,6 +28,14 @@ namespace MG.MainMenu
             dgvRecipes.DataSource = recipesSet;
             dgvIngredients.DataSource = ingredientsSet;
 
+            dgvRecipes.Columns[0].HeaderText = "Название";
+            dgvRecipes.Columns[1].HeaderText = "Категория";
+            dgvRecipes.Columns[2].HeaderText = "Сезонность";
+
+            dgvIngredients.Columns[0].HeaderText = "Название";
+            dgvIngredients.Columns[1].HeaderText = "Количество";
+            dgvIngredients.Columns[2].HeaderText = "Ед. изм.";
+
             cmbCategory.DataSource = model.GetCategories();
             cmbSeason.DataSource = model.GetSeasons();
             cmbUnit.DataSource = model.GetUnits();
