@@ -245,7 +245,7 @@ namespace MG.MainMenu
             {
                 new Recipe()
                 {
-                    Category = "Вторые блюда", Seasonality = "все",
+                    Category = "вторые блюда", Seasonality = "все",
                     Name = "толченка",
                     Ingredients = new List<IngredientInfo>()
                     {
@@ -258,7 +258,7 @@ namespace MG.MainMenu
                 },
                 new Recipe()
                 {
-                    Category = "Первые блюда", Seasonality = "все",
+                    Category = "первые блюда", Seasonality = "все",
                     Name = "уха",
                     Ingredients = new List<IngredientInfo>()
                     {
