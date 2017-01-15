@@ -78,6 +78,7 @@
       <DependentUpon>RecipesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataLayer\RecipesModel.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="EditIngredForm.resx">
       <DependentUpon>EditIngredForm.cs</DependentUpon>
     </EmbeddedResource>

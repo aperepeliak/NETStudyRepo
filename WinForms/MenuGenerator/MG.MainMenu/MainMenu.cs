@@ -21,6 +21,7 @@ namespace MG.MainMenu
 {
     public partial class MainMenu : Form
     {
+        Settings settings;
         RecipesModel model;
         RecentRecipesModel recentRecipesModel;
         RecipesForm recipesForm;
@@ -31,7 +32,8 @@ namespace MG.MainMenu
             InitializeComponent();
             model = new RecipesModel();
             recentRecipesModel = new RecentRecipesModel();
-
+            settings = new Settings();
+            
             cmbOptionOne.DataSource = model.GetCategories();
 
             var listForCombo = new List<string> { "[пусто]" };
@@ -40,6 +42,26 @@ namespace MG.MainMenu
             cmbOptionTwo.DataSource = listForCombo;
             cmbOptionThree.DataSource = new List<string>(listForCombo);
             cmbOptionFour.DataSource = new List<string>(listForCombo);
+
+            if (settings.IsLoaded) SetControls();
+        }
+
+        private void SetControls()
+        {
+            cmbOptionOne.Text = settings.OptionOne;
+            numOptionOne.Value = settings.OptionOneCount;
+
+            cmbOptionTwo.Text = settings.OptionTwo;
+            numOptionTwo.Value = settings.OptionTwoCount;
+
+            cmbOptionThree.Text = settings.OptionThree;
+            numOptionThree.Value = settings.OptionThreeCount;
+
+            cmbOptionFour.Text = settings.OptionFour;
+            numOptionFour.Value = settings.OptionFourCount;
+
+            chkSeason.Checked = settings.IsSeasonalityChecked;
+            numRecipesHistoryCount.Value = settings.RecipesHistoryCount;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -103,6 +125,25 @@ namespace MG.MainMenu
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             model.SaveDataToXml();
+            SaveSettings();
+        }
+
+        private void SaveSettings()
+        {
+            settings.OptionOne = cmbOptionOne.Text;
+            settings.OptionTwo = cmbOptionTwo.Text;
+            settings.OptionThree = cmbOptionThree.Text;
+            settings.OptionFour = cmbOptionFour.Text;
+
+            settings.OptionOneCount = (int)numOptionOne.Value;
+            settings.OptionTwoCount = (int)numOptionTwo.Value;
+            settings.OptionThreeCount = (int)numOptionThree.Value;
+            settings.OptionFourCount = (int)numOptionFour.Value;
+
+            settings.IsSeasonalityChecked = chkSeason.Checked;
+            settings.RecipesHistoryCount = (int)numRecipesHistoryCount.Value;
+
+            settings.SaveSettings();
         }
 
         private void btnManageRecipes_Click(object sender, EventArgs e)
@@ -115,14 +156,16 @@ namespace MG.MainMenu
             var listForCombo = new List<string> { "[пусто]" };
             listForCombo.AddRange(model.GetCategories());
             cmbOptionTwo.DataSource = listForCombo;
-            cmbOptionThree.DataSource = listForCombo;
-            cmbOptionFour.DataSource = listForCombo;
+            cmbOptionThree.DataSource = new List<string>(listForCombo);
+            cmbOptionFour.DataSource = new List<string>(listForCombo);
 
             if (chkSeason.CheckState == CheckState.Checked)
             {
                 lbxSeason.DataSource = null;
                 lbxSeason.DataSource = model.GetSeasons();
             }
+
+            if (settings.IsLoaded) SetControls();
         }
 
         private void chkSeason_CheckedChanged(object sender, EventArgs e)
