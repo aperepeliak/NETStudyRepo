@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cook_book_icon_xG7yVI.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MG.Entities">
       <HintPath>..\MG.Entities\bin\Debug\MG.Entities.dll</HintPath>
@@ -111,6 +114,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cook_book_icon_xG7yVI.ico" />
     <Content Include="bin\Debug\RecentRecipes.xml" />
     <Content Include="bin\Debug\Recipes.xml" />
   </ItemGroup>

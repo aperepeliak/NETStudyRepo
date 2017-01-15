@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numRecipesHistoryCount = new System.Windows.Forms.NumericUpDown();
             this.btnReset = new System.Windows.Forms.Button();
             this.numOptionFour = new System.Windows.Forms.NumericUpDown();
             this.cmbOptionFour = new System.Windows.Forms.ComboBox();
@@ -50,14 +53,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtIngrdients = new System.Windows.Forms.RichTextBox();
             this.btnManageRecipes = new System.Windows.Forms.Button();
-            this.numRecipesHistoryCount = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,6 +88,27 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры генератора";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 353);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(169, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Сохранять последних рецептов:";
+            // 
+            // numRecipesHistoryCount
+            // 
+            this.numRecipesHistoryCount.Location = new System.Drawing.Point(183, 351);
+            this.numRecipesHistoryCount.Name = "numRecipesHistoryCount";
+            this.numRecipesHistoryCount.Size = new System.Drawing.Size(63, 20);
+            this.numRecipesHistoryCount.TabIndex = 16;
+            this.numRecipesHistoryCount.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // btnReset
             // 
@@ -283,27 +305,6 @@
             this.btnManageRecipes.UseVisualStyleBackColor = true;
             this.btnManageRecipes.Click += new System.EventHandler(this.btnManageRecipes_Click);
             // 
-            // numRecipesHistoryCount
-            // 
-            this.numRecipesHistoryCount.Location = new System.Drawing.Point(183, 351);
-            this.numRecipesHistoryCount.Name = "numRecipesHistoryCount";
-            this.numRecipesHistoryCount.Size = new System.Drawing.Size(63, 20);
-            this.numRecipesHistoryCount.TabIndex = 16;
-            this.numRecipesHistoryCount.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 353);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(169, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Сохранять последних рецептов:";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +317,7 @@
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainMenu";
@@ -323,11 +325,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionFour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionThree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOptionOne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRecipesHistoryCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
