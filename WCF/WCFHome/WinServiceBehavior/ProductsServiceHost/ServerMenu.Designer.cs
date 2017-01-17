@@ -46,6 +46,7 @@
             this.btnSwitcher.TabIndex = 0;
             this.btnSwitcher.Text = "Start";
             this.btnSwitcher.UseVisualStyleBackColor = true;
+            this.btnSwitcher.Click += new System.EventHandler(this.btnSwitcher_Click);
             // 
             // label1
             // 
