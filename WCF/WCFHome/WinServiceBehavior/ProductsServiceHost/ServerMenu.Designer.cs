@@ -31,11 +31,11 @@
             this.btnSwitcher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.rbPerSession = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.rbPerCall = new System.Windows.Forms.RadioButton();
             this.rbSingle = new System.Windows.Forms.RadioButton();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSwitcher
@@ -70,17 +70,17 @@
             this.rbPerSession.Text = "Per Session";
             this.rbPerSession.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxOptions
             // 
-            this.groupBox1.Controls.Add(this.rbSingle);
-            this.groupBox1.Controls.Add(this.rbPerCall);
-            this.groupBox1.Controls.Add(this.rbPerSession);
-            this.groupBox1.Location = new System.Drawing.Point(13, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 74);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Instance Context Mode Options";
+            this.groupBoxOptions.Controls.Add(this.rbSingle);
+            this.groupBoxOptions.Controls.Add(this.rbPerCall);
+            this.groupBoxOptions.Controls.Add(this.rbPerSession);
+            this.groupBoxOptions.Location = new System.Drawing.Point(13, 42);
+            this.groupBoxOptions.Name = "groupBoxOptions";
+            this.groupBoxOptions.Size = new System.Drawing.Size(301, 74);
+            this.groupBoxOptions.TabIndex = 3;
+            this.groupBoxOptions.TabStop = false;
+            this.groupBoxOptions.Text = "Instance Context Mode Options";
             // 
             // rbPerCall
             // 
@@ -119,15 +119,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(326, 173);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxOptions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSwitcher);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Server";
             this.Text = "ServiceHost";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxOptions.ResumeLayout(false);
+            this.groupBoxOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,7 +138,7 @@
         private System.Windows.Forms.Button btnSwitcher;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rbPerSession;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxOptions;
         private System.Windows.Forms.RadioButton rbSingle;
         private System.Windows.Forms.RadioButton rbPerCall;
         private System.Windows.Forms.Label lblStatus;

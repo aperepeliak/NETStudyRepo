@@ -18,7 +18,7 @@ namespace ProductsServiceHost
         ServiceHost host;
         public Server()
         {
-            InitializeComponent();     
+            InitializeComponent();
         }
 
         private void btnSwitcher_Click(object sender, EventArgs e)
@@ -26,17 +26,39 @@ namespace ProductsServiceHost
             if (btnSwitcher.Text == "Start")
             {
                 host = new ServiceHost(typeof(ProductContract));
+
+                var behavior = host.Description.Behaviors.Find<ServiceBehaviorAttribute>();
+
+                var chosenOption = groupBoxOptions.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+
+                switch (chosenOption.Text)
+                {
+                    case "Per Call":
+                        behavior.InstanceContextMode = InstanceContextMode.PerCall;
+                        break;
+
+                    case "Per Session":
+                        behavior.InstanceContextMode = InstanceContextMode.PerSession;
+                        break;
+
+                    case "Single":
+                        behavior.InstanceContextMode = InstanceContextMode.Single;
+                        break;
+                }
+
                 host.Open();
                 btnSwitcher.Text = "Stop";
                 lblStatus.Text = "Running...";
                 lblStatus.ForeColor = Color.Green;
-            } else
+            }
+            else
             {
                 host.Close();
                 btnSwitcher.Text = "Start";
                 lblStatus.Text = "Stopped..";
                 lblStatus.ForeColor = Color.Red;
-            }          
+            }
         }
     }
 }
