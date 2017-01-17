@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglePageModel", "SinglePa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotDAL", "..\..\..\EntityFramework\AutoLotEF\002-AutoLotDAL\AutoLotDAL.csproj", "{2AFF6CE7-5163-4739-B3F1-E678F62D9532}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBehindPageModel", "CodeBehindPageModel\CodeBehindPageModel.csproj", "{CF11F86A-4210-4636-B09C-CC90715A01EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF11F86A-4210-4636-B09C-CC90715A01EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF11F86A-4210-4636-B09C-CC90715A01EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF11F86A-4210-4636-B09C-CC90715A01EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF11F86A-4210-4636-B09C-CC90715A01EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
