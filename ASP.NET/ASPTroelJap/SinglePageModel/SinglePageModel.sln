@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglePageModel", "SinglePageModel\SinglePageModel.csproj", "{4352D9A8-1F50-4367-B5B2-9AD72FA054EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotDAL", "..\..\..\EntityFramework\AutoLotEF\002-AutoLotDAL\AutoLotDAL.csproj", "{2AFF6CE7-5163-4739-B3F1-E678F62D9532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4352D9A8-1F50-4367-B5B2-9AD72FA054EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4352D9A8-1F50-4367-B5B2-9AD72FA054EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4352D9A8-1F50-4367-B5B2-9AD72FA054EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,7 @@ namespace AutoLotDAL.EF
     using System.Linq;
 
     using AutoLotDAL.Models;
+    using System.Web;
 
     public class AutoLotEntities : DbContext
     {
