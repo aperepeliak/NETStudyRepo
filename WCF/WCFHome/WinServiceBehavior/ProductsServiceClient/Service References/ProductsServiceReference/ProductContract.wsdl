@@ -83,6 +83,12 @@
   <wsdl:message name="IProductContract_Remove_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductContract_GetServiceHash_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceHash" />
+  </wsdl:message>
+  <wsdl:message name="IProductContract_GetServiceHash_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceHashResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductContract">
     <wsdl:operation name="GetAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductContract/GetAll" message="tns:IProductContract_GetAll_InputMessage" />
@@ -95,6 +101,10 @@
     <wsdl:operation name="Remove">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductContract/Remove" message="tns:IProductContract_Remove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductContract/RemoveResponse" message="tns:IProductContract_Remove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceHash">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductContract/GetServiceHash" message="tns:IProductContract_GetServiceHash_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductContract/GetServiceHashResponse" message="tns:IProductContract_GetServiceHash_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductContract" type="tns:IProductContract">
@@ -119,6 +129,15 @@
     </wsdl:operation>
     <wsdl:operation name="Remove">
       <soap:operation soapAction="http://tempuri.org/IProductContract/Remove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceHash">
+      <soap:operation soapAction="http://tempuri.org/IProductContract/GetServiceHash" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -157,6 +176,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetServiceHash">
+      <soap12:operation soapAction="http://tempuri.org/IProductContract/GetServiceHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetNamedPipeBinding_IProductContract" type="tns:IProductContract">
     <wsp:PolicyReference URI="#NetNamedPipeBinding_IProductContract_policy" />
@@ -181,6 +209,15 @@
     </wsdl:operation>
     <wsdl:operation name="Remove">
       <soap12:operation soapAction="http://tempuri.org/IProductContract/Remove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceHash">
+      <soap12:operation soapAction="http://tempuri.org/IProductContract/GetServiceHash" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

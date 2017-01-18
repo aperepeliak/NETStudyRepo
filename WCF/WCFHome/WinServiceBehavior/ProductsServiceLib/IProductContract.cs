@@ -12,5 +12,7 @@ namespace ProductsServiceLib
         Product Get(int id);
         [OperationContract]
         void Remove(int id);
+        [OperationContract]
+        string GetServiceHash();
     }
 }

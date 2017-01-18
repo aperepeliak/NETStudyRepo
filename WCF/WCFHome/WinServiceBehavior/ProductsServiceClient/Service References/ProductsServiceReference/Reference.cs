@@ -143,6 +143,12 @@ namespace ProductsServiceClient.ProductsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductContract/Remove", ReplyAction="http://tempuri.org/IProductContract/RemoveResponse")]
         System.Threading.Tasks.Task RemoveAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductContract/GetServiceHash", ReplyAction="http://tempuri.org/IProductContract/GetServiceHashResponse")]
+        string GetServiceHash();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductContract/GetServiceHash", ReplyAction="http://tempuri.org/IProductContract/GetServiceHashResponse")]
+        System.Threading.Tasks.Task<string> GetServiceHashAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,6 +200,14 @@ namespace ProductsServiceClient.ProductsServiceReference {
         
         public System.Threading.Tasks.Task RemoveAsync(int id) {
             return base.Channel.RemoveAsync(id);
+        }
+        
+        public string GetServiceHash() {
+            return base.Channel.GetServiceHash();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetServiceHashAsync() {
+            return base.Channel.GetServiceHashAsync();
         }
     }
 }

@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rbPerSession = new System.Windows.Forms.RadioButton();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
-            this.rbPerCall = new System.Windows.Forms.RadioButton();
             this.rbSingle = new System.Windows.Forms.RadioButton();
+            this.rbPerCall = new System.Windows.Forms.RadioButton();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
@@ -82,16 +82,6 @@
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Instance Context Mode Options";
             // 
-            // rbPerCall
-            // 
-            this.rbPerCall.AutoSize = true;
-            this.rbPerCall.Location = new System.Drawing.Point(126, 35);
-            this.rbPerCall.Name = "rbPerCall";
-            this.rbPerCall.Size = new System.Drawing.Size(61, 17);
-            this.rbPerCall.TabIndex = 3;
-            this.rbPerCall.Text = "Per Call";
-            this.rbPerCall.UseVisualStyleBackColor = true;
-            // 
             // rbSingle
             // 
             this.rbSingle.AutoSize = true;
@@ -101,6 +91,16 @@
             this.rbSingle.TabIndex = 4;
             this.rbSingle.Text = "Single";
             this.rbSingle.UseVisualStyleBackColor = true;
+            // 
+            // rbPerCall
+            // 
+            this.rbPerCall.AutoSize = true;
+            this.rbPerCall.Location = new System.Drawing.Point(126, 35);
+            this.rbPerCall.Name = "rbPerCall";
+            this.rbPerCall.Size = new System.Drawing.Size(61, 17);
+            this.rbPerCall.TabIndex = 3;
+            this.rbPerCall.Text = "Per Call";
+            this.rbPerCall.UseVisualStyleBackColor = true;
             // 
             // lblStatus
             // 
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 173);
+            this.ClientSize = new System.Drawing.Size(326, 170);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.groupBoxOptions);
             this.Controls.Add(this.label1);

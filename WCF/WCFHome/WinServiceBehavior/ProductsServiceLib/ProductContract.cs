@@ -40,5 +40,10 @@ namespace ProductsServiceLib
         {
             products.RemoveAll(p => p.Id == id);
         }
+
+        public string GetServiceHash()
+        {
+            return this.GetHashCode().ToString();
+        }
     }
 }
