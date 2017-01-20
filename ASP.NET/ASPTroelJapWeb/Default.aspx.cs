@@ -27,11 +27,12 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnGetFormData_Click(object sender, EventArgs e)
     {
-
+        string firstName = txtFirstName.Text;
     }
 
     protected void btnHttpResponse_Click(object sender, EventArgs e)
     {
-
+        Response.Write("<b>My name is:</b><br>");
+        Response.Write(this.ToString());
     }
 }
