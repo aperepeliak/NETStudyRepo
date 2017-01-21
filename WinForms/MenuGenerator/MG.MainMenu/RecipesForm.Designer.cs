@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnAddIngredient = new System.Windows.Forms.Button();
             this.cmbUnit = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -41,6 +42,9 @@
             this.btnAddRecipe = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvIngredients = new System.Windows.Forms.DataGridView();
+            this.contextMenuIngredients = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbSeason = new System.Windows.Forms.ComboBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,15 +54,11 @@
             this.btnDeleteRecipe = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvRecipes = new System.Windows.Forms.DataGridView();
-            this.contextMenuIngredients = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).BeginInit();
             this.contextMenuIngredients.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,6 +87,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить/Изменить рецепт";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(7, 342);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 24;
+            this.btnClear.Text = "Очистить";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAddIngredient
             // 
@@ -121,10 +131,10 @@
             // 
             this.numAmount.DecimalPlaces = 2;
             this.numAmount.Increment = new decimal(new int[] {
-            25,
+            1,
             0,
             0,
-            131072});
+            65536});
             this.numAmount.Location = new System.Drawing.Point(95, 162);
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(50, 20);
@@ -197,6 +207,28 @@
             this.dgvIngredients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIngredients.Size = new System.Drawing.Size(301, 146);
             this.dgvIngredients.TabIndex = 7;
+            // 
+            // contextMenuIngredients
+            // 
+            this.contextMenuIngredients.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditMenuItem,
+            this.DeleteMenuItem});
+            this.contextMenuIngredients.Name = "contextMenuIngredients";
+            this.contextMenuIngredients.Size = new System.Drawing.Size(129, 48);
+            // 
+            // EditMenuItem
+            // 
+            this.EditMenuItem.Name = "EditMenuItem";
+            this.EditMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.EditMenuItem.Text = "Изменить";
+            this.EditMenuItem.Click += new System.EventHandler(this.EditMenuItem_Click);
+            // 
+            // DeleteMenuItem
+            // 
+            this.DeleteMenuItem.Name = "DeleteMenuItem";
+            this.DeleteMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.DeleteMenuItem.Text = "Удалить";
+            this.DeleteMenuItem.Click += new System.EventHandler(this.DeleteMenuItem_Click);
             // 
             // cmbSeason
             // 
@@ -281,38 +313,6 @@
             this.dgvRecipes.TabIndex = 13;
             this.dgvRecipes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecipes_CellDoubleClick);
             // 
-            // contextMenuIngredients
-            // 
-            this.contextMenuIngredients.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditMenuItem,
-            this.DeleteMenuItem});
-            this.contextMenuIngredients.Name = "contextMenuIngredients";
-            this.contextMenuIngredients.Size = new System.Drawing.Size(129, 48);
-            // 
-            // EditMenuItem
-            // 
-            this.EditMenuItem.Name = "EditMenuItem";
-            this.EditMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.EditMenuItem.Text = "Изменить";
-            this.EditMenuItem.Click += new System.EventHandler(this.EditMenuItem_Click);
-            // 
-            // DeleteMenuItem
-            // 
-            this.DeleteMenuItem.Name = "DeleteMenuItem";
-            this.DeleteMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.DeleteMenuItem.Text = "Удалить";
-            this.DeleteMenuItem.Click += new System.EventHandler(this.DeleteMenuItem_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(7, 342);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 24;
-            this.btnClear.Text = "Очистить";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // RecipesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,8 +331,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).EndInit();
             this.contextMenuIngredients.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecipes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

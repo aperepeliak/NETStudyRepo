@@ -177,7 +177,7 @@ namespace MG.MainMenu
                         MessageBox.Show("Ингредиент с таким названием уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } else
                     {
-                        ingredientsSet[index].Name = editForm.txtIngredientName.Text;
+                        ingredientsSet[index].Name = editForm.txtIngredientName.Text.ToLower();
                         ingredientsSet[index].Amount = (double)editForm.numAmount.Value;
                         ingredientsSet[index].Unit = editForm.cmbUnit.Text;
                     }
