@@ -19,7 +19,8 @@
             &nbsp;<br />
             <br />
 
-            <asp:TreeView ID="navigationTree" runat="server"></asp:TreeView>
+            <asp:TreeView ID="navigationTree" runat="server" DataSourceID="SiteMapDataSource1"></asp:TreeView>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
             <hr />
         </div>
         <div>
