@@ -19,6 +19,9 @@
             &nbsp;<br />
             <br />
 
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+            </asp:SiteMapPath>
+            <br />
             <asp:TreeView ID="navigationTree" runat="server" DataSourceID="SiteMapDataSource1"></asp:TreeView>
             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
             <hr />
