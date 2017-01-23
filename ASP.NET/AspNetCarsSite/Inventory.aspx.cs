@@ -17,4 +17,18 @@ public partial class Default2 : System.Web.UI.Page
 
     public IEnumerable<Inventory> GetData() => new InventoryRepo().GetAll();
 
+    // The id parameter name should match the DataKeyNames value set on the control
+    public void GridView1_DeleteItem(int carID)
+    {
+        new InventoryRepo().Delete(carID);
+    }
+
+    // The id parameter name should match the DataKeyNames value set on the control
+    public async void GridView1_UpdateItem(Inventory inventory)
+    {
+        if (ModelState.IsValid)
+        {
+            await new InventoryRepo().SaveAsync(inventory);
+        }
+    }
 }

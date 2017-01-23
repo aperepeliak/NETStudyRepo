@@ -1,11 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Inventory.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" 
+    AutoEventWireup="true" CodeFile="Inventory.aspx.cs" 
+    Inherits="Default2" Async="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:GridView ID="GridView1" runat="server" 
-        CellPadding="4" AutoGenerateColumns="false" ItemType="AutoLotDAL.Models.Inventory"
-        SelectMethod="GetData" EmptyDataText="There are no data records to display."
+        CellPadding="4" AutoGenerateColumns="false" 
+        DataKeyNames="CarID"
+        ItemType="AutoLotDAL.Models.Inventory"
+        SelectMethod="GetData" 
+        DeleteMethod="GridView1_DeleteItem"
+        UpdateMethod="GridView1_UpdateItem"
+        EmptyDataText="There are no data records to display."
         ForeColor="#333"
         
         BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" GridLines="None">
@@ -21,6 +28,7 @@
         <SortedDescendingHeaderStyle BackColor="#3E3277" />
 
         <Columns>
+            <asp:CommandField ShowDeleteButton="true" ShowEditButton="true" />
             <asp:BoundField DataField="CarID" 
                 HeaderText="CarID" ReadOnly="true" SortExpression="CarID" />
             <asp:BoundField DataField="Make" 
