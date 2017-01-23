@@ -11,12 +11,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <hr />
+            &nbsp;<br />
             <asp:Label ID="Label1" runat="server"
                 Text="Weclome to the ASP.NET Cars"
                 Font-Size="XX-Large"></asp:Label>
-            <asp:AdRotator ID="myAdRotator" runat="server" />
-            &nbsp;<br />
+            <br />
+            <asp:AdRotator ID="myAdRotator" runat="server" AdvertisementFile="~/Ads.xml"/>
             <br />
 
             <asp:SiteMapPath ID="SiteMapPath1" runat="server">
