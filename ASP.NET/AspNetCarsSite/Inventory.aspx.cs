@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 using AutoLotDAL.Models;
 using AutoLotDAL.Repos;
+using System.Web.ModelBinding;
+using System.Collections;
 
 public partial class Default2 : System.Web.UI.Page
 {
@@ -15,7 +17,14 @@ public partial class Default2 : System.Web.UI.Page
 
     }
 
-    public IQueryable<Inventory> GetData() => new InventoryRepo().GetAll().AsQueryable();
+    // public IQueryable<Inventory> GetData() => new InventoryRepo().GetAll().AsQueryable();
+
+    public IQueryable<Inventory> GetData([Control("cboMake")]string make = "")
+    {
+        return string.IsNullOrEmpty(make) ?
+            new InventoryRepo().GetAll().AsQueryable() :
+            new InventoryRepo().GetAll().Where(x => x.Make == make).AsQueryable();
+    }
 
     // The id parameter name should match the DataKeyNames value set on the control
     public void GridView1_DeleteItem(int carID)
@@ -30,4 +39,6 @@ public partial class Default2 : System.Web.UI.Page
             await new InventoryRepo().SaveAsync(inventory);
         }
     }
+
+    public IEnumerable GetMakes() => new InventoryRepo().GetAll().Select(x => new { x.Make }).Distinct();
 }

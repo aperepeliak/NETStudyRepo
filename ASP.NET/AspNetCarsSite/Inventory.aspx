@@ -5,6 +5,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <p style="width: 329px; height: 30px">Filter by: 
+    <asp:DropDownList ID="cboMake" SelectMethod="GetMakes"
+        AppendDataBoundItems="true" AutoPostBack="true"
+        DataTextField="Make" DataValueField="Make" 
+        runat="server">
+        <asp:ListItem Value="" Text="(All)" />
+    </asp:DropDownList>
+     </p>
+
     <asp:GridView ID="carsGrid" runat="server"
         AllowPaging="true" PageSize="2"
         AllowSorting="true"  
