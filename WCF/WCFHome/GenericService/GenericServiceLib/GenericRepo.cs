@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenericServiceLib
 {
-    public abstract class GenericRepo<T> where T : class
+    public abstract class GenericRepo<T> where T : class, new()
     {
         public Entities Context { get; }
         protected List<T> Table;
