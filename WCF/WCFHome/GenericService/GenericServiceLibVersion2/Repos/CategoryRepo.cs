@@ -1,9 +1,8 @@
 ﻿using GenericServiceLib.Models;
-using System;
 
 namespace GenericServiceLib.Repos
 {
-    [Serializable]
+    // Add known type here ???
     public class CategoryRepo : GenericRepo<Category>, ICategoryRepo
     {
         public CategoryRepo()

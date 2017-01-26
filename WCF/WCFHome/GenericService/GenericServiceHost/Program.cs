@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.ServiceModel;
 using GenericServiceLib;
+using GenericServiceLib.Repos;
 
 namespace GenericServiceHost
 {
@@ -13,7 +14,17 @@ namespace GenericServiceHost
     {
         static void Main(string[] args)
         {
-            using (var host = new ServiceHost(typeof(GenericRepo)))
+            Console.Title = "Service Host";
+
+            using (var host = new ServiceHost(typeof(Contract)))
+            {
+                host.Open();
+
+                Console.WriteLine("The host is running ...\n\n\n");
+
+                Console.WriteLine("Press ENTER to exit");
+                Console.ReadLine();
+            }
         }
     }
 }

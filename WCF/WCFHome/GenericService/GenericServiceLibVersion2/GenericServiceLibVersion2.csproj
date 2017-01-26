@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C426D06B-6D94-4F19-BA7C-C278935B71B8}</ProjectGuid>
+    <ProjectGuid>{9E1C3ED4-F947-4996-8EF2-87514658C208}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenericServiceLib</RootNamespace>
-    <AssemblyName>GenericServiceLib</AssemblyName>
+    <RootNamespace>GenericServiceLibVersion2</RootNamespace>
+    <AssemblyName>GenericServiceLibVersion2</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,11 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contract.cs" />
     <Compile Include="Entities.cs" />
-    <Compile Include="IContract.cs" />
-    <Compile Include="Repos\GenericRepo.cs" />
-    <Compile Include="Repos\IGenericRepository.cs" />
+    <Compile Include="GenericRepo.cs" />
+    <Compile Include="IGenericRepository.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

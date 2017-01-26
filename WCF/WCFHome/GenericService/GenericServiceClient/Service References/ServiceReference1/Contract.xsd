@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GenericServiceLib.Repos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GenericServiceLib.Repos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/Contract?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib" />
+  <xs:complexType name="CategoryRepo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/GenericServiceLib" base="q1:GenericRepoOfCategoryfQKzcaVM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryRepo" nillable="true" type="tns:CategoryRepo" />
+  <xs:complexType name="ManufacturerRepo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/GenericServiceLib" base="q2:GenericRepoOfManufacturerfQKzcaVM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManufacturerRepo" nillable="true" type="tns:ManufacturerRepo" />
+</xs:schema>

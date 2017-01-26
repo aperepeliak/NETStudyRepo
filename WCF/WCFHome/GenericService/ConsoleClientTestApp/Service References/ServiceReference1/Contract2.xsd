@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GenericServiceLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GenericServiceLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/Contract?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib.Models" />
+  <xs:complexType name="GenericRepoOfCategoryfQKzcaVM">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericRepoOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Category" Namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib.Models" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GenericServiceLib.Models" name="Table" nillable="true" type="q1:ArrayOfCategory" />
+      <xs:element name="_x003C_Context_x003E_k__BackingField" nillable="true" type="tns:Entities" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericRepoOfCategoryfQKzcaVM" nillable="true" type="tns:GenericRepoOfCategoryfQKzcaVM" />
+  <xs:complexType name="Entities">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Entities" nillable="true" type="tns:Entities" />
+  <xs:complexType name="GenericRepoOfManufacturerfQKzcaVM">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericRepoOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Manufacturer" Namespace="http://schemas.datacontract.org/2004/07/GenericServiceLib.Models" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GenericServiceLib.Models" name="Table" nillable="true" type="q2:ArrayOfManufacturer" />
+      <xs:element name="_x003C_Context_x003E_k__BackingField" nillable="true" type="tns:Entities" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericRepoOfManufacturerfQKzcaVM" nillable="true" type="tns:GenericRepoOfManufacturerfQKzcaVM" />
+</xs:schema>

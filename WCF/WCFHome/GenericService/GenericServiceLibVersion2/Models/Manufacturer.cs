@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace GenericServiceLib.Models
+{
+    [Serializable]
+    public class Manufacturer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}

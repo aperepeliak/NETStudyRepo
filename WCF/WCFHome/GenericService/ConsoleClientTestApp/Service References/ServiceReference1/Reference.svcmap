@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="201bde8f-14bb-4168-836c-8f3a94f01861" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/Contract" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Contract4.xsd" MetadataType="Schema" ID="21316315-a051-4dfc-b179-aa30f61debff" SourceId="1" SourceUrl="http://localhost:8080/Contract?xsd=xsd4" />
+    <MetadataFile FileName="Contract.wsdl" MetadataType="Wsdl" ID="37c026bc-c4d6-47a6-bcb5-c40fef9d443d" SourceId="1" SourceUrl="http://localhost:8080/Contract?wsdl" />
+    <MetadataFile FileName="Contract.disco" MetadataType="Disco" ID="cb0165ba-e21a-4676-82f0-b3fe8f9afc0b" SourceId="1" SourceUrl="http://localhost:8080/Contract?disco" />
+    <MetadataFile FileName="Contract.xsd" MetadataType="Schema" ID="3ed8ee6d-0b4a-46c9-8348-b8b7b7ba8d87" SourceId="1" SourceUrl="http://localhost:8080/Contract?xsd=xsd2" />
+    <MetadataFile FileName="Contract1.xsd" MetadataType="Schema" ID="4a5190e6-b8ee-4946-ae23-4d1f8ac35753" SourceId="1" SourceUrl="http://localhost:8080/Contract?xsd=xsd1" />
+    <MetadataFile FileName="Contract2.xsd" MetadataType="Schema" ID="5bfa1c87-1d79-42a7-b481-65b44b92b271" SourceId="1" SourceUrl="http://localhost:8080/Contract?xsd=xsd3" />
+    <MetadataFile FileName="Contract3.xsd" MetadataType="Schema" ID="2915ce0b-82a8-428f-a708-0e4b5347e20e" SourceId="1" SourceUrl="http://localhost:8080/Contract?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

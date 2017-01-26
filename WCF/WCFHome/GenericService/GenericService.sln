@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericServiceHost", "Gener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericServiceClient", "GenericServiceClient\GenericServiceClient.csproj", "{D71F4321-80A1-475F-830F-E7EC8A2A33BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClientTestApp", "ConsoleClientTestApp\ConsoleClientTestApp.csproj", "{BFCD6FE8-0C2C-4869-9C16-5C8094CB1FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericServiceLibVersion2", "GenericServiceLibVersion2\GenericServiceLibVersion2.csproj", "{9E1C3ED4-F947-4996-8EF2-87514658C208}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D71F4321-80A1-475F-830F-E7EC8A2A33BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D71F4321-80A1-475F-830F-E7EC8A2A33BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D71F4321-80A1-475F-830F-E7EC8A2A33BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCD6FE8-0C2C-4869-9C16-5C8094CB1FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCD6FE8-0C2C-4869-9C16-5C8094CB1FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCD6FE8-0C2C-4869-9C16-5C8094CB1FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCD6FE8-0C2C-4869-9C16-5C8094CB1FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E1C3ED4-F947-4996-8EF2-87514658C208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E1C3ED4-F947-4996-8EF2-87514658C208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E1C3ED4-F947-4996-8EF2-87514658C208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E1C3ED4-F947-4996-8EF2-87514658C208}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
