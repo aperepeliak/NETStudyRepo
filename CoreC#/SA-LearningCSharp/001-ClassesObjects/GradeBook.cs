@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _001_ClassesObjects
 {
-    class GradeBook
+    public class GradeBook
     {
         public GradeBook()
         {
@@ -22,7 +22,6 @@ namespace _001_ClassesObjects
             float sum = 0;
             foreach (float grade in grades)
             {
-
                 stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
                 stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
                 sum += grade;

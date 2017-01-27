@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _001_ClassesObjects
 {
-    class GradeStatistics
+    public class GradeStatistics
     {
         public GradeStatistics()
         {
