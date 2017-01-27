@@ -7,7 +7,7 @@ namespace GenericServiceLib
     [Serializable]
     public abstract class GenericRepo<T> where T : class, new()
     {
-        public Entities Context { get; }
+        public Entities Context { get; } = new Entities();
         protected List<T> Table;
 
 

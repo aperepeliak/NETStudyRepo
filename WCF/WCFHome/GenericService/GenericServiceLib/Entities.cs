@@ -72,6 +72,8 @@ namespace GenericServiceLib
                             new XAttribute("Name", c.Name)
                        );
             categories.Add(elements);
+
+            document = new XDocument();
             document.Add(categories);
             document.Save(XML_CATEGORIES);
         }
