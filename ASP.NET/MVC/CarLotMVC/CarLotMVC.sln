@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLotMVC", "CarLotMVC\CarLotMVC.csproj", "{27679CA2-6F45-4F23-857A-6A3817B52612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotDAL", "002-AutoLotDAL\AutoLotDAL.csproj", "{2AFF6CE7-5163-4739-B3F1-E678F62D9532}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27679CA2-6F45-4F23-857A-6A3817B52612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27679CA2-6F45-4F23-857A-6A3817B52612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27679CA2-6F45-4F23-857A-6A3817B52612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27679CA2-6F45-4F23-857A-6A3817B52612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AFF6CE7-5163-4739-B3F1-E678F62D9532}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
