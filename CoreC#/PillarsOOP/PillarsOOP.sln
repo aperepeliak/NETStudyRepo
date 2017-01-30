@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloneablePoint", "Cloneable
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComparableCar", "ComparableCar\ComparableCar.csproj", "{238E16A6-77D6-44DE-B114-B9B01046CAC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMethods", "VirtualMethods\VirtualMethods.csproj", "{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{238E16A6-77D6-44DE-B114-B9B01046CAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{238E16A6-77D6-44DE-B114-B9B01046CAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{238E16A6-77D6-44DE-B114-B9B01046CAC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,5 +156,6 @@ Global
 		{6D50E390-4578-4E02-865E-25492A67D147} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{C960A799-A5F6-4253-B00B-AD7024206C37} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
 		{238E16A6-77D6-44DE-B114-B9B01046CAC7} = {97F039A2-71FF-41FC-97EE-3092150BD0CA}
+		{12E4D5CC-C8D0-43D0-A7D6-E61F20A52485} = {C684559B-D256-4721-8AAC-2C82AA5F8EA7}
 	EndGlobalSection
 EndGlobal
