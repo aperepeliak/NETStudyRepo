@@ -1,5 +1,19 @@
 ﻿@model IEnumerable<AutoLotDAL.Models.Inventory>
 
+@using AutoLotDAL.Models
+@helper ShowInventory(Inventory item)
+{
+    @item.Make<text>-</text>@item.Color<text>(</text>@item.PetName<text>)</text>
+}
+
+@functions
+{
+    public IList<Inventory> SortCars(IList<Inventory> cars)
+    {
+
+    }
+}
+
 @{
     ViewBag.Title = "Index";
 }
@@ -24,6 +38,7 @@
     </tr>
 
 @foreach (var item in Model) {
+    @*@ShowInventory(item)*@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Make)
