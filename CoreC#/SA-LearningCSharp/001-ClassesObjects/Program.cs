@@ -10,30 +10,55 @@ namespace _001_ClassesObjects
     {
         static void Main(string[] args)
         {
-            GradeBook book = new GradeBook();
+            IGradeTracker book = CreateGradeBook();
 
-            // Example of different notations
-            book.NameChanged += new NameChangedDelegate(OnNameChanged);
-            book.NameChanged += OnNameChanged2;
+            // GetBookName(book);
+            AddGrades(book);
+            WriteResults(book);
+        }
 
-            // with events we cannot assign or reassign, we can only subscribe(+=) or unsubscribe(-=)
-            // but we can do so with delegates, that's why events are preferable
-            // book.NameChanged = new NameChangedDelegate(OnNameChanged3);
+        private static IGradeTracker CreateGradeBook()
+        {
+            return new ThrowAwayGB();
+        }
 
-            book.Name = "My book";
+        private static void WriteResults(IGradeTracker book)
+        {
+            GradeStatistics stats = book.ComputeStatistics();
 
+            foreach (float grade in book)
+            {
+                Console.WriteLine(grade);
+            }
+
+            WriteResult("Average", stats.AverageGrade);
+            WriteResult("Highest", stats.HighestGrade);
+            WriteResult("Lowest", stats.LowestGrade);
+
+            WriteResult(stats.Description, stats.LetterGrade);
+        }
+
+        private static void AddGrades(IGradeTracker book)
+        {
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
-
-            GradeStatistics stats = book.ComputeStatistics();
-
-            WriteResult("Average", stats.AverageGrade);
-            WriteResult("Highest", (int)stats.HighestGrade);
-            WriteResult("Lowest", stats.LowestGrade);
         }
 
-        static void WriteResult(string desc, int result)
+        private static void GetBookName(IGradeTracker book)
+        {
+            try
+            {
+                Console.WriteLine("Enter a name");
+                book.Name = Console.ReadLine();
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void WriteResult(string desc, string result)
         {
             Console.WriteLine(desc + ": " + result);
         }
@@ -41,16 +66,6 @@ namespace _001_ClassesObjects
         static void WriteResult(string desc, float result)
         {
             Console.WriteLine(desc + ": " + result);
-        }
-
-        static void OnNameChanged(object sender, NameChangedEventArgs args)
-        {
-            Console.WriteLine($"Grade book changing name from {args.ExistingName} to {args.NewName}");
-        }
-
-        static void OnNameChanged2(object sender, NameChangedEventArgs args)
-        {
-            Console.WriteLine($"***");
         }
     }
 }
