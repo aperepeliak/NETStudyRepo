@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AutoLotDAL.Models.MetaData;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutoLotDAL.Models
 {
+    [MetadataType(typeof(InventoryMetaData))]
     public partial class Inventory
     {
         public override string ToString()
