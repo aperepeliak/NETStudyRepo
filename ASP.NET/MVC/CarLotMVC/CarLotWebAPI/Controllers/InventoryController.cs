@@ -11,30 +11,44 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoLotDAL.EF;
 using AutoLotDAL.Models;
+using AutoLotDAL.Repos;
+using AutoMapper;
 
 namespace CarLotWebAPI.Controllers
 {
     public class InventoryController : ApiController
     {
-        private AutoLotEntities db = new AutoLotEntities();
+        //private AutoLotEntities db = new AutoLotEntities();
+
+        private readonly InventoryRepo _repo = new InventoryRepo();
+
+        public InventoryController()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Inventory, Inventory>()
+                .ForMember(x => x.Orders, opt => opt.Ignore());
+            });
+        }
 
         // GET: api/Inventory
-        public IQueryable<Inventory> GetInventory()
+        public IEnumerable<Inventory> GetInventory()
         {
-            return db.Inventory;
+            var inventories = _repo.GetAll();
+            return Mapper.Map<List<Inventory>, List<Inventory>>(inventories);
         }
 
         // GET: api/Inventory/5
         [ResponseType(typeof(Inventory))]
         public async Task<IHttpActionResult> GetInventory(int id)
         {
-            Inventory inventory = await db.Inventory.FindAsync(id);
+            Inventory inventory = await _repo.GetOneAsync(id);
             if (inventory == null)
             {
                 return NotFound();
             }
 
-            return Ok(inventory);
+            return Ok(Mapper.Map<Inventory, Inventory>(inventory));
         }
 
         // PUT: api/Inventory/5
@@ -51,22 +65,13 @@ namespace CarLotWebAPI.Controllers
                 return BadRequest();
             }
 
-            db.Entry(inventory).State = EntityState.Modified;
-
             try
             {
-                await db.SaveChangesAsync();
+                await _repo.SaveAsync(inventory);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
-                if (!InventoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -81,40 +86,45 @@ namespace CarLotWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Inventory.Add(inventory);
-            await db.SaveChangesAsync();
+            try
+            {
+                await _repo.AddAsync(inventory);
+            }
+            catch
+            {
+                throw;
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = inventory.CarId }, inventory);
         }
 
         // DELETE: api/Inventory/5
-        [ResponseType(typeof(Inventory))]
-        public async Task<IHttpActionResult> DeleteInventory(int id)
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> DeleteInventory(int id, Inventory inventory)
         {
-            Inventory inventory = await db.Inventory.FindAsync(id);
-            if (inventory == null)
+            if (id != inventory.CarId)
             {
-                return NotFound();
+                return BadRequest();
+            }
+            try
+            {
+                await _repo.DeleteAsync(inventory);
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
-            db.Inventory.Remove(inventory);
-            await db.SaveChangesAsync();
-
-            return Ok(inventory);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _repo.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool InventoryExists(int id)
-        {
-            return db.Inventory.Count(e => e.CarId == id) > 0;
         }
     }
 }
