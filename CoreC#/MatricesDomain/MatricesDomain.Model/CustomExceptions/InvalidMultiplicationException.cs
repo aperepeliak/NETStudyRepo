@@ -11,10 +11,14 @@ namespace MatricesDomain.Model.CustomExceptions
     {
         public InvalidMultiplicationException()
             : base("Matrices have invalid sizes.")
-        { }
+        {
+            HelpLink = @"For more info: https://en.wikipedia.org/wiki/Matrix_(mathematics)";
+        }
 
         public InvalidMultiplicationException(string message)
             : base(message)
-        { }
+        {
+            HelpLink = @"For more info: https://en.wikipedia.org/wiki/Matrix_(mathematics)";
+        }
     }
 }

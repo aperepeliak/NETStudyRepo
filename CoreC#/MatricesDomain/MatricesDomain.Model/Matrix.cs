@@ -1,22 +1,21 @@
 ﻿using MatricesDomain.Model.CustomExceptions;
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Xml.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 
 namespace MatricesDomain.Model
 {
-    public class Matrix : IEnumerable, ICloneable
+    public class Matrix : ICloneable
     {
+        private int[,] _body;
+
         public int NumRows { get; }
         public int NumColumns { get; }
 
-        private int[,] _body;
-
+        public Matrix() : this(1) { }
         public Matrix(int size) : this(size, size) { }
-        public Matrix(int rows = 1, int columns = 1)
+        public Matrix(int rows, int columns)
         {
             if (rows < 1 || columns < 1) { throw new InvalidSizeParameterException(); }
             NumRows = rows;
@@ -27,8 +26,6 @@ namespace MatricesDomain.Model
         public Matrix(int[,] inputMatrix)
         {
             int rank = inputMatrix.Rank;
-
-            if (rank > 2) { throw new Exception("The input array had invalid number of dimensions"); }
 
             NumRows = inputMatrix.GetLength(0);
             NumColumns = inputMatrix.GetLength(1);
@@ -44,8 +41,54 @@ namespace MatricesDomain.Model
             }
         }
 
-        public void SaveToXml() { }
-        public void LoadFromXml() { }
+        public void SaveToXml(string fileName)
+        {
+            var document = new XDocument();
+            var matrix = new XElement("Matrix", 
+                    new XAttribute("NumRows", NumRows), 
+                    new XAttribute("NumColumns", NumColumns));
+
+            for (int i = 0; i < NumRows; i++)
+            {
+                var row = new XElement("Row");
+
+                for (int j = 0; j < NumColumns; j++)
+                {
+                    row.Add(new XElement("Value", _body[i, j]));
+                }
+
+                matrix.Add(row);
+            }
+
+            document.Add(matrix);
+            document.Save(fileName);
+        }
+        public static int[,] LoadFromXml(string fileName)
+        {
+            var document = XDocument.Load(fileName);
+
+            var query = (from row in document.Element("Matrix").Elements("Row")
+                         from v in row.Elements("Value")
+                         select int.Parse(v.Value))
+                        .ToArray();
+
+            int rows = int.Parse(document.Element("Matrix").Attribute("NumRows").Value);
+            int columns = int.Parse(document.Element("Matrix").Attribute("NumColumns").Value);
+
+            int[,] result = new int[rows, columns];
+
+            int k = 0;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    result[i, j] = query[k];
+                    k++;
+                }
+            }
+
+            return result;
+        }
 
         public int this[int row, int column]
         {
@@ -139,10 +182,9 @@ namespace MatricesDomain.Model
 
             var result = new Matrix(m1.NumRows, m2.NumColumns);
 
-
             for (int i = 0; i < m1.NumRows; i++)
             {
-                for (int j = 0; j < m1.NumRows; j++)
+                for (int j = 0; j < m2.NumColumns; j++)
                 {
                     for (int k = 0; k < m1.NumColumns; k++)
                     {
@@ -154,17 +196,25 @@ namespace MatricesDomain.Model
             return result;
         }
 
+        public static Matrix operator *(Matrix matrix, int number)
+        {
+            var result = new Matrix(matrix.NumRows, matrix.NumColumns);
 
+            for (int i = 0; i < result.NumRows; i++)
+            {
+                for (int j = 0; j < result.NumColumns; j++)
+                {
+                    result[i, j] = matrix[i, j] * number;
+                }
+            }
 
-        //public static Matrix operator *(Matrix matrix, int primitiveType)
-        //{
+            return result;
+        }
 
-        //}
-
-        //public static Matrix operator *(int primitiveType, Matrix matrix)
-        //{
-
-        //}
+        public static Matrix operator *(int number, Matrix matrix)
+        {
+            return matrix * number;
+        }
 
         public override string ToString()
         {
@@ -207,6 +257,11 @@ namespace MatricesDomain.Model
             return this.ToString().GetHashCode();
         }
 
+        public object Clone()
+        {
+            return new Matrix(_body);
+        }
+
         private static void CheckMatrixSizesForSum(Matrix m1, Matrix m2)
         {
             if (m1.NumRows != m2.NumRows ||
@@ -215,22 +270,10 @@ namespace MatricesDomain.Model
                 throw new InvalidMatricesSizesException();
             }
         }
-
         private static void CheckMatrixSizesForMultiplication(Matrix m1, Matrix m2)
         {
             if (m1.NumColumns != m2.NumRows)
                 throw new InvalidMultiplicationException();
-        }
-
-        // Interfaces implementations
-        public IEnumerator GetEnumerator()
-        {
-            return _body.GetEnumerator();
-        }
-
-        public object Clone()
-        {
-            throw new NotImplementedException();
         }
     }
 }

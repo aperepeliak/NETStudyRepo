@@ -75,13 +75,45 @@ namespace MatricesDomain.Tests
         }
 
         [TestMethod]
-        public void SubtractsatrixAndNumber()
+        public void SubtractsMatrixAndNumber()
         {
             var m = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
             Matrix res = m - 1;
             var expect = new Matrix(new int[,] { { 0, 1, 2 }, { 3, 4, 5 } });
 
             Assert.AreEqual(res, expect);
+        }
+
+        [TestMethod]
+        public void MupltipliesMatrices()
+        {
+            var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
+            var b = new Matrix(new int[,] { { 1, 10 }, { 2, 10 }, { 3, 10 } });
+            var res = a * b;
+
+            var expect = new Matrix(new int[,] { { 14, 60 }, { 32, 150 } });
+
+            Assert.AreEqual(res, expect);
+        }
+
+        [TestMethod]
+        public void MultipliesMatrixAndNumber()
+        {
+            var matrix = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
+            var res = matrix * 10;
+
+            var expect = new Matrix(new int[,] { { 10, 20, 30 }, { 40, 50, 60 } });
+
+            Assert.AreEqual(res, expect);
+        }
+
+        [TestMethod]
+        public void ClonesMatrix()
+        {
+            var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
+            var clone = (Matrix)a.Clone();
+
+            Assert.AreEqual(a, clone);
         }
     }
 }

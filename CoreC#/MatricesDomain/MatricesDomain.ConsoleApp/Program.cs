@@ -1,4 +1,5 @@
 ﻿using MatricesDomain.Model;
+using MatricesDomain.Model.CustomExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,48 @@ namespace MatricesDomain.ConsoleApp
     {
         static void Main(string[] args)
         {
+            try
+            {
+                var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 1, 1, 1 } });
+                var b = new Matrix(new int[2,2]);
 
 
-            var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
-            var b = new Matrix(new int[,] { { 10, 10 }, { 10, 10 }, { 10, 10 } });
+                a.SaveToXml("Test.xml");
+                var c = new Matrix(Matrix.LoadFromXml("Test.xml"));
+                Console.WriteLine(c);
+            }
+            catch (InvalidMatricesSizesException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.HelpLink);
+            }
+            catch (InvalidMultiplicationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.HelpLink);
+            }
+            catch (InvalidSizeParameterException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.HelpLink);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("***NullReferenceException***");
+                Console.WriteLine($"Target\t  : {ex.TargetSite}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Message\t : {ex.Message}");
+                Console.WriteLine($"Target\t  : {ex.TargetSite}");
+            }
 
-            var c = a * b;
-
-            Console.WriteLine(c);
+            Console.WriteLine("\n\nPress ENTER to exit.");
+            Console.ReadLine();
         }
     }
 }
