@@ -2,6 +2,7 @@
 using MatricesDomain.Model.CustomExceptions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,13 @@ namespace MatricesDomain.ConsoleApp
             try
             {
                 var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 1, 1, 1 } });
-                var b = new Matrix(new int[2,2]);
+                var b = new Matrix();
 
+                var d = a * b;
 
-                a.SaveToXml("Test.xml");
-                var c = new Matrix(Matrix.LoadFromXml("Test.xml"));
-                Console.WriteLine(c);
+                a.SaveToXml("Matrix.xml");
+                var c = new Matrix(Matrix.LoadFromXml("Matrix.xml"));
+                Console.WriteLine(b);
             }
             catch (InvalidMatricesSizesException ex)
             {
@@ -41,6 +43,11 @@ namespace MatricesDomain.ConsoleApp
             {
                 Console.WriteLine(ex.Message);
             }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("The given filename is invalid.");
+                Console.WriteLine($"Details: {ex.Message}");
+            }
             catch (NullReferenceException ex)
             {
                 Console.WriteLine("***NullReferenceException***");
@@ -52,7 +59,7 @@ namespace MatricesDomain.ConsoleApp
                 Console.WriteLine($"Target\t  : {ex.TargetSite}");
             }
 
-            Console.WriteLine("\n\nPress ENTER to exit.");
+            Console.WriteLine("\n\nPress ENTER to exit the program.");
             Console.ReadLine();
         }
     }

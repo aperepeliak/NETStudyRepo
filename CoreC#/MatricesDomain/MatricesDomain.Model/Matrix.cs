@@ -3,6 +3,7 @@ using System;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections;
+using System.IO;
 
 namespace MatricesDomain.Model
 {
@@ -44,8 +45,8 @@ namespace MatricesDomain.Model
         public void SaveToXml(string fileName)
         {
             var document = new XDocument();
-            var matrix = new XElement("Matrix", 
-                    new XAttribute("NumRows", NumRows), 
+            var matrix = new XElement("Matrix",
+                    new XAttribute("NumRows", NumRows),
                     new XAttribute("NumColumns", NumColumns));
 
             for (int i = 0; i < NumRows; i++)
@@ -65,29 +66,36 @@ namespace MatricesDomain.Model
         }
         public static int[,] LoadFromXml(string fileName)
         {
-            var document = XDocument.Load(fileName);
-
-            var query = (from row in document.Element("Matrix").Elements("Row")
-                         from v in row.Elements("Value")
-                         select int.Parse(v.Value))
-                        .ToArray();
-
-            int rows = int.Parse(document.Element("Matrix").Attribute("NumRows").Value);
-            int columns = int.Parse(document.Element("Matrix").Attribute("NumColumns").Value);
-
-            int[,] result = new int[rows, columns];
-
-            int k = 0;
-            for (int i = 0; i < rows; i++)
+            try
             {
-                for (int j = 0; j < columns; j++)
-                {
-                    result[i, j] = query[k];
-                    k++;
-                }
-            }
+                var document = XDocument.Load(fileName);
 
-            return result;
+                var query = (from row in document.Element("Matrix").Elements("Row")
+                             from v in row.Elements("Value")
+                             select int.Parse(v.Value))
+                            .ToArray();
+
+                int rows = int.Parse(document.Element("Matrix").Attribute("NumRows").Value);
+                int columns = int.Parse(document.Element("Matrix").Attribute("NumColumns").Value);
+
+                int[,] result = new int[rows, columns];
+
+                int k = 0;
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < columns; j++)
+                    {
+                        result[i, j] = query[k];
+                        k++;
+                    }
+                }
+
+                return result;
+            }
+            catch (FileNotFoundException)
+            {
+                throw;
+            }
         }
 
         public int this[int row, int column]
@@ -118,7 +126,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator +(Matrix matrix, int number)
         {
             var result = new Matrix(matrix.NumRows, matrix.NumColumns);
@@ -133,7 +140,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator +(int number, Matrix matrix)
         {
             return matrix + number;
@@ -155,7 +161,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator -(Matrix matrix, int number)
         {
             var result = new Matrix(matrix.NumRows, matrix.NumColumns);
@@ -170,7 +175,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator -(int number, Matrix matrix)
         {
             return matrix - number;
@@ -195,7 +199,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator *(Matrix matrix, int number)
         {
             var result = new Matrix(matrix.NumRows, matrix.NumColumns);
@@ -210,7 +213,6 @@ namespace MatricesDomain.Model
 
             return result;
         }
-
         public static Matrix operator *(int number, Matrix matrix)
         {
             return matrix * number;
