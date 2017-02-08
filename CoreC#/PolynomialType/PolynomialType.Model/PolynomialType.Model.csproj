@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomExceptions\InvalidInputParamsForPolinomException.cs" />
-    <Compile Include="Polinomial.cs" />
+    <Compile Include="CustomExceptions\InvalidInputParamsForPolynomException.cs" />
+    <Compile Include="Polynomial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -14,8 +14,8 @@ namespace PolynomialType.ConsoleApp
         {
             try
             {
-                Polinomial a = new Polinomial(new int[] { 20, -5, 1, 10, 0 });
-                Polinomial b = new Polinomial(4);
+                Polynomial a = new Polynomial(new int[] { 20, -5, 1, 10, 0 });
+                Polynomial b = new Polynomial(4);
 
                 var c = a + b;
 
@@ -26,7 +26,7 @@ namespace PolynomialType.ConsoleApp
                 //    Console.WriteLine(i);
                 //}
             }
-            catch (InvalidInputParamsForPolinomException ex)
+            catch (InvalidInputParamsForPolynomException ex)
             {
                 Console.WriteLine(ex.Message);
             }

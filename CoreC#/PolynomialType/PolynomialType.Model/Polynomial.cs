@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace PolynomialType.Model
 {
-    public class Polinomial : ICloneable, IEnumerable
+    public class Polynomial : ICloneable, IEnumerable
     {
         public int Degree { get; }
         public int[] Nums { get; }
 
-        public Polinomial(int degree)
+        public Polynomial(int degree)
         {
             if (degree < 0)
             {
-                throw new InvalidInputParamsForPolinomException
+                throw new InvalidInputParamsForPolynomException
                     ("The input degree parameter was less than zero");
             }
 
@@ -25,11 +25,11 @@ namespace PolynomialType.Model
             Nums = new int[Degree + 1];
             Nums[0] = 1;
         }
-        public Polinomial(int[] numbers)
+        public Polynomial(int[] numbers)
         {
             int[] validNums = DisposeStartingZeros(numbers);
 
-            if (validNums.Length == 0) { throw new InvalidInputParamsForPolinomException(); }
+            if (validNums.Length == 0) { throw new InvalidInputParamsForPolynomException(); }
 
             Degree = validNums.Length - 1;
             Nums = new int[validNums.Length];
@@ -55,7 +55,7 @@ namespace PolynomialType.Model
         }
         public override bool Equals(object obj)
         {
-            var toCompare = obj as Polinomial;
+            var toCompare = obj as Polynomial;
             if (toCompare != null) { return Nums.SequenceEqual(toCompare.Nums); }
             return false;
         }
@@ -66,14 +66,14 @@ namespace PolynomialType.Model
 
         public object Clone()
         {
-            return new Polinomial(Nums);
+            return new Polynomial(Nums);
         }
         public IEnumerator GetEnumerator()
         {
             return Nums.GetEnumerator();
         }
 
-        public static Polinomial operator +(Polinomial p1, Polinomial p2)
+        public static Polynomial operator +(Polynomial p1, Polynomial p2)
         {
             var biggerPolinom = p1.Degree > p2.Degree ? p1 : p2;
             var smallPolinom = p1.Degree <= p2.Degree ? p1 : p2;
@@ -91,7 +91,7 @@ namespace PolynomialType.Model
                 resultNums[i] = biggerPolinom.Nums[i] + smallPolinom.Nums[j];
             }
 
-            return new Polinomial(resultNums);
+            return new Polynomial(resultNums);
         }
 
         private int[] DisposeStartingZeros(int[] numbers)
