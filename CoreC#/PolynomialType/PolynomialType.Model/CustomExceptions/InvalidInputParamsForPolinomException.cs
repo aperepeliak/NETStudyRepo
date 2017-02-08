@@ -12,5 +12,9 @@ namespace PolynomialType.Model.CustomExceptions
         public InvalidInputParamsForPolinomException()
             : base("The input parameters for polinomial object were invalid.")
         { }
+
+        public InvalidInputParamsForPolinomException(string message)
+            : base(message)
+        { }
     }
 }

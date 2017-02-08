@@ -14,15 +14,17 @@ namespace PolynomialType.ConsoleApp
         {
             try
             {
-                Polinomial a = new Polinomial(new int[] { 20, -5, 1, 0, 0 });
-                Polinomial b = new Polinomial(new int[] { 0, 0, 1, 0, 5, 6, 0, 0, 0 });
+                Polinomial a = new Polinomial(new int[] { 20, -5, 1, 10, 0 });
+                Polinomial b = new Polinomial(4);
 
-                Console.WriteLine(b);
-                Console.WriteLine("************");
-                foreach (var i in b.Nums)
-                {
-                    Console.WriteLine(i);
-                }
+                var c = a + b;
+
+                Console.WriteLine(c);
+                //Console.WriteLine("************");
+                //foreach (var i in c.Nums)
+                //{
+                //    Console.WriteLine(i);
+                //}
             }
             catch (InvalidInputParamsForPolinomException ex)
             {
