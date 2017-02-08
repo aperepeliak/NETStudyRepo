@@ -10,7 +10,7 @@ namespace MatricesDomain.Model.CustomExceptions
     public class InvalidMultiplicationException : Exception
     {
         public InvalidMultiplicationException()
-            : base("Matrices have invalid sizes.")
+            : base("Multiplication Error - Matrices have invalid sizes.")
         {
             HelpLink = @"For more info: https://en.wikipedia.org/wiki/Matrix_(mathematics)";
         }

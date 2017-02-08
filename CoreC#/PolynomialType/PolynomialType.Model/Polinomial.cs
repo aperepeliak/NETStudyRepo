@@ -50,7 +50,10 @@ namespace PolynomialType.Model
             return this.ToString().GetHashCode();
         }
 
+        //public static Polinomial operator + (Polinomial p1, Polinomial p2)
+        //{
 
+        //}
 
         private int[] DisposeStartingZeros(int[] numbers)
         {

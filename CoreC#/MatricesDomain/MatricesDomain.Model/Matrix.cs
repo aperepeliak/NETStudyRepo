@@ -44,6 +44,12 @@ namespace MatricesDomain.Model
 
         public void SaveToXml(string fileName)
         {
+            if (fileName == null)
+            {
+                throw new ArgumentNullException
+                    ("The input parameter for SaveToXml() was null.");
+            }
+
             var document = new XDocument();
             var matrix = new XElement("Matrix",
                     new XAttribute("NumRows", NumRows),
@@ -92,9 +98,21 @@ namespace MatricesDomain.Model
 
                 return result;
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                throw;
+                throw new FileNotFoundException
+                    ($"The given fileName (\"{fileName}\") in LoadFromXml() was not found.", ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new NullReferenceException
+                    ("Invalid XNodes names or structure when executing LoadFromXml()." +
+                    "Check your xml-source.", ex);
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new ArgumentNullException
+                    ("The input parameter for LoadFromXml() was null.", ex);
             }
         }
 
@@ -102,11 +120,29 @@ namespace MatricesDomain.Model
         {
             get
             {
-                return _body[row, column];
+                try
+                {
+                    return _body[row, column];
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    throw new IndexOutOfRangeException
+                        ($"Matrix indexer attempted to access an element [{row},{column}] " +
+                        $"that was outside the matrix bounds ([{NumRows},{NumColumns}])", ex);
+                }
             }
             set
             {
-                _body[row, column] = value;
+                try
+                {
+                    _body[row, column] = value;
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    throw new IndexOutOfRangeException
+                        ($"Matrix indexer attempted to access an element [{row},{column}] " +
+                        $"that was outside the matrix bounds ([{NumRows},{NumColumns}])", ex);
+                }
             }
         }
 
@@ -268,14 +304,12 @@ namespace MatricesDomain.Model
         {
             if (m1.NumRows != m2.NumRows ||
                 m1.NumColumns != m2.NumColumns)
-            {
-                throw new InvalidMatricesSizesException();
-            }
+            { throw new InvalidMatricesSizesException(); }
         }
         private static void CheckMatrixSizesForMultiplication(Matrix m1, Matrix m2)
         {
             if (m1.NumColumns != m2.NumRows)
-                throw new InvalidMultiplicationException();
+            { throw new InvalidMultiplicationException(); }
         }
     }
 }

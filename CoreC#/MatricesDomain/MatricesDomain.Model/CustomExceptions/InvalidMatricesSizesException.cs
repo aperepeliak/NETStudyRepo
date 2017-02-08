@@ -10,7 +10,7 @@ namespace MatricesDomain.Model.CustomExceptions
     public class InvalidMatricesSizesException : Exception
     {
         public InvalidMatricesSizesException()
-            : base("Cannot add two matrices with different sizes.")
+            : base("Summation Error - Cannot add two matrices with different sizes.")
         {
             HelpLink = @"For more info: https://en.wikipedia.org/wiki/Matrix_(mathematics)";
         }

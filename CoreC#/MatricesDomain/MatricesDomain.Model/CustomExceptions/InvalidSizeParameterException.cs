@@ -10,6 +10,6 @@ namespace MatricesDomain.Model.CustomExceptions
     public class InvalidSizeParameterException : Exception
     {
         public InvalidSizeParameterException()
-            : base("Matrix size cannot be null or negative") { }
+            : base("Matrix object initialization error - Matrix size cannot be null or negative") { }
     }
 }
