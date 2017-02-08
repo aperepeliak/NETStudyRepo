@@ -8,8 +8,8 @@ namespace PolynomialType.Model
 {
     public class Polinomial
     {
-        public int Degree { get; set; }
-        public int[] Nums { get; set; }
+        public int Degree { get; }
+        public int[] Nums { get; }
 
         public Polinomial(int[] numbers)
         {
@@ -26,23 +26,21 @@ namespace PolynomialType.Model
 
             for (int i = 0, j = l - 1; i < l; i++, j--)
             {
-                //result +=
-                //    $"{(Nums[i] == 0 ? "" : $"{Nums[i]}x{(j == 0 ? "" : $"{j}")}{(i == l - 1 ? "" : " + ")}")}";
+                string plusSign = $"{(i == 0 ? "" : " + ")}";
+                string coef = $"{(Nums[i] == 1 ? (i == l - 1 ? $"{Nums[i]}" : "") : $"{Nums[i]}")}";
+                string variable = $"{(i == l - 1 ? "" : "x^")}";
+                string degree = $"{(j == 0 ? "" : $"{j}")}";
 
-                //result +=
-                //    $"{(Nums[i] == 0 ? "" : $"{(i == 0 ? "" : " + ")}{Nums[i]}x{(j == 0 ? "" : $"{j}")}")}";
-
-                result +=
-                    $"{(Nums[i] == 0 ? "" : $"{(i == 0 ? "" : " + ")}{(Nums[i] == 1 ? "" : $"{Nums[i]}")}x{(j == 0 ? "" : $"{j}")}")}";
-
+                result += $"{(Nums[i] == 0 ? "" : $"{plusSign}{coef}{variable}{degree}")}";
             }
 
             return result;
         }
-
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            var toCompare = obj as Polinomial;
+            if (toCompare != null) { return Nums.SequenceEqual(toCompare.Nums); }
+            return false;
         }
         public override int GetHashCode()
         {
