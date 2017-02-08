@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PolynomialType.Model.CustomExceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace PolynomialType.Model
         public Polinomial(int[] numbers)
         {
             int[] validNums = DisposeStartingZeros(numbers);
+            if (validNums.Length == 0) { throw new InvalidInputParamsForPolinomException(); }
+
             Degree = validNums.Length - 1;
             Nums = new int[validNums.Length];
             Array.Copy(validNums, Nums, validNums.Length);
@@ -46,6 +49,8 @@ namespace PolynomialType.Model
         {
             return this.ToString().GetHashCode();
         }
+
+
 
         private int[] DisposeStartingZeros(int[] numbers)
         {
