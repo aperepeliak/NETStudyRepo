@@ -11,7 +11,7 @@ namespace PolynomialType.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Polinomial a = new Polinomial(new int[] { 0, 1, 0, 20, -5, 1 });
+            Polinomial a = new Polinomial(new int[] { 20, -5, 1, 0, 0 });
 
             Console.WriteLine(a);
 
