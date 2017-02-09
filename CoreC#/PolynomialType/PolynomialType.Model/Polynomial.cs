@@ -13,7 +13,8 @@ namespace PolynomialType.Model
         public int Degree { get; }
         public int[] Nums { get; }
 
-        public Polynomial(int degree)
+        public Polynomial() : this(1) { }
+        public Polynomial(int degree, int firstCoefficient = 0)
         {
             if (degree < 0)
             {
@@ -23,8 +24,9 @@ namespace PolynomialType.Model
 
             Degree = degree;
             Nums = new int[Degree + 1];
-            Nums[0] = 1;
+            Nums[0] = firstCoefficient;
         }
+
         public Polynomial(int[] numbers)
         {
             int[] validNums = DisposeStartingZeros(numbers);
@@ -75,23 +77,78 @@ namespace PolynomialType.Model
 
         public static Polynomial operator +(Polynomial p1, Polynomial p2)
         {
-            var biggerPolinom = p1.Degree > p2.Degree ? p1 : p2;
-            var smallPolinom = p1.Degree <= p2.Degree ? p1 : p2;
+            var biggerPolynom = p1.Degree > p2.Degree ? p1 : p2;
+            var smallPolynom = p1.Degree <= p2.Degree ? p1 : p2;
 
-            int[] resultNums = new int[biggerPolinom.Nums.Length];
+            int[] resultNums = new int[biggerPolynom.Nums.Length];
 
             int startIndex = 0;
-            int elementsToCopy = biggerPolinom.Nums.Length - smallPolinom.Nums.Length;
+            int elementsToCopy = biggerPolynom.Nums.Length - smallPolynom.Nums.Length;
 
-            Array.Copy(biggerPolinom.Nums, startIndex,
+            Array.Copy(biggerPolynom.Nums, startIndex,
                 resultNums, startIndex, elementsToCopy);
 
-            for (int i = elementsToCopy, j = 0; i < biggerPolinom.Nums.Length; i++, j++)
+            for (int i = elementsToCopy, j = 0; i < biggerPolynom.Nums.Length; i++, j++)
             {
-                resultNums[i] = biggerPolinom.Nums[i] + smallPolinom.Nums[j];
+                resultNums[i] = biggerPolynom.Nums[i] + smallPolynom.Nums[j];
             }
 
             return new Polynomial(resultNums);
+        }
+        public static Polynomial operator -(Polynomial p1, Polynomial p2)
+        {
+            var biggerPolynom = p1.Degree >= p2.Degree ? p1 : p2;
+            var smallPolynom = p1.Degree < p2.Degree ? p1 : p2;
+
+            int[] resultNums = new int[biggerPolynom.Nums.Length];
+
+            int startIndex = 0;
+            int elementsToCopy = biggerPolynom.Nums.Length - smallPolynom.Nums.Length;
+
+            Array.Copy(biggerPolynom.Nums, startIndex,
+                resultNums, startIndex, elementsToCopy);
+
+            for (int i = elementsToCopy, j = 0; i < biggerPolynom.Nums.Length; i++, j++)
+            {
+                resultNums[i] = biggerPolynom.Nums[i] - smallPolynom.Nums[j];
+            }
+
+            return new Polynomial(resultNums);
+        }
+
+        public static Polynomial operator *(Polynomial polynom, int number)
+        {
+            var result = new Polynomial(polynom.Nums);
+
+            for (int i = 0; i < result.Nums.Length; i++)
+            {
+                result.Nums[i] = polynom.Nums[i] * number;
+            }
+
+            return result;
+        }
+        public static Polynomial operator *(int number, Polynomial polynom)
+        {
+            return polynom * number;
+        }
+
+        public static Polynomial operator *(Polynomial p1, Polynomial p2)
+        {
+            var result = new Polynomial(p1.Degree + p2.Degree);
+
+            Polynomial[] arr = new Polynomial[p1.Nums.Length];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = new Polynomial(p1.Degree - i + p2.Degree);
+                for (int j = 0; j < p2.Nums.Length; j++)
+                {
+                    arr[i].Nums[j] = p2.Nums[j] * p1.Nums[i];
+                }
+                result += arr[i];
+            }
+
+            return result;
         }
 
         private int[] DisposeStartingZeros(int[] numbers)
