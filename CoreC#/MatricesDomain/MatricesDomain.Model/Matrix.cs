@@ -4,9 +4,11 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MatricesDomain.Model
 {
+    [Serializable]
     public class Matrix : ICloneable
     {
         private int[,] _body;
@@ -26,8 +28,6 @@ namespace MatricesDomain.Model
 
         public Matrix(int[,] inputMatrix)
         {
-            int rank = inputMatrix.Rank;
-
             NumRows = inputMatrix.GetLength(0);
             NumColumns = inputMatrix.GetLength(1);
 
@@ -70,7 +70,7 @@ namespace MatricesDomain.Model
             document.Add(matrix);
             document.Save(fileName);
         }
-        public static int[,] LoadFromXml(string fileName)
+        public static Matrix LoadFromXml(string fileName)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace MatricesDomain.Model
                     }
                 }
 
-                return result;
+                return new Matrix(result);
             }
             catch (FileNotFoundException ex)
             {
@@ -113,6 +113,29 @@ namespace MatricesDomain.Model
             {
                 throw new ArgumentNullException
                     ("The input parameter for LoadFromXml() was null.", ex);
+            }
+        }
+
+        public void Serialize(string fileName)
+        {
+            var formatter = new BinaryFormatter();
+            using (var fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fileStream, this);
+            }
+        }
+        public static Matrix Deserialize(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException
+                    ($"The given fileName (\"{fileName}\") in Deserialize() was not found.");
+            }
+
+            var formatter = new BinaryFormatter();
+            using (var fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                return (Matrix)formatter.Deserialize(fileStream);
             }
         }
 
@@ -148,7 +171,9 @@ namespace MatricesDomain.Model
 
         public static Matrix operator +(Matrix m1, Matrix m2)
         {
-            CheckMatrixSizesForSum(m1, m2);
+            if (m1.NumRows != m2.NumRows ||
+                m1.NumColumns != m2.NumColumns)
+            { throw new InvalidMatricesSizesException(); }
 
             var result = new Matrix(m1.NumRows, m1.NumColumns);
 
@@ -183,7 +208,9 @@ namespace MatricesDomain.Model
 
         public static Matrix operator -(Matrix m1, Matrix m2)
         {
-            CheckMatrixSizesForSum(m1, m2);
+            if (m1.NumRows != m2.NumRows ||
+                m1.NumColumns != m2.NumColumns)
+            { throw new InvalidMatricesSizesException(); }
 
             var result = new Matrix(m1.NumRows, m1.NumColumns);
 
@@ -218,7 +245,8 @@ namespace MatricesDomain.Model
 
         public static Matrix operator *(Matrix m1, Matrix m2)
         {
-            CheckMatrixSizesForMultiplication(m1, m2);
+            if (m1.NumColumns != m2.NumRows)
+            { throw new InvalidMultiplicationException(); }
 
             var result = new Matrix(m1.NumRows, m2.NumColumns);
 
@@ -298,18 +326,6 @@ namespace MatricesDomain.Model
         public object Clone()
         {
             return new Matrix(_body);
-        }
-
-        private static void CheckMatrixSizesForSum(Matrix m1, Matrix m2)
-        {
-            if (m1.NumRows != m2.NumRows ||
-                m1.NumColumns != m2.NumColumns)
-            { throw new InvalidMatricesSizesException(); }
-        }
-        private static void CheckMatrixSizesForMultiplication(Matrix m1, Matrix m2)
-        {
-            if (m1.NumColumns != m2.NumRows)
-            { throw new InvalidMultiplicationException(); }
         }
     }
 }

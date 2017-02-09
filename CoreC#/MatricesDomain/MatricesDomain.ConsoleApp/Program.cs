@@ -17,11 +17,9 @@ namespace MatricesDomain.ConsoleApp
             {
                 var a = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 1, 1, 1 } });
                 var b = new Matrix(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 1, 1, 1 } });
-                var d = a * b;
-
-                //a.SaveToXml("Matrix.xml");
-                var c = new Matrix(Matrix.LoadFromXml("Matrix.xml"));
-                Console.WriteLine(c);
+                var d = a * b - a;
+                
+                Console.WriteLine(d);
             }
             catch (Exception ex)
             {
