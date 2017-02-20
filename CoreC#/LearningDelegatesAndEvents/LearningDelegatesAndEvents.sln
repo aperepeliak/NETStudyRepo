@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006 - JoeShipping", "006 - 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiggyBankChallenge", "PiggyBankChallenge\PiggyBankChallenge.csproj", "{B72BAD83-601E-4C0C-82C9-57DF46634A83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracker", "StockTracker\StockTracker.csproj", "{91319081-0534-42A3-A607-B8C754675371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{B72BAD83-601E-4C0C-82C9-57DF46634A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B72BAD83-601E-4C0C-82C9-57DF46634A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B72BAD83-601E-4C0C-82C9-57DF46634A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91319081-0534-42A3-A607-B8C754675371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91319081-0534-42A3-A607-B8C754675371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91319081-0534-42A3-A607-B8C754675371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91319081-0534-42A3-A607-B8C754675371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,5 +122,6 @@ Global
 		{C04520F7-56A0-4C0B-887C-AF3CABEFC015} = {3CDC1A75-48EA-4B56-A9B2-23BF53FB2965}
 		{F9D77CBF-0994-4F97-9EAC-5EEFECA96412} = {9A26D271-F5D8-46CE-A13F-811D1747C184}
 		{B72BAD83-601E-4C0C-82C9-57DF46634A83} = {3CDC1A75-48EA-4B56-A9B2-23BF53FB2965}
+		{91319081-0534-42A3-A607-B8C754675371} = {3CDC1A75-48EA-4B56-A9B2-23BF53FB2965}
 	EndGlobalSection
 EndGlobal
