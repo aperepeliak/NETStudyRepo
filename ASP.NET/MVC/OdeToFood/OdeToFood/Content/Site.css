@@ -39,3 +39,7 @@ textarea {
 .review p {
     font-size: .8em;
 }
+
+.searchForm {
+    margin: 8px 0;
+}
