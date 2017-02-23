@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EmployeesList.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Employees</h2>
+<p>There are <span id="count-emp">@Model.Count()</span> employees in the list</p>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateBirthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INN)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @{ string birthView = item.DateBirthday.ToShortDateString();}
+            @Html.DisplayFor(modelItem => birthView)
+        </td>
+        <td>
+            @{ string hireView = item.HireDate.ToShortDateString(); }
+            @Html.DisplayFor(modelItem => hireView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INN)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-home"></span> Home
+    </a>
+</div>
