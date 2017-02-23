@@ -1,8 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #EBE9E4;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,4 +30,20 @@ textarea {
 
 .jumbotron h1 {
     color: #7863BE;
+}
+
+.review {
+    padding: 2px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.review h4 {
+    color: maroon;
+    padding: 5px;
+    background: #cccc99;
+}
+
+.review p {
+    font-size: .8em;
 }
