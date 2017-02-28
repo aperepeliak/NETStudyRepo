@@ -11,8 +11,15 @@ namespace GenericBinaryTree.ConsoleApp
     {
         static void Main(string[] args)
         {
-            BinaryTree<int> tree = new BinaryTree<int>();
+            BinaryTree<int> tree = new BinaryTree<int>(50);
 
+            tree.Add(10);
+            tree.Add(75);
+
+            foreach (var item in tree)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
