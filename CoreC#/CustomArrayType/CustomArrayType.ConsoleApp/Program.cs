@@ -11,11 +11,10 @@ namespace CustomArrayType.ConsoleApp
     {
         static void Main(string[] args)
         {
-            CustomArray<string> test = new CustomArray<string>(5, -1);
+            CustomArray<string> test = new CustomArray<string>(5, 50);
 
-            test[1] = "hello";
-            test[2] = "world";
-            test[3] = null;
+            test[51] = "hello";
+            test[52] = "world";
 
             foreach (var item in test)
             {
