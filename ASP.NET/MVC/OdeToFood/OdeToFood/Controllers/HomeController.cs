@@ -11,6 +11,11 @@ namespace OdeToFood.Controllers
     {
         OdeToFoodDb _db = new OdeToFoodDb();
 
+        public ActionResult Autocomplete(string term)
+        {
+
+        }
+
         public ActionResult Index(string searchTerm = null)
         {
             var model = _db.Restaurants
