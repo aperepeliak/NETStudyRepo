@@ -1,22 +1,44 @@
 ﻿$(() => {
 
-    var ajaxFormSubmit = function() {
-        var $form = $(this);
+    let ajaxFormSubmit = function() {
+        let $form = $(this);
 
-        var options = {
+        let options = {
             url: $form.attr("action"),
             type: $form.attr("method"),
             data: $form.serialize()
         };
 
         $.ajax(options).done((data) => {
-            $($form.attr("data-otf-target"))
-            .replaceWith(data);
+            let $target = $($form.attr("data-otf-target"));
+            let $newHtml = $(data);
+
+            $target.replaceWith($newHtml);
+            $newHtml.effect("highlight");
         });
 
         return false;
     };
 
-    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
+    let submitAutocompleteForm = function (event, ui) {
+        let $input = $(this);
+        $input.val(ui.item.label);
 
+        let $form = $input.parents("form:first");
+        $form.submit();
+    };
+
+    let createAutocomplete = function () {
+        let $input = $(this);
+
+        let options = {
+            source: $input.attr("data-otf-autocomplete"),
+            select: submitAutocompleteForm
+        };
+
+        $input.autocomplete(options);
+    };
+
+    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
+    $("input[data-otf-autocomplete]").each(createAutocomplete);
 });

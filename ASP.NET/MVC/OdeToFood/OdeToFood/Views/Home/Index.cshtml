@@ -8,7 +8,8 @@
       data-otf-ajax="true" data-otf-target="#restaurantList"
       class="form-inline searchForm">
 
-    <input type="search" name="searchTerm" class="form-control"/>
+    <input type="search" name="searchTerm" class="form-control"
+           data-otf-autocomplete="@Url.Action("Autocomplete")"/>
     <input type="submit" class="btn btn-primary" value="Search By Name" />
 </form>
 
