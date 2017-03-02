@@ -14,7 +14,7 @@
             let $newHtml = $(data);
 
             $target.replaceWith($newHtml);
-            $newHtml.effect("highlight");
+            $newHtml.effect("highlight", {color: "pink"}, 400);
         });
 
         return false;
@@ -39,6 +39,25 @@
         $input.autocomplete(options);
     };
 
+    let getPage = function () {
+        let $a = $(this);
+
+        let options = {
+            url: $a.attr("href"),
+            data: $("form").serialize(),
+            type: "get"
+        };
+
+        $.ajax(options).done((data) => {           
+            let target = $a.parents("div.pagedList").attr("data-otf-target");
+            $(target).replaceWith(data);
+        });
+
+        return false;
+    };
+
     $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
     $("input[data-otf-autocomplete]").each(createAutocomplete);
+
+    $(".body-content").on("click", ".pagedList a", getPage);
 });
