@@ -29,4 +29,20 @@
     <input type="submit" class="btn btn-primary" value="Search By Name" />
 }*@
 
+@{ 
+    var amount = 10.0m;
+    var someDate = new DateTime(2002, 7, 9);
+}
+
+<div>
+    @OdeToFood.Views.Home.Resource.Greeting
+</div>
+
+<div>
+    @amount.ToString("c")
+</div>
+<div>
+    @someDate.ToShortDateString()
+</div>
+
 @Html.Partial("_Restaurants", Model)

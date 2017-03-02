@@ -26,6 +26,14 @@ namespace OdeToFood.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        //[ChildActionOnly]
+        //[OutputCache(Duration = 60)]
+        //public ActionResult SayHello()
+        //{
+        //    return Content("Hello");
+        //}
+
+        [OutputCache(CacheProfile = "Long", VaryByHeader = "X-Requested-With", Location = System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
             var model = _db.Restaurants
