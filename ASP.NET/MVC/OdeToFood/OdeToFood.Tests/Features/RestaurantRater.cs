@@ -13,12 +13,11 @@ namespace OdeToFood.Tests.Features
             _restaurant = restaurant;
         }
 
-        public RatingResult ComputeRating(int numberOfReviews)
+        public RatingResult ComputeResult(IRatingAlgorithm algorithm,
+            int numberOfReviews)
         {
-            var result = new RatingResult();
-            result.Rating = (int)_restaurant.Reviews.Average(r => r.Rating);
-
-            return result;
+            var filteredReviews = _restaurant.Reviews.Take(numberOfReviews);
+            return algorithm.Compute(filteredReviews.ToList());
         }
     }
 }
