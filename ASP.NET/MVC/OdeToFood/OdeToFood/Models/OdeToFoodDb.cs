@@ -8,24 +8,28 @@ namespace OdeToFood.Models
 {
     public interface IOdeToFoodDb : IDisposable
     {
-        IQueryable<T> Query<T>() where T : class;
+        IQueryable<T> Query<T>()    where T : class;
+        void Add<T>(T entity)       where T : class;
+        void Update<T>(T entity)    where T : class;
+        void Remove<T>(T entity)    where T : class;
+        Restaurant Find(int? id);
+        void SaveChanges();
     }
-
 
     public class OdeToFoodDb : DbContext, IOdeToFoodDb
     {
-        public OdeToFoodDb() : base("name=DefaultConnection")
-        {
+        public OdeToFoodDb() : base("name=DefaultConnection") { }
 
-        }
+        // public DbSet<UserProfile>       UserProfiles { get; set; }
+        public DbSet<Restaurant>        Restaurants { get; set; }
+        public DbSet<RestaurantReview>  Reviews { get; set; }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Restaurant> Restaurants { get; set; }
-        public DbSet<RestaurantReview> Reviews { get; set; }
+        IQueryable<T> IOdeToFoodDb.Query<T>()   => Set<T>();
+        void IOdeToFoodDb.Add<T>(T entity)      => Set<T>().Add(entity);
+        void IOdeToFoodDb.Update<T>(T entity)   => Entry(entity).State = EntityState.Modified;  
+        void IOdeToFoodDb.Remove<T>(T entity)   => Set<T>().Remove(entity);
+        void IOdeToFoodDb.SaveChanges()         => SaveChanges();
 
-        IQueryable<T> IOdeToFoodDb.Query<T>()
-        {
-            return Set<T>();
-        }
+        Restaurant IOdeToFoodDb.Find(int? id)    => Set<Restaurant>().Find(id);
     }
 }

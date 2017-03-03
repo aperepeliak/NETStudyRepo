@@ -12,12 +12,19 @@ namespace OdeToFood.Controllers
 {
     public class RestaurantController : Controller
     {
-        private OdeToFoodDb db = new OdeToFoodDb();
+        IOdeToFoodDb _db;
+
+        public RestaurantController()
+        {
+            _db = new OdeToFoodDb();
+        }
+
+        public RestaurantController(IOdeToFoodDb db) { _db = db; }
 
         // GET: Restaurant
         public ActionResult Index()
         {
-            return View(db.Restaurants.ToList());
+            return View(_db.Query<Restaurant>().ToList());
         }
 
         // GET: Restaurant/Create
@@ -35,8 +42,8 @@ namespace OdeToFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Restaurants.Add(restaurant);
-                db.SaveChanges();
+                _db.Add(restaurant);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -50,7 +57,7 @@ namespace OdeToFood.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = db.Restaurants.Find(id);
+            Restaurant restaurant = _db.Find(id);
             if (restaurant == null)
             {
                 return HttpNotFound();
@@ -67,8 +74,8 @@ namespace OdeToFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(restaurant).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Update(restaurant);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(restaurant);
@@ -81,7 +88,7 @@ namespace OdeToFood.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = db.Restaurants.Find(id);
+            Restaurant restaurant = _db.Find(id);
             if (restaurant == null)
             {
                 return HttpNotFound();
@@ -94,9 +101,9 @@ namespace OdeToFood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Restaurant restaurant = db.Restaurants.Find(id);
-            db.Restaurants.Remove(restaurant);
-            db.SaveChanges();
+            Restaurant restaurant = _db.Find(id);
+            _db.Remove(restaurant);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -104,7 +111,7 @@ namespace OdeToFood.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
