@@ -84,6 +84,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\FakeControllerContext.cs" />
+    <Compile Include="Fakes\FakeOdeToFoodDb.cs" />
+    <Compile Include="TestData.cs" />
     <Compile Include="Features\IRatingAlgorithm.cs" />
     <Compile Include="Features\RatingResult.cs" />
     <Compile Include="Features\RestaurantRater.cs" />
