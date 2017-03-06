@@ -9,59 +9,29 @@ namespace GenericBinaryTree.Lib
 {
     public enum TraverseMethod { preOrder, inOrder, postOrder }
 
-    public interface IBinaryTree<T> : IEnumerable<T> where T : IComparable<T>
+    public abstract class BinaryTree<T> : IEnumerable<T> where T : IComparable<T>
     {
-        T Root { get; }
-
-        event Action<T> ElementAdded;
-        event Action<T> ElementDeleted;
-
-        void Add(T data);
-        void AddRange(IEnumerable<T> range);
-    }
-
-    public class BinaryTree<T> : IBinaryTree<T> where T : IComparable<T>
-    {
-        Node<T> _root;
-        public T Root { get; }
+        protected Node<T> _root;
+        public T Root => _root.Data;
 
         public BinaryTree(T root) { _root = new Node<T>(root); }
 
-        public event Action<T> ElementAdded;
-        public event Action<T> ElementDeleted;
+        public event EventHandler<ElementAddedEventArgs<T>> ElementAdded;
+        public event EventHandler<ElementDeletedEventArgs<T>> ElementDeleted;
 
-        public void Add(T data)
-        {
-            if (data == null) throw new NullReferenceException("Input data of null");
+        protected virtual void OnElementAdded(ElementAddedEventArgs<T> e)
+            => ElementAdded?.Invoke(this, e);
+        protected virtual void OnElementDeleted(ElementDeletedEventArgs<T> e)
+            => ElementDeleted?.Invoke(this, e);
 
-            Node<T> node = new Node<T>(data);
-            Node<T> tmp = null;
-            Node<T> current = _root;
+        public abstract void Add(T data);
+        public abstract void AddRange(IEnumerable<T> range);
+        public abstract void Delete(Node<T> node);
 
-            while (current != null)
-            {
-                tmp = current;
-                if (node.Data.CompareTo(current.Data) == -1) current = current.Left;
-                else current = current.Right;
-            }
+        public IEnumerator<T> GetEnumerator() => _root.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-            node.Parent = tmp;
-
-            if (tmp == null) _root = node;
-            else
-            {
-                if (node.Data.CompareTo(tmp.Data) == -1) tmp.Left = node;
-                else tmp.Right = node;
-            }
-
-            ElementAdded?.Invoke(data);
-        }
-        public void AddRange(IEnumerable<T> range)
-        {
-            foreach (var item in range) { Add(item); }
-        }
-
-        public IEnumerable<T> Iterate(TraverseMethod method)
+        public virtual IEnumerable<T> Iterate(TraverseMethod method)
         {
             if (method == TraverseMethod.preOrder)
                 return PreOrder(_root);
@@ -74,9 +44,6 @@ namespace GenericBinaryTree.Lib
 
             return null;
         }
-
-        public IEnumerator<T> GetEnumerator() => _root.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private IEnumerable<T> PreOrder(Node<T> node)
         {
@@ -123,5 +90,17 @@ namespace GenericBinaryTree.Lib
 
             yield return node.Data;
         }
+    }
+
+    public class ElementAddedEventArgs<T> : EventArgs
+    {
+        public readonly T NewElement;
+        public ElementAddedEventArgs(T newElement) { NewElement = newElement; }
+    }
+
+    public class ElementDeletedEventArgs<T> : EventArgs
+    {
+        public readonly T DeletedElement;
+        public ElementDeletedEventArgs(T deletedElement) { DeletedElement = deletedElement; }
     }
 }

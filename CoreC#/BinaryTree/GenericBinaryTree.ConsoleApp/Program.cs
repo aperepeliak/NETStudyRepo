@@ -11,9 +11,9 @@ namespace GenericBinaryTree.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var tree = new BinaryTree<int>(50);
+            var tree = new OrdinaryBinaryTree<int>(50);
 
-            // tree.ElementAdded += (data) => Console.WriteLine($"Added: {data}");
+            // tree.ElementAdded += (o, e) => Console.WriteLine($"Added: {e.NewElement}");
 
             tree.AddRange(new int[] { 10, 28, 1, 3, 70 });
 
@@ -22,7 +22,7 @@ namespace GenericBinaryTree.ConsoleApp
                 Console.WriteLine(item);
             }
 
-            var studs = new BinaryTree<Student>(new Student()
+            var studs = new OrdinaryBinaryTree<Student>(new Student()
             {
                 FirstName = "Vasya",
                 LastName = "Pupkin",
