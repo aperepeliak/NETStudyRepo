@@ -9,11 +9,26 @@ namespace GenericBinaryTree.Lib
 {
     public enum TraverseMethod { preOrder, inOrder, postOrder }
 
-    public class BinaryTree<T> : IEnumerable<T> where T : IComparable<T>
+    public interface IBinaryTree<T> : IEnumerable<T> where T : IComparable<T>
     {
-        public Node<T> Root { get; protected set; }
-        public BinaryTree(T root) { Root = new Node<T>(root); }
+        T Root { get; }
+
+        event Action<T> ElementAdded;
+        event Action<T> ElementDeleted;
+
+        void Add(T data);
+        void AddRange(IEnumerable<T> range);
+    }
+
+    public class BinaryTree<T> : IBinaryTree<T> where T : IComparable<T>
+    {
+        Node<T> _root;
+        public T Root { get; }
+
+        public BinaryTree(T root) { _root = new Node<T>(root); }
+
         public event Action<T> ElementAdded;
+        public event Action<T> ElementDeleted;
 
         public void Add(T data)
         {
@@ -21,7 +36,7 @@ namespace GenericBinaryTree.Lib
 
             Node<T> node = new Node<T>(data);
             Node<T> tmp = null;
-            Node<T> current = Root;
+            Node<T> current = _root;
 
             while (current != null)
             {
@@ -32,7 +47,7 @@ namespace GenericBinaryTree.Lib
 
             node.Parent = tmp;
 
-            if (tmp == null) Root = node;
+            if (tmp == null) _root = node;
             else
             {
                 if (node.Data.CompareTo(tmp.Data) == -1) tmp.Left = node;
@@ -49,18 +64,18 @@ namespace GenericBinaryTree.Lib
         public IEnumerable<T> Iterate(TraverseMethod method)
         {
             if (method == TraverseMethod.preOrder)
-                return PreOrder(Root);
+                return PreOrder(_root);
 
             if (method == TraverseMethod.inOrder)
-                return InOrder(Root);
+                return InOrder(_root);
 
             if (method == TraverseMethod.postOrder)
-                return PostOrder(Root);
+                return PostOrder(_root);
 
             return null;
         }
 
-        public IEnumerator<T> GetEnumerator() => Root.GetEnumerator();
+        public IEnumerator<T> GetEnumerator() => _root.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private IEnumerable<T> PreOrder(Node<T> node)
