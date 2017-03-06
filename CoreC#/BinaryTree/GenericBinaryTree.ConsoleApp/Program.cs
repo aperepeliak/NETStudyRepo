@@ -33,7 +33,7 @@ namespace GenericBinaryTree.ConsoleApp
             {
                 new Student() { FirstName = "Denis", LastName = "Petrov", Grade = 98},
                 new Student() { FirstName = "Petr", LastName = "Ivanov", Grade = 80 },
-                new Student() { FirstName = "Joe", LastName = "Dow", Grade = 87 }
+                new Student() { FirstName = "John", LastName = "Dow", Grade = 87 }
             });
 
             foreach (var stud in studs)
