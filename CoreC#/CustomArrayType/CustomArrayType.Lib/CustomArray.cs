@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomArrayType.Lib
 {
-    public class CustomArray<T> : IEnumerable
+    public class CustomArray<T> : IEnumerable<T>
     {
         Array _arr;
         public int Length => _arr.Length;
@@ -41,6 +38,11 @@ namespace CustomArrayType.Lib
             }
         }
 
-        public IEnumerator GetEnumerator() => _arr.GetEnumerator();
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _arr)
+                yield return (T)item;
+        }
+        IEnumerator IEnumerable.GetEnumerator() => _arr.GetEnumerator();
     }
 }
