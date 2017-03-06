@@ -22,7 +22,7 @@ namespace GenericBinaryTree.Lib
             while (current != null)
             {
                 tmp = current;
-                if (node.Data.CompareTo(current.Data) == -1) current = current.Left;
+                if (node.CompareTo(current) == -1) current = current.Left;
                 else current = current.Right;
             }
 
@@ -31,7 +31,7 @@ namespace GenericBinaryTree.Lib
             if (tmp == null) _root = node;
             else
             {
-                if (node.Data.CompareTo(tmp.Data) == -1) tmp.Left = node;
+                if (node.CompareTo(tmp) == -1) tmp.Left = node;
                 else tmp.Right = node;
             }
 

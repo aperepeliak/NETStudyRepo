@@ -29,7 +29,7 @@ namespace GenericBinaryTree.Lib
                     yield return v;
         }
 
-        public int CompareTo(T other) => Data.CompareTo(other);
+        public int CompareTo(Node<T> other) => Data.CompareTo(other.Data);
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
