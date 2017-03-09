@@ -15,7 +15,6 @@ namespace eManager.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        // test new git bash
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 

@@ -16,5 +16,6 @@ namespace eManager.Web.Infrastructure
 
         IQueryable<Employee> IDepartmentDataSource.Employees     => Employees;
         IQueryable<Department> IDepartmentDataSource.Departments => Departments;
+        void IDepartmentDataSource.Save()                        => SaveChanges();
     }
 }

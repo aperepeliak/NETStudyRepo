@@ -5,6 +5,7 @@ namespace eManager.Web.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Security;
 
     internal sealed class Configuration : DbMigrationsConfiguration<eManager.Web.Infrastructure.DepartmentDb>
     {
@@ -18,6 +19,17 @@ namespace eManager.Web.Migrations
                 new Department { Name = "Shipping" },
                 new Department { Name = "Human Resource" }
                 );
+
+            //if (Roles.RoleExists("Admin"))
+            //{
+            //    Roles.CreateRole("Admin");
+            //}
+
+            //if (Membership.GetUser("sa") == null)
+            //{
+            //    Membership.CreateUser("sa", "qwerty123456");
+            //    Roles.AddUserToRole("sa", "Admin");
+            //}
         }
     }
 }
