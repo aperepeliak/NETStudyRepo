@@ -81,8 +81,27 @@ namespace Videos.Controllers
         }
 
         // DELETE: api/Video/5
-        public void Delete(int id)
+        public HttpResponseMessage DeleteVideo(int id)
         {
+            Video video = _db.Videos.Find(id);
+
+            if (video == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            _db.Videos.Remove(video);
+
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, video);
         }
     }
 }

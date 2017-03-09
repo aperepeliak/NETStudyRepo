@@ -88,7 +88,17 @@
                     });
             };
 
+            var deleteVideo = function(id) {
+                return $.ajax(
+                    videoApiUrl + "/" + id,
+                    {
+                        type: "DELETE"
+                    }
+                );
+            }
+
             return {
+                deleteVideo: deleteVideo,
                 addVideo: addVideo,
                 updateVideo: updateVideo,
                 getVideos: getVideos,
@@ -135,6 +145,11 @@
                 showVideoForEdit(video);
             };
 
+            var deleteVideo = function() {
+                var id = getId(this);
+                videoServer.deleteVideo(id).done(refreshVideos);
+            }
+
             var clearEdit = function () {
                 $("#videoEditOutput").empty();
             };
@@ -160,6 +175,7 @@
                 $(document).on("click", ".editVideo", editVideo);
                 $(document).on("click", "#saveVideo", saveVideo);
                 $(document).on("click", "#createVideo", createVideo);
+                $(document).on("click", ".deleteVideo", deleteVideo);
             };
 
             var getId = function (element) {
