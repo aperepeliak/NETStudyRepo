@@ -30,6 +30,23 @@ namespace KatanaIntro
     {
         public void Configuration(IAppBuilder app)
         {
+            //app.Use(async (env, next) =>
+            //{
+            //    foreach (var pair in env.Environment)
+            //    {
+            //        Console.WriteLine($"{pair.Key} : {pair.Value}");
+            //    }
+
+            //    await next();
+            //});
+
+            app.Use(async (env, next) =>
+            {
+                Console.WriteLine($"Requesting : {env.Request.Path}");
+                await next();
+                Console.WriteLine($"Response : {env.Response.StatusCode}");
+            });
+
             app.UseHelloWorld();
 
             // without sugar - app.Use<HelloWorldComponent>();
@@ -64,7 +81,7 @@ namespace KatanaIntro
             var response = environment["owin.ResponseBody"] as Stream;
             using (var writer = new StreamWriter(response))
             {
-                return writer.WriteAsync("Hello!! ");
+                return writer.WriteAsync("Hello!!");
             }
         }
     }
