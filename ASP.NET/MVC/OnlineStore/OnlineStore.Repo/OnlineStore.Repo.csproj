@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2CC3507-80BF-4A18-8C00-E453DF0442C0}</ProjectGuid>
+    <ProjectGuid>{93DC5E44-B715-49B0-821F-B331D94FDDEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineStore.DAL</RootNamespace>
-    <AssemblyName>OnlineStore.DAL</AssemblyName>
+    <RootNamespace>OnlineStore.Repo</RootNamespace>
+    <AssemblyName>OnlineStore.Repo</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,8 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,13 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\Good.cs" />
-    <Compile Include="Entities\Manufacturer.cs" />
-    <Compile Include="Entities\Photo.cs" />
-    <Compile Include="Entities\Sale.cs" />
-    <Compile Include="Entities\SalePos.cs" />
-    <Compile Include="Entities\ShopContext.cs" />
+    <Compile Include="Common\GenericRepo.cs" />
+    <Compile Include="Common\IGenericRepo.cs" />
+    <Compile Include="Common\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
