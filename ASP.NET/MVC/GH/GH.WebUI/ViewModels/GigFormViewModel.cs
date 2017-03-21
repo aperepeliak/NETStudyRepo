@@ -1,5 +1,6 @@
 ﻿using GH.WebUI.Models;
 using System.Collections.Generic;
+using System;
 
 namespace GH.WebUI.ViewModels
 {
@@ -10,5 +11,7 @@ namespace GH.WebUI.ViewModels
         public string Time { get; set; }
         public byte Genre { get; set; }
         public IEnumerable<Genre> Genres { get; set; }
+
+        public DateTime DateTime => DateTime.Parse($"{Date} {Time}");
     }
 }
