@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
 
-namespace GH.WebUI.Controllers
+namespace GH.WebUI.Controllers.Api
 {
     public class FollowingsController : ApiController
     {
