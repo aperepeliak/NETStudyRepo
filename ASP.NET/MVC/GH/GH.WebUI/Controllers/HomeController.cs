@@ -1,10 +1,8 @@
 ﻿using GH.WebUI.Models;
-using Microsoft.AspNet.Identity;
+using GH.WebUI.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GH.WebUI.Controllers
@@ -25,7 +23,13 @@ namespace GH.WebUI.Controllers
                             .Include(g => g.Genre)
                             .Where(g => g.DateTime > DateTime.Now);
 
-            return View(upcomingGigs);
+            var viewModel = new HomeViewModel
+            {
+                UpcomingGigs = upcomingGigs,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()
