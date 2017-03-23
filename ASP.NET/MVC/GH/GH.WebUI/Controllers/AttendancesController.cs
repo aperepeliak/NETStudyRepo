@@ -1,4 +1,5 @@
-﻿using GH.WebUI.Models;
+﻿using GH.WebUI.Dtos;
+using GH.WebUI.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,17 @@ namespace GH.WebUI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Attend([FromBody] int gigId)
+        public IHttpActionResult Attend(AttendanceDto dto)
         {
+            var userId = User.Identity.GetUserId();
+
+            if (_context.Attedances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
+                { return BadRequest("The attendance is already exists"); }
+
             var attendance = new Attendance
             {
-                GigId = gigId,
-                AttendeeId = User.Identity.GetUserId()
+                GigId = dto.GigId,
+                AttendeeId = userId
             };
 
             _context.Attedances.Add(attendance);

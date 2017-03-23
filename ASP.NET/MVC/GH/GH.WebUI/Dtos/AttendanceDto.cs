@@ -1,0 +1,7 @@
+﻿namespace GH.WebUI.Dtos
+{
+    public class AttendanceDto
+    {
+        public int GigId { get; set; }
+    }
+}
