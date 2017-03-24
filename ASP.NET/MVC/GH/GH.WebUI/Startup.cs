@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using AutoMapper;
+using GH.WebUI.App_Start;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(GH.WebUI.Startup))]
