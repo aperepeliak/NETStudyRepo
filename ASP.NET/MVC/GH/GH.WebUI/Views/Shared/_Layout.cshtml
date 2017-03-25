@@ -90,8 +90,23 @@
                     },
                     placement: "bottom",
                     template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-                });
-            });       
+                }).on("shown.bs.popover", function () {
+                    
+                    $.post("/api/notifications/markAsRead", function () {
+                        $(".js-notifications-count")
+                            .text("")
+                            .addClass("hide");
+                    });
+                });          
+            });
+
+            $('html').on('mouseup', function (e) {
+                if (!$(e.target).closest('.popover').length) {
+                    $('.popover').each(function () {
+                        $(this.previousSibling).popover('hide');
+                    });
+                }
+            });
         });
     </script>
 </body>
