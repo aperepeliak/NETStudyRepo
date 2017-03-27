@@ -187,3 +187,13 @@ h6,
 #search-gigs {
   width: 300px;
 }
+.details-header {
+  align-items: center;
+  display: flex;
+  height: 50px;
+}
+.details-header h2 {
+  align-self: center;
+  height: 40px;
+  margin: 0 10px 0 0;
+}

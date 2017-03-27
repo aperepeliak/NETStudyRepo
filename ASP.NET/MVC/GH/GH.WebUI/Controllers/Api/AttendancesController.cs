@@ -24,7 +24,7 @@ namespace GH.WebUI.Controllers.Api
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Attedances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
+            if (_context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
                 { return BadRequest("The attendance is already exists"); }
 
             var attendance = new Attendance
@@ -33,7 +33,7 @@ namespace GH.WebUI.Controllers.Api
                 AttendeeId = userId
             };
 
-            _context.Attedances.Add(attendance);
+            _context.Attendances.Add(attendance);
             _context.SaveChanges();
 
             return Ok();

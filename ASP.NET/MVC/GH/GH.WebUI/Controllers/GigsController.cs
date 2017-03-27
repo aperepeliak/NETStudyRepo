@@ -17,6 +17,35 @@ namespace GH.WebUI.Controllers
             _context = new ApplicationDbContext();
         }
 
+        public ActionResult Details(int? id)
+        {
+            var gig = _context.Gigs
+                .Where(g => g.Id == id)
+                .Include(g => g.Artist)
+                .Include(g => g.Genre)
+                .SingleOrDefault();
+
+            if (gig == null) return HttpNotFound();
+
+            var viewModel = new GigDetailsViewModel
+            {
+                Gig = gig
+            };
+             
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+
+                viewModel.IsGoing = _context.Attendances
+                    .Any(a => a.GigId == id && a.AttendeeId == userId);
+
+                viewModel.IsFollowing = _context.Followings
+                    .Any(f => f.FolloweeId == gig.ArtistId && f.FollowerId == userId);
+            }
+
+            return View(viewModel);
+        }
+
         [Authorize]
         public ActionResult Mine()
         {
@@ -37,7 +66,7 @@ namespace GH.WebUI.Controllers
             // can't write it in a query, cause linqtoEF can't translate it into SQL
             var userId = User.Identity.GetUserId();
 
-            var gigs = _context.Attedances
+            var gigs = _context.Attendances
                     .Where(a => a.AttendeeId == userId)
                     .Select(a => a.Gig)
                     .Include(g => g.Artist)
