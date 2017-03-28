@@ -9,6 +9,10 @@ namespace GH.WebUI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                        "~/scripts/app/services/attendanceService.js",
+                        "~/scripts/app/services/followingService.js",
+                        "~/scripts/app/controllers/gigsController.js",
+                        "~/scripts/app/controllers/followeesController.js",
                         "~/scripts/app/app.js"
                 ));
 
