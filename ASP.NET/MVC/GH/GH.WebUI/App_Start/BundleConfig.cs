@@ -12,7 +12,7 @@ namespace GH.WebUI
                         "~/scripts/app/services/attendanceService.js",
                         "~/scripts/app/services/followingService.js",
                         "~/scripts/app/controllers/gigsController.js",
-                        "~/scripts/app/controllers/followeesController.js",
+                        "~/scripts/app/controllers/gigDetailsController.js",
                         "~/scripts/app/app.js"
                 ));
 

@@ -1,4 +1,4 @@
-﻿var FolloweesController = function (followingService) {
+﻿var GigDetailsController = function (followingService) {
     var button;
 
     var init = function () {
