@@ -1,4 +1,5 @@
 ﻿using GH.WebUI.Models;
+using GH.WebUI.Persistence;
 using GH.WebUI.Repositories;
 using GH.WebUI.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -13,25 +14,17 @@ namespace GH.WebUI.Controllers
     public class GigsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        private readonly AttendanceRepository _attendanceRepository;
-        private readonly FollowingRepository  _followingRepository;
-        private readonly GigRepository        _gigRepository;
-        private readonly GenreRepository      _genreRepository;
+        private readonly UnitOfWork _unitOfWork;
 
         public GigsController()
         {
-            _context              = new ApplicationDbContext();
-
-            _attendanceRepository = new AttendanceRepository (_context);
-            _gigRepository        = new GigRepository        (_context);
-            _genreRepository      = new GenreRepository      (_context);
-            _followingRepository  = new FollowingRepository  (_context);
+            _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(_context);
         }
 
         public ActionResult Details(int id)
         {
-            var gig = _gigRepository.GetGig(id);
+            var gig = _unitOfWork.Gigs.GetGig(id);
 
             if (gig == null)
                 return HttpNotFound();
@@ -42,11 +35,11 @@ namespace GH.WebUI.Controllers
             {
                 var userId = User.Identity.GetUserId();
 
-                viewModel.IsGoing = 
-                    _attendanceRepository.GetAttendance(userId, id) != null;
+                viewModel.IsGoing =
+                    _unitOfWork.Attendances.GetAttendance(userId, id) != null;
 
                 viewModel.IsFollowing =
-                    _followingRepository.GetFollowing(userId, gig.ArtistId) != null;
+                    _unitOfWork.Followings.GetFollowing(userId, gig.ArtistId) != null;
             }
 
             return View(viewModel);
@@ -55,7 +48,7 @@ namespace GH.WebUI.Controllers
         [Authorize]
         public ActionResult Mine()
         {
-            var gigs = _gigRepository.GetUpcomingGigsByArtist(User.Identity.GetUserId());
+            var gigs = _unitOfWork.Gigs.GetUpcomingGigsByArtist(User.Identity.GetUserId());
             return View(gigs);
         }
 
@@ -67,8 +60,8 @@ namespace GH.WebUI.Controllers
 
             var viewModel = new GigsViewModel
             {
-                UpcomingGigs = _gigRepository.GetGigsUserAttending(userId),
-                Attendances = _attendanceRepository.GetFutureAttendances(userId).ToLookup(a => a.GigId),
+                UpcomingGigs = _unitOfWork.Gigs.GetGigsUserAttending(userId),
+                Attendances = _unitOfWork.Attendances.GetFutureAttendances(userId).ToLookup(a => a.GigId),
                 ShowActions = User.Identity.IsAuthenticated,
                 Heading = "Gigs I'm Attending"
             };
@@ -87,7 +80,7 @@ namespace GH.WebUI.Controllers
         {
             var viewModel = new GigFormViewModel
             {
-                Genres = _genreRepository.GetGenres(),
+                Genres = _unitOfWork.Genres.GetGenres(),
                 Heading = "Add a Gig"
             };
 
@@ -97,7 +90,7 @@ namespace GH.WebUI.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
-            var gig = _gigRepository.GetGig(id);
+            var gig = _unitOfWork.Gigs.GetGig(id);
 
             if (gig == null)
                 return HttpNotFound();
@@ -108,7 +101,7 @@ namespace GH.WebUI.Controllers
             var viewModel = new GigFormViewModel
             {
                 Id = gig.Id,
-                Genres = _genreRepository.GetGenres(),
+                Genres = _unitOfWork.Genres.GetGenres(),
                 Date = gig.DateTime.ToString("d MMM yyyy"),
                 Time = gig.DateTime.ToString("HH:mm"),
                 Genre = gig.GenreId,
@@ -126,11 +119,11 @@ namespace GH.WebUI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Genres = _genreRepository.GetGenres();
+                viewModel.Genres = _unitOfWork.Genres.GetGenres();
                 return View("GigForm", viewModel);
             }
 
-            var gig = _gigRepository.GetGigWithAttendees(viewModel.Id);
+            var gig = _unitOfWork.Gigs.GetGigWithAttendees(viewModel.Id);
 
             if (gig == null)
                 return HttpNotFound();
@@ -140,7 +133,7 @@ namespace GH.WebUI.Controllers
 
             gig.Modify(viewModel.GetDateTime(), viewModel.Venue, viewModel.Genre);
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("Mine", "Gigs");
         }
@@ -152,7 +145,7 @@ namespace GH.WebUI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Genres = _genreRepository.GetGenres();
+                viewModel.Genres = _unitOfWork.Genres.GetGenres();
                 return View("GigForm", viewModel);
             }
 
@@ -164,8 +157,8 @@ namespace GH.WebUI.Controllers
                 Venue = viewModel.Venue
             };
 
-            _gigRepository.AddGig(gig);
-            _context.SaveChanges();
+            _unitOfWork.Gigs.Add(gig);
+            _unitOfWork.Complete();
 
             return RedirectToAction("Mine", "Gigs");
         }

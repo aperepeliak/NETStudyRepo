@@ -50,7 +50,7 @@ namespace GH.WebUI.Repositories
                     .ToList();
         }
 
-        public void AddGig(Gig gig)
+        public void Add(Gig gig)
         {
             _context.Gigs.Add(gig);
         }
