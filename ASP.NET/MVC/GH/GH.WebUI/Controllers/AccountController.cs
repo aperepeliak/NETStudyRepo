@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GH.WebUI.Core.Models;
-using GH.WebUI.ViewModels;
+using GH.WebUI.Core.ViewModels;
 
 namespace GH.WebUI.Controllers
 {

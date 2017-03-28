@@ -1,9 +1,6 @@
-﻿using GH.WebUI.Core.Models;
-using GH.WebUI.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using GH.WebUI.Core;
+using GH.WebUI.Core.Repositories;
+using GH.WebUI.Persistence.Repositories;
 
 namespace GH.WebUI.Persistence
 {

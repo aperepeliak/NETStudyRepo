@@ -1,13 +1,9 @@
 ﻿using GH.WebUI.Core.Models;
-using GH.WebUI.Persistence;
-using GH.WebUI.Repositories;
-using GH.WebUI.ViewModels;
+using GH.WebUI.Core.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using GH.WebUI.Core;
 
 namespace GH.WebUI.Controllers
 {

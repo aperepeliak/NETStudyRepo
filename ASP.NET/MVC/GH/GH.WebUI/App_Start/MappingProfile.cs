@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GH.WebUI.Dtos;
+using GH.WebUI.Core.Dtos;
 using GH.WebUI.Core.Models;
 using System;
 using System.Collections.Generic;

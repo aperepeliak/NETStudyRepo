@@ -1,4 +1,4 @@
-﻿using GH.WebUI.Dtos;
+﻿using GH.WebUI.Core.Dtos;
 using GH.WebUI.Core.Models;
 using Microsoft.AspNet.Identity;
 using System.Linq;
