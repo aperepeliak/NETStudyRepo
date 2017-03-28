@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GH.WebUI.Repositories
 {
-    public class GigRepository
+    public class GigRepository : IGigRepository
     {
         private ApplicationDbContext _context;
         public GigRepository(ApplicationDbContext context)

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GH.WebUI.Repositories
 {
-    public class FollowingRepository
+    public class FollowingRepository : IFollowingRepository
     {
         ApplicationDbContext _context;
 

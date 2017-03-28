@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GH.WebUI.Repositories
 {
-    public class AttendanceRepository
+    public class AttendanceRepository : IAttendanceRepository
     {
         private ApplicationDbContext _context;
         public AttendanceRepository(ApplicationDbContext context)
