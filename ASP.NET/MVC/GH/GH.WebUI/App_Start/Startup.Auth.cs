@@ -5,7 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using GH.WebUI.Models;
+using GH.WebUI.Core.Models;
+using GH.WebUI.Persistence;
 
 namespace GH.WebUI
 {

@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using GH.WebUI.Core.Models;
 
-namespace GH.WebUI.Models
+namespace GH.WebUI.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

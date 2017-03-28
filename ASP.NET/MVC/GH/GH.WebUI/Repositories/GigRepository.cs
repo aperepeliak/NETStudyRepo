@@ -1,4 +1,5 @@
-﻿using GH.WebUI.Models;
+﻿using GH.WebUI.Core.Models;
+using GH.WebUI.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

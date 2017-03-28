@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GH.WebUI.Models
+namespace GH.WebUI.Core.Models
 {
     public class Following
     {

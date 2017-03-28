@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace GH.WebUI.Models
+namespace GH.WebUI.Core.Models
 {
     public class Gig
     {

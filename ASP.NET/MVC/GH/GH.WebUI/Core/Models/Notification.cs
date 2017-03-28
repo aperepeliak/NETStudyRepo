@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace GH.WebUI.Models
+namespace GH.WebUI.Core.Models
 {
     public class Notification
     {

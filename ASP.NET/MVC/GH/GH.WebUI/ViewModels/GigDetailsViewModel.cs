@@ -1,4 +1,4 @@
-﻿using GH.WebUI.Models;
+﻿using GH.WebUI.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

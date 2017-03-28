@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using GH.WebUI.Models;
+using GH.WebUI.Core.Models;
+using GH.WebUI.Persistence;
 
 namespace GH.WebUI
 {

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using GH.WebUI.Models;
+using GH.WebUI.Core.Models;
 using GH.WebUI.ViewModels;
 
 namespace GH.WebUI.Controllers

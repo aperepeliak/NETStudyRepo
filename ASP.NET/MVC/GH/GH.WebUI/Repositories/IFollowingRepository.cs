@@ -1,4 +1,4 @@
-﻿using GH.WebUI.Models;
+﻿using GH.WebUI.Core.Models;
 
 namespace GH.WebUI.Repositories
 {

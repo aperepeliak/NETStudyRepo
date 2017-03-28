@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using GH.WebUI.Models;
+using GH.WebUI.Core.Models;
+using GH.WebUI.Persistence;
 
 namespace GH.WebUI.Controllers
 {

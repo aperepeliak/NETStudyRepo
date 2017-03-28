@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GH.WebUI.Dtos;
-using GH.WebUI.Models;
+using GH.WebUI.Core.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using GH.WebUI.Persistence;
 
 namespace GH.WebUI.Controllers.Api
 {

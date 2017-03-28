@@ -1,4 +1,5 @@
-﻿using GH.WebUI.Models;
+﻿using GH.WebUI.Core.Models;
+using GH.WebUI.Persistence;
 using GH.WebUI.Repositories;
 using GH.WebUI.ViewModels;
 using Microsoft.AspNet.Identity;

@@ -55,6 +55,9 @@
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
@@ -277,13 +280,13 @@
       <DependentUpon>201703240710386_AddNotification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\Following.cs" />
-    <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\NotificationType.cs" />
-    <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\Attendance.cs" />
+    <Compile Include="Core\Models\Following.cs" />
+    <Compile Include="Core\Models\Notification.cs" />
+    <Compile Include="Core\Models\NotificationType.cs" />
+    <Compile Include="Core\Models\UserNotification.cs" />
     <Compile Include="Persistence\IUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Repositories\AttendanceRepository.cs" />
@@ -298,8 +301,8 @@
     <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\ForgotViewModel.cs" />
-    <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\Gig.cs" />
+    <Compile Include="Core\Models\Genre.cs" />
+    <Compile Include="Core\Models\Gig.cs" />
     <Compile Include="ViewModels\GigDetailsViewModel.cs" />
     <Compile Include="ViewModels\GigsViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
