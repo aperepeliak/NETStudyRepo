@@ -12,5 +12,6 @@ namespace GH.WebUI.Core.Repositories
 
         IEnumerable<Gig> GetGigsUserAttending(string userId);
         IEnumerable<Gig> GetUpcomingGigsByArtist(string userId);
+        IEnumerable<Gig> GetUpcomingGigs();        
     }
 }

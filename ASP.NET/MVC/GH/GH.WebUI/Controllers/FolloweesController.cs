@@ -3,26 +3,23 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using GH.WebUI.Core.Models;
 using GH.WebUI.Persistence;
+using GH.WebUI.Core;
 
 namespace GH.WebUI.Controllers
 {
     public class FolloweesController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public FolloweesController()
+        private readonly IUnitOfWork _unitOfWork;
+        public FolloweesController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         [Authorize]
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
-
-            var artists = _context.Followings
-                    .Where(f => f.FollowerId == userId)
-                    .Select(f => f.Followee)
-                    .ToList();
+            var artists = _unitOfWork.Followings
+                .GetFollowedArtists(User.Identity.GetUserId());
 
             return View(artists);
         }

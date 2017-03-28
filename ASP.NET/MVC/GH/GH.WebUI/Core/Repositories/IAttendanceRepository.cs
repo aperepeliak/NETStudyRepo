@@ -7,5 +7,7 @@ namespace GH.WebUI.Core.Repositories
     {
         Attendance GetAttendance(string userId, int gigId);
         IEnumerable<Attendance> GetFutureAttendances(string userId);
+        void Add(Attendance attendance);
+        void Remove(Attendance attendance);
     }
 }

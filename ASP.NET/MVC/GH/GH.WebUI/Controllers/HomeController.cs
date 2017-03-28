@@ -1,32 +1,23 @@
-﻿using GH.WebUI.Core.Models;
-using GH.WebUI.Persistence;
-using GH.WebUI.Persistence.Repositories;
-using GH.WebUI.Core.ViewModels;
+﻿using GH.WebUI.Core.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using GH.WebUI.Core;
 
 namespace GH.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        private readonly AttendanceRepository _attenndanceRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController()
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
-            _attenndanceRepository = new AttendanceRepository(_context);
+            _unitOfWork = unitOfWork;
         }
 
         public ActionResult Index(string query = null)
         {
-            var upcomingGigs = _context.Gigs
-                            .Include(g => g.Artist)
-                            .Include(g => g.Genre)
-                            .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled);
+            var upcomingGigs = _unitOfWork.Gigs.GetUpcomingGigs();
 
             if (!string.IsNullOrWhiteSpace(query))
             {
@@ -38,7 +29,7 @@ namespace GH.WebUI.Controllers
 
 
             string userId = User.Identity.GetUserId();
-            var attendances = _attenndanceRepository.GetFutureAttendances(userId)
+            var attendances = _unitOfWork.Attendances.GetFutureAttendances(userId)
                     .ToLookup(a => a.GigId);
 
             var viewModel = new GigsViewModel
@@ -51,20 +42,6 @@ namespace GH.WebUI.Controllers
             };
 
             return View("Gigs", viewModel);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

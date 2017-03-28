@@ -10,26 +10,30 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using GH.WebUI.Persistence;
+using GH.WebUI.Core;
 
 namespace GH.WebUI.Controllers.Api
 {
     [Authorize]
     public class NotificationsController : ApiController
     {
-        private ApplicationDbContext _context;
-        public NotificationsController()
+        private readonly IUnitOfWork _unitOfWork;
+        public NotificationsController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         public IEnumerable<NotificationDto> GetNewNotifications()
         {
-            var userId = User.Identity.GetUserId();
-            var notifications = _context.UserNotifications
-                    .Where(un => un.UserId == userId && !un.IsRead)
-                    .Select(un => un.Notification)
-                    .Include(n => n.Gig.Artist)
-                    .ToList();
+
+            var notifications = _unitOfWork.UserNotifications
+                    .GetNewNotifications(User.Identity.GetUserId());
+
+            //var notifications = _context.UserNotifications
+            //        .Where(un => un.UserId == userId && !un.IsRead)
+            //        .Select(un => un.Notification)
+            //        .Include(n => n.Gig.Artist)
+            //        .ToList();
 
             return notifications.Select(Mapper.Map<Notification, NotificationDto>);                    
         }
@@ -44,7 +48,7 @@ namespace GH.WebUI.Controllers.Api
 
             notifications.ForEach(n => n.Read());
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }

@@ -8,16 +8,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using GH.WebUI.Persistence;
+using GH.WebUI.Core;
 
 namespace GH.WebUI.Controllers.Api
 {
     [Authorize]
     public class AttendancesController : ApiController
     {
-        private readonly ApplicationDbContext _context;
-        public AttendancesController()
+        private readonly IUnitOfWork _unitOfWork;
+        public AttendancesController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]
@@ -25,8 +26,8 @@ namespace GH.WebUI.Controllers.Api
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
-                { return BadRequest("The attendance is already exists"); }
+            if (_unitOfWork.Attendances.GetAttendance(userId, dto.GigId) != null)
+                return BadRequest("The attendance is already exists");
 
             var attendance = new Attendance
             {
@@ -34,8 +35,8 @@ namespace GH.WebUI.Controllers.Api
                 AttendeeId = userId
             };
 
-            _context.Attendances.Add(attendance);
-            _context.SaveChanges();
+            _unitOfWork.Attendances.Add(attendance);
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -44,14 +45,13 @@ namespace GH.WebUI.Controllers.Api
         public IHttpActionResult DeleteAttendance(int id)
         {
             var userId = User.Identity.GetUserId();
-            var attendance = _context.Attendances
-                .SingleOrDefault(a => a.GigId == id && a.AttendeeId == userId);
+            var attendance = _unitOfWork.Attendances.GetAttendance(userId, id);
 
             if (attendance == null)
                 return NotFound();
 
-            _context.Attendances.Remove(attendance);
-            _context.SaveChanges();
+            _unitOfWork.Attendances.Remove(attendance);
+            _unitOfWork.Complete();
 
             return Ok(id);
         }

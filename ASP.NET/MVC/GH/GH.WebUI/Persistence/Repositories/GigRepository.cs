@@ -1,6 +1,5 @@
 ﻿using GH.WebUI.Core.Models;
 using GH.WebUI.Core.Repositories;
-using GH.WebUI.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -54,6 +53,14 @@ namespace GH.WebUI.Persistence.Repositories
         public void Add(Gig gig)
         {
             _context.Gigs.Add(gig);
+        }
+
+        public IEnumerable<Gig> GetUpcomingGigs()
+        {
+            return _context.Gigs
+                    .Include(g => g.Artist)
+                    .Include(g => g.Genre)
+                    .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled);
         }
     }
 }
