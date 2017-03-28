@@ -1,4 +1,5 @@
 ﻿using GH.WebUI.Models;
+using GH.WebUI.Repositories;
 using GH.WebUI.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,10 +12,12 @@ namespace GH.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly AttendanceRepository _attenndanceRepository;
 
         public HomeController()
         {
             _context = new ApplicationDbContext();
+            _attenndanceRepository = new AttendanceRepository(_context);
         }
 
         public ActionResult Index(string query = null)
@@ -34,9 +37,7 @@ namespace GH.WebUI.Controllers
 
 
             string userId = User.Identity.GetUserId();
-            var attendances = _context.Attendances
-                    .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
-                    .ToList()
+            var attendances = _attenndanceRepository.GetFutureAttendances(userId)
                     .ToLookup(a => a.GigId);
 
             var viewModel = new GigsViewModel
