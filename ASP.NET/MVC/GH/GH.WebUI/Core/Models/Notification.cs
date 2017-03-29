@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace GH.WebUI.Core.Models
 {
@@ -11,7 +10,6 @@ namespace GH.WebUI.Core.Models
         public DateTime? OriginalDateTime { get; private set; }
         public string OriginalVenue { get; private set; }
 
-        [Required]
         public Gig Gig { get; private set; }
 
         public Notification() { }

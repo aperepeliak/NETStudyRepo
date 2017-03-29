@@ -30,6 +30,9 @@ namespace GH.WebUI.Persistence
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new UserNotificationConfiguration());
             modelBuilder.Configurations.Add(new AttendanceConfiguration());
+            modelBuilder.Configurations.Add(new FollowingConfiguration());
+            modelBuilder.Configurations.Add(new GenreConfiguration());
+            modelBuilder.Configurations.Add(new NotificationConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
