@@ -28,11 +28,8 @@ namespace GH.WebUI.Persistence
         {
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
-
-            modelBuilder.Entity<UserNotification>()
-                .HasRequired(n => n.User)
-                .WithMany(u => u.UserNotifications)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new UserNotificationConfiguration());
+            modelBuilder.Configurations.Add(new AttendanceConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

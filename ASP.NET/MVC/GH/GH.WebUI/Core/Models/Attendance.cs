@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GH.WebUI.Core.Models
+﻿namespace GH.WebUI.Core.Models
 {
     public class Attendance
     {
         public Gig Gig { get; set; }
         public ApplicationUser Attendee { get; set; }
 
-        [Key, Column(Order = 1)] public int GigId { get; set; }
-        [Key, Column(Order = 2)] public string AttendeeId { get; set; }
+        public int GigId { get; set; }
+        public string AttendeeId { get; set; }
     }
 }
