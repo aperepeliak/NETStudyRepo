@@ -236,7 +236,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Core\Dtos\FollowingDto.cs" />
     <Compile Include="Core\Dtos\UserDto.cs" />
-    <Compile Include="Core\Repositories\IUserNotificationsRepository.cs" />
+    <Compile Include="Core\Repositories\INotificationRepository.cs" />
+    <Compile Include="Core\Repositories\IUserNotificationRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -289,7 +290,8 @@
     <Compile Include="Core\Models\NotificationType.cs" />
     <Compile Include="Core\Models\UserNotification.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
-    <Compile Include="Persistence\Repositories\UserNotificationsRepository.cs" />
+    <Compile Include="Persistence\Repositories\NotificationRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserNotificationRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Persistence\Repositories\AttendanceRepository.cs" />
     <Compile Include="Persistence\Repositories\FollowingRepository.cs" />

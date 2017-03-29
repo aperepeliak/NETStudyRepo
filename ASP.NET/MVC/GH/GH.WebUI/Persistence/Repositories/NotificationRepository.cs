@@ -8,26 +8,20 @@ using System.Data.Entity;
 
 namespace GH.WebUI.Persistence.Repositories
 {
-    public class UserNotificationsRepository : IUserNotificationsRepository
+    public class NotificationRepository : INotificationRepository
     {
         private ApplicationDbContext _context;
-        public UserNotificationsRepository(ApplicationDbContext context)
+        public NotificationRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IEnumerable<Notification> GetNewNotifications(string userId)
+
+        public IEnumerable<Notification> GetNewNotificationsFor(string userId)
         {
             return _context.UserNotifications
                     .Where(un => un.UserId == userId && !un.IsRead)
                     .Select(un => un.Notification)
                     .Include(n => n.Gig.Artist)
-                    .ToList();
-        }
-
-        public IEnumerable<UserNotification> GetUnreadUserNotifications(string userId)
-        {
-            return _context.UserNotifications
-                    .Where(un => un.UserId == userId && !un.IsRead)
                     .ToList();
         }
     }

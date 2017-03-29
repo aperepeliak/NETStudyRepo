@@ -8,7 +8,8 @@ namespace GH.WebUI.Core
         IFollowingRepository         Followings        { get; }
         IGenreRepository             Genres            { get; }
         IGigRepository               Gigs              { get; }
-        IUserNotificationsRepository UserNotifications { get; }
+        IUserNotificationRepository  UserNotifications { get; }
+        INotificationRepository      Notifications     { get; }
 
         void Complete();
     }
