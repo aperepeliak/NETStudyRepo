@@ -1,11 +1,8 @@
 namespace GH.WebUI.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GH.WebUI.Persistence.ApplicationDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<GH.WebUI.Persistence.ApplicationDbContext>
     {
         public Configuration()
         {
