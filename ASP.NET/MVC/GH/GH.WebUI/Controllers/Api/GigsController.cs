@@ -19,10 +19,7 @@ namespace GH.WebUI.Controllers.Api
             var userId = User.Identity.GetUserId();
             var gig = _unitOfwork.Gigs.GetGigWithAttendees(id);
 
-            if (gig == null)
-                return NotFound();
-
-            if (gig.IsCanceled)
+            if (gig == null || gig.IsCanceled)
                 return NotFound();
 
             if (gig.ArtistId != userId)
