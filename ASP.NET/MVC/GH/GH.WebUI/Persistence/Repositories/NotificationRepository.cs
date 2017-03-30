@@ -1,8 +1,6 @@
 ﻿using GH.WebUI.Core.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using GH.WebUI.Core.Models;
 using System.Data.Entity;
 
@@ -10,8 +8,8 @@ namespace GH.WebUI.Persistence.Repositories
 {
     public class NotificationRepository : INotificationRepository
     {
-        private ApplicationDbContext _context;
-        public NotificationRepository(ApplicationDbContext context)
+        private IApplicationDbContext _context;
+        public NotificationRepository(IApplicationDbContext context)
         {
             _context = context;
         }

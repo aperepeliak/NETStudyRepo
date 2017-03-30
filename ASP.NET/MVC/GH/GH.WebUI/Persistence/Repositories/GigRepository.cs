@@ -9,8 +9,8 @@ namespace GH.WebUI.Persistence.Repositories
 {
     public class GigRepository : IGigRepository
     {
-        private ApplicationDbContext _context;
-        public GigRepository(ApplicationDbContext context)
+        private IApplicationDbContext _context;
+        public GigRepository(IApplicationDbContext context)
         {
             _context = context;
         }
