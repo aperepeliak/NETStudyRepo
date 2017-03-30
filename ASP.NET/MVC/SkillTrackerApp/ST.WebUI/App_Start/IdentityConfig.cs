@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ST.WebUI.Models;
+using ST.Core;
+using ST.DAL;
 
 namespace ST.WebUI
 {
