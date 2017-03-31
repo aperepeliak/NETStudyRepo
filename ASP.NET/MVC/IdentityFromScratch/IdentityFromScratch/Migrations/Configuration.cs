@@ -1,11 +1,12 @@
 namespace IdentityFromScratch.Migrations
 {
+    using IdentityFromScratch.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<IdentityFromScratch.Controllers.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -13,7 +14,7 @@ namespace IdentityFromScratch.Migrations
             ContextKey = "IdentityFromScratch.Controllers.ApplicationDbContext";
         }
 
-        protected override void Seed(IdentityFromScratch.Controllers.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

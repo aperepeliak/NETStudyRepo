@@ -12,7 +12,7 @@ namespace IdentityFromScratch
     {
         public void Configuration(IAppBuilder app)
         {
-
+            app.CreatePerOwinContext()
         }
     }
 }

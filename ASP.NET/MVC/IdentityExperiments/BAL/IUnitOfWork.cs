@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BAL.Repos;
 
 namespace BAL
 {
     public interface IUnitOfWork
     {
-
+        IClientProfileRepo ClientProfiles { get; }
 
         void Commit();
     }

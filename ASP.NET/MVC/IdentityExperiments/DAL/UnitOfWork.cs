@@ -1,28 +1,19 @@
-﻿using BAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BAL.Repos;
+using DAL.Repos;
 
 namespace DAL
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork
     {
-        ApplicationDbContext _context;
+        private readonly ApplicationContext _context;
 
-        // Repos
+        public IClientProfileRepo ClientProfiles { get; private set; }
 
-
-
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationContext context)
         {
             _context = context;
-        }
 
-        public void Commit()
-        {
-            _context.SaveChanges();
+            ClientProfiles = new ClientProfileRepo(_context);
         }
     }
 }

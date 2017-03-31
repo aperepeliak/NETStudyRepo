@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using IdentityFromScratch.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,10 @@ namespace IdentityFromScratch.Controllers
             var context = new ApplicationDbContext(); //  looks for DefaultConnection
             var store = new UserStore<CustomUser>(context);
             var manager = new UserManager<CustomUser>(store); // use it to find, create users etc ...
+
+            var signInManager = new SignInManager<CustomUser, string>
+                (manager, HttpContext.GetOwinContext().Authentication); 
+
 
             var email = "foo@bar.com";
             var password = "Passw0rd";
@@ -36,10 +42,18 @@ namespace IdentityFromScratch.Controllers
             }
             else
             {
-                user.FirstName = "Super";
-                user.LastName = "Admin";
+                var result = await signInManager.PasswordSignInAsync
+                    (user.UserName, password, true, false);
 
-                await manager.UpdateAsync(user);
+                if (result == SignInStatus.Success)
+                {
+                    return Content("Hello, " + user.FirstName + " " + user.LastName);
+                }
+
+                //user.FirstName = "Super";
+                //user.LastName = "Admin";
+
+                //await manager.UpdateAsync(user);
             }
 
             return Content("Hello");

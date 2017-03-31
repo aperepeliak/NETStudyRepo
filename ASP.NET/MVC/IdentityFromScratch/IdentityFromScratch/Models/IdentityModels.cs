@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace IdentityFromScratch.Controllers
+namespace IdentityFromScratch.Models
 {
     public class ApplicationDbContext: IdentityDbContext<CustomUser>
     {
@@ -13,6 +13,8 @@ namespace IdentityFromScratch.Controllers
         {
 
         }
+
+
     }
 
     public class CustomUser: IdentityUser
