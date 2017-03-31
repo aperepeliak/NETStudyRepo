@@ -14,9 +14,9 @@ namespace IdentityFromScratch.Controllers
         // GET: Home
         public async Task<ActionResult> Index()
         {
-            var context = new IdentityDbContext<IdentityUser>(); //  looks for DefaultConnection
-            var store = new UserStore<IdentityUser>(context);
-            var manager = new UserManager<IdentityUser>(store); // use it to find, create users etc ...
+            var context = new ApplicationDbContext(); //  looks for DefaultConnection
+            var store = new UserStore<CustomUser>(context);
+            var manager = new UserManager<CustomUser>(store); // use it to find, create users etc ...
 
             var email = "foo@bar.com";
             var password = "Passw0rd";
@@ -24,13 +24,22 @@ namespace IdentityFromScratch.Controllers
 
             if (user == null)
             {
-                user = new IdentityUser
+                user = new CustomUser
                 {
                     UserName = email,
-                    Email = email
+                    Email = email,
+                    FirstName = "Super",
+                    LastName = "Admin"
                 };
 
                 await manager.CreateAsync(user, password);
+            }
+            else
+            {
+                user.FirstName = "Super";
+                user.LastName = "Admin";
+
+                await manager.UpdateAsync(user);
             }
 
             return Content("Hello");
