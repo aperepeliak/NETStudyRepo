@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5IdentityExample.Web", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5IdentityExample.Domain", "Mvc5IdentityExample.Domain\Mvc5IdentityExample.Domain.csproj", "{396C933D-F734-40C6-AD9C-D8DAD92F639F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5IdentityExample.Data", "Mvc5IdentityExample.Data\Mvc5IdentityExample.Data.csproj", "{0E79D65D-84B5-4076-94F8-A3A3F536928E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{396C933D-F734-40C6-AD9C-D8DAD92F639F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{396C933D-F734-40C6-AD9C-D8DAD92F639F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{396C933D-F734-40C6-AD9C-D8DAD92F639F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E79D65D-84B5-4076-94F8-A3A3F536928E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E79D65D-84B5-4076-94F8-A3A3F536928E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E79D65D-84B5-4076-94F8-A3A3F536928E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E79D65D-84B5-4076-94F8-A3A3F536928E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
