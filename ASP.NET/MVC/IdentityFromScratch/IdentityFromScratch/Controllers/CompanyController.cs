@@ -12,7 +12,7 @@ namespace IdentityFromScratch.Controllers
         // GET: Company
         public ActionResult Index()
         {
-            return View();
+            return Content("Index of company");
         }
 
         [AllowAnonymous]
