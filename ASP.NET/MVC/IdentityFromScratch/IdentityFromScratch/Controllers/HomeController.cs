@@ -31,6 +31,23 @@ namespace IdentityFromScratch.Controllers
             var password = "Passw0rd";
             var user = await UserManager.FindByEmailAsync(email);
 
+            var roles = ApplicationRoleManager.Create(HttpContext.GetOwinContext());
+
+            if (!await roles.RoleExistsAsync(SecurityRoles.Admin))
+            {
+                await roles.CreateAsync(new IdentityRole { Name = SecurityRoles.Admin });
+            }
+
+            if (!await roles.RoleExistsAsync(SecurityRoles.IT))
+            {
+                await roles.CreateAsync(new IdentityRole { Name = SecurityRoles.IT });
+            }
+
+            if (!await roles.RoleExistsAsync(SecurityRoles.Accounting))
+            {
+                await roles.CreateAsync(new IdentityRole { Name = SecurityRoles.Accounting });
+            }
+
             if (user == null)
             {
                 user = new CustomUser
@@ -45,13 +62,15 @@ namespace IdentityFromScratch.Controllers
             }
             else
             {
-                var result = await SignInManager.PasswordSignInAsync
-                    (user.UserName, password, true, false);
+                // await UserManager.AddToRoleAsync(user.Id, SecurityRoles.Admin);
 
-                if (result == SignInStatus.Success)
-                {
-                    return Content("Hello, " + user.FirstName + " " + user.LastName);
-                }
+                //var result = await SignInManager.PasswordSignInAsync
+                //    (user.UserName, password, true, false);
+
+                //if (result == SignInStatus.Success)
+                //{
+                //    return Content("Hello, " + user.FirstName + " " + user.LastName);
+                //}
 
                 //user.FirstName = "Super";
                 //user.LastName = "Admin";

@@ -27,12 +27,12 @@ namespace IdentityFromScratch
         }
     }
 
-    public class ApplicationSignInManager: SignInManager<CustomUser, string>
+    public class ApplicationSignInManager : SignInManager<CustomUser, string>
     {
         public ApplicationSignInManager
-            (ApplicationUserManager userManager, 
+            (ApplicationUserManager userManager,
              IAuthenticationManager authenticationManager)
-            : base (userManager, authenticationManager)
+            : base(userManager, authenticationManager)
         {
         }
 
@@ -40,7 +40,22 @@ namespace IdentityFromScratch
         {
             return new ApplicationSignInManager(context.Get<ApplicationUserManager>(),
                 context.Authentication);
-        } 
+        }
+    }
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(RoleStore<IdentityRole> store)
+            : base(store)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IOwinContext context)
+        {
+            var store = new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>());
+
+            return new ApplicationRoleManager(store);
+        }
     }
 
     public class IdentityConfig

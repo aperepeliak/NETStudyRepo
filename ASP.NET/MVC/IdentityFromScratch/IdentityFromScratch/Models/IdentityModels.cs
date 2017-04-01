@@ -25,4 +25,12 @@ namespace IdentityFromScratch.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
+
+    public static class SecurityRoles
+    {
+        public const string Admin = "admin";
+        public const string IT = "it";
+        public const string Accounting = "accounting";
+
+    }
 }
