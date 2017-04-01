@@ -11,22 +11,25 @@ using System.Web.Mvc;
 
 namespace IdentityFromScratch.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public async Task<ActionResult> Index()
         {
-            var context = new ApplicationDbContext(); //  looks for DefaultConnection
-            var store = new UserStore<CustomUser>(context);
-            var manager = new UserManager<CustomUser>(store); // use it to find, create users etc ...
+            #region notNeededAnymore
+            //var context = new ApplicationDbContext(); //  looks for DefaultConnection
+            //var store = new UserStore<CustomUser>(context);
+            //var manager = new UserManager<CustomUser>(store); // use it to find, create users etc ...
 
-            var signInManager = new SignInManager<CustomUser, string>
-                (manager, HttpContext.GetOwinContext().Authentication); 
+            //var signInManager = new SignInManager<CustomUser, string>
+            //    (manager, HttpContext.GetOwinContext().Authentication);
+            #endregion
+
 
 
             var email = "foo@bar.com";
             var password = "Passw0rd";
-            var user = await manager.FindByEmailAsync(email);
+            var user = await UserManager.FindByEmailAsync(email);
 
             if (user == null)
             {
@@ -38,11 +41,11 @@ namespace IdentityFromScratch.Controllers
                     LastName = "Admin"
                 };
 
-                await manager.CreateAsync(user, password);
+                await UserManager.CreateAsync(user, password);
             }
             else
             {
-                var result = await signInManager.PasswordSignInAsync
+                var result = await SignInManager.PasswordSignInAsync
                     (user.UserName, password, true, false);
 
                 if (result == SignInStatus.Success)
@@ -56,7 +59,7 @@ namespace IdentityFromScratch.Controllers
                 //await manager.UpdateAsync(user);
             }
 
-            return Content("Hello");
+            return Content("Hello, index.");
         }
     }
 }

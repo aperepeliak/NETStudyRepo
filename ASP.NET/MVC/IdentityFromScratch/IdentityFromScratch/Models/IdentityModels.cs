@@ -14,13 +14,15 @@ namespace IdentityFromScratch.Models
 
         }
 
-
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
     }
 
     public class CustomUser: IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
     }
 }
