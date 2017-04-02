@@ -14,5 +14,25 @@ namespace ST.WebUI.Controllers
         {
             return View();
         }
+
+        public ActionResult Categories()
+        {
+            return Content("Categories");
+        }
+
+        public ActionResult Skills()
+        {
+            return Content("Skills");
+        }
+
+        public ActionResult Developers()
+        {
+            return Content("Developers");
+        }
+
+        public ActionResult Managers()
+        {
+            return Content("Managers");
+        }
     }
 }

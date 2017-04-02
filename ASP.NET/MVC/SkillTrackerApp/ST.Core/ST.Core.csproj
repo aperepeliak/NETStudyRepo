@@ -55,11 +55,13 @@
   <ItemGroup>
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\ICategoryRepo.cs" />
+    <Compile Include="Repos\ISkillRepo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

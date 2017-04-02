@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ST.Core.Repos;
 
 namespace ST.Core
 {
     public interface IUnitOfWork
     {
+        ISkillRepo Skills { get; }
+        ICategoryRepo Categories { get; }
+
+        void Complete();
     }
 }
