@@ -12,7 +12,7 @@ namespace ST.WebUI.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return Content("Hi, Admin");
+            return View();
         }
     }
 }
