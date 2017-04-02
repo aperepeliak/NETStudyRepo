@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ST.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,16 @@ namespace ST.WebUI.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        // GET: Admin
+        private readonly IUnitOfWork _unitOfWork;
+        public AdminController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var skills = _unitOfWork.Skills.GetAll();
+            return View(skills);
         }
 
         public ActionResult Categories()
