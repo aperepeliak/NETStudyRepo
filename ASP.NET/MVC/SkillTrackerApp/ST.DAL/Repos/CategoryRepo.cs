@@ -1,7 +1,7 @@
 ﻿using ST.Core.Repos;
-using System;
 using System.Collections.Generic;
 using ST.Core.Models;
+using System.Linq;
 
 namespace ST.DAL.Repos
 {
@@ -14,19 +14,8 @@ namespace ST.DAL.Repos
             _context = context;
         }
 
-        public void Add(Category skill)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Category> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(Category skill)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(Category category)        => _context.Categories.Add(category);
+        public Category Remove(Category category) => _context.Categories.Remove(category);
+        public IEnumerable<Category> GetAll()     => _context.Categories.ToList();
     }
 }

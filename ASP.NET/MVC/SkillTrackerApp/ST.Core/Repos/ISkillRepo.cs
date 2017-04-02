@@ -6,9 +6,9 @@ namespace ST.Core.Repos
     public interface ISkillRepo
     {
         void Add(Skill skill);
-        bool Remove(Skill skill);
+        Skill Remove(Skill skill);
 
         IEnumerable<Skill> GetAll();
-        IEnumerable<Skill> GetByCategory();
+        IEnumerable<Skill> GetSkillsByCategory(int categoryId);
     }
 }

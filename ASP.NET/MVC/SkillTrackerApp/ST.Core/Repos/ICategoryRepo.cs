@@ -5,8 +5,8 @@ namespace ST.Core.Repos
 {
     public interface ICategoryRepo
     {
-        void Add(Category skill);
-        bool Remove(Category skill);
+        void Add(Category category);
+        Category Remove(Category category);
         IEnumerable<Category> GetAll();
     }
 }

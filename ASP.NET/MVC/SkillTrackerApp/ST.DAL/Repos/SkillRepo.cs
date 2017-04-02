@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ST.Core.Models;
+using System.Data.Entity;
 
 namespace ST.DAL.Repos
 {
@@ -17,24 +18,16 @@ namespace ST.DAL.Repos
             _context = context;
         }
 
-        public void Add(Skill skill)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(Skill skill)       => _context.Skills.Add(skill);
+        public Skill Remove(Skill skill)   => _context.Skills.Remove(skill);
 
-        public IEnumerable<Skill> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Skill> GetAll() => _context.Skills
+                                                .Include(s => s.Category)
+                                                .ToList();
 
-        public IEnumerable<Skill> GetByCategory()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(Skill skill)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Skill> GetSkillsByCategory(int categoryId)
+                                           => _context.Skills
+                                                .Where(s => s.CategoryId == categoryId)
+                                                .ToList();
     }
 }
