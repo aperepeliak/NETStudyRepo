@@ -16,6 +16,6 @@ namespace ST.DAL.Repos
 
         public void Add(Category category)        => _context.Categories.Add(category);
         public Category Remove(Category category) => _context.Categories.Remove(category);
-        public IEnumerable<Category> GetAll()     => _context.Categories.ToList();
+        public IEnumerable<Category> GetAll()     => _context.Categories;
     }
 }

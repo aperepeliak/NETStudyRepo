@@ -1,4 +1,6 @@
 ﻿using ST.Core;
+using ST.Core.Models;
+using ST.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +20,26 @@ namespace ST.WebUI.Controllers
 
         public ActionResult Index()
         {
-            var skills = _unitOfWork.Skills.GetAll();
-            return View(skills);
+            return RedirectToAction("Skills");
+        }
+
+        public ActionResult Skills(int categoryId = 0)
+        {
+            List<Skill> model = categoryId == 0
+                ? (model = _unitOfWork.Skills.GetAll().ToList()) 
+                : (model = _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList());
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Skills", model);
+
+            return View(model);
         }
 
         public ActionResult Categories()
         {
-            return Content("Categories");
-        }
+            var categories = _unitOfWork.Categories.GetAll();
 
-        public ActionResult Skills()
-        {
-            return Content("Skills");
+            return View(categories);
         }
 
         public ActionResult Developers()

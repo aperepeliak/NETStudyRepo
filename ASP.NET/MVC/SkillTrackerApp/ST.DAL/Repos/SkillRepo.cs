@@ -22,12 +22,11 @@ namespace ST.DAL.Repos
         public Skill Remove(Skill skill)   => _context.Skills.Remove(skill);
 
         public IEnumerable<Skill> GetAll() => _context.Skills
-                                                .Include(s => s.Category)
-                                                .ToList();
+                                                .Include(s => s.Category);
 
         public IEnumerable<Skill> GetSkillsByCategory(int categoryId)
                                            => _context.Skills
-                                                .Where(s => s.CategoryId == categoryId)
-                                                .ToList();
+                                                .Include(s => s.Category)
+                                                .Where(s => s.CategoryId == categoryId);
     }
 }
