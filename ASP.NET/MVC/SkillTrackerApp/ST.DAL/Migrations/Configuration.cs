@@ -1,9 +1,8 @@
 namespace ST.DAL.Migrations
 {
+    using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using ST.Core;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -21,26 +20,16 @@ namespace ST.DAL.Migrations
                 new IdentityRole { Name = "manager" },
                 new IdentityRole { Name = "developer" });
 
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser
-                { UserName = "Admin",
-                  PasswordHash = "Passw0rd",
-                });
+            if (!context.Users.Any(u => u.UserName == "admin@domain.com"))
+            {
+                var user = new ApplicationUser { UserName = "admin@domain.com" };
 
-            
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
 
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                userManager.Create(user, "password");
+                userManager.AddToRole(user.Id, "admin");
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ST.WebUI.Models;
+using ST.WebUI.ViewModels;
 using ST.Core;
 using ST.DAL;
 

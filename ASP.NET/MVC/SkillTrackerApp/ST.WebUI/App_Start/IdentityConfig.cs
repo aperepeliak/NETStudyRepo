@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using ST.WebUI.Models;
+using ST.WebUI.ViewModels;
 using ST.Core;
 using ST.DAL;
 
