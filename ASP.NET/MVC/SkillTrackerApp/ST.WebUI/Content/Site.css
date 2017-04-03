@@ -22,3 +22,12 @@ textarea {
 .action {
   text-decoration: none;
 }
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 300px;
+}
+.controls .btn-default {
+  width: 170px;
+}

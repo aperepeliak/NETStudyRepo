@@ -1,4 +1,6 @@
-﻿@model ST.WebUI.ViewModels.SkillsViewModel
+﻿@using X.PagedList.Mvc;
+@using X.PagedList;
+@model ST.WebUI.ViewModels.SkillsViewModel
 
 @{
     ViewBag.Title = "Skills";
@@ -9,16 +11,14 @@
 
     <h2>Skills</h2>
 
-    <div class="controls row">
-        <div class="col-md-6">
-            <p>
+    <div class="controls">     
+            <div>
                 @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info" })
-            </p>
-        </div>
-        <div class="col-md-6">
+            </div>     
+        <div>
             <div id="category-dropdown" class="dropdown pull-left">
                 <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filter by category
+                    @Model.SelectedCategoryName
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -37,12 +37,8 @@
     <div id="skills">
         <table class="table table-bordered">
             <tr>
-                <th>
-                    Skills
-                </th>
-                <th>
-                    Category
-                </th>
+                <th>Skill</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
 
@@ -71,5 +67,6 @@
 
         </table>
     </div>
-
+    @Html.PagedListPager((IPagedList)Model.Skills, 
+    page => Url.Action("Skills", new { categoryId = Model.SelectedCategoryId, page }))
 </div>

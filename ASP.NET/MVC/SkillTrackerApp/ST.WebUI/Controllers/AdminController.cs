@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using X.PagedList;
 
 namespace ST.WebUI.Controllers
 {
@@ -18,28 +19,33 @@ namespace ST.WebUI.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult Index()
+        public ActionResult Skills(int categoryId = 0, int page = 1)
         {
-            return RedirectToAction("Skills");
-        }
+            var skills = categoryId == 0
+                ? _unitOfWork.Skills.GetAll().ToList()
+                : _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList();
 
-        public ActionResult Skills(int categoryId = 0)
-        {
+            string selectedCategoryName = categoryId == 0
+                ? "Filter By Category"
+                : _unitOfWork.Categories.GetCategoryById(categoryId).Name;
+
+            int numberOfItemsPerPage = 10;
             var viewModel = new SkillsViewModel
             {
-                Skills = categoryId == 0
-                ? _unitOfWork.Skills.GetAll().ToList()
-                : _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList(),
-
-                Categories = _unitOfWork.Categories.GetAll()
+                Skills = skills.ToPagedList(page, numberOfItemsPerPage),
+                Categories = _unitOfWork.Categories.GetAll().ToList(),
+                SelectedCategoryName = selectedCategoryName,
+                SelectedCategoryId = categoryId
             };
 
             return View(viewModel);
         }
 
+        public ActionResult Index() => RedirectToAction("Skills");
+
         public ActionResult Categories()
         {
-            var categories = _unitOfWork.Categories.GetAll();
+            var categories = _unitOfWork.Categories.GetAll().ToList();
 
             return View(categories);
         }
