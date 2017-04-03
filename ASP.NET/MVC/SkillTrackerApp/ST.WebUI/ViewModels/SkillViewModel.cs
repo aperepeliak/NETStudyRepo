@@ -1,14 +1,11 @@
-﻿using System;
+﻿using ST.Core.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ST.WebUI.ViewModels
 {
-    public class SkillViewModel
+    public class SkillsViewModel
     {
-        public int Id { get; set; }
-        public string Skill { get; set; }
-        public string Category { get; set; }
+        public IEnumerable<Skill> Skills { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

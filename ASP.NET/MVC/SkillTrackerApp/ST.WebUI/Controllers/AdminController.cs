@@ -25,14 +25,16 @@ namespace ST.WebUI.Controllers
 
         public ActionResult Skills(int categoryId = 0)
         {
-            List<Skill> model = categoryId == 0
-                ? (model = _unitOfWork.Skills.GetAll().ToList()) 
-                : (model = _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList());
+            var viewModel = new SkillsViewModel
+            {
+                Skills = categoryId == 0
+                ? _unitOfWork.Skills.GetAll().ToList()
+                : _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList(),
 
-            if (Request.IsAjaxRequest())
-                return PartialView("_Skills", model);
+                Categories = _unitOfWork.Categories.GetAll()
+            };
 
-            return View(model);
+            return View(viewModel);
         }
 
         public ActionResult Categories()

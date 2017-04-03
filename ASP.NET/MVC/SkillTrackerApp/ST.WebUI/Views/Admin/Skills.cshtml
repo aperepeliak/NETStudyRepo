@@ -1,11 +1,9 @@
-﻿@model IEnumerable<ST.Core.Models.Skill>
+﻿@model ST.WebUI.ViewModels.SkillsViewModel
 
 @{
     ViewBag.Title = "Skills";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-
 
 <div class="col-md-9 col-md-offset-1">
 
@@ -16,22 +14,62 @@
             <p>
                 @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info" })
             </p>
-        </div> 
-        @using (Ajax.BeginForm(
-                new AjaxOptions
-                {
-                    HttpMethod = "GET",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "skills"
-                }
-            ))
-        {
-            <div class="col-md-6">
-                @Html.RenderPartial("_SearchByCategory", )
+        </div>
+        <div class="col-md-6">
+            <div id="category-dropdown" class="dropdown pull-left">
+                <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter by category
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li><a href="/admin/skills/">All</a></li>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li>
+                            <a href="/admin/skills?categoryId=@category.Id">@category.Name</a>
+                        </li>
+                    }
+                </ul>
             </div>
-        }
+        </div>
     </div>
 
-    @Html.Partial("_Skills", Model)
-    
+    <div id="skills">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Skills
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var skill in Model.Skills)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => skill.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => skill.Category.Name)
+                    </td>
+                    <td>
+                        <a class="action" href="@Url.Action("Edit", new { id = skill.Id })">
+                            <span class="glyphicon glyphicon-edit"></span> |
+                        </a>
+                        <a class="action" href="@Url.Action("Details", new { id = skill.Id })">
+                            <span class="glyphicon glyphicon-info-sign"></span> |
+                        </a>
+                        <a class="action" href="@Url.Action("Delete", new { id = skill.Id})">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
 </div>

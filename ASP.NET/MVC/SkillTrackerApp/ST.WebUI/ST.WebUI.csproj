@@ -312,8 +312,6 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Skills.cshtml" />
     <Content Include="Views\Admin\Categories.cshtml" />
-    <Content Include="Views\Admin\_Skills.cshtml" />
-    <Content Include="Views\Admin\_SearchyCategory.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
