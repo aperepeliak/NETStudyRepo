@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001-DataProviderFactory", "001-DataProviderFactory\001-DataProviderFactory.csproj", "{F309298D-65BA-42D4-9733-75AFC3F459A4}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotCUIClient", "AutoLotCUIClient\AutoLotCUIClient.csproj", "{0E4B45BD-290C-4A8A-AC5D-BC12D038366D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetTransaction", "AdoNetTransaction\AdoNetTransaction.csproj", "{959A4AF1-FD29-46D2-95FC-41B9E3D14204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoLotDL2", "AutoLotDL2", "{80E9D211-F41D-47CB-A872-576B1FBEF96C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotDAL2", "AutoLotDAL2\AutoLotDAL2.csproj", "{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,14 @@ Global
 		{959A4AF1-FD29-46D2-95FC-41B9E3D14204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959A4AF1-FD29-46D2-95FC-41B9E3D14204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{959A4AF1-FD29-46D2-95FC-41B9E3D14204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +63,7 @@ Global
 		{385A0EA3-9106-4532-B7A3-6094AA8AC23C} = {8823E81D-BA44-4C1F-AB3B-AD6ADCEA41E3}
 		{0E4B45BD-290C-4A8A-AC5D-BC12D038366D} = {8823E81D-BA44-4C1F-AB3B-AD6ADCEA41E3}
 		{959A4AF1-FD29-46D2-95FC-41B9E3D14204} = {8823E81D-BA44-4C1F-AB3B-AD6ADCEA41E3}
+		{C439B563-6FAF-4A7D-BAAF-A6A134D5B5D4} = {80E9D211-F41D-47CB-A872-576B1FBEF96C}
+		{CEDFAFB2-83A2-4D38-8F12-A77B78DBBBB6} = {80E9D211-F41D-47CB-A872-576B1FBEF96C}
 	EndGlobalSection
 EndGlobal
