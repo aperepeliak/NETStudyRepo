@@ -10,7 +10,7 @@ using X.PagedList;
 
 namespace ST.WebUI.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = SecurityRoles.Admin)]
     public class AdminController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -50,14 +50,9 @@ namespace ST.WebUI.Controllers
             return View(categories);
         }
 
-        public ActionResult Developers()
+        public ActionResult Users(int categoryId = 0, int page = 1)
         {
-            return Content("Developers");
-        }
-
-        public ActionResult Managers()
-        {
-            return Content("Managers");
+            return Content("Users");
         }
     }
 }

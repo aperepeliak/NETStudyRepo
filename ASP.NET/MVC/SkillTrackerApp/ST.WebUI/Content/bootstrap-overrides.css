@@ -13,3 +13,8 @@
     background-color: #040404;
     border-color: #040404;
 }
+
+.form-control:focus {
+     -webkit-box-shadow: none; 
+     box-shadow: none; 
+}
