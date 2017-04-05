@@ -11,14 +11,26 @@ namespace AutoLotDAL2.ConnectedLayer
 {
     public class InventoryDAL : IDisposable
     {
+        private readonly string _connStr;
+
         private SqlConnection _sqlConnection = null;
 
         public InventoryDAL() { }
         public InventoryDAL(string connectionString)
         {
-            OpenConnection(connectionString);
+            _connStr = connectionString;
+            // OpenConnection();
         }
 
+        public void OpenConnection()
+        {
+            _sqlConnection = new SqlConnection
+            {
+                ConnectionString = _connStr
+            };
+
+            _sqlConnection.Open();
+        }
         public void OpenConnection(string connectionString)
         {
             _sqlConnection = new SqlConnection
@@ -29,10 +41,7 @@ namespace AutoLotDAL2.ConnectedLayer
             _sqlConnection.Open();
         }
 
-        public void Dispose()
-        {
-            CloseConnection();
-        }
+        public void Dispose() => CloseConnection();
         public void CloseConnection() => _sqlConnection.Close();
 
         public void InsertAuto(int id, string color, string make, string petName)
@@ -182,5 +191,43 @@ namespace AutoLotDAL2.ConnectedLayer
 
             return dataTable;
         }
+
+        public TResult Universal<TSource, TResult>(Func<TSource, TResult> method, TSource source)
+        {
+            OpenConnection();
+            TResult result = method(source);
+            CloseConnection();
+            return result;
+        }
+        public TResult Universal<T1, T2, TResult>(Func<T1, T2, TResult> method, T1 s1, T2 s2)
+        {
+            OpenConnection();
+            TResult result = method(s1, s2);
+            CloseConnection();
+            return result;
+        }
+        public TResult Universal<T1, T2, T3, TResult>(Func<T1, T2, T3, TResult> method, T1 s1, T2 s2, T3 s3)
+        {
+            OpenConnection();
+            TResult result = method(s1, s2, s3);
+            CloseConnection();
+            return result;
+        }
+
+        public void ExecuteAction<T>(Action<T> actionMethod, T source)
+        {
+            OpenConnection();
+            actionMethod(source);
+            CloseConnection();
+        }
+        public void ExecuteAction<T1,T2>(Action<T1, T2> actionMethod, T1 s1, T2 s2)
+        {
+            OpenConnection();
+            actionMethod(s1, s2);
+            CloseConnection();
+        }
+
+
+
     }
 }
