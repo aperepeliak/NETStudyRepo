@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.AdoNet\Data.AdoNet.csproj">
+      <Project>{bc70529d-88f3-4f1b-ba96-4fae5faebba5}</Project>
+      <Name>Data.AdoNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.EF\Data.EF.csproj">
       <Project>{f8d55b74-3451-4ff7-9f90-e1338fbd527f}</Project>
       <Name>Data.EF</Name>

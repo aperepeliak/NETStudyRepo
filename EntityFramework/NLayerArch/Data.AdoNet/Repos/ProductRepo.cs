@@ -12,25 +12,22 @@ namespace Data.AdoNet.Repos
 {
     public class ProductRepo : IProductRepo
     {
-        DataTable table = new DataTable();
+        DataTable _table;
 
-        public ProductRepo(string connectionString)
+        public ProductRepo(DataTable table)
         {
-            using (var linkToDB = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter workAdapter = new SqlDataAdapter()
-                {
-                    SelectCommand = new SqlCommand("SELECT * FROM Customer ORDER BY LastName", 
-                    linkToDB)
-                };
-                workAdapter.Fill(table);
-            }
+            _table = table;
         }
 
         public void Add(Product entity)
         {
+            var newRow = _table.NewRow();
 
-            table.Rows.Add(new object[] { entity });
+            newRow["Name"] = entity.Name;
+            newRow["CategoryId"] = entity.CategoryId;
+            newRow["SupplierId"] = entity.SupplierId;
+
+            _table.Rows.Add(newRow);
         }
 
         public void Delete(Product entity)
@@ -40,7 +37,20 @@ namespace Data.AdoNet.Repos
 
         public IEnumerable<Product> GetAll()
         {
-            throw new NotImplementedException();
+            var products = new List<Product>();
+
+            for (int curRow = 0; curRow < _table.Rows.Count; curRow++)
+            {
+                products.Add(new Product
+                {
+                    Id = (int)_table.Rows[curRow]["Id"],
+                    Name = (string)_table.Rows[curRow]["Name"],
+                    CategoryId  = (int)_table.Rows[curRow]["CategoryId"],
+                    SupplierId  = (int)_table.Rows[curRow]["SupplierId"]
+                });
+            }
+
+            return products;
         }
 
         public Product GetById(int id)

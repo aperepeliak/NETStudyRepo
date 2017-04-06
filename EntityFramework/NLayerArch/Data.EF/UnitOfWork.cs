@@ -6,15 +6,15 @@ namespace Data.EF
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ProductContext _context = new ProductContext();
+        private ProductContext _context;
 
         public IProductRepo  Products   { get; private set; }
         public ICategoryRepo Categories { get; private set; }
         public ISupplierRepo Suppliers  { get; private set; }
 
-        public UnitOfWork()
+        public UnitOfWork(ProductContext context)
         {
-            //_context = context;
+            _context = context;
 
             Products = new ProductRepo(_context);
             Categories = new CategoryRepo(_context);

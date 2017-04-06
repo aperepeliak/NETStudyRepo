@@ -14,31 +14,27 @@ namespace UI.ConsoleApp
     {
         static void Main(string[] args)
         {
-            WorkWithEF();
+            // WorkWithEF();
 
-            //WorkWithAdoNet();
+            WorkWithAdoNet();
 
         }
 
         private static void WorkWithAdoNet()
         {
-            DataSet _db = new DataSet("ProductsDb");
+            var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+            IUnitOfWork unitOfWork = kernel.Get<IUnitOfWork>();
 
-            string sql = "SELECT * from Categories;SELECT * from Products;SELECT * from Suppliers;";
-            string connectionString =
-                ConfigurationManager.ConnectionStrings["ProductContext"].ConnectionString;
+            //unitOfWork.Products.Add(new Product { Name = "iPhone", CategoryId = 2, SupplierId = 2 });
+            //unitOfWork.Complete();
 
-            SqlDataAdapter _adapter = new SqlDataAdapter(sql, connectionString);
+            var products = unitOfWork.Products.GetAll();
 
-            _adapter.Fill(_db);
-
-            _db.Tables[0].TableName = "Categories";
-
-            Console.WriteLine(_db.Tables[0].TableName);
-
-            Console.WriteLine(_db.Tables[0].Rows[0][1]);
-            Console.WriteLine(_db.Tables[0].Rows[1][1]);
-            Console.WriteLine(_db.Tables[0].Rows[2][1]);
+            foreach (var p in products)
+            {
+                Console.WriteLine(p.Name);
+            }
         }
 
         private static void WorkWithEF()
@@ -50,8 +46,8 @@ namespace UI.ConsoleApp
             // unitOfWork.Categories.Add(new Category { Name = "Laptop" });
             // unitOfWork.Complete();
 
-            var cats = unitOfWork.Categories.GetAll();
-            foreach (var c in cats)
+            var categories = unitOfWork.Categories.GetAll();
+            foreach (var c in categories)
             {
                 Console.WriteLine(c.Name);
             }

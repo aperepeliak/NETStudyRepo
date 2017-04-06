@@ -1,34 +1,26 @@
-﻿using DomainLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data.AdoNet.Repos;
+using DomainLayer;
 using DomainLayer.Repos;
-using System.Data.Common;
-using System.Data;
-using Data.AdoNet.Repos;
 
 namespace Data.AdoNet
 {
     public class UnitOfWork : IUnitOfWork
     {
-        DataAdapter _adapter;
-        DataSet _db;
+        private ProductContext _context;
 
-        public IProductRepo Products { get; private set; }
+        public IProductRepo  Products   { get; private set; }
         public ICategoryRepo Categories { get; private set; }
-        public ISupplierRepo Suppliers { get; private set; }
+        public ISupplierRepo Suppliers  { get; private set; }
 
-        public UnitOfWork()
+        public UnitOfWork(ProductContext context)
         {
-            _adapter.Fill(_db);
-            Products = new ProductRepo("connstr");
+            _context = context;
+
+            Products    = new ProductRepo(_context.Products);
+            //Categories  = new CategoryRepo(_context.Categories);
+            //Suppliers   = new SupplierRepo(_context.Suppliers);
         }
 
-        public void Complete()
-        {
-            _adapter.Update(_db);
-        }
+        public void Complete() => _context.SaveChanges();
     }
 }
