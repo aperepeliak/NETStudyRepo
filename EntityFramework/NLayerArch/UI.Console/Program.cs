@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DomainLayer;
+using DomainLayer.Models;
+using Ninject;
+using System.Reflection;
 
 namespace UI.Console
 {
@@ -10,6 +9,13 @@ namespace UI.Console
     {
         static void Main(string[] args)
         {
+            var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+
+            var unit = kernel.Get<IUnitOfWork>();
+
+            unit.Categories.Add(new Category { Name = "Printer" });
+            unit.Complete();
         }
     }
 }
