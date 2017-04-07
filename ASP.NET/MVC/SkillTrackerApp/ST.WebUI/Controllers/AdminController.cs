@@ -19,27 +19,33 @@ namespace ST.WebUI.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult Skills(int categoryId = 0, int page = 1)
-        {
-            var skills = categoryId == 0
-                ? _unitOfWork.Skills.GetAll().ToList()
-                : _unitOfWork.Skills.GetSkillsByCategory(categoryId).ToList();
+        //public ActionResult Skills(int categoryId = 0, int page = 1)
+        //{
+        //    int numberOfItemsPerPage = 10;
 
-            string selectedCategoryName = categoryId == 0
-                ? "Filter By Category"
-                : _unitOfWork.Categories.GetCategoryById(categoryId).Name;
+        //    var skills = categoryId == 0
+        //        ? _unitOfWork.Skills.GetAll()
+        //                            .OrderBy(s => s.Id)
+        //                            .ToPagedList(page, numberOfItemsPerPage)
 
-            int numberOfItemsPerPage = 10;
-            var viewModel = new SkillsViewModel
-            {
-                Skills = skills.ToPagedList(page, numberOfItemsPerPage),
-                Categories = _unitOfWork.Categories.GetAll().ToList(),
-                SelectedCategoryName = selectedCategoryName,
-                SelectedCategoryId = categoryId
-            };
+        //        : _unitOfWork.Skills.GetSkillsByCategory(categoryId)
+        //                            .OrderBy(s => s.Id)
+        //                            .ToPagedList(page, numberOfItemsPerPage);
 
-            return View(viewModel);
-        }
+        //    string selectedCategoryName = categoryId == 0
+        //        ? "Filter By Category"
+        //        : _unitOfWork.Categories.GetCategoryById(categoryId).Name;
+
+        //    var viewModel = new SkillsViewModel
+        //    {
+        //        Skills = skills,
+        //        Categories = _unitOfWork.Categories.GetAll().ToList(),
+        //        SelectedCategoryName = selectedCategoryName,
+        //        SelectedCategoryId = categoryId
+        //    };
+
+        //    return View(viewModel);
+        //}
 
         public ActionResult Index() => RedirectToAction("Skills");
 
