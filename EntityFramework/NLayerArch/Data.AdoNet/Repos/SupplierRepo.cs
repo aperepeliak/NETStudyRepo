@@ -62,8 +62,11 @@ namespace Data.AdoNet.Repos
         }
         public Supplier GetById(int id)
         {
-            DataRow row = _table.Select($"Id = {id}")[0];
+            DataRow[] query = _table.Select($"Id = {id}");
 
+            if (query.Length == 0) return null;
+
+            DataRow row = query[0];
             var supplier = new Supplier
             {
                 Id = (int)row["Id"],
