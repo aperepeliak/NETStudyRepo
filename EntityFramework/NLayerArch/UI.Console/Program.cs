@@ -64,8 +64,8 @@ namespace UI.ConsoleApp
             #endregion
 
             #region Delete
-            unitOfWork.Categories.Delete(new Category { Id = 6 });
-            unitOfWork.Complete();
+            // unitOfWork.Categories.Delete(new Category { Id = 6 });
+            // unitOfWork.Complete();
             #endregion
         }
 
@@ -81,11 +81,16 @@ namespace UI.ConsoleApp
             #endregion
 
             #region GetAll
-            var categories = unitOfWork.Categories.GetAll();
-            foreach (var c in categories)
-            {
-                Console.WriteLine(c.Name);
-            }
+            //var categories = unitOfWork.Categories.GetAll();
+            //foreach (var c in categories)
+            //{
+            //    Console.WriteLine(c.Name);
+            //}
+            #endregion
+
+            #region GetById
+            //var product = unitOfWork.Products.GetById(2);
+            // Console.WriteLine(product.Name + " | " + product.Supplier.Name + " | " + product.Category.Name);
             #endregion
         }
     }

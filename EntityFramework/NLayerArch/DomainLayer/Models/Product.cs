@@ -8,7 +8,7 @@
         public int CategoryId { get; set; }
         public int SupplierId { get; set; }
 
-        public Category Category { get; set; }
-        public Supplier Supplier { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

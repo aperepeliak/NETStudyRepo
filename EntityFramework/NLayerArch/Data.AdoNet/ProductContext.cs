@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -46,12 +47,27 @@ namespace Data.AdoNet
             Categories  = _db.Tables["Categories"]; 
             Suppliers   = _db.Tables["Suppliers"];
         }
-
+        
         public void SaveChanges()
         {
-            _productsTableAdapter   .Update(_db, "Products");
-            _categoriesTableAdapter .Update(_db, "Categories");
-            _suppliersTableAdapter  .Update(_db, "Suppliers");
+            try
+            {
+                _productsTableAdapter   .Update(_db, "Products");
+                _categoriesTableAdapter .Update(_db, "Categories");
+                _suppliersTableAdapter  .Update(_db, "Suppliers");
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw ex;
+            }
+            catch(DBConcurrencyException ex)
+            {
+                throw ex;
+            }
         }
 
         public DataRow GetParentRowFor(DataRow row, string relationName)
