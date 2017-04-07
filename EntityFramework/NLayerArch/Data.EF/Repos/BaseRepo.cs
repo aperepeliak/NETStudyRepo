@@ -9,7 +9,7 @@ namespace Data.EF.Repos
         protected DbSet<T> _table;
 
         public void Add(T entity)       => _table.Add(entity);
-        public void Delete(T entity)    => _table.Remove(entity);
+        public T Delete(T entity)       => _table.Remove(entity);
         public T GetById(int id)        => _table.Find(id);
         public IEnumerable<T> GetAll()  => _table.ToList();
     }

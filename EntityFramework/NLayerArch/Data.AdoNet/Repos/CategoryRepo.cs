@@ -22,11 +22,19 @@ namespace Data.AdoNet.Repos
             newRow["Name"] = entity.Name;
             _table.Rows.Add(newRow);
         }
-        public void Delete(Category entity)
+        public Category Delete(Category entity)
         {
             int id = entity.Id;
-            DataRow rowToDelete = _table.Select($"Id={id}")[0];
-            rowToDelete.Delete();
+            var category = GetById(id);
+
+            if (category != null)
+            {
+                DataRow rowToDelete = _table.Select($"Id = {id}")[0];
+                rowToDelete.Delete();
+                return category;
+            }
+
+            return null;         
         }
         public IEnumerable<Category> GetAll()
         {

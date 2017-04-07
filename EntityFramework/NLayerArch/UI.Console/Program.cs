@@ -55,7 +55,7 @@ namespace UI.ConsoleApp
             // var p = unitOfWork.Products.GetById(2);
             // Console.WriteLine($"{p.Name} | {p.Category.Name} | {p.Supplier.Name}");
 
-            var s = unitOfWork.Suppliers.GetById(8);
+            //var s = unitOfWork.Suppliers.GetById(8);
             //Console.WriteLine($"{s.Id} | {s.Name}");
             //foreach (var p in s.Products)
             //{
@@ -64,8 +64,8 @@ namespace UI.ConsoleApp
             #endregion
 
             #region Delete
-            // unitOfWork.Products.Delete(new Product { Id = 5 });
-            // unitOfWork.Complete();
+            unitOfWork.Categories.Delete(new Category { Id = 6 });
+            unitOfWork.Complete();
             #endregion
         }
 

@@ -26,11 +26,19 @@ namespace Data.AdoNet.Repos
 
             _table.Rows.Add(newRow);
         }
-        public void Delete(Product entity)
+        public Product Delete(Product entity)
         {
             int id = entity.Id;
-            DataRow rowToDelete = _table.Select($"Id={id}")[0];
-            rowToDelete.Delete();
+            var product = GetById(id);
+
+            if (product != null)
+            {
+                DataRow rowToDelete = _table.Select($"Id = {id}")[0];
+                rowToDelete.Delete();
+                return product;
+            }
+
+            return null;
         }
         public IEnumerable<Product> GetAll()
         {
