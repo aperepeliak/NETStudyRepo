@@ -22,11 +22,11 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
-                    <li><a href="/admin/skills/">All</a></li>
+                    <li><a href="/skills/skills/">All</a></li>
                     @foreach (var category in Model.Categories)
                     {
                         <li>
-                            <a href="/admin/skills?categoryId=@category.Id">@category.Name</a>
+                            <a href="/skills/skills?categoryId=@category.Id">@category.Name</a>
                         </li>
                     }
                 </ul>

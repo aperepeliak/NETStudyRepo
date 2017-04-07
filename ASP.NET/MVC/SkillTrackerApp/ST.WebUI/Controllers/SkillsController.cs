@@ -49,13 +49,17 @@ namespace ST.WebUI.Controllers
 
         public ActionResult Index() => RedirectToAction("Skills");
 
-        // GET: Skills/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new SkillFormViewModel
+            {
+                Categories = _unitOfWork.Categories.GetAll(),
+                Heading = "Add a skill",
+            };
+
+            return View("SkillForm", viewModel);
         }
 
-        // POST: Skills/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -79,7 +83,7 @@ namespace ST.WebUI.Controllers
 
         // POST: Skills/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Update(int id, FormCollection collection)
         {
             try
             {
