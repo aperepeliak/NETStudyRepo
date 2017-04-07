@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="ProductContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repos\BaseRepo.cs" />
+    <Compile Include="Repos\CategoryRepo.cs" />
     <Compile Include="Repos\ProductRepo.cs" />
+    <Compile Include="Repos\SupplierRepo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

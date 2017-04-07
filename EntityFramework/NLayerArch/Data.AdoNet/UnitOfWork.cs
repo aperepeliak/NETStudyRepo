@@ -17,8 +17,8 @@ namespace Data.AdoNet
             _context = context;
 
             Products    = new ProductRepo(_context);
-            //Categories  = new CategoryRepo(_context.Categories);
-            //Suppliers   = new SupplierRepo(_context.Suppliers);
+            Categories  = new CategoryRepo(_context);
+            Suppliers   = new SupplierRepo(_context);
         }
 
         public void Complete() => _context.SaveChanges();

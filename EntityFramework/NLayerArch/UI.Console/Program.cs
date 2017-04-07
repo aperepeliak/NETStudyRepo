@@ -29,6 +29,12 @@ namespace UI.ConsoleApp
             #region AddItem
             //unitOfWork.Products.Add(new Product { Name = "iPhone", CategoryId = 2, SupplierId = 2 });
             //unitOfWork.Complete();
+
+            //unitOfWork.Categories.Add(new Category { Name = "PC" });
+            //unitOfWork.Complete();
+
+            //unitOfWork.Suppliers.Add(new Supplier { Name = "IBM" });
+            //unitOfWork.Complete();
             #endregion
 
             #region IterateOverCollection
@@ -37,11 +43,24 @@ namespace UI.ConsoleApp
             //{
             //    Console.WriteLine(p.Name);
             //}
+
+            //var suppliers = unitOfWork.Suppliers.GetAll();
+            //foreach (var s in suppliers)
+            //{
+            //    Console.WriteLine(s.Name);
+            //}
             #endregion
 
             #region GetById
-            // var p = unitOfWork.Products.GetById(3);
+            // var p = unitOfWork.Products.GetById(2);
             // Console.WriteLine($"{p.Name} | {p.Category.Name} | {p.Supplier.Name}");
+
+            //var s = unitOfWork.Suppliers.GetById(3);
+            //Console.WriteLine($"{s.Id} | {s.Name}");
+            //foreach (var p in s.Products)
+            //{
+            //    Console.WriteLine($"{p.Name}");
+            //}
             #endregion
 
             #region Delete

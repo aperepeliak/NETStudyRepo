@@ -18,7 +18,7 @@ namespace Data.AdoNet.Repos
 
         public void Add(Product entity)
         {
-            var newRow = _table.NewRow();
+            DataRow newRow = _table.NewRow();
 
             newRow["Name"] = entity.Name;
             newRow["CategoryId"] = entity.CategoryId;
@@ -69,31 +69,29 @@ namespace Data.AdoNet.Repos
         }
         public Product GetById(int id)
         {
-            DataRow[] rowArray = _table.Select($"Id = {id}");
+            DataRow row = _table.Select($"Id = {id}")[0];
 
             return new Product
             {
-                Id = (int)rowArray[0]["Id"],
-                Name = (string)rowArray[0]["Name"],
-                CategoryId = (int)rowArray[0]["CategoryId"],
-                SupplierId = (int)rowArray[0]["SupplierId"],
+                Id         = (int)   row["Id"],
+                Name       = (string)row["Name"],
+                CategoryId = (int)   row["CategoryId"],
+                SupplierId = (int)   row["SupplierId"],
 
                 Category = new Category
                 {
-                    Id = (int)_context.GetParentRowFor
-                                (rowArray[0], "CategoryProduct")["Id"],
-
+                    Id   = (int)_context.GetParentRowFor
+                                (row, "CategoryProduct")["Id"],
                     Name = (string)_context.GetParentRowFor
-                                (rowArray[0], "CategoryProduct")["Name"]
+                                (row, "CategoryProduct")["Name"]
                 },
 
                 Supplier = new Supplier
                 {
-                    Id = (int)_context.GetParentRowFor
-                                (rowArray[0], "SupplierProduct")["Id"],
-
+                    Id   = (int)_context.GetParentRowFor
+                                (row, "SupplierProduct")["Id"],
                     Name = (string)_context.GetParentRowFor
-                                (rowArray[0], "SupplierProduct")["Name"]
+                                (row, "SupplierProduct")["Name"]
                 }
             };
         }
