@@ -26,15 +26,24 @@ namespace UI.ConsoleApp
             kernel.Load(Assembly.GetExecutingAssembly());
             IUnitOfWork unitOfWork = kernel.Get<IUnitOfWork>();
 
+            #region AddItem
             //unitOfWork.Products.Add(new Product { Name = "iPhone", CategoryId = 2, SupplierId = 2 });
             //unitOfWork.Complete();
+            #endregion
 
-            var products = unitOfWork.Products.GetAll();
+            #region IterateOverCollection
+            //var products = unitOfWork.Products.GetAll();
+            //foreach (var p in products)
+            //{
+            //    Console.WriteLine(p.Name);
+            //}
+            #endregion
 
-            foreach (var p in products)
-            {
-                Console.WriteLine(p.Name);
-            }
+            #region GetById
+            var p = unitOfWork.Products.GetById(3);
+            Console.WriteLine($"{p.Name} | {p.Category.Name} | {p.Supplier.Name}");
+            #endregion
+
         }
 
         private static void WorkWithEF()
