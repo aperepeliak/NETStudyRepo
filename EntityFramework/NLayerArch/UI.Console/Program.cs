@@ -40,10 +40,14 @@ namespace UI.ConsoleApp
             #endregion
 
             #region GetById
-            var p = unitOfWork.Products.GetById(3);
-            Console.WriteLine($"{p.Name} | {p.Category.Name} | {p.Supplier.Name}");
+            // var p = unitOfWork.Products.GetById(3);
+            // Console.WriteLine($"{p.Name} | {p.Category.Name} | {p.Supplier.Name}");
             #endregion
 
+            #region Delete
+            // unitOfWork.Products.Delete(new Product { Id = 5 });
+            // unitOfWork.Complete();
+            #endregion
         }
 
         private static void WorkWithEF()
@@ -52,14 +56,18 @@ namespace UI.ConsoleApp
             kernel.Load(Assembly.GetExecutingAssembly());
             IUnitOfWork unitOfWork = kernel.Get<IUnitOfWork>();
 
+            #region Add
             // unitOfWork.Categories.Add(new Category { Name = "Laptop" });
             // unitOfWork.Complete();
+            #endregion
 
+            #region GetAll
             var categories = unitOfWork.Categories.GetAll();
             foreach (var c in categories)
             {
                 Console.WriteLine(c.Name);
             }
+            #endregion
         }
     }
 }

@@ -1,12 +1,7 @@
 ﻿using DomainLayer.Repos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DomainLayer.Models;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace Data.AdoNet.Repos
 {
@@ -31,12 +26,12 @@ namespace Data.AdoNet.Repos
 
             _table.Rows.Add(newRow);
         }
-
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            int id = entity.Id;
+            DataRow rowToDelete = _table.Select($"Id={id}")[0];
+            rowToDelete.Delete();
         }
-
         public IEnumerable<Product> GetAll()
         {
             var products = new List<Product>();
@@ -72,7 +67,6 @@ namespace Data.AdoNet.Repos
 
             return products;
         }
-
         public Product GetById(int id)
         {
             DataRow[] rowArray = _table.Select($"Id = {id}");
