@@ -14,9 +14,9 @@ namespace UI.ConsoleApp
     {
         static void Main(string[] args)
         {
-            // WorkWithEF();
+            WorkWithEF();
 
-            WorkWithAdoNet();
+            // WorkWithAdoNet();
 
         }
 
@@ -91,6 +91,12 @@ namespace UI.ConsoleApp
             #region GetById
             //var product = unitOfWork.Products.GetById(2);
             // Console.WriteLine(product.Name + " | " + product.Supplier.Name + " | " + product.Category.Name);
+            #endregion
+
+            #region Delete
+            // var toDelete = unitOfWork.Suppliers.GetById(6);
+            // unitOfWork.Suppliers.Delete(toDelete);
+            // unitOfWork.Complete();
             #endregion
         }
     }

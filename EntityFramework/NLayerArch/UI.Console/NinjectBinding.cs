@@ -11,7 +11,7 @@ namespace UI.ConsoleApp
     {
         public override void Load()
         {
-            Kernel.Bind(x => x.FromAssembliesMatching("Data.AdoNet.dll")
+            Kernel.Bind(x => x.FromAssembliesMatching("Data.EF.dll")
                             .SelectAllClasses()
                             .BindAllInterfaces());
         }
