@@ -61,18 +61,25 @@ namespace ST.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SkillFormViewModel viewModel)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                viewModel.Categories = _unitOfWork.Categories.GetAll();
+                return View("SkillForm", viewModel);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var skill = new Skill
             {
-                return View();
-            }
+                Name = viewModel.Name,
+                CategoryId = viewModel.CategoryId
+            };
+
+            _unitOfWork.Skills.Add(skill);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Skills");
         }
 
         // GET: Skills/Edit/5
