@@ -34,7 +34,7 @@ namespace ST.WebUI.Controllers
 
             string selectedCategoryName = categoryId == 0
                 ? "Filter By Category"
-                : _unitOfWork.Categories.GetCategoryById(categoryId).Name;
+                : _unitOfWork.Categories.GetCategory(categoryId).Name;
 
             var viewModel = new SkillsViewModel
             {
@@ -54,7 +54,7 @@ namespace ST.WebUI.Controllers
             var viewModel = new SkillFormViewModel
             {
                 Categories = _unitOfWork.Categories.GetAll(),
-                Heading = "Add a skill",
+                Heading = "Add a skill"
             };
 
             return View("SkillForm", viewModel);
@@ -79,51 +79,76 @@ namespace ST.WebUI.Controllers
             _unitOfWork.Skills.Add(skill);
             _unitOfWork.Complete();
 
-            return RedirectToAction("Skills");
+            return RedirectToAction("Skills", "Skills");
         }
 
-        // GET: Skills/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var skill = _unitOfWork.Skills.GetSkill(id);
+
+            if (skill == null)
+                return HttpNotFound();
+
+            var viewModel = new SkillFormViewModel
+            {
+                Id = id,
+                Name = skill.Name,
+                CategoryId = skill.CategoryId,
+                Categories = _unitOfWork.Categories.GetAll(),
+                Heading = "Edit a skill"
+            };
+
+            return View("SkillForm", viewModel);
         }
 
-        // POST: Skills/Edit/5
         [HttpPost]
-        public ActionResult Update(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(SkillFormViewModel viewModel)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                viewModel.Categories = _unitOfWork.Categories.GetAll();
+                return View("SkillForm", viewModel);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var skill = _unitOfWork.Skills.GetSkill(viewModel.Id);
+
+            if (skill == null)
+                return HttpNotFound();
+
+            skill.Update(viewModel.Name, viewModel.CategoryId);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Skills", "Skills");
         }
 
-        // GET: Skills/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            return View();
+            var skill = _unitOfWork.Skills.GetSkill(id);
+
+            if (skill == null)
+                return HttpNotFound();
+
+            _unitOfWork.Skills.Remove(skill);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Skills", "Skills");
         }
 
-        // POST: Skills/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+        
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

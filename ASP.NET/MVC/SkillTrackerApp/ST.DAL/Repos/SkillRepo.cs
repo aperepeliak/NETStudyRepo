@@ -1,9 +1,6 @@
 ﻿using ST.Core.Repos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ST.Core.Models;
 using System.Data.Entity;
 
@@ -19,7 +16,8 @@ namespace ST.DAL.Repos
         }
 
         public void Add(Skill skill)       => _context.Skills.Add(skill);
-        public Skill Remove(Skill skill)   => _context.Skills.Remove(skill);
+        public void Remove(Skill skill)    => _context.Entry(skill).State = EntityState.Deleted;
+        public Skill GetSkill(int id)      => _context.Skills.Find(id);
 
         public IEnumerable<Skill> GetAll() => _context.Skills
                                                 .Include(s => s.Category);

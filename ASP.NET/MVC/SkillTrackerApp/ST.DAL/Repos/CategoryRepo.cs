@@ -1,8 +1,6 @@
 ﻿using ST.Core.Repos;
 using System.Collections.Generic;
 using ST.Core.Models;
-using System.Linq;
-using System;
 
 namespace ST.DAL.Repos
 {
@@ -18,9 +16,6 @@ namespace ST.DAL.Repos
         public void Add(Category category)        => _context.Categories.Add(category);
         public Category Remove(Category category) => _context.Categories.Remove(category);
         public IEnumerable<Category> GetAll()     => _context.Categories;
-
-        public Category GetCategoryById(int categoryId) 
-                                                  => _context.Categories
-                                                    .SingleOrDefault(c => c.Id == categoryId);
+        public Category GetCategory(int id)       => _context.Categories.Find(id);
     }
 }

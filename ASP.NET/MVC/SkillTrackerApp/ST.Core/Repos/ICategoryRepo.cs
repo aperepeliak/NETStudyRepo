@@ -7,7 +7,7 @@ namespace ST.Core.Repos
     {
         void Add(Category category);
         Category Remove(Category category);
+        Category GetCategory(int categoryId);
         IEnumerable<Category> GetAll();
-        Category GetCategoryById(int categoryId);
     }
 }

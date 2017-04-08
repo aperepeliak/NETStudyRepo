@@ -8,5 +8,11 @@ namespace ST.Core.Models
         public string Name { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public void Update(string name, int categoryId)
+        {
+            Name = name;
+            CategoryId = categoryId;
+        }
     }
 }
