@@ -1,10 +1,7 @@
 ﻿using ST.Core;
 using ST.Core.Models;
 using ST.WebUI.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ST.WebUI.Controllers
@@ -85,20 +82,18 @@ namespace ST.WebUI.Controllers
             return RedirectToAction("Index", "Categories");
         }
 
-        // POST: Categories/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpDelete]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var category = _unitofWork.Categories.GetCategory(id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            if (category == null)
+                return HttpNotFound();
+
+            _unitofWork.Categories.Remove(category);
+            _unitofWork.Complete();
+
+            return RedirectToAction("Index", "Categories");
         }
     }
 }

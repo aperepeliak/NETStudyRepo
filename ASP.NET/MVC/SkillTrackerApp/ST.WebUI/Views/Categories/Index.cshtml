@@ -34,7 +34,7 @@
                         <span class="glyphicon glyphicon-edit"></span> |
                     </a>
                     <a href="#">
-                        <span data-skill-id="@category.Id" class="glyphicon glyphicon-trash delete"></span>
+                        <span data-category-id="@category.Id" class="glyphicon glyphicon-trash delete"></span>
                     </a>
                 </td>
             </tr>
@@ -42,3 +42,48 @@
 
     </table>
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $("span.delete").click(function (e) {
+                e.preventDefault();
+                var element = $(e.target);
+                var categoryId = element.attr("data-category-id");
+                var categoryName = element.closest('td').prev().text().trim();
+
+                bootbox.confirm({
+                    message: "Are you sure you want to delete <strong>" + categoryName + "</strong> category?",
+                    buttons: {
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-default'
+                        },
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (!result) return;
+
+                        $.ajax({
+                            url: "/categories/delete/" + categoryId,
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                element.closest('tr')
+                                    .fadeOut(function () {
+                                        $(this).remove();
+                                    })
+                            })
+                            .fail(function () {
+                                alert("Error!");
+                            })
+                    }
+                });
+            });
+        });
+    </script>
+}

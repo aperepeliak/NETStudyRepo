@@ -74,9 +74,9 @@
         $(function () {
             $("span.delete").click(function (e) {
                 e.preventDefault();
-                var el = $(e.target);
-                var skillId = el.attr("data-skill-id");
-                var skillName = el.closest('td').prev().prev().text().trim();
+                var element = $(e.target);
+                var skillId = element.attr("data-skill-id");
+                var skillName = element.closest('td').prev().prev().text().trim();
 
                 bootbox.confirm({
                     message: "Are you sure you want to delete <strong>" + skillName + "</strong> skill?",
@@ -98,7 +98,7 @@
                             method: "DELETE"
                         })
                             .done(function () {
-                                el.closest('tr')
+                                element.closest('tr')
                                     .fadeOut(function () {
                                         $(this).remove();
                                     })
