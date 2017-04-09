@@ -56,6 +56,8 @@
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Developer.cs" />
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\SecurityRoles.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

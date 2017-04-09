@@ -10,10 +10,13 @@ namespace ST.Core.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        public Developer Developer { get; set; }
+        public Manager Manager { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            userIdentity.AddClaim(new Claim("FirstName", this.FirstName));
+            userIdentity.AddClaim(new Claim("FirstName", FirstName));
             return userIdentity;
         }
     }
