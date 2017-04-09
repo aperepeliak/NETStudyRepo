@@ -122,7 +122,7 @@ namespace ST.WebUI.Controllers
             return RedirectToAction("Skills", "Skills");
         }
 
-        [HttpPost]
+        [HttpDelete]
         public ActionResult Delete(int id)
         {
             var skill = _unitOfWork.Skills.GetSkill(id);
@@ -135,20 +135,5 @@ namespace ST.WebUI.Controllers
 
             return RedirectToAction("Skills", "Skills");
         }
-
-        
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
