@@ -25,6 +25,7 @@ namespace ST.DAL
         {
             modelBuilder.Configurations.Add(new SkillConfig());
             modelBuilder.Configurations.Add(new CategoryConfig());
+            modelBuilder.Configurations.Add(new ApplicationUserConfig());
 
             base.OnModelCreating(modelBuilder);
         }
