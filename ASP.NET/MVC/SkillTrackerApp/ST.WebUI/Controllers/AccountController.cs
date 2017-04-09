@@ -166,7 +166,10 @@ namespace ST.WebUI.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     if (model.IsDeveloper)
+                    {
                         await UserManager.AddToRoleAsync(user.Id, SecurityRoles.Developer);
+                        
+                    }
                     else
                         await UserManager.AddToRoleAsync(user.Id, SecurityRoles.Manager);
 

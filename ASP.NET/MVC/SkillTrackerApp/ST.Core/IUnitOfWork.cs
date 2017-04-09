@@ -4,8 +4,10 @@ namespace ST.Core
 {
     public interface IUnitOfWork
     {
-        ISkillRepo Skills { get; }
-        ICategoryRepo Categories { get; }
+        ISkillRepo      Skills      { get; }
+        ICategoryRepo   Categories  { get; }
+        IDeveloperRepo  Developers  { get; }
+        IManagerRepo    Managers    { get; }
 
         void Complete();
     }

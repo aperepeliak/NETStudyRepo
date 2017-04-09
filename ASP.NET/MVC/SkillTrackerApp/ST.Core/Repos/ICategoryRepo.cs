@@ -6,7 +6,7 @@ namespace ST.Core.Repos
     public interface ICategoryRepo
     {
         void Add(Category category);
-        Category Remove(Category category);
+        void Remove(Category category);
         Category GetCategory(int categoryId);
         IEnumerable<Category> GetAll();
     }
