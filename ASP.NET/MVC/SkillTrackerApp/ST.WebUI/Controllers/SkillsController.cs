@@ -21,7 +21,7 @@ namespace ST.WebUI.Controllers
 
         public ActionResult Skills(int categoryId = 0, int page = 1)
         {
-            int numberOfItemsPerPage = 10;
+            int numberOfItemsPerPage = 8;
 
             var skills = categoryId == 0
                 ? _unitOfWork.Skills.GetAll()
