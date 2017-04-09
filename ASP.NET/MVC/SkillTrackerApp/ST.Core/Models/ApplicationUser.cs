@@ -13,6 +13,8 @@ namespace ST.Core.Models
         public Developer Developer { get; set; }
         public Manager Manager { get; set; }
 
+        public string FullName => string.Concat(FirstName, LastName);
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

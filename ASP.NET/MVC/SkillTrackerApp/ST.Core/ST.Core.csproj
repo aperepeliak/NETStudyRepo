@@ -65,6 +65,7 @@
     <Compile Include="Repos\IDeveloperRepo.cs" />
     <Compile Include="Repos\IManagerRepo.cs" />
     <Compile Include="Repos\ISkillRepo.cs" />
+    <Compile Include="Repos\IUserRepo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

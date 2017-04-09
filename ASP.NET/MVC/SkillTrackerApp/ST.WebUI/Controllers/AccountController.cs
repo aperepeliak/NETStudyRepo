@@ -168,11 +168,21 @@ namespace ST.WebUI.Controllers
                     if (model.IsDeveloper)
                     {
                         await UserManager.AddToRoleAsync(user.Id, SecurityRoles.Developer);
-                        
+                        _unitOfWork.Developers.Add(new Developer
+                        {
+                            DeveloperId = user.Id
+                        });
+                        _unitOfWork.Complete();
                     }
                     else
+                    {
                         await UserManager.AddToRoleAsync(user.Id, SecurityRoles.Manager);
-
+                        _unitOfWork.Managers.Add(new Manager
+                        {
+                            ManagerId = user.Id
+                        });
+                        _unitOfWork.Complete();
+                    }
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

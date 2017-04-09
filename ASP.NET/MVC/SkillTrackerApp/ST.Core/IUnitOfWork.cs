@@ -8,6 +8,7 @@ namespace ST.Core
         ICategoryRepo   Categories  { get; }
         IDeveloperRepo  Developers  { get; }
         IManagerRepo    Managers    { get; }
+        IUserRepo       AppUsers    { get; }
 
         void Complete();
     }

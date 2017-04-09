@@ -81,6 +81,7 @@
     <Compile Include="Repos\DeveloperRepo.cs" />
     <Compile Include="Repos\ManagerRepo.cs" />
     <Compile Include="Repos\SkillRepo.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
