@@ -1,4 +1,6 @@
-﻿using ST.Core.Models;
+﻿using ST.Core;
+using ST.Core.Models;
+using ST.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,60 +12,77 @@ namespace ST.WebUI.Controllers
     [Authorize(Roles = SecurityRoles.Admin)]
     public class CategoriesController : Controller
     {
-        // GET: Categories
+        private readonly IUnitOfWork _unitofWork;
+
+        public CategoriesController(IUnitOfWork unitOfWork)
+        {
+            _unitofWork = unitOfWork;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var categories = _unitofWork.Categories.GetAll().ToList();
+            return View(categories);
         }
 
-        // GET: Categories/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new CategoryFormViewModel
+            {
+                Heading = "Add a category"
+            };
+
+            return View("CategoryForm", viewModel);
         }
 
-        // POST: Categories/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CategoryFormViewModel viewModel)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            if (!ModelState.IsValid)
+                return View("CategoryForm", viewModel);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var category = new Category { Name = viewModel.Name };
+
+            _unitofWork.Categories.Add(category);
+            _unitofWork.Complete();
+
+            return RedirectToAction("Index", "Categories");
         }
 
-        // GET: Categories/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var category = _unitofWork.Categories.GetCategory(id);
+
+            if (category == null)
+                return HttpNotFound();
+
+            var viewModel = new CategoryFormViewModel
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Heading = "Edit category"
+            };
+
+            return View("CategoryForm", viewModel);
         }
 
-        // POST: Categories/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(CategoryFormViewModel viewModel)
         {
-            try
-            {
-                // TODO: Add update logic here
+            if (!ModelState.IsValid)
+                return View("CategoryForm", viewModel);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            var category = _unitofWork.Categories.GetCategory(viewModel.Id);
 
-        // GET: Categories/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+            if (category == null)
+                return HttpNotFound();
+
+            category.Update(viewModel.Name);
+            _unitofWork.Complete();
+
+            return RedirectToAction("Index", "Categories");
         }
 
         // POST: Categories/Delete/5
