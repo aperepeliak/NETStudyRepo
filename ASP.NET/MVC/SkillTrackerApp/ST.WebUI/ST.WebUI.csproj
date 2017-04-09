@@ -330,6 +330,7 @@
     <Content Include="Views\Categories\CategoryForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

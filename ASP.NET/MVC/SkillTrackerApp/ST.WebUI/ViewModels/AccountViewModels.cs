@@ -64,6 +64,19 @@ namespace ST.WebUI.ViewModels
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "We need to know who you are.")]
+        public bool IsDeveloper { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

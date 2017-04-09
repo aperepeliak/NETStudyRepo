@@ -10,6 +10,6 @@ namespace ST.Core.Models
     {
         public const string Admin = "admin";
         public const string Developer = "developer";
-        public const string Manager = "Manager";
+        public const string Manager = "manager";
     }
 }

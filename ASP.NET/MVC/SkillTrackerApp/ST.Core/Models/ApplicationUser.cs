@@ -13,6 +13,7 @@ namespace ST.Core.Models
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            userIdentity.AddClaim(new Claim("FirstName", this.FirstName));
             return userIdentity;
         }
     }
