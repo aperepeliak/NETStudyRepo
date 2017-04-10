@@ -8,7 +8,8 @@ namespace ST.DAL.EntityConfigs
         public ManagerConfig()
         {
             HasRequired(m => m.User)
-                .WithOptional(u => u.Manager);
+                .WithOptional(u => u.Manager)
+                .WillCascadeOnDelete(true);
         }
     }
 }

@@ -7,5 +7,7 @@ namespace ST.Core.Repos
     {
         IEnumerable<ApplicationUser> GetAll();
         string GetUserRole(ApplicationUser user);
+        ApplicationUser GetUserByEmail(string email);
+        void Remove(ApplicationUser user);
     } 
 }

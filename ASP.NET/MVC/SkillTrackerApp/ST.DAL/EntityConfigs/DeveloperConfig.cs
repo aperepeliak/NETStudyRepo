@@ -8,7 +8,8 @@ namespace ST.DAL.EntityConfigs
         public DeveloperConfig()
         {
             HasRequired(d => d.User)
-                .WithOptional(u => u.Developer);
+                .WithOptional(u => u.Developer)
+                .WillCascadeOnDelete(true);
         }
     }
 }
