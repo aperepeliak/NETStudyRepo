@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EF", "Data.EF\Data.EF.csproj", "{BFBBB2E7-2096-4A43-B32D-143F23203A0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.AdoNet", "Data.AdoNet\Data.AdoNet.csproj", "{C8D905FC-95FE-4343-BB6D-EF850EF70EB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,11 +25,16 @@ Global
 		{BFBBB2E7-2096-4A43-B32D-143F23203A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFBBB2E7-2096-4A43-B32D-143F23203A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFBBB2E7-2096-4A43-B32D-143F23203A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D905FC-95FE-4343-BB6D-EF850EF70EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D905FC-95FE-4343-BB6D-EF850EF70EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D905FC-95FE-4343-BB6D-EF850EF70EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D905FC-95FE-4343-BB6D-EF850EF70EB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BFBBB2E7-2096-4A43-B32D-143F23203A0A} = {036E4F87-0FF4-46CE-B117-6744D2A9AD20}
+		{C8D905FC-95FE-4343-BB6D-EF850EF70EB3} = {036E4F87-0FF4-46CE-B117-6744D2A9AD20}
 	EndGlobalSection
 EndGlobal

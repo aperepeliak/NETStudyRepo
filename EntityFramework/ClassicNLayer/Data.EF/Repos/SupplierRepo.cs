@@ -17,7 +17,6 @@ namespace Data.EF.Repos
 
         public void Create(Supplier entity)   => _db.Suppliers.Add(entity);
         public void Delete(Supplier entity)   => _db.Entry(entity).State = EntityState.Deleted;
-        public void Update(Supplier entity)   => _db.Entry(entity).State = EntityState.Modified;
         public Supplier Get(int id)           => _db.Suppliers.Find(id);
         public IEnumerable<Supplier> GetAll() => _db.Suppliers;
 

@@ -17,7 +17,6 @@ namespace Data.EF.Repos
 
         public void Create(Category entity)   => _db.Categories.Add(entity);
         public void Delete(Category entity)   => _db.Entry(entity).State = EntityState.Deleted;
-        public void Update(Category entity)   => _db.Entry(entity).State = EntityState.Modified;
         public Category Get(int id)           => _db.Categories.Find(id);
         public IEnumerable<Category> GetAll() => _db.Categories;
 
