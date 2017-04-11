@@ -7,7 +7,7 @@ namespace Data.EF.Interfaces
     {
         IRepo<Product> Products { get; }
         IRepo<Category> Categories { get; }
-        IRepo<Category> Suppliers { get; }
+        IRepo<Supplier> Suppliers { get; }
 
         void Save();
     }
