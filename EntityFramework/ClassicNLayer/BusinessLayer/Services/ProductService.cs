@@ -1,10 +1,15 @@
 ﻿using BusinessLayer.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using BusinessLayer.DTOs;
-using Data.EF.Interfaces;
-using Data.EF.Models;
+
+// If using EF data layer
+// using Data.EF.Interfaces;
+// using Data.EF.Models;
+
+// If using ADO.NET data layer
+using Data.AdoNet.Interfaces;
+using Data.AdoNet.Models;
 
 namespace BusinessLayer.Services
 {
@@ -20,8 +25,8 @@ namespace BusinessLayer.Services
         {
             _db.Products.Create(new Product
             {
-                Name = productDto.Name,
-                Price = productDto.Price,
+                Name       = productDto.Name,
+                Price      = productDto.Price,
                 CategoryId = productDto.CategoryId,
                 SupplierId = productDto.SupplierId
             });
@@ -35,9 +40,9 @@ namespace BusinessLayer.Services
 
             return new ProductDTO
             {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
+                Id         = product.Id,
+                Name       = product.Name,
+                Price      = product.Price,
                 CategoryId = product.CategoryId,
                 SupplierId = product.SupplierId
             };
@@ -47,29 +52,9 @@ namespace BusinessLayer.Services
         {
             return _db.Products.GetAll().Select(p => new ProductDTO
             {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                CategoryId = p.CategoryId,
-                SupplierId = p.SupplierId
-            });
-        }
-        public IEnumerable<ProductDTO> GetProductsBy(Func<ProductDTO, bool> predicate)
-        {
-            Func<Product, bool> clause = p => predicate(new ProductDTO
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                CategoryId = p.CategoryId,
-                SupplierId = p.SupplierId
-            });
-
-            return _db.Products.Find(clause).Select(p => new ProductDTO
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
+                Id         = p.Id,
+                Name       = p.Name,
+                Price      = p.Price,
                 CategoryId = p.CategoryId,
                 SupplierId = p.SupplierId
             });
@@ -80,9 +65,9 @@ namespace BusinessLayer.Services
                 .Where(p => p.CategoryId == categoryId)
                 .Select(p => new ProductDTO
                 {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
+                    Id         = p.Id,
+                    Name       = p.Name,
+                    Price      = p.Price,
                     CategoryId = p.CategoryId,
                     SupplierId = p.SupplierId
                 });
@@ -93,12 +78,37 @@ namespace BusinessLayer.Services
                 .Where(p => p.SupplierId == supplierId)
                 .Select(p => new ProductDTO
                 {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
+                    Id         = p.Id,
+                    Name       = p.Name,
+                    Price      = p.Price,
                     CategoryId = p.CategoryId,
                     SupplierId = p.SupplierId
                 });
         }
+
+        /// <summary>
+        /// If using AdoNET layer this method is unavailable (need to comment it)
+        /// If using EF layer this method is available (uncomment)
+        /// </summary>
+        //public IEnumerable<ProductDTO> GetProductsBy(Func<ProductDTO, bool> predicate)
+        //{
+        //    Func<Product, bool> clause = p => predicate(new ProductDTO
+        //    {
+        //        Id         = p.Id,
+        //        Name       = p.Name,
+        //        Price      = p.Price,
+        //        CategoryId = p.CategoryId,
+        //        SupplierId = p.SupplierId
+        //    });
+
+        //    return _db.Products.Find(clause).Select(p => new ProductDTO
+        //    {
+        //        Id         = p.Id,
+        //        Name       = p.Name,
+        //        Price      = p.Price,
+        //        CategoryId = p.CategoryId,
+        //        SupplierId = p.SupplierId
+        //    });
+        //}
     }
 }

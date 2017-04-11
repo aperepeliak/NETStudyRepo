@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.DTOs;
-using System;
 using System.Collections.Generic;
 
 namespace BusinessLayer.Interfaces
@@ -11,6 +10,8 @@ namespace BusinessLayer.Interfaces
         IEnumerable<ProductDTO> GetProducts();
         IEnumerable<ProductDTO> GetProductsByCategory(int categoryId);
         IEnumerable<ProductDTO> GetProductsBySupplier(int supplierId);
-        IEnumerable<ProductDTO> GetProductsBy(Func<ProductDTO, bool> predicate);
+
+        // This method only available using EF data layer
+        //IEnumerable<ProductDTO> GetProductsBy(Func<ProductDTO, bool> predicate);
     }
 }

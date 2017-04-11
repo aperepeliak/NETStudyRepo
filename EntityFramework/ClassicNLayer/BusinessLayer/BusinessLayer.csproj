@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,19 +49,27 @@
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\SupplierDTO.cs" />
-    <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Infrastructure\NinjectBinding.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.AdoNet\Data.AdoNet.csproj">
+      <Project>{c8d905fc-95fe-4343-bb6d-ef850ef70eb3}</Project>
+      <Name>Data.AdoNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.EF\Data.EF.csproj">
       <Project>{bfbbb2e7-2096-4a43-b32d-143f23203a0a}</Project>
       <Name>Data.EF</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
