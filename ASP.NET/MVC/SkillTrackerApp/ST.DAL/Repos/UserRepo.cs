@@ -32,6 +32,6 @@ namespace ST.DAL.Repos
 
         public void Remove(ApplicationUser user)
                                => _context.Entry(user)
-                                 .State = EntityState.Deleted;
+                                  .State = EntityState.Deleted;
     }
 }
