@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Advanced", "03-Advanced"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001-ArraysAndLists", "001-ArraysAndLists\001-ArraysAndLists.csproj", "{F05F8049-32AB-4967-98B0-B876F1D28935}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002-StringsAndDates", "002-StringsAndDates\002-StringsAndDates.csproj", "{5A208869-4662-401D-A326-44EA70EDCF1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +23,16 @@ Global
 		{F05F8049-32AB-4967-98B0-B876F1D28935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F05F8049-32AB-4967-98B0-B876F1D28935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F05F8049-32AB-4967-98B0-B876F1D28935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A208869-4662-401D-A326-44EA70EDCF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A208869-4662-401D-A326-44EA70EDCF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A208869-4662-401D-A326-44EA70EDCF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A208869-4662-401D-A326-44EA70EDCF1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F05F8049-32AB-4967-98B0-B876F1D28935} = {3D82D2E9-6CF3-4972-84EB-4CEED174BDD4}
+		{5A208869-4662-401D-A326-44EA70EDCF1C} = {3D82D2E9-6CF3-4972-84EB-4CEED174BDD4}
 	EndGlobalSection
 EndGlobal
