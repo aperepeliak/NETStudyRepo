@@ -4,8 +4,8 @@ namespace _004_Interfaces
 {
     public class WorkflowEngine
     {
-        private readonly Workflow _workflow;
-        public WorkflowEngine(Workflow workflow)
+        private readonly IWorkflow _workflow;
+        public WorkflowEngine(IWorkflow workflow)
         {
             _workflow = workflow;
         }

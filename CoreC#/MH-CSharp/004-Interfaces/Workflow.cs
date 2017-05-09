@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace _004_Interfaces
 {
-    public class Workflow : IEnumerable<IActivity>
+    public class Workflow : IWorkflow
     {
         private readonly IList<IActivity> _activities;
 
@@ -14,7 +14,7 @@ namespace _004_Interfaces
             _activities = new List<IActivity>();
         }
 
-        public Workflow AddActivity(IActivity activity)
+        public IWorkflow AddActivity(IActivity activity)
         {
             if (activity == null)
                 throw new ArgumentNullException("activity");
