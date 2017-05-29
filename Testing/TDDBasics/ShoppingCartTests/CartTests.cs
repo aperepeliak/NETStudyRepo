@@ -59,6 +59,4 @@ namespace ShoppingCartTests
             Assert.That(actual, Is.EqualTo(8.00m));
         }
     }
-
-    
 }
