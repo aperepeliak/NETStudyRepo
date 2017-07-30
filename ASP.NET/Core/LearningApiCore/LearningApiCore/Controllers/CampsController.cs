@@ -35,16 +35,16 @@ namespace LearningApiCore.Controllers
             return Ok(_mapper.Map<IEnumerable<CampModel>>(camps));
         }
 
-        [HttpGet("{id}", Name = "CampGet")]
-        public IActionResult Get(int id, bool includeSpeakers = false)
+        [HttpGet("{moniker}", Name = "CampGet")]
+        public IActionResult Get(string moniker, bool includeSpeakers = false)
         {
             try
             {
                 Camp camp = null;
-                if (includeSpeakers) camp = _repo.GetCampWithSpeakers(id);
-                else camp = _repo.GetCamp(id);
+                if (includeSpeakers) camp = _repo.GetCampByMonikerWithSpeakers(moniker);
+                else camp = _repo.GetCampByMoniker(moniker);
 
-                if (camp == null) return NotFound($"Camp {id} was not found");
+                if (camp == null) return NotFound($"Camp {moniker} was not found");
 
                 return Ok(_mapper.Map<CampModel>(camp));
             }
@@ -56,16 +56,21 @@ namespace LearningApiCore.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody]Camp model)
+        public async Task<IActionResult> Post([FromBody]CampModel model)
         {
             try
             {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+
                 _logger.LogInformation("Creating new Code Camp");
-                _repo.Add(model);
+
+                var camp = _mapper.Map<Camp>(model);
+
+                _repo.Add(camp);
                 if (await _repo.SaveAllAsync())
                 {
-                    var newUri = Url.Link("CampGet", new { id = model.Id });
-                    return Created(newUri, model);
+                    var newUri = Url.Link("CampGet", new { moniker = model.Moniker });
+                    return Created(newUri, _mapper.Map<CampModel>(camp));
                 }
                 else
                 {
@@ -80,45 +85,37 @@ namespace LearningApiCore.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Camp model)
+        [HttpPut("{moniker}")]
+        public async Task<IActionResult> Put(string moniker, [FromBody] CampModel model)
         {
             try
             {
-                var oldCamp = _repo.GetCamp(id);
-                if (oldCamp == null) return NotFound($"Couldn't find camp [{id}]");
+                if (!ModelState.IsValid) return BadRequest(ModelState);
 
-                // Mapping data
-                oldCamp.Name = model.Name ?? oldCamp.Name;
-                oldCamp.Description = model.Description ?? oldCamp.Description;
-                oldCamp.Moniker = model.Moniker ?? oldCamp.Moniker;
-                oldCamp.Location = model.Location ?? oldCamp.Location;
-                oldCamp.Length = model.Length > 0 ? model.Length : oldCamp.Length;
-                oldCamp.EventDate = model.EventDate != DateTime.MinValue ? model.EventDate : oldCamp.EventDate;
+                var oldCamp = _repo.GetCampByMoniker(moniker);
+                if (oldCamp == null) return NotFound($"Couldn't find camp [{moniker}]");
+
+                _mapper.Map(model, oldCamp);
 
                 if (await _repo.SaveAllAsync())
                 {
-                    return Ok(oldCamp);
+                    return Ok(_mapper.Map<CampModel>(oldCamp));
                 }
 
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { var a = ex; throw; }
 
             return BadRequest("Could not update Camp");
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{moniker}")]
+        public async Task<IActionResult> Delete(string moniker)
         {
             try
             {
-                var oldCamp = _repo.GetCamp(id);
+                var oldCamp = _repo.GetCampByMoniker(moniker);
 
-                if (oldCamp == null) return NotFound($"Could found camp with id [{id}]");
+                if (oldCamp == null) return NotFound($"Could found camp with id [{moniker}]");
 
                 _repo.Delete(oldCamp);
 
@@ -131,7 +128,7 @@ namespace LearningApiCore.Controllers
             {
             }
 
-            return BadRequest("Could nit delete camp");
+            return BadRequest("Could not delete camp");
         }
     }
 }

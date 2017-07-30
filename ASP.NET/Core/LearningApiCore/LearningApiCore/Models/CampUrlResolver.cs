@@ -21,7 +21,7 @@ namespace LearningApiCore.Models
                               ResolutionContext context)
         {
             var url = (IUrlHelper)_httpContextAccessor.HttpContext.Items[BaseController.URLHELPER];
-            return url.Link("CampGet", new { id = source.Id });
+            return url.Link("CampGet", new { moniker = source.Moniker });
         }
     }
 }
